@@ -1,0 +1,34 @@
+#scp -r marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_bobshelf_20170308/UPDATE/*F90 .
+#scp -r marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_WM_20170514/UDIR/WM/*F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_bobshelf_20170308/UDIR/MERGED_BOBSHELF/initial_mask_and_bathy.F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_WM_20170514/UPDATE/*F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_WM_20170514/UPDATE/netcdf.F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_WM_20170514/UPDATE/netcdf.F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_GLOBMED_20170529/UDIR/GLOBMED/*.F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_GLOBMED_20170529/UDIR/GLOBMED/module_airseaflux.F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_GLOBMED_20170529/UDIR/GLOBMED/*F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_GLOBMED_20170529/UDIR/GLOBMED/module_offline.F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_GLOBMED_20170529/UDIR/GLOBMED/set_rivers.F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_GLOBMED_20170529/UDIR/GLOBMED/atlas.F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_GLOBMED_20170529/UDIR/GDL500ML/module_ogcm.F90 toto.f
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_GLOBMED_20170529/UPDATE/*F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_20180120_GLOBMED/UPDATE/*F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_20180326_GDL500M_V208/UPDATE/module_grid.F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_20180120_GLOBMED/UPDATE/module_grid.F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_20180120_GLOBMED/UPDATE/module_offline.F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_20180120_GLOBMED/UDIR/GDL500MLA/atlas.F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_20180120_GLOBMED/UDIR/WM_OFFLINE/*F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_NH_20171106/S26_HALLER2002_ARTICLE_EN_CONSTRUCTION/UDIR/30_HALLER2002/module_q.F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_20180120_GLOBMED/SOURCES/obc_ext.F90 toto.F90
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/VIOLAINE/S26_v236/UPDATE/dragcoef.F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_NH_20171106/SYMPHONIE_SETE_v237/UDIR/SETE/module_offline.F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/VIOLAINE/S26_v236/UDIR/TKN/module_airseaflux.F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/VIOLAINE/S26_v236/UDIR/TKN/read_ogcm_fields.F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/VIOLAINE/SYMPHONIE_v239/UDIR/TKN/module_ogcm.F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/VIOLAINE/SYMPHONIE_v239/UDIR/TKN/tide_netcdf_create_file.F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/VIOLAINE/SYMPHONIE_v239/UDIR/TKN/initial_tide.F90 .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/VIOLAINE/SYMPHONIE_v239/UDIR/TKN/module_s.F90 .
+#scp -r marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/VIOLAINE/SYMPHONIE_v239/SOURCES .
+#scp -r marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/VIOLAINE/SYMPHONIE_v239/UPDATE .
+#scp -r marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/VIOLAINE/SYMPHONIE_v239/configbox .
+ scp -r marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/FONDPLAT_0FRIC_PERIODIQUE_SIGGEN.20180303/SYMPHONIE_v292/UPDATE/*F90 .

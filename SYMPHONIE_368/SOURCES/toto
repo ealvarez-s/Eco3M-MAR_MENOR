@@ -1,0 +1,3 @@
+! coastal no slip condition: [coastal_viscosity*DX] is the horizontal viscosity in m**2/s (<=0 if free splip condition)
+! Example: coastal_viscosity=0.01 and DX=1000 ==> horizontal viscosity = 10m**2/s
+! https://docs.google.com/document/d/1VtN0Tp0FfiqZyr_L01QYtsZa47CmkMYnv6nizqnZhXc/edit?usp=sharing
