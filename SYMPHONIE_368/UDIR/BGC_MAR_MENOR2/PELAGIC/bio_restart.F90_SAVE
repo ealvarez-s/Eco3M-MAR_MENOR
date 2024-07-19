@@ -1,0 +1,1124 @@
+      subroutine bio_restart(txt_loc)
+!______________________________________________________________________
+!
+! DERNIERE REVISION: 14 JUIN 2009                                               
+! release 2010.10  - last update: 24-06-10
+! Contact: sirocco@aero.obs-mip.fr
+! Laboratoire d'Aerologie, 14 Avenue Edouard Belin, F-31400 Toulouse
+! http://sirocco.omp.obs-mip.fr/outils/Symphonie/Accueil/SymphoAccueil.htm
+!
+!______________________________________________________________________
+      use module_principal
+      use module_parallele !#MPI
+      use module_biobc
+      implicit none
+      character*1 txt_loc
+      integer debug_loc
+       double precision :: varbidon                
+       character(len=60) :: newrestart
+
+!...............................................................................
+! modifs: 24/12/02: derniere mise à jour
+!                   + bienvenue à restart de la biologie: ichoix=11 & ichoix=22
+!         25/12/02: include fichier common bio
+!         25/01/03: bienvenue à  à DFVOFL_Z
+!         19/03/03: suppression EVA_Z
+!         21/08/03: suppression TIDESTEP1
+!         11/06/04: changement de noms: chanelbio_in  -> chanelbio_input
+!                                       chanelbio_out -> chanelbio_output
+!                   afin d'éviter les accidents malheureux (rm *out)
+!         25/04/05: attribuer un nom "daté" au fichier restart
+!         26/04/05: suite du point precedent
+!         02/07/06: schema tke forward permet d'eliminer le tableau TKENHZ_Z
+!         04/07/06: eliminination serie tableaux ADHY
+!         17/01/08: IWAVE renommé IWVE
+!         01-06-09: Parallelisation
+!         14-06-09: Pas d'ecriture si la sequence de l'iteration en cours
+!                   n'est pas achevee
+!...............................................................................
+                                                                                
+!************************************************************
+! Lecture d'un fichier chanelbio
+!************************************************************
+                                                             
+      debug_loc=0
+                 
+      if (txt_loc=='r'              &
+      .or.txt_loc=='R') then !rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr>
+      debug_loc=1
+                 
+      open(unit=9,file='restart_input/chanelbio_'//dom_c,     &
+       access='sequential',form='unformatted')
+                                              
+      write(6,*)'lecture chanelbio debut:'
+                                          
+! insere partie_lit_1 debut: SURTOUT NE PAS EFFACER CETTE LIGNE
+      read(9)bio_t
+      read(9)biosum_t
+      read(9)tendancebio_t
+      read(9)fluxbio_w
+      read(9)nitobc_t
+      read(9)ammobc_t
+      read(9)phoobc_t
+      read(9)silobc_t
+      read(9)biobc_i_t
+      read(9)biobc_j_t
+      read(9)nitrif2d
+      read(9)resp2d
+      read(9)exuctot2d
+      read(9)sumnitratesurf
+      read(9)ppbsurf2d
+      read(9)ppbmax2d
+      read(9)profppbmax2d
+      read(9)sum_exportc_bot_2d
+      read(9)sum_exportn_bot_2d
+      read(9)sum_exportp_bot_2d
+      read(9)sum_exportsi_bot_2d
+      read(9)CBDet
+      read(9)CBFDet
+      read(9)CBSDet
+      read(9)NBDet
+      read(9)PBDet
+      read(9)SiBDet
+      read(9)dCBDet
+      read(9)dCBFDet
+      read(9)dCBSDet
+      read(9)dNBDet
+      read(9)dPBDet
+      read(9)dSiBDet
+      read(9)CDepo
+      read(9)NDepo
+      read(9)PDepo
+      read(9)SiDepo
+      read(9)NitrificationB
+      read(9)DenitrificationB
+      read(9)O2Min
+      read(9)AnoxMin
+      read(9)O2ODU
+      read(9)SUMT_NITRIF_est
+      read(9)SUMT_DENITRIF_est
+      read(9)SUMT_NO3Flux_est
+      read(9)SUMT_NH3Flux_est
+      read(9)SUMT_NMin_est
+      read(9)SUMT_CMin_est
+      read(9)SUMT_NDepo_est
+      read(9)SUMT_CDepo_est
+      read(9)SUMT_NITRIF
+      read(9)SUMT_DENITRIF
+      read(9)SUMT_NO3Flux
+      read(9)SUMT_NH3Flux
+      read(9)SUMT_NMin
+      read(9)SUMT_CMin
+      read(9)SUMT_NDepo
+      read(9)SUMT_CDepo
+      read(9)CMin_out
+      read(9)NMin_out
+      read(9)SUMT_O2Min
+      read(9)SUMT_AnoxMin
+      read(9)SUMT_AnoxMin_est
+      read(9)ppb2d
+      read(9)npb2d
+      read(9)chl2d
+      read(9)rpb2d
+      read(9)exp2d
+      read(9)bio_trans
+      read(9)tdcbio_trans
+      read(9)pwk_trans
+      read(9)tem_trans
+      read(9)p3d_trans
+      read(9)wsed
+      read(9)export_plat
+      read(9)sum_export_plat
+      read(9)exportgdl_plat
+      read(9)sum_exportgdl_plat
+      read(9)export_200_1000m
+      read(9)sum_export_200_1000m
+      read(9)exportdyf_bot
+      read(9)sum_exportdyf_bot
+      read(9)bil_fleuves
+      read(9)bil_fleuves_est
+      read(9)ins_fleuves
+      read(9)ins_fleuves_est
+      read(9)sum_ob_west
+      read(9)sum_ob_south
+      read(9)sum_ob_east
+      read(9)flux_ob_south
+      read(9)flux_ob_west
+      read(9)flux_ob_east
+      read(9)sumbio_p
+      read(9)sumbion_p
+      read(9)par_sum_ob_west
+      read(9)par_sum_ob_south
+      read(9)par_sum_ob_east
+      read(9)par_sum_export_plat
+      read(9)par_sum_exportgdl_plat
+      read(9)par_sum_exportdyf_bot
+      read(9)par_sum_export_200_1000m
+      read(9)par_bil_fleuves
+      read(9)exportdyf_100
+      read(9)sum_exportdyf_100
+      read(9)par_sum_exportdyf_100
+      read(9)export_200
+      read(9)sum_export_200
+      read(9)exportgdl_200
+      read(9)sum_exportgdl_200
+      read(9)exportdyf_200
+      read(9)sum_exportdyf_200
+      read(9)exportdyf_1000
+      read(9)sum_exportdyf_1000
+      read(9)par_sum_export_200
+      read(9)par_sum_exportgdl_200
+      read(9)par_sum_exportdyf_200
+      read(9)par_sum_exportdyf_1000
+      read(9)bil_fleuve
+      read(9)ins_fleuve
+      read(9)par_bil_fleuve
+      read(9)bioriv_info
+      read(9)bioriv_dt
+      read(9)socard
+      read(9)flux_ob_west_vert
+      read(9)flux_ob_south_vert
+      read(9)flux_ob_east_vert
+      read(9)sum_ob_west_vert
+      read(9)sum_ob_south_vert
+      read(9)sum_ob_east_vert
+      read(9)par_sum_ob_west_vert
+      read(9)par_sum_ob_south_vert
+      read(9)par_sum_ob_east_vert
+      read(9)nest_bio_out
+      read(9)biobcafdt
+      read(9)sumppbgdl_platcl
+      read(9)ppbgdl_platcl
+      read(9)moyppbgdl_platcl
+      read(9)respphyto
+      read(9)netppb
+      read(9)sumppbtotal
+      read(9)sumppbtotal_plat
+      read(9)sumnpbtotal
+      read(9)sumnetppbtotal
+      read(9)sumrespphytototal
+      read(9)sumppbdyf
+      read(9)sumppbgdl
+      read(9)sumppbmedoc
+      read(9)sumppblig
+      read(9)sumnetppbdyf
+      read(9)sumnetppbgdl
+      read(9)sumnetppblig
+      read(9)ppbtotal
+      read(9)ppbtotal_plat
+      read(9)npbtotal
+      read(9)netppbtotal
+      read(9)respphytototal
+      read(9)ppbdyf
+      read(9)ppbgdl
+      read(9)ppbmedoc
+      read(9)ppblig
+      read(9)netppbdyf
+      read(9)netppbgdl
+      read(9)netppblig
+      read(9)moyppbtotal
+      read(9)moyppbtotal_plat
+      read(9)moynpbtotal
+      read(9)moyrespphytototal
+      read(9)moynetppblig
+      read(9)moynetppbgdl
+      read(9)moynetppbdyf
+      read(9)moynetppbtotal
+      read(9)moyppbdyf
+      read(9)moyppbgdl
+      read(9)moyppbmedoc
+      read(9)moyppblig
+      read(9)ppb
+      read(9)npb
+      read(9)sumrpbtotal
+      read(9)rpbtotal
+      read(9)moyrpbtotal
+      read(9)rpb
+      read(9)exptotal
+      read(9)sumexptotal
+      read(9)bionest_sum
+      read(9)dti_bio
+      read(9)ssr_trans
+      read(9)eupho
+      read(9)nitrif
+      read(9)resptot
+      read(9)exuctot
+      read(9)sumnitriftotal
+      read(9)sumresptottotal
+      read(9)sumexuctottotal
+      read(9)sumgrazctotal
+      read(9)nitriftotal
+      read(9)totalnitsurf
+      read(9)totalnitsurfdyf
+      read(9)resptottotal
+      read(9)exuctottotal
+      read(9)grazctotal
+      read(9)moynitriftotal
+      read(9)moyresptottotal
+      read(9)moyexuctottotal
+      read(9)moygrazctotal
+      read(9)moyexpdyf
+      read(9)moyexpgdl
+      read(9)expdyf
+      read(9)expgdl
+      read(9)sumexpdyf
+      read(9)sumexpgdl
+      read(9)sumareagdl
+      read(9)sumareagdl_plat
+      read(9)sumareamedoc
+      read(9)sumareatotal
+      read(9)sumareatotal_plat
+!     read(9)sumarealig
+      read(9)varbidon
+      read(9)sumarea1000m
+      read(9)expflux
+      read(9)biobcinfo
+      read(9)rap_biobc
+      read(9)dt_biobc
+      read(9)datenudgbegin
+      read(9)datenudgend
+      read(9)nudgperiod
+      read(9)grazzooc
+      read(9)graz2d
+      read(9)grazherbi2d
+      read(9)grazpur2d
+      read(9)ExcHeteroN
+      read(9)ExcHeteroN2d
+      read(9)ExcHeteroNtop
+      read(9)ExcHeteroNtop2d
+      read(9)ExcbactNH4top
+      read(9)ExcbactNH4top2d
+      read(9)ExcBactNH4N
+      read(9)ExcBactNH4N2d
+      read(9)ExcZooAmmoN
+      read(9)ExcZooAmmoN2d
+      read(9)ExczooNH4top
+      read(9)ExczooNH4top2d
+      read(9)NitrifCOLUMN
+      read(9)NitrifCOLUMN2d
+      read(9)gbac
+      read(9)gbac2d
+      read(9)gbactotal
+      read(9)sumgbactotal
+      read(9)moygbactotal
+      read(9)gbacdyf
+      read(9)gbacgdl
+      read(9)sumgbacdyf
+      read(9)sumgbacgdl
+      read(9)moygbacdyf
+      read(9)moygbacgdl
+      read(9)respzoototal
+      read(9)sumrespzoototal
+      read(9)moyrespzoototal
+      read(9)respzoo
+      read(9)rempoc
+      read(9)rempon
+      read(9)lostpoc
+      read(9)lostpon
+      read(9)uptbactdon
+      read(9)excheteron
+      read(9)sum_exportc_bot
+      read(9)sum_exportn_bot
+      read(9)sum_exportp_bot
+      read(9)sum_exportsi_bot
+      read(9)exportc_bot
+      read(9)exportn_bot
+      read(9)exportp_bot
+      read(9)exportsi_bot
+      read(9)ppbgdl_plat
+      read(9)rpbgdl_plat
+      read(9)npbgdl_plat
+      read(9)netppbgdl_plat
+      read(9)moyppbgdl_plat
+      read(9)moyrpbgdl_plat
+      read(9)moynpbgdl_plat
+      read(9)moynetppbgdl_plat
+      read(9)sumppbgdl_plat
+      read(9)sumrpbgdl_plat
+      read(9)sumnpbgdl_plat
+      read(9)sumnetppbgdl_plat
+      read(9)SUMEXCHETERONGDL_plat
+      read(9)INSEXCHETERONGDL_plat
+      read(9)SUMUPTBACTDONGDL_plat
+      read(9)INSUPTBACTDONGDL_plat
+      read(9)SUMLOSTPOCGDL_plat
+      read(9)SUMLOSTPONGDL_plat
+      read(9)INSLOSTPOCGDL_plat
+      read(9)INSLOSTPONGDL_plat
+      read(9)SUMREMPOCGDL_plat
+      read(9)SUMREMPONGDL_plat
+      read(9)INSPPBGDL_plat
+      read(9)gbacgdl_plat
+      read(9)insgbacgdl_plat
+      read(9)SUMRESPPHYTOGDL_plat
+      read(9)SUMRESPZOOGDL_plat
+      read(9)INSRESPPHYTOGDL_plat
+      read(9)INSRESPZOOGDL_PLAT
+      read(9)INSNETPPBGDL_plat
+      read(9)INSNPBGDL_plat
+      read(9)INSRPBGDL_plat
+      read(9)SUMGBACGDL_plat
+      read(9)INSRESPBACTGDL_plat
+      read(9)SUMRESPTOTGDL_plat
+      read(9)INSRESPTOTGDL_plat
+      read(9)BIL_TOUTFLEUVEPOC
+      read(9)BIL_TOUTFLEUVEDOC
+      read(9)BIL_TOUTFLEUVEPON
+      read(9)BIL_TOUTFLEUVEDON
+      read(9)BIL_TOUTFLEUVENO3
+      read(9)BIL_TOUTFLEUVENH3
+      read(9)INS_TOUTFLEUVEPOC
+      read(9)INS_TOUTFLEUVEDOC
+      read(9)INS_TOUTFLEUVEPON
+      read(9)INS_TOUTFLEUVEDON
+      read(9)INS_TOUTFLEUVENO3
+      read(9)INS_TOUTFLEUVENH3
+      read(9)SUM_BIOPOC_P
+      read(9)SUM_BIODOC_P
+      read(9)SUM_BIOPON_P
+      read(9)SUM_BIODON_P
+      read(9)SUM_BIONO3_P
+      read(9)SUM_BIONH3_P
+      read(9)SUM_HBIO_P
+      read(9)SUM_HBION_P
+      read(9)SUM_BIOPOC_P1
+      read(9)SUM_BIODOC_P1
+      read(9)SUM_BIOPON_P1
+      read(9)SUM_BIODON_P1
+      read(9)SUM_BIONO3_P1
+      read(9)SUM_BIONH3_P1
+      read(9)SUM_HBIO_P1
+      read(9)SUM_HBION_P1
+      read(9)bil_ppb
+      read(9)bil_npb
+      read(9)bil_rpb
+      read(9)bil_netppb
+      read(9)bil_respphyto
+      read(9)bil_rempoc
+      read(9)bil_rempon
+      read(9)bil_gbac
+      read(9)bil_lostpoc
+      read(9)bil_lostpon
+      read(9)bil_uptbactdon
+      read(9)bil_excheteron
+      read(9)bil_respzoo
+      read(9)bil_respbact
+      read(9)ins_ppb
+      read(9)ins_npb
+      read(9)ins_rpb
+      read(9)ins_respphyto
+      read(9)ins_gbac
+      read(9)ins_lostpoc
+      read(9)ins_lostpon
+      read(9)ins_uptbactdon
+      read(9)ins_excheteron
+      read(9)ins_respzoo
+      read(9)ins_respbact
+      read(9)ins_netppb
+      read(9)SUM_SEDC
+      read(9)SUM_SEDN
+      read(9)SUM_SEDP
+      read(9)SUM_SEDSI
+      read(9)SEDC
+      read(9)SEDN
+      read(9)SEDP
+      read(9)SEDSI
+      read(9)par_sum_exportc_bot
+      read(9)par_sum_exportn_bot
+      read(9)par_sum_exportp_bot
+      read(9)par_sum_exportsi_bot
+      read(9)DecayRate
+      read(9)cDet20SED
+      read(9)kFast
+      read(9)kSlow
+      read(9)pFast
+      read(9)cFDet20SED
+      read(9)cSDet20SED
+      read(9)BQ10
+      read(9)NCrFD
+      read(9)NCrSD
+      read(9)pNit
+      read(9)pdeNit
+      read(9)pPMin
+      read(9)pSiMin
+      read(9)O2bw
+      read(9)NitrifSMean
+      read(9)DeNitrifSMean
+      read(9)NO3FluxSMean
+      read(9)NH3FluxSMean
+      read(9)NMinSMean
+      read(9)CMinSMean
+      read(9)NDepoSMean
+      read(9)CDepoSMean
+      read(9)AnoxMinSMean
+      read(9)NitrifSMean_est
+      read(9)DeNitrifSMean_est
+      read(9)NO3FluxSMean_est
+      read(9)NH3FluxSMean_est
+      read(9)NMinSMean_est
+      read(9)CMinSMean_est
+      read(9)NDepoSMean_est
+      read(9)CDepoSMean_est
+      read(9)AnoxMinSMean_est
+      read(9)SUM_NITRIF
+      read(9)SUM_DENITRIF
+      read(9)SUM_NO3Flux
+      read(9)SUM_NH3Flux
+      read(9)SUM_NMin
+      read(9)SUM_CMin
+      read(9)SUM_NDepo
+      read(9)SUM_CDepo
+      read(9)SUM_AnoxMin
+      read(9)SUM_NITRIF_est
+      read(9)SUM_DENITRIF_est
+      read(9)SUM_NO3Flux_est
+      read(9)SUM_NH3Flux_est
+      read(9)SUM_NMin_est
+      read(9)SUM_CMin_est
+      read(9)SUM_NDepo_est
+      read(9)SUM_CDepo_est
+      read(9)SUM_AnoxMin_est
+      read(9)river_bio
+      read(9)fluxmoyen_w
+      read(9)count_output
+      read(9)bioriv_date
+      read(9)biobc_type
+      read(9)ild_to_sd
+      read(9)vb
+      read(9)vbmax
+      read(9)kso
+      read(9)ksomax
+      read(9)iadvec_bio
+      read(9)i1dbio
+      read(9)iptbio
+      read(9)jptbio
+      read(9)mbio1
+      read(9)mbio2
+      read(9)nbio1
+      read(9)nbio2
+      read(9)mbio1_glob
+      read(9)mbio2_glob
+      read(9)nbio1_glob
+      read(9)nbio2_glob
+      read(9)tps_ppb
+      read(9)tps_ppb_2d
+      read(9)tps_strada
+      read(9)tps_strada_2d
+      read(9)tps_sed
+      read(9)j1gdl
+      read(9)j2gdl
+      read(9)i1gdl
+      read(9)i2gdl
+      read(9)j1medoc
+      read(9)j2medoc
+      read(9)i1medoc
+      read(9)i2medoc
+      read(9)idyf
+      read(9)jdyf
+      read(9)ilig
+      read(9)inudging
+      read(9)knudgbegin
+      read(9)knudgend
+      read(9)interp_lr
+      read(9)ibiobc_af
+      read(9)gridbio
+      read(9)IBenthic
+      read(9)NumBDET
+      read(9)BTfunc
+      read(9)TPS_BENT
+      read(9)SUMT_BENT
+      read(9)datebiobc
+      read(9)biobc_nextfiletime   
+      read(9)biobc_prevfiletime
+      read(9)biobc_nextfilename   
+      read(9)biobc_prevfilename
+
+! insere partie_lit_1 fin. SURTOUT NE PAS EFFACER CETTE LIGNE
+
+      close(9)
+      write(6,*)'lecture chanelbio fin.'
+
+      endif                  !rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr>
+
+      if (txt_loc=='w'          &
+      .or.txt_loc=='W') then !wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww>
+      debug_loc=1
+
+      if(restart_file_y_or_n==0)then
+       write(*,*)
+       write(*,*)'erreur dans bio_restart.f: la routine est appellee'
+       write(*,*)'alors que la sequence de calcul pour l''iteration'
+       write(*,*)'en cours n''est pas terminee.'
+       write(*,*)'remplacez votre appel par procedure similaire à'
+       write(*,*)'celle utilisee dans date_output.f.'
+       stop' stop dans bio_restart.f'
+      endif
+
+       call bio_restart_check
+      if(dynrestartfilename(1:14)=='restart_output') then !----> !17-10-13
+!        dynrestartfilename(1:14)= 'restart_outbis'
+         texte60='restart_output/chanelbio_'//dom_c
+      else                                                !---->
+!        dynrestartfilename(1:14)= 'restart_output'
+         texte60='restart_outbis/chanelbio_'//dom_c
+      endif     
+
+!       texte60='restart_output/chanelbio_'//dom_c
+
+! Changement du nom de fichier restart en fonction de la date pour les scripts MEX
+!     call elapsedtimetodate(elapsedtime_now)
+!     i0=i7+100*i6+10000*i5
+!     !write(2000+par%rank,*) "DATE = ",i0
+!     newrestart =  'restart_output/20120000/chanelbio_'//trim(dom_c)
+!     write(newrestart(16:23),'(i8)') i0
+!     !write(2000+par%rank,*) newrestart
+!     texte60=newrestart
+
+      open(unit=9,file=texte60                                         & !
+       ,access='sequential',form='unformatted')
+
+      write(6,'(a12,a50)')'ecriture de ',texte60
+      write(6,*)'debut:'
+
+! insere partie_ecrit_1 debut: SURTOUT NE PAS EFFACER CETTE LIGNE
+      write(9)bio_t
+      write(9)biosum_t
+      write(9)tendancebio_t
+      write(9)fluxbio_w
+      write(9)nitobc_t
+      write(9)ammobc_t
+      write(9)phoobc_t
+      write(9)silobc_t
+      write(9)biobc_i_t
+      write(9)biobc_j_t
+      write(9)nitrif2d
+      write(9)resp2d
+      write(9)exuctot2d
+      write(9)sumnitratesurf
+      write(9)ppbsurf2d
+      write(9)ppbmax2d
+      write(9)profppbmax2d
+      write(9)sum_exportc_bot_2d
+      write(9)sum_exportn_bot_2d
+      write(9)sum_exportp_bot_2d
+      write(9)sum_exportsi_bot_2d
+      write(9)CBDet
+      write(9)CBFDet
+      write(9)CBSDet
+      write(9)NBDet
+      write(9)PBDet
+      write(9)SiBDet
+      write(9)dCBDet
+      write(9)dCBFDet
+      write(9)dCBSDet
+      write(9)dNBDet
+      write(9)dPBDet
+      write(9)dSiBDet
+      write(9)CDepo
+      write(9)NDepo
+      write(9)PDepo
+      write(9)SiDepo
+      write(9)NitrificationB
+      write(9)DenitrificationB
+      write(9)O2Min
+      write(9)AnoxMin
+      write(9)O2ODU
+      write(9)SUMT_NITRIF_est
+      write(9)SUMT_DENITRIF_est
+      write(9)SUMT_NO3Flux_est
+      write(9)SUMT_NH3Flux_est
+      write(9)SUMT_NMin_est
+      write(9)SUMT_CMin_est
+      write(9)SUMT_NDepo_est
+      write(9)SUMT_CDepo_est
+      write(9)SUMT_NITRIF
+      write(9)SUMT_DENITRIF
+      write(9)SUMT_NO3Flux
+      write(9)SUMT_NH3Flux
+      write(9)SUMT_NMin
+      write(9)SUMT_CMin
+      write(9)SUMT_NDepo
+      write(9)SUMT_CDepo
+      write(9)CMin_out
+      write(9)NMin_out
+      write(9)SUMT_O2Min
+      write(9)SUMT_AnoxMin
+      write(9)SUMT_AnoxMin_est
+      write(9)ppb2d
+      write(9)npb2d
+      write(9)chl2d
+      write(9)rpb2d
+      write(9)exp2d
+      write(9)bio_trans
+      write(9)tdcbio_trans
+      write(9)pwk_trans
+      write(9)tem_trans
+      write(9)p3d_trans
+      write(9)wsed
+      write(9)export_plat
+      write(9)sum_export_plat
+      write(9)exportgdl_plat
+      write(9)sum_exportgdl_plat
+      write(9)export_200_1000m
+      write(9)sum_export_200_1000m
+      write(9)exportdyf_bot
+      write(9)sum_exportdyf_bot
+      write(9)bil_fleuves
+      write(9)ins_fleuves
+      write(9)bil_fleuves_est
+      write(9)ins_fleuves_est
+      write(9)sum_ob_west
+      write(9)sum_ob_south
+      write(9)sum_ob_east
+      write(9)flux_ob_south
+      write(9)flux_ob_west
+      write(9)flux_ob_east
+      write(9)sumbio_p
+      write(9)sumbion_p
+      write(9)par_sum_ob_west
+      write(9)par_sum_ob_south
+      write(9)par_sum_ob_east
+      write(9)par_sum_export_plat
+      write(9)par_sum_exportgdl_plat
+      write(9)par_sum_exportdyf_bot
+      write(9)par_sum_export_200_1000m
+      write(9)par_bil_fleuves
+      write(9)exportdyf_100
+      write(9)sum_exportdyf_100
+      write(9)par_sum_exportdyf_100
+      write(9)export_200
+      write(9)sum_export_200
+      write(9)exportgdl_200
+      write(9)sum_exportgdl_200
+      write(9)exportdyf_200
+      write(9)sum_exportdyf_200
+      write(9)exportdyf_1000
+      write(9)sum_exportdyf_1000
+      write(9)par_sum_export_200
+      write(9)par_sum_exportgdl_200
+      write(9)par_sum_exportdyf_200
+      write(9)par_sum_exportdyf_1000
+      write(9)bil_fleuve
+      write(9)ins_fleuve
+      write(9)par_bil_fleuve
+      write(9)bioriv_info
+      write(9)bioriv_dt
+      write(9)socard
+      write(9)flux_ob_west_vert
+      write(9)flux_ob_south_vert
+      write(9)flux_ob_east_vert
+      write(9)sum_ob_west_vert
+      write(9)sum_ob_south_vert
+      write(9)sum_ob_east_vert
+      write(9)par_sum_ob_west_vert
+      write(9)par_sum_ob_south_vert
+      write(9)par_sum_ob_east_vert
+      write(9)nest_bio_out
+      write(9)biobcafdt
+      write(9)sumppbgdl_platcl
+      write(9)ppbgdl_platcl
+      write(9)moyppbgdl_platcl
+      write(9)respphyto
+      write(9)netppb
+      write(9)sumppbtotal
+      write(9)sumppbtotal_plat
+      write(9)sumnpbtotal
+      write(9)sumnetppbtotal
+      write(9)sumrespphytototal
+      write(9)sumppbdyf
+      write(9)sumppbgdl
+      write(9)sumppbmedoc
+      write(9)sumppblig
+      write(9)sumnetppbdyf
+      write(9)sumnetppbgdl
+      write(9)sumnetppblig
+      write(9)ppbtotal
+      write(9)ppbtotal_plat
+      write(9)npbtotal
+      write(9)netppbtotal
+      write(9)respphytototal
+      write(9)ppbdyf
+      write(9)ppbgdl
+      write(9)ppbmedoc
+      write(9)ppblig
+      write(9)netppbdyf
+      write(9)netppbgdl
+      write(9)netppblig
+      write(9)moyppbtotal
+      write(9)moyppbtotal_plat
+      write(9)moynpbtotal
+      write(9)moyrespphytototal
+      write(9)moynetppblig
+      write(9)moynetppbgdl
+      write(9)moynetppbdyf
+      write(9)moynetppbtotal
+      write(9)moyppbdyf
+      write(9)moyppbgdl
+      write(9)moyppbmedoc
+      write(9)moyppblig
+      write(9)ppb
+      write(9)npb
+      write(9)sumrpbtotal
+      write(9)rpbtotal
+      write(9)moyrpbtotal
+      write(9)rpb
+      write(9)exptotal
+      write(9)sumexptotal
+      write(9)bionest_sum
+      write(9)dti_bio
+      write(9)ssr_trans
+      write(9)eupho
+      write(9)nitrif
+      write(9)resptot
+      write(9)exuctot
+      write(9)sumnitriftotal
+      write(9)sumresptottotal
+      write(9)sumexuctottotal
+      write(9)sumgrazctotal
+      write(9)nitriftotal
+      write(9)totalnitsurf
+      write(9)totalnitsurfdyf
+      write(9)resptottotal
+      write(9)exuctottotal
+      write(9)grazctotal
+      write(9)moynitriftotal
+      write(9)moyresptottotal
+      write(9)moyexuctottotal
+      write(9)moygrazctotal
+      write(9)moyexpdyf
+      write(9)moyexpgdl
+      write(9)expdyf
+      write(9)expgdl
+      write(9)sumexpdyf
+      write(9)sumexpgdl
+      write(9)sumareagdl
+      write(9)sumareagdl_plat
+      write(9)sumareamedoc
+      write(9)sumareatotal
+      write(9)sumareatotal_plat
+      write(9)sumarealig
+      write(9)sumarea1000m
+      write(9)expflux
+      write(9)biobcinfo
+      write(9)rap_biobc
+      write(9)dt_biobc
+      write(9)datenudgbegin
+      write(9)datenudgend
+      write(9)nudgperiod
+      write(9)grazzooc
+      write(9)graz2d
+      write(9)grazherbi2d
+      write(9)grazpur2d
+      write(9)gbac
+      write(9)gbac2d
+      write(9)ExcHeteroN
+      write(9)ExcHeteroN2d
+      write(9)ExcHeteroNtop
+      write(9)ExcHeteroNtop2d
+      write(9)ExcbactNH4top
+      write(9)ExcbactNH4top2d
+      write(9)ExcBactNH4N
+      write(9)ExcBactNH4N2d
+      write(9)ExcZooAmmoN
+      write(9)ExcZooAmmoN2d
+      write(9)ExczooNH4top
+      write(9)ExczooNH4top2d
+      write(9)NitrifCOLUMN
+      write(9)NitrifCOLUMN2d
+      write(9)gbactotal
+      write(9)sumgbactotal
+      write(9)moygbactotal
+      write(9)gbacdyf
+      write(9)gbacgdl
+      write(9)sumgbacdyf
+      write(9)sumgbacgdl
+      write(9)moygbacdyf
+      write(9)moygbacgdl
+      write(9)respzoototal
+      write(9)sumrespzoototal
+      write(9)moyrespzoototal
+      write(9)respzoo
+      write(9)rempoc
+      write(9)rempon
+      write(9)lostpoc
+      write(9)lostpon
+      write(9)uptbactdon
+      write(9)excheteron
+      write(9)sum_exportc_bot
+      write(9)sum_exportn_bot
+      write(9)sum_exportp_bot
+      write(9)sum_exportsi_bot
+      write(9)exportc_bot
+      write(9)exportn_bot
+      write(9)exportp_bot
+      write(9)exportsi_bot
+      write(9)ppbgdl_plat
+      write(9)rpbgdl_plat
+      write(9)npbgdl_plat
+      write(9)netppbgdl_plat
+      write(9)moyppbgdl_plat
+      write(9)moyrpbgdl_plat
+      write(9)moynpbgdl_plat
+      write(9)moynetppbgdl_plat
+      write(9)sumppbgdl_plat
+      write(9)sumrpbgdl_plat
+      write(9)sumnpbgdl_plat
+      write(9)sumnetppbgdl_plat
+      write(9)SUMEXCHETERONGDL_plat
+      write(9)INSEXCHETERONGDL_plat
+      write(9)SUMUPTBACTDONGDL_plat
+      write(9)INSUPTBACTDONGDL_plat
+      write(9)SUMLOSTPOCGDL_plat
+      write(9)SUMLOSTPONGDL_plat
+      write(9)INSLOSTPOCGDL_plat
+      write(9)INSLOSTPONGDL_plat
+      write(9)SUMREMPOCGDL_plat
+      write(9)SUMREMPONGDL_plat
+      write(9)INSPPBGDL_plat
+      write(9)gbacgdl_plat
+      write(9)insgbacgdl_plat
+      write(9)SUMRESPPHYTOGDL_plat
+      write(9)SUMRESPZOOGDL_plat
+      write(9)INSRESPPHYTOGDL_plat
+      write(9)INSRESPZOOGDL_PLAT
+      write(9)INSNETPPBGDL_plat
+      write(9)INSNPBGDL_plat
+      write(9)INSRPBGDL_plat
+      write(9)SUMGBACGDL_plat
+      write(9)INSRESPBACTGDL_plat
+      write(9)SUMRESPTOTGDL_plat
+      write(9)INSRESPTOTGDL_plat
+      write(9)BIL_TOUTFLEUVEPOC
+      write(9)BIL_TOUTFLEUVEDOC
+      write(9)BIL_TOUTFLEUVEPON
+      write(9)BIL_TOUTFLEUVEDON
+      write(9)BIL_TOUTFLEUVENO3
+      write(9)BIL_TOUTFLEUVENH3
+      write(9)INS_TOUTFLEUVEPOC
+      write(9)INS_TOUTFLEUVEDOC
+      write(9)INS_TOUTFLEUVEPON
+      write(9)INS_TOUTFLEUVEDON
+      write(9)INS_TOUTFLEUVENO3
+      write(9)INS_TOUTFLEUVENH3
+      write(9)SUM_BIOPOC_P
+      write(9)SUM_BIODOC_P
+      write(9)SUM_BIOPON_P
+      write(9)SUM_BIODON_P
+      write(9)SUM_BIONO3_P
+      write(9)SUM_BIONH3_P
+      write(9)SUM_HBIO_P
+      write(9)SUM_HBION_P
+      write(9)SUM_BIOPOC_P1
+      write(9)SUM_BIODOC_P1
+      write(9)SUM_BIOPON_P1
+      write(9)SUM_BIODON_P1
+      write(9)SUM_BIONO3_P1
+      write(9)SUM_BIONH3_P1
+      write(9)SUM_HBIO_P1
+      write(9)SUM_HBION_P1
+      write(9)bil_ppb
+      write(9)bil_npb
+      write(9)bil_rpb
+      write(9)bil_netppb
+      write(9)bil_respphyto
+      write(9)bil_rempoc
+      write(9)bil_rempon
+      write(9)bil_gbac
+      write(9)bil_lostpoc
+      write(9)bil_lostpon
+      write(9)bil_uptbactdon
+      write(9)bil_excheteron
+      write(9)bil_respzoo
+      write(9)bil_respbact
+      write(9)ins_ppb
+      write(9)ins_npb
+      write(9)ins_rpb
+      write(9)ins_respphyto
+      write(9)ins_gbac
+      write(9)ins_lostpoc
+      write(9)ins_lostpon
+      write(9)ins_uptbactdon
+      write(9)ins_excheteron
+      write(9)ins_respzoo
+      write(9)ins_respbact
+      write(9)ins_netppb
+      write(9)SUM_SEDC
+      write(9)SUM_SEDN
+      write(9)SUM_SEDP
+      write(9)SUM_SEDSI
+      write(9)SEDC
+      write(9)SEDN
+      write(9)SEDP
+      write(9)SEDSI
+      write(9)par_sum_exportc_bot
+      write(9)par_sum_exportn_bot
+      write(9)par_sum_exportp_bot
+      write(9)par_sum_exportsi_bot
+      write(9)DecayRate
+      write(9)cDet20SED
+      write(9)kFast
+      write(9)kSlow
+      write(9)pFast
+      write(9)cFDet20SED
+      write(9)cSDet20SED
+      write(9)BQ10
+      write(9)NCrFD
+      write(9)NCrSD
+      write(9)pNit
+      write(9)pdeNit
+      write(9)pPMin
+      write(9)pSiMin
+      write(9)O2bw
+      write(9)NitrifSMean
+      write(9)DeNitrifSMean
+      write(9)NO3FluxSMean
+      write(9)NH3FluxSMean
+      write(9)NMinSMean
+      write(9)CMinSMean
+      write(9)NDepoSMean
+      write(9)CDepoSMean
+      write(9)AnoxMinSMean
+      write(9)NitrifSMean_est
+      write(9)DeNitrifSMean_est
+      write(9)NO3FluxSMean_est
+      write(9)NH3FluxSMean_est
+      write(9)NMinSMean_est
+      write(9)CMinSMean_est
+      write(9)NDepoSMean_est
+      write(9)CDepoSMean_est
+      write(9)AnoxMinSMean_est
+      write(9)SUM_NITRIF
+      write(9)SUM_DENITRIF
+      write(9)SUM_NO3Flux
+      write(9)SUM_NH3Flux
+      write(9)SUM_NMin
+      write(9)SUM_CMin
+      write(9)SUM_NDepo
+      write(9)SUM_CDepo
+      write(9)SUM_AnoxMin
+      write(9)SUM_NITRIF_est
+      write(9)SUM_DENITRIF_est
+      write(9)SUM_NO3Flux_est
+      write(9)SUM_NH3Flux_est
+      write(9)SUM_NMin_est
+      write(9)SUM_CMin_est
+      write(9)SUM_NDepo_est
+      write(9)SUM_CDepo_est
+      write(9)SUM_AnoxMin_est
+      write(9)river_bio
+      write(9)fluxmoyen_w
+      write(9)count_output
+      write(9)bioriv_date
+      write(9)biobc_type
+      write(9)ild_to_sd
+      write(9)vb
+      write(9)vbmax
+      write(9)kso
+      write(9)ksomax
+      write(9)iadvec_bio
+      write(9)i1dbio
+      write(9)iptbio
+      write(9)jptbio
+      write(9)mbio1
+      write(9)mbio2
+      write(9)nbio1
+      write(9)nbio2
+      write(9)mbio1_glob
+      write(9)mbio2_glob
+      write(9)nbio1_glob
+      write(9)nbio2_glob
+      write(9)tps_ppb
+      write(9)tps_ppb_2d
+      write(9)tps_strada
+      write(9)tps_strada_2d
+      write(9)tps_sed
+      write(9)j1gdl
+      write(9)j2gdl
+      write(9)i1gdl
+      write(9)i2gdl
+      write(9)j1medoc
+      write(9)j2medoc
+      write(9)i1medoc
+      write(9)i2medoc
+      write(9)idyf
+      write(9)jdyf
+      write(9)ilig
+      write(9)inudging
+      write(9)knudgbegin
+      write(9)knudgend
+      write(9)interp_lr
+      write(9)ibiobc_af
+      write(9)gridbio
+      write(9)IBenthic
+      write(9)NumBDET
+      write(9)BTfunc
+      write(9)TPS_BENT
+      write(9)SUMT_BENT
+      write(9)datebiobc
+      write(9)biobc_nextfiletime   
+      write(9)biobc_prevfiletime
+      write(9)biobc_nextfilename   
+      write(9)biobc_prevfilename
+! insere partie_ecrit_1 fin. SURTOUT NE PAS EFFACER CETTE LIGNE
+                                                                        
+      close(9)                                                          
+      write(6,*)'ecriture chanelbio fin.'                               
+                                                                        
+      return                                                            
+      endif  !wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww>           
+                                                                        
+      if(debug_loc==0)stop'mauvais argument passe dans bio_restart'     
+                                                                        
+      end subroutine bio_restart                                        
+
+      subroutine bio_restart_check                                !27-05
+      use module_principal
+      use module_parallele                                        !#MPI
+      implicit none
+      character txt_spy_loc*60
+#ifdef synopsis
+       subroutinetitle='dyn_restart_check'
+       subroutinedescription=' '
+       call main_synopsis(subroutinetitle,subroutinedescription)
+#endif
+
+      txt_spy_loc='dyn_restart_check'     !27-05-11
+
+! Ne pas ecrire le fichier si solution bugguee:
+
+      sum2=0. ;  sum3=0.; sum0=small1
+      do k=1,kmax
+      do j=1,jmax
+      do i=1,imax
+       sum0=sum0+mask_t(i,j,k)*dz_t(i,j,k,2)*dxdy_t(i,j)
+       sum2=sum2+mask_t(i,j,k)*dz_t(i,j,k,2)*dxdy_t(i,j)*bio_t(i,j,k,30)
+       sum3=sum3+mask_t(i,j,k)*dz_t(i,j,k,2)*dxdy_t(i,j)*bio_t(i,j,k,1)
+      enddo
+      enddo
+      enddo
+      sum2=sum2/sum0 ;  sum3=sum3/sum0
+
+
+!     open(unit=3     &
+!         ,file='restart_output/checkrestartfile'//dom_c//'.ascii')
+      write(texte60,'(a,i0,a)')'restart_output/biocheckrestartfile',par%rank!17-01-15
+      open(unit=3,file=texte60) !17-01-15
+       write(3,*)sum2
+       write(3,*)sum3
+      close(3)
+      open(unit=3,file=texte60) !17-01-15
+      do k=1,2
+       read(3,'(a)')texte90
+       if(index(texte90,'N')/=0.or.index(texte90,'n')/=0) then !%%%%%>
+        write(*,*)' Can not produce a biorestart file if NaN or INF'
+        stop ' Run stopped in model_3d.F90 subroutine dyn_restart_check'
+       endif                                                   !%%%%%>
+      enddo
+      close(3)
+
+#ifdef parallele
+!     call barriere(iteration3d,1,txt_spy_loc)  !27-05-11
+      call barriere(2317,20150709,txt_spy_loc)  !27-05-11
+#endif
+
+      end subroutine bio_restart_check

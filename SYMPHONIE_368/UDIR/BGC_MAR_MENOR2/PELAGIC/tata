@@ -1,0 +1,83 @@
+       ! lecture et interpolation des profils pour nitrate, silice phosphate PUIS
+       ! Initialisation de l'oxygene, zoo, ALK, etc
+
+       ! interpolation des profils de Nitrate, Phosphate et Silice
+
+         if(polygon_m(i,j).eq.0) &
+         print*,'polygone',i,j,i+par%timax(1),j+par%tjmax(1)
+
+
+         if(nmaxprofk(polygon_m(i,j),3).eq.0) &
+         print*,'nmaxprofk',polygon_m(i,j)
+
+         if (depth_t(i,j,k)<=Init_PRF(polygon_m(i,j),1)) then
+           bio_t(i,j,k,iNitrate)   = InitVal_NIT(polygon_m(i,j),1)
+           bio_t(i,j,k,iPhosphate) = InitVal_PHO(polygon_m(i,j),1)
+           bio_t(i,j,k,iSilice)    = InitVal_SIL(polygon_m(i,j),1)
+         elseif(depth_t(i,j,k)>=Init_PRF(polygon_m(i,j),nmaxprofk(polygon_m(i,j),1)))then
+           bio_t(i,j,k,iNitrate)   = InitVal_NIT(polygon_m(i,j),nmaxprofk(polygon_m(i,j),1))
+           bio_t(i,j,k,iPhosphate) = InitVal_PHO(polygon_m(i,j),nmaxprofk(polygon_m(i,j),2))
+           bio_t(i,j,k,iSilice)    = InitVal_SIL(polygon_m(i,j),nmaxprofk(polygon_m(i,j),3))
+         else
+  
+           K_pr=1
+           do while(depth_t(i,j,k)>Init_PRF(polygon_m(i,j),K_pr))
+             K_pr=K_pr+1
+           enddo
+
+           r1=-Init_PRF(polygon_m(i,j),K_pr-1)+depth_t(i,j,k)
+           r2=-depth_t(i,j,k)+Init_PRF(polygon_m(i,j),K_pr)
+           deltap=Init_PRF(polygon_m(i,j),K_pr)-Init_PRF(polygon_m(i,j),K_pr-1) 
+
+           bio_t(i,j,k,iNitrate)  =(r1*InitVal_NIT(polygon_m(i,j),K_pr  )        &
+                                   +r2*InitVal_NIT(polygon_m(i,j),K_pr-1))/deltap
+           bio_t(i,j,k,iPhosphate)=(r1*InitVal_PHO(polygon_m(i,j),K_pr  )        &
+                                   +r2*InitVal_PHO(polygon_m(i,j),K_pr-1))/deltap
+           bio_t(i,j,k,iSilice)   =(r1*InitVal_SIL(polygon_m(i,j),K_pr  )        &
+                                   +r2*InitVal_SIL(polygon_m(i,j),K_pr-1))/deltap
+
+          endif 
+
+! Pour le DIC
+         if (depth_t(i,j,k)<=Init_PRF_DIC(polygon_m(i,j),1)) then
+           bio_t(i,j,k,iDIC)        = InitVal_DIC(polygon_m(i,j),1)
+         elseif(depth_t(i,j,k)>=Init_PRF_DIC(polygon_m(i,j),nmaxprofk(polygon_m(i,j),4)))then
+           bio_t(i,j,k,iDIC)    = InitVal_DIC(polygon_m(i,j),nmaxprofk(polygon_m(i,j),4))
+         else
+
+           K_pr=1
+           do while(depth_t(i,j,k)>Init_PRF_DIC(polygon_m(i,j),K_pr))
+             K_pr=K_pr+1
+           enddo
+
+           r1=-Init_PRF_DIC(polygon_m(i,j),K_pr-1)+depth_t(i,j,k)
+           r2=-depth_t(i,j,k)+Init_PRF_DIC(polygon_m(i,j),K_pr)
+           deltap=Init_PRF_DIC(polygon_m(i,j),K_pr)-Init_PRF_DIC(polygon_m(i,j),K_pr-1)
+
+           bio_t(i,j,k,iDIC)  =(r1*InitVal_DIC(polygon_m(i,j),K_pr  ) &
+                                   +r2*InitVal_DIC(polygon_m(i,j),K_pr-1))/deltap
+
+
+
+          endif
+
+! Pour l'alcalinité
+         if (depth_t(i,j,k)<=Init_PRF_ALK(polygon_m(i,j),1)) then
+           bio_t(i,j,k,iALKALINITY)        = InitVal_ALK(polygon_m(i,j),1)
+         elseif(depth_t(i,j,k)>=Init_PRF_ALK(polygon_m(i,j),nmaxprofk(polygon_m(i,j),5)))then
+           bio_t(i,j,k,iALKALINITY)    = InitVal_ALK(polygon_m(i,j),nmaxprofk(polygon_m(i,j),5))
+         else
+
+           K_pr=1
+           do while(depth_t(i,j,k)>Init_PRF_ALK(polygon_m(i,j),K_pr))
+             K_pr=K_pr+1
+           enddo
+
+           r1=-Init_PRF_ALK(polygon_m(i,j),K_pr-1)+depth_t(i,j,k)
+           r2=-depth_t(i,j,k)+Init_PRF_ALK(polygon_m(i,j),K_pr)
+           deltap=Init_PRF_ALK(polygon_m(i,j),K_pr)-Init_PRF_ALK(polygon_m(i,j),K_pr-1)
+
+           bio_t(i,j,k,iALKALINITY)  =(r1*InitVal_ALK(polygon_m(i,j),K_pr  ) &
+                                   +r2*InitVal_ALK(polygon_m(i,j),K_pr-1))/deltap
+
+          endif

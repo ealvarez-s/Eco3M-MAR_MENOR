@@ -1,0 +1,77 @@
+62a63,65
+>       k=48
+> 
+> 
+68,70c71,75
+<       if(k<kmin_w(i,j))then
+<          print*,'erreur dans l algo strada',i,j,k,kmin_w(i,j)
+<       endif
+---
+> !      if(k<kmin_w(i,j))then
+> !         print*,'erreur dans l algo budget export',i,j,k,kmin_w(i,j)
+> !       k=kmin_w(i,j)      
+> !      endif
+>        
+136,189d140
+< 
+< ! export de nitrate en mgC m-2 j-1
+< !     elseif(vb==iNITRATE) then
+< !      if(x2.gt.0.) then
+< !        EXP2D(I,J,8)= EXP2D(I,J,8)+( EXP_ADV+ EXP_TURB)*86400/x2
+< !        EXP2D(I,J,9)= EXP2D(I,J,9)+( EXP_ADV)*86400/x2
+< !        EXP2D(I,J,10)= EXP2D(I,J,10)+( EXP_TURB)*86400/x2
+< !      endif
+< 
+< ! export de mod en mmolN m-2 j-1
+< !     elseif(vb==iMODN) then
+< !      if(x2.gt.0.) then
+< !        EXP2D(I,J,11)= EXP2D(I,J,11)+( EXP_ADV+ EXP_TURB)*86400/x2
+< !        EXP2D(I,J,12)= EXP2D(I,J,12)+( EXP_ADV)*86400/x2
+< !        EXP2D(I,J,13)= EXP2D(I,J,13)+( EXP_TURB)*86400/x2
+< !      endif
+< 
+< ! export de PHYTON en mmolN m-2 j-1
+< !     elseif(vb==iDIAN.or.vb==iNANON.or.vb==iSYNEN) then
+< !      if(x2.gt.0.) then
+< !        EXP2D(I,J,14)= EXP2D(I,J,14)+( EXP_SED+ EXP_ADV+ EXP_TURB)*86400/x2
+< !        EXP2D(I,J,15)= EXP2D(I,J,15)+(EXP_SED)*86400/x2
+< !        EXP2D(I,J,16)= EXP2D(I,J,16)+( EXP_ADV)*86400/x2
+< !        EXP2D(I,J,17)= EXP2D(I,J,17)+( EXP_TURB)*86400/x2
+< !      endif
+< 
+< ! export de DETRITUS en mmolN m-2 j-1
+< !     elseif(vb==iLMOPN.or.vb==iSMOPN) then
+< !      if(x2.gt.0.) then
+< !        EXP2D(I,J,18)= EXP2D(I,J,18)+( EXP_SED+ EXP_ADV+ EXP_TURB)*86400/x2
+< !        EXP2D(I,J,19)= EXP2D(I,J,19)+(EXP_SED)*86400/x2
+< !        EXP2D(I,J,20)= EXP2D(I,J,20)+( EXP_ADV)*86400/x2
+< !        EXP2D(I,J,21)= EXP2D(I,J,21)+( EXP_TURB)*86400/x2   
+< !      endif
+< 
+< 
+< ! export de BACTN en mmolN m-2 j-1
+< !     elseif(vb==iBACTC) then
+< !      if(x2.gt.0.) then
+< !        EXP2D(I,J,22)= EXP2D(I,J,22)+ (EXP_ADV+ EXP_TURB)*0.232*86400/x2
+< !        EXP2D(I,J,23)= EXP2D(I,J,23)+( EXP_ADV)*0.232*86400/x2
+< !        EXP2D(I,J,24)= EXP2D(I,J,24)+( EXP_TURB)*0.232*86400/x2
+< !      endif
+< 
+< 
+< ! export de ZOON en mmolN m-2 j-1
+< !     elseif(vb==iZOONANOC.or.vb==iZOOMESOC.or.vb==iZOOMICROC) then
+< !      if(x2.gt.0.) then
+< !        EXP2D(I,J,25)= EXP2D(I,J,25)+( EXP_ADV+ EXP_TURB)*0.18*86400/x2
+< !        EXP2D(I,J,26)= EXP2D(I,J,26)+( EXP_ADV)*0.18*86400/x2
+< !        EXP2D(I,J,27)= EXP2D(I,J,27)+( EXP_TURB)*0.18*86400/x2
+< !      endif
+< 
+< 
+201a153
+>       EXP2D(I,J,8)= EXP2D(I,J,8)+EXP_SED_BOT*86400*12  !mg/m2/j
+204d155
+< 
+213c164
+<                               + EXP_SED_BOT*dti_fw
+---
+>                              + EXP_SED_BOT*dti_fw

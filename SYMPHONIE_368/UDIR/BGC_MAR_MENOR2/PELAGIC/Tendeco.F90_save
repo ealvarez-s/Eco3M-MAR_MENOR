@@ -1,0 +1,403 @@
+    SUBROUTINE Tendeco(fBIO,fTemperature,fSolarradiation,fAlbedoBio,fDepthInt,oTENDANCEBIO & 
+                      ,oPrimProdTot,oPrimProdDia,oPrimProdNano,oPrimProdSyne               &
+                      ,oNewProdTot,oNewProdDia,oNewProdNano,oNewProdSyne                   &
+                      ,oRecProdTot,oRecProdDia,oRecProdNano,oRecProdSyne,oRecProdBact      &
+                      ,oNitrif,oRespTot,oExuCTot,oRespPhyto,oRespDia,oRespNano,oRespSyne   &  
+                      ,oNetPrimProdTot,oNetPrimProdDia,oNetPrimProdNano,oNetPrimProdSyne   &
+                      ,oTotalGrazC,oGbact,oPPBi                                            &
+                      ,oNitSurf,oRespZoo,oRemPOC,oRemPON,oLostPOC,oLostPON                 &
+                      ,oUptBactDON,oExcHeteroN,oExcHeteroNtop,oExcbactNH4top               &
+                      ,oExcBactNH4N,oExcZooAmmoN,oExczooNH4top,oNitrifCOLUMN               & 
+                      ,oTotalGrazCPur,oTotalGrazCHerbi)
+
+!_____________________________________________________________________
+! 3d ecosystem model                                                  *
+!                                                                     *
+! LAST REVISION: 24 MARCH 2008                                        *
+!                                                                     *
+! Implementation: Caroline Ulses                                      *
+!                 NIOO-CEME                                           *
+!_____________________________________________________________________*
+
+
+!_____________________________________________________________________*
+!                                                                     *
+! 1. Transfers symphonie variables in eco3m variables                 *
+! 2. Calculates PAR                                                   *
+! 3. Calculates the rates of change                                   *
+! 4. Transfers eco3m variables in symphonie variables                 *
+!                                                                     *
+!_____________________________________________________________________*
+
+!_____________________________________________________________________*
+!                                                                     *
+! Modifications:                                                      *
+!                                                                     *
+! 21/09/07: Addition of outputs variables                             *
+! 24/03/08: Replace 1.e-8 by 1.d-8
+!                                                                     *
+!_____________________________________________________________________*
+
+
+
+!---------------------------------------------------------------------*
+! Declarations:                                                       
+                                                                     
+                                                                     
+! Global variables                                                    
+                                                                      
+ USE ModuleComBlock                                                   
+ USE UserDeclaration                                                 
+ USE ModuleDeclaration  
+                                                                    
+ IMPLICIT NONE                                                        
+                                                                      
+! Local variables                                                     
+                                                                      
+ INTEGER :: I,KB,KOUNTBIO,fkount,oIEupho                                                  
+ DOUBLE PRECISION :: fBIO(NumpelagicBoxes,1:xsvardeclare)             
+ DOUBLE PRECISION :: fTemperature(NumpelagicBoxes)                   
+ DOUBLE PRECISION :: fSolarRadiation
+ DOUBLE PRECISION :: fAlbedoBio                                 
+ DOUBLE PRECISION :: fDepthInt(NumpelagicBoxesP1)                          
+ DOUBLE PRECISION :: oTENDANCEBIO(NumpelagicBoxes,1:xsvardeclare)
+ DOUBLE PRECISION :: oPrimProdTot
+ DOUBLE PRECISION :: oPrimProdDia
+ DOUBLE PRECISION :: oPrimProdNano
+ DOUBLE PRECISION :: oPrimProdSyne
+ DOUBLE PRECISION :: oNewProdTot
+ DOUBLE PRECISION :: oNewProdDia
+ DOUBLE PRECISION :: oNewProdNano
+ DOUBLE PRECISION :: oNewProdSyne
+ DOUBLE PRECISION :: oRecProdTot
+ DOUBLE PRECISION :: oRecProdDia
+ DOUBLE PRECISION :: oRecProdSyne
+ DOUBLE PRECISION :: oRecProdNano
+ DOUBLE PRECISION :: oRecProdBact
+ DOUBLE PRECISION :: oNitrif
+ DOUBLE PRECISION :: oRespTot
+ DOUBLE PRECISION :: oExuCTot
+ DOUBLE PRECISION :: oRespPhyto
+ DOUBLE PRECISION :: oRespSyne
+ DOUBLE PRECISION :: oRespNano
+ DOUBLE PRECISION :: oRespDia
+ DOUBLE PRECISION :: oNetPrimProdTot
+ DOUBLE PRECISION :: oNetPrimProdSyne
+ DOUBLE PRECISION :: oNetPrimProdNano
+ DOUBLE PRECISION :: oNetPrimProdDia
+ DOUBLE PRECISION :: oTotalGrazC
+ DOUBLE PRECISION :: oGBact
+ DOUBLE PRECISION :: oPPBi(NumpelagicBoxes)
+ DOUBLE PRECISION :: oNitSurf
+ DOUBLE PRECISION :: oRespZoo
+ DOUBLE PRECISION :: oRemPOC
+ DOUBLE PRECISION :: oRemPON
+ DOUBLE PRECISION :: oLostPOC
+ DOUBLE PRECISION :: oLostPON
+ DOUBLE PRECISION :: oUptBactDON
+ DOUBLE PRECISION :: oExcHeteroN
+ DOUBLE PRECISION :: oExcHeteroNtop
+ DOUBLE PRECISION :: oExcbactNH4top
+ DOUBLE PRECISION :: oExcBactNH4N
+ DOUBLE PRECISION :: oExcZooAmmoN
+ DOUBLE PRECISION :: oExczooNH4top
+ DOUBLE PRECISION :: oNitrifCOLUMN
+ DOUBLE PRECISION :: oTotalGrazCPur
+ DOUBLE PRECISION :: oTotalGrazCHerbi
+
+
+!---------------------------------------------------------------------*
+
+!---------------------------------------------------------------------*
+!                                                                     *
+! 1. Symphonie to Eco3m                                               *
+!                                                                     *
+!---------------------------------------------------------------------*
+      
+
+! States variables
+
+      DO  I = 1 , NumpelagicBoxes    
+
+      ZooNanoC(I)  = fBIO(NumpelagicBoxes-I+1,iZooNanoC)
+      ZooMicroC(I) = fBIO(NumpelagicBoxes-I+1,iZooMicroC)
+      ZooMesoC(I)  = fBIO(NumpelagicBoxes-I+1,iZooMesoC)
+      SyneC(I)     = fBIO(NumpelagicBoxes-I+1,iSyneC)
+      SyneN(I)     = fBIO(NumpelagicBoxes-I+1,iSyneN)
+      SyneP(I)     = fBIO(NumpelagicBoxes-I+1,iSyneP)
+      SyneChl(I)   = fBIO(NumpelagicBoxes-I+1,iSyneChl)
+      NanoC(I)     = fBIO(NumpelagicBoxes-I+1,iNanoC)
+      NanoN(I)     = fBIO(NumpelagicBoxes-I+1,iNanoN)
+      NanoP(I)     = fBIO(NumpelagicBoxes-I+1,iNanoP)
+      NanoChl(I)   = fBIO(NumpelagicBoxes-I+1,iNanoChl)
+      DiaC(I)      = fBIO(NumpelagicBoxes-I+1,iDiaC)
+      DiaN(I)      = fBIO(NumpelagicBoxes-I+1,iDiaN)
+      DiaP(I)      = fBIO(NumpelagicBoxes-I+1,iDiaP)
+      DiaChl(I)    = fBIO(NumpelagicBoxes-I+1,iDiaChl)
+      DiaSi(I)     = fBIO(NumpelagicBoxes-I+1,iDiaSi)
+      BactC(I)     = fBIO(NumpelagicBoxes-I+1,iBactC)
+      S_MOPC(I)    = fBIO(NumpelagicBoxes-I+1,iSMOPC)
+      S_MOPN(I)    = fBIO(NumpelagicBoxes-I+1,iSMOPN)
+      S_MOPP(I)    = fBIO(NumpelagicBoxes-I+1,iSMOPP)
+      S_MOPChl(I)  = fBIO(NumpelagicBoxes-I+1,iSMOPChl)
+      S_MOPSi(I)   = fBIO(NumpelagicBoxes-I+1,iSMOPSi)
+      L_MOPC(I)    = fBIO(NumpelagicBoxes-I+1,iLMOPC)
+      L_MOPN(I)    = fBIO(NumpelagicBoxes-I+1,iLMOPN)
+      L_MOPP(I)    = fBIO(NumpelagicBoxes-I+1,iLMOPP)
+      L_MOPSi(I)   = fBIO(NumpelagicBoxes-I+1,iLMOPSi)
+      MODC(I)      = fBIO(NumpelagicBoxes-I+1,iMODC)
+      MODN(I)      = fBIO(NumpelagicBoxes-I+1,iMODN)
+      MODP(I)      = fBIO(NumpelagicBoxes-I+1,iMODP)
+      Nitrate(I)   = fBIO(NumpelagicBoxes-I+1,iNitrate)
+      Ammonium(I)  = fBIO(NumpelagicBoxes-I+1,iAmmonium)
+      Phosphate(I) = fBIO(NumpelagicBoxes-I+1,iPhosphate)
+      Silice(I)    = fBIO(NumpelagicBoxes-I+1,iSilice)
+#ifdef mes
+      MIP(I)       = fBIO(NumpelagicBoxes-I+1,iMIP)
+#endif
+
+
+      ENDDO
+
+
+! Solar radiation & Albedo
+
+      SolarRadiation = fSolarRadiation
+      AlbedoBio = fAlbedoBio
+
+
+! Temperature and DepthInt
+
+
+!!!! ????Convention pour les prof a verifier
+      DO I = 1 , NumPelagicBoxesP1
+ 
+      DepthInt(I)    = - fDepthInt(NumpelagicBoxesP1-I+1)
+
+      ENDDO
+
+      DO I = 1 , NumPelagicBoxes
+
+      Temperature(I) = max(1.d-10,fTemperature(NumpelagicBoxes-I+1))         !24/03/08
+       
+
+      Thickness(I)   =   fDepthInt(NumpelagicBoxesP1-I+1)                  &
+                       - fDepthInt(NumpelagicBoxesP1-I)
+
+      ENDDO
+
+
+!       WRITE(6,*)'fBIO'
+!       WRITE(6,*)(fBIO(NumpelagicBoxes,KB),KB=1,28)
+!       WRITE(6,*)'Temperature Tendeco'
+!       WRITE(6,*)(Temperature(I),I=1,NumpelagicBoxes)
+!       WRITE(6,*)'DepthInt'
+!       WRITE(6,*)(DepthInt(I),I=1,NumpelagicBoxesP1)
+!       WRITE(6,*)'Thickness'
+!       WRITE(6,*)(Thickness(I),I=1,NumpelagicBoxes)
+!       WRITE(6,*)'SolarRadiation',SolarRadiation
+!       WRITE(6,*)'AlbedoBio',AlbedoBio
+
+!      STOP'dans Tendeco'
+
+
+!---------------------------------------------------------------------*
+!                                                                     *
+! 1. Symphonie to Eco3m                                               *
+! END                                                                 *
+!---------------------------------------------------------------------*
+
+
+!---------------------------------------------------------------------*
+!                                                                     *
+! 2. Calculation of the Photosynthetically active radiation (PAR)     *
+! BEGINNING                                                           *
+!---------------------------------------------------------------------*
+
+
+    CALL DynamicsLight(oIEupho)
+
+!---------------------------------------------------------------------*
+!                                                                     *
+! 2. Calculation of the Photosynthetically active radiation (PAR)     *
+! END                                                                 *
+!---------------------------------------------------------------------*
+
+
+
+!---------------------------------------------------------------------*
+!                                                                     *
+! 3. Calculation of the rates of change                               *
+! BEGINNING                                                           *
+!---------------------------------------------------------------------*
+
+    CALL DynamicsEco3m
+
+!---------------------------------------------------------------------*
+!                                                                     *
+! 3. Calculation of the rates o change                                *
+! END                                                                 *
+!---------------------------------------------------------------------*
+
+
+
+!---------------------------------------------------------------------*
+!                                                                     *
+! 4. Eco3m to Symphonie                                               *
+! BEGINNING                                                           *
+!---------------------------------------------------------------------*
+
+       DO I = 1 , NumpelagicBoxes
+
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iZOONanoC)  = dZOONanoC(I)     
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iZOOMicroC) = dZOOMicroC(I)     
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iZOOMesoC)  = dZOOMesoC(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iSyneC)     = dSyneC(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iSyneN)     = dSyneN(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iSyneP)     = dSyneP(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iSyneChl)   = dSyneChl(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iNanoC)     = dNanoC(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iNanoN)     = dNanoN(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iNanoP)     = dNanoP(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iNanoChl)   = dNanoChl(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iDIAC)      = dDIAC(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iDIAN)      = dDIAN(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iDIAP)      = dDIAP(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iDIAChl)    = dDIAChl(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iDIASi)     = dDIASi(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iBactC)     = dBactC(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iSMOPC)     = dS_MOPC(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iSMOPN)     = dS_MOPN(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iSMOPP)     = dS_MOPP(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iSMOPChl)   = dS_MOPChl(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iSMOPSi)    = dS_MOPSi(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iLMOPC)     = dL_MOPC(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iLMOPN)     = dL_MOPN(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iLMOPP)     = dL_MOPP(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iLMOPSi)    = dL_MOPSi(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iMODC)      = dMODC(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iMODN)      = dMODN(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iMODP)      = dMODP(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iNitrate)   = dNitrate(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iAmmonium)  = dAmmonium(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iPhosphate) = dPhosphate(I)
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iSilice)    = dSilice(I)
+#ifdef mes
+       oTENDANCEBIO(NumpelagicBoxes-I+1,iMIP)       = 0.
+#endif
+
+! Flux from Eco3m to Diagnostics
+       oPPBi(NumpelagicBoxes-I+1)   = PPBi(I)
+
+       ENDDO
+
+! Conversion in s
+       DO KB = 1 , xsvardeclare
+       DO I  = 1 , NumpelagicBoxes
+
+       oTENDANCEBIO(I,KB) = oTENDANCEBIO(I,KB) / 3600.
+
+       ENDDO
+       ENDDO
+
+
+! Euphotic Layer Depth
+!      oEuphoticLayerDepth=EuphoticLayerDepth 
+
+! Brut primary production
+       oPrimProdTot  = TotalPPB
+       oPrimProdSyne = TotalPPBSyne
+       oPrimProdNano = TotalPPBNano
+       oPrimProdDia  = TotalPPBDia
+
+! net production
+       oNetPrimProdTot  = TotalNetPPB
+       oNetPrimProdSyne = TotalNetPPBSyne
+       oNetPrimProdNano = TotalNetPPBNano
+       oNetPrimProdDia  = TotalNetPPBDia
+
+! new production: uptake of nitrate
+       oNewProdTot  = TotalUptNit
+       oNewProdSyne = TotalUptSyneNit
+       oNewProdNano = TotalUptNanoNit
+       oNewProdDia  = TotalUptDiaNit
+
+! recycled production: ammonium uptake
+       oRecProdTot  = TotalUptAmmo
+       oRecProdSyne = TotalUptSyneAmmo
+       oRecProdDia  = TotalUptDiaAmmo
+       oRecProdNano = TotalUptNanoAmmo
+       oRecProdBact = TotalUptBactAmmo
+
+! Grazing ZooC                            !10/06/10
+       oTotalGrazC = TotalGrazC           !10/06/10
+! claude
+       oTotalGrazCPur = TotalGrazCPur
+       oTotalGrazCHerbi = TotalGrazCHerbi  
+
+! nitrification
+       oNitrif  = TotalNitrif
+       oNitrifCOLUMN = TotalNitrifColumn
+
+! respiration
+       oRespTot   = TotalResp
+       oRespPhyto = TotalRespPhyto
+       oRespSyne  = TotalRespSyne
+       oRespNano  = TotalRespNano
+       oRespDia   = TotalRespDia
+       oRespZoo   = TotalRespZoo
+
+! exudation
+       oExuCTot = TotalExuC
+ 
+! croissance bacterienne 
+       oGBact  = TotalGrowthBact
+
+! remineralisation de POC et PON
+       oRemPOC = TotalRemSMOPC + TotalRemLMOPC
+       oRemPON = TotalRemSMOPN + TotalRemLMOPN
+
+! lost of POC in DOC : messyfeed + mortbact
+       oLostPOC = TotalMessyfeedC + TotalMortBactC
+
+! lost of PON in DON : messyfeedN + mortbact + exsu phyto
+       oLostPON = TotalMessyfeedN + TotalMortBactC * NCBact / 12. * 14. + TotalExuN
+
+! Uptake of DON by bacteria (DON -> PON)
+       oUptBactDON = TotalUptBactMODN
+
+! Excretion of DIN by heterotrophs (PON -> DIN)
+       oExcHeteroN = TotalBactExcNH4 + TotalExcZooAmmo
+       oExcBactNH4N = TotalBactExcNH4
+       oExcZooAmmoN = TotalExcZooAmmo
+       oExcHeteroNtop = TOTALBACTEXCNH4TOPLAYER + TOTALEXCZOOAMMOTOPLAYER 
+       oExcbactNH4top = TOTALBACTEXCNH4TOPLAYER
+       oExczooNH4top = TOTALEXCZOOAMMOTOPLAYER
+
+
+!      KOUNTBIO=KOUNTBIO+1
+!       write(6,*)'oTendancebio'
+!     OPEN(UNIT=3,FILE='Verif_Tendance',ACCESS='APPEND')
+!       WRITE(6,*)(oTENDANCEBIO(NumpelagicBoxes,KB),KB=1,28)
+!      WRITE(6,*)oEuphoticLayerDepth
+!     CLOSE(3)
+!      OPEN(UNIT=3,FILE='Verif_Eupho',ACCESS='APPEND')
+!      WRITE(3,103)KOUNTBIO,PAR_Z(1),SolarRadiation,oEuphoticLayerDepth  &
+!                ,(PAR_Z(I),I=1,NumpelagicBoxes)
+!      CLOSE(3)
+!      WRITE(6,*)oEuphoticLayerDepth  
+
+ 103  FORMAT(I3,43(1X,F8.4))
+
+!      STOP'dans Tendeco'
+
+
+!---------------------------------------------------------------------*
+!                                                                     *
+! 4. Eco3m to Symphonie                                               *
+! END                                                                 *
+!---------------------------------------------------------------------*
+
+
+    
+   END SUBROUTINE Tendeco

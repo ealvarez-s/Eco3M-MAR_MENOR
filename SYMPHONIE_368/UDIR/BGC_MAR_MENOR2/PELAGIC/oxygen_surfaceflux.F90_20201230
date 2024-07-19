@@ -1,0 +1,125 @@
+      subroutine oxygen_surfaceflux
+      use module_principal
+      use module_biology
+      use ModuleDeclaration
+      use module_parallele
+      implicit none
+      real ox_A0,ox_A1,ox_A2,ox_A3,ox_A4,ox_A5,ox_B0,ox_B1,ox_B2,ox_B3,ox_A,ox_B,ox_C,ox_D    &
+          ,ox_C0                                                                              &
+          ,Temperature,Salinity,OxygenSat,Oxygen,Ts,Kw,Sc,Wind
+
+          
+          !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+          !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! oxygene à saturation !!!!!!!!!!!!!!!!!!!!!!!!
+
+
+      TPS_O2F_2D=TPS_O2F_2D+1
+
+
+
+! ecriture de l'algorithme de l'oxygene à saturation
+! equation of Garcia and Gordon 1992
+
+
+! les constantes:
+
+ox_A0= 2.00907
+ox_A1= 3.22014
+ox_A2= 4.05010
+ox_A3= 4.94457
+ox_A4= -0.256847
+ox_A5= 3.88767
+
+ox_B0= -6.24523e-3
+ox_B1= -7.37614e-3
+ox_B2= -1.03410e-2
+ox_B3= -8.17083e-3
+
+ox_C0= -4.88682e-7
+
+! coeff pour le calcul du nombre de schmidt: from Keeling et al 1998
+ox_A=1638
+ox_B=81.83
+ox_C=1.483
+ox_D=0.008004
+
+!et d'après Winninkhof 1992
+!ox_A=1953.4
+!ox_B=128
+!ox_C=3.9012
+!ox_D=0.050091
+
+
+      do i=1,imax
+      do j=1,jmax
+
+!      Temperature= tem_t(i,j,kmax,1)
+!      Salinity=sal_t(i,j,kmax,1)
+      Temperature= min(max(tem_t(i,j,kmax,1),0.),40.)
+      Salinity=max(sal_t(i,j,kmax,1),0.)
+
+      oxygen=bio_t(i,j,kmax,iOxygen)        
+
+
+! ici Temperature est la temperature de surface
+! ici Oxygen et l'oxygen de surface
+
+      Ts = log((298.5-Temperature)/(273.15+Temperature))
+
+! x1 au lieu de l
+      x1= (ox_A0 + ox_A1*Ts + ox_A2 * Ts**2 + ox_A3 *Ts**3 + ox_A4 *Ts**4 + ox_A5 * Ts**5) +    &
+         (Salinity * (ox_B0 + ox_B1 * Ts + ox_B2 * Ts**2 + ox_B3 * Ts**3)) + (ox_C0 * Salinity**2)
+
+       OxygenSat = (1000./22.3916) * exp(x1)
+
+       OxySat(i,j) = OxygenSat
+
+! 1000=rho0? unité?
+
+          !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+          !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! piston velocity!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!  piston velocity
+!  equation de Wanninkhof and McGillis 1999
+      
+      !Sc is the Schmidt number
+
+      Sc = ox_A - (ox_B * Temperature) + (ox_C * (Temperature**2)) - (ox_D * (Temperature**3))
+
+      if(iairsea/=1)then    ! soit on est en formule bulk et on connait le vent
+      Wind=sqrt(uwind_t(i,j,1)**2+vwind_t(i,j,1)**2)
+      else
+! soit on est en flux prescrit et on calcule le vent a partir du windstress 
+      x1=wstress_w(i,j)
+      Wind=-5.8546*x1**6+46.5303*x1**5-143.3061*x1**4+216.0191*x1**3-167.8414*x1**2+73.5452*x1+2.2032
+      endif
+ 
+      Kw= (0.0283 * (Wind**3)) * (Sc / 660.)**(-0.5)     ! Wanninkhof and McGillis 1999
+     ! Kw= (0.031 * (Wind**2)) * (Sc / 660.)**-0.5      ! Wanninkhof 1992 used in most of models
+
+ 
+!    fluxbio_w(i,j,iOxygen,2) = Kw/360000. * (abs( Oxygen-OxygenSat ))    ! conversion de cm/hr en m/s 
+     fluxbio_w(i,j,iOxygen,2) = Kw/360000. * (OxygenSat -  Oxygen)    ! conversion de cm/hr en m/s modif caroline a verifier convention  
+
+
+     O2flux2D(i,j)=O2flux2D(i,j)+fluxbio_w(i,j,iOxygen,2)
+
+
+
+!    if(i+par%timax(1)==350.and.j+par%tjmax(1)==250)then
+!     write(6,*)Oxygen,OxygenSat,kw/360000.,fluxbio_w(i,j,iOxygen,2),Sc
+!     stop
+!    endif
+
+     enddo
+     enddo
+  
+     return
+     end subroutine oxygen_surfaceflux
+
+
+
+
+
+
+

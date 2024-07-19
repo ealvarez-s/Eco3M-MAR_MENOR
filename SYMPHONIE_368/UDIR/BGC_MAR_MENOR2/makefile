@@ -1,0 +1,616 @@
+#__________________________________________________________
+# Compilation du modele Symphonie
+#__________________________________________________________
+#
+# Les fichiers *.o *.f90 vont dans ../CDIR et l'executable main dans RDIR
+# Commande pour lancer la simulation sous RDIR: main
+#
+#__________________________________________________________
+# Liste des etiquettes de compilation: parametrer KEY1
+#__________________________________________________________
+# Les etiquettes de compilation sont des lignes du type 
+# #ifdef name, #endif, introduites dans le code, servant �
+# d�limiter des portions de routines qui seront prises en compte 
+# ou au contraire ignorees par la comilation
+#
+# KEY1 = -Dstokes -Dsimple_precision
+# KEY1 = -Dstokes 
+# KEY1 = -Dzeroadvection
+#  KEY1 = -Dbilanbio
+# KEY1 = -Dhyperion
+# KEY1 = -Dsynopsis
+# KEY1 = -Dkey_oasis -Dkey_oasis_symp_surfex
+# KEY1 = -Dkey_sedim -Dkey_sedim_mixsed -Dkey_substance
+#__________________________________________________________
+
+
+# Example de makefile.inc dans Make.inc/makefile*
+include makefile.inc
+
+# OBJDIR depend du compillateur gfortran, ifort, ....
+OBJDIR=../../CDIR_$(COMP)/$(CONF)
+
+
+.SUFFIXES:
+.SUFFIXES:  .o .F90
+
+
+CPP = cpp -P -traditional -Wcomment
+
+#USERDIR=../UDIR
+PELAGICDIR=$(PWD)/PELAGIC
+USERDIR=$(PWD)
+UPDATEDIR=../../UPDATE
+MYSPACEDIR=../../MYSPACE
+SOURCESDIR=../../SOURCES
+VPATHTMP=$(PELAGICDIR):$(USERDIR):$(UPDATEDIR):$(MYSPACEDIR):$(SOURCESDIR)
+VPATH=$(VPATHTMP):$(OBJDIR):.
+INC =-I$(PELAGICDIR) -I$(USERDIR) $(NETINC)  -I$(UPDATEDIR) -I$(MYSPACEDIR) -I$(SOURCESDIR) 
+OPTIONM= $(INC) $(F77FLAGS) $(COMPMOD) $(OBJDIR) -g  
+
+
+
+#________________
+#  KEYS
+#
+# KEY2 = -Dparallele -Dcheckmpi -Dbenthic
+  KEY2 = -Dparallele -Dbenthic
+#
+SED = 
+#
+#
+#
+
+#  Rule from ".f" to ".o"
+#
+.F90.o:
+#	$(CPP)  $(KEY1)  $< $(SED) > $(OBJDIR)/$*.f90
+#	cd $(OBJDIR); $(F90) $(OPTIONM) -c   $(OBJDIR)/$*.f90
+	echo $(VPATH); 
+	$(CPP)  $(KEY1) $(KEY2)  $< $(SED) > $(OBJDIR)/$*.f90
+	$(F90) $(OPTIONM) -c   $(OBJDIR)/$*.f90
+	@mv  $*.o $(OBJDIR)/.
+
+OBJSM =	module_parameter.o\
+	module_parallele.o\
+       	module_biology.o\
+       	module_principal.o\
+       	module_parameter_sedim.o\
+       	comsubstance.o\
+       	sedim_S.o\
+       	subreaddat.o\
+       	module_sediment.o\
+       	module_netcdf4restart.o\
+       	module_netcdfrestart.o\
+	module_forcages.o\
+	module_global.o\
+	module_s.o\
+	module_ogcm.o\
+	module_sedw.o\
+	module_wave.o\
+	module_drifter.o\
+	module_systeme.o\
+	module_optics.o\
+	module_modeanalysis.o\
+	module_mangrove.o\
+	module_subcycle.o\
+	module_webcanals.o\
+	module_grid.o\
+       	module_q.o\
+	module_external_mode.o\
+        xModuleDeclaration.o\
+	module_my_outputs.o\
+	module_offline.o\
+	module_biobalance.o\
+	module_biobc.o\
+	module_curvgrdtoolbox.o\
+	module_atmboundlayer.o\
+	module_airseaflux.o\
+        module_dust.o\
+        module_depnit.o\
+        module_depammo.o\
+	module_cpl_oasis.o\
+	module_cpl_surfex.o\
+	module_ecume.o\
+	module_polygon.o\
+	add_bi.o\
+	advection_bio.o\
+	advection_scal.o\
+	airseaflux_upd.o\
+	adve3Dto2D.o\
+        atlas.o\
+        barriere.o\
+	biology.o\
+	bio_restart.o\
+	botprescont.o\
+	bulk_formulae.o\
+	cellbox_thickness.o\
+	check_mpi.o\
+	chronos.o\
+	close_bio.o\
+	convect.o\
+	couple_modes.o\
+	cwave_int.o\
+	date_output.o\
+	datetokount.o\
+	deep_convection.o\
+	dragcoef.o\
+	dyn_restart.o\
+	elapsedtimetodate.o\
+	equation_of_state.o\
+	graph_out.o\
+	graph_out_sedim.o\
+	graph_out_bio.o\
+	graph_out_bio_supp.o\
+	graph1D_out.o\
+	halflife_radio.o\
+	hz_to_hxyr.o\
+	initial_main.o\
+	initial_bio.o\
+	initial_graph.o\
+	initial_mask_and_bathy.o\
+	initial_tracer.o\
+	initial_sponge.o\
+	initial_state_eq.o\
+	initial_tide.o\
+	initial_with_obc.o\
+	InitPelagic.o\
+	internal_mode.o\
+	io_switch.o\
+        kount_to_date.o\
+        latlon_to_ij.o\
+        latlontoij.o\
+        latlonztoijk.o\
+        lissebathy.o\
+        leastsquaresolver.o\
+	main.o\
+	mixsed_bio.o\
+	maskt_to_maskuvp.o\
+        sigstepgrid.o\
+	model_1d.o\
+	model_2d.o\
+	model_3d.o\
+	model_offline.o\
+        momentum_equations.o\
+	moveforward.o\
+	netcdf.o\
+        obc_bio.o\
+        obc_bio_upd.o\
+        obc_dz.o\
+        obc_ext.o\
+        obc_h.o\
+	obc_int.o\
+	obc_lonlat.o\
+	obc_mixsigstep.o\
+	obc_mask.o\
+	obc_river.o\
+	obc_scal.o\
+	obc_turbulence.o\
+	obc_depth.o\
+	obc_ssh.o\
+	obc_surfstress.o\
+	omega.o\
+	pressure_gradient.o\
+	quick_initial.o\
+	read_ogcm_fields.o\
+	reset.o\
+	river_bio_upd.o\
+	river_upd.o\
+	scalars.o\
+	sediment_bio.o\
+	set_parameters.o\
+	set_rivers.o\
+	sigma_levels.o\
+	sortie_pt_fixe.o\
+	source_tracer.o\
+	stokesforces.o\
+        strada.o\
+        s_model_main.o\
+	the_end.o\
+	tide_analysis.o\
+	tide_netcdf_create_file.o\
+	tide_nodal_parameters.o\
+	time_step.o\
+	time_to_update_forcing_file.o\
+	turbulence_adv.o\
+	turbulence_k_eps.o\
+	turbulence_gaspar.o\
+	tridiagonalsolver.o\
+        update_obcforcingterms.o\
+        update_tide.o\
+        usersbiobc.o\
+	vertmix.o\
+        wetdry_mask_airseafluxes.o\
+	windstress.o\
+	z_averaged.o\
+	z_levels.o\
+	z_thickness.o\
+        LightParameters.o\
+        Eco3mParameters.o\
+        Tendeco.o\
+        Light.o\
+        Eco3m.o\
+        Budget_Benthic.o\
+        Budget_Export_Bottom.o\
+        Budget_River.o\
+        sortie_sedimentation.o\
+        BCFlux.o\
+        InitBenthic.o\
+        DiaMeta.o\
+        SimpleDiaMeta.o\
+        Reflec.o\
+        oxygen_surfaceflux.o\
+        AirSeaCO2Flux.o\
+        CO2_Pressure_PH.o\
+        atm_bio_upd.o\
+        InitNutDOxy.o\
+        AtmDeposition.o\
+        InitDOxy.o\
+
+#__________________________________________________________
+# Compilation:
+#__________________________________________________________
+#
+# Pour Symphonie:
+#
+S26.exe: $(OBJSM)
+	cd $(OBJDIR) ; $(F90) $(OPTIONM) $(KEY1) -o ../../RDIR/$(CONF)/S26.exe $(OBJSM) $(LIB) $(LIB_OASIS)
+	pwd >> last_version_used
+	date >> last_version_used
+	echo $(F90) >> last_version_used
+	echo 'clef compilation: ' $(F77FLAGS) >> last_version_used
+	echo 'clef modele key1: ' $(KEY1) >> last_version_used
+	echo 'clef modele key2: ' $(KEY2) >> last_version_used
+	echo >> last_version_used
+#/usr/bin/ogg123 /home/marp/sounds/KDE_Beep_Connect.ogg
+
+
+clean : 
+	rm *mod ; cd $(OBJDIR) ; rm *.f90 *.o *.mod ../../RDIR/$(CONF)/S26.exe
+#
+#
+module_parameter.o: module_parameter.F90 module_principal.F90 module_drifter.F90
+#
+module_parallele.o: module_principal.F90 module_parallele.F90
+#
+module_biology.o: module_biology.F90 module_parameter.F90
+#
+module_principal.o: module_principal.F90 module_wave.F90 module_parameter.F90 module_biology.F90
+#
+module_netcdf4restart.o: module_netcdf4restart.F90 module_principal.F90 module_parallele.F90
+#
+module_netcdfrestart.o: module_netcdfrestart.F90 module_principal.F90 module_parallele.F90 module_netcdf4restart.F90
+#
+module_forcages.o: module_forcages.F90 module_principal.F90 module_wave.F90
+#
+module_global.o: module_global.F90 module_parameter.F90
+#
+module_s.o: module_s.F90 module_parameter.F90 module_parallele.F90 module_principal.F90
+#
+module_ogcm.o: module_ogcm.F90 module_parallele.F90 module_principal.F90 module_forcages.F90 module_s.F90 module_global.F90
+#
+module_sedw.o: module_s.F90 module_sedw.F90 module_principal.F90
+#
+module_wave.o: module_wave.F90 module_principal.F90 module_parallele.F90 module_s.F90 module_sedw.F90 module_global.F90
+#
+module_nh.o: module_nh.F90
+#
+module_drifter.o: module_drifter.F90 module_principal.F90 module_parallele.F90
+#
+module_systeme.o: module_s.F90 module_systeme.F90 module_principal.F90
+#
+module_optics.o: module_optics.F90 module_parallele.F90 module_principal.F90
+#
+module_modeanalysis.o: module_modeanalysis.F90 module_principal.F90 module_parallele.F90 module_s.F90 module_systeme.F90
+#
+module_mangrove.o: module_mangrove.F90 module_principal.F90 module_parallele.F90
+#
+module_subcycle.o: module_s.F90 module_subcycle.F90 module_parallele.F90 module_principal.F90
+#
+module_webcanals.o: module_webcanals.F90 module_parameter.F90 module_parallele.F90 module_principal.F90 module_global.F90
+#
+module_grid.o: module_grid.F90 module_parallele.F90 module_principal.F90 module_global.F90
+#
+module_external_mode.o: module_external_mode.F90 module_parallele.F90 module_principal.F90 module_mangrove.F90
+#
+module_my_outputs.o: module_my_outputs.F90 module_principal.F90 module_parallele.F90
+#
+module_offline.o: module_offline.F90 module_principal.F90 module_parallele.F90 module_s.F90
+#
+module_biobalance.o: module_biobalance.F90 module_principal.F90 module_parallele.F90
+#
+module_biobc.o: module_biobc.F90 module_principal.F90 module_parallele.F90
+#
+module_curvgrdtoolbox.o: module_curvgrdtoolbox.F90 module_principal.F90 module_parallele.F90
+#
+module_atmboundlayer.o: module_atmboundlayer.F90 module_principal.F90 module_parallele.F90
+#
+module_airseaflux.o: module_airseaflux.F90 module_optics.F90 module_parallele.F90 module_principal.F90 module_forcages.F90 module_s.F90 module_atmboundlayer.F90
+#
+module_cpl_oasis.o: module_cpl_oasis.F90 module_principal.F90 module_parameter.F90 module_parallele.F90
+#
+module_cpl_surfex.o: module_cpl_surfex.F90 module_parameter.F90 module_cpl_oasis.F90 module_principal.F90 module_parallele.F90
+#
+module_parameter_sedim.o: module_parameter.F90 module_parameter_sedim.F90
+#
+module_sediment.o: module_s.F90 module_sediment.F90
+#
+module_dust.o: module_dust.F90 module_principal.F90 module_forcages.F90 module_parallele.F90 module_biology.F90
+#
+module_depnit.o: module_depnit.F90 module_principal.F90 module_forcages.F90 module_parallele.F90 module_biology.F90
+#
+module_depammo.o: module_depammo.F90 module_principal.F90 module_forcages.F90 module_parallele.F90 module_biology.F90
+#
+comsubstance.o: comsubstance.F90
+#
+subreaddat.o: subreaddat.F90
+#
+sedim_S.o: sedim_S.F90
+#
+add_bi.o: add_bi.F90 module_principal.F90
+#
+advection_bio.o: advection_bio.F90 module_principal.F90 module_parallele.F90 module_s.F90
+#
+halflife_radio.o: halflife_radio.F90 module_principal.F90
+#
+advection_scal.o: advection_scal.F90 module_principal.F90 module_parallele.F90 module_my_outputs.F90
+#
+airseaflux_upd.o: airseaflux_upd.F90 module_principal.F90
+#
+adve3Dto2D.o: adve3Dto2D.F90 module_principal.F90 module_parallele.F90
+#
+atlas.o: atlas.F90 module_parallele.F90 module_principal.F90 module_global.F90 module_s.F90
+#
+barriere.o: barriere.F90 module_principal.F90 module_parallele.F90
+#
+biology.o: biology.F90 module_principal.F90
+#
+bio_restart.o: bio_restart.F90 module_principal.F90 module_parallele.F90 module_biobc.F90
+#
+botprescont.o: botprescont.F90 module_principal.F90 module_parallele.F90
+#
+bulk_formulae.o: bulk_formulae.F90 module_principal.F90 module_parallele.F90
+#
+cellbox_thickness.o: cellbox_thickness.F90 module_principal.F90 module_parallele.F90
+#
+check_mpi.o: check_mpi.F90 module_principal.F90 module_parallele.F90
+#
+chronos.o: chronos.F90 module_principal.F90 module_parallele.F90
+#
+close_bio.o: close_bio.F90 module_principal.F90
+#
+convect.o: convect.F90 module_principal.F90
+#
+couple_modes.o: couple_modes.F90 module_principal.F90 module_parallele.F90 module_s.F90
+#
+cwave_int.o: cwave_int.F90 module_principal.F90 module_parallele.F90 module_wave.F90
+#
+date_output.o: date_output.F90 module_principal.F90 module_parallele.F90
+#
+datetokount.o: datetokount.F90 module_principal.F90 module_parallele.F90
+#
+deep_convection.o: deep_convection.F90 module_parallele.F90 module_principal.F90
+#
+dragcoef.o: dragcoef.F90 module_parallele.F90 module_principal.F90 module_q.F90 module_s.F90 module_sedw.F90 module_offline.F90
+#
+dyn_restart.o: dyn_restart.F90 module_parallele.F90 module_principal.F90 module_s.F90 module_netcdfrestart.F90 module_offline.F90
+#
+elapsedtimetodate.o: elapsedtimetodate.F90 module_principal.F90
+#
+equation_of_state.o: equation_of_state.F90 module_principal.F90 module_parallele.F90 module_offline.F90
+#
+graph_out.o: graph_out.F90 module_principal.F90 module_parallele.F90 module_modeanalysis.F90 module_my_outputs.F90 module_s.F90 module_parameter.F90 module_parameter_sedim.F90
+#
+graph_out_bio.o: graph_out_bio.F90 module_parallele.F90 module_principal.F90 module_modeanalysis.F90 module_my_outputs.F90 module_offline.F90
+#
+graph_out_bio_supp.o: graph_out_bio_supp.F90 module_parallele.F90 module_principal.F90 module_modeanalysis.F90 module_my_outputs.F90 module_offline.F90
+#
+graph_out_sedim.o: graph_out_sedim.F90 module_principal.F90 module_parallele.F90 module_parameter.F90 module_parameter_sedim.F90 module_biology.F90
+#
+graph1D_out.o: graph1D_out.F90 module_principal.F90
+#
+hz_to_hxyr.o: hz_to_hxyr.F90 module_principal.F90 module_parallele.F90 module_ogcm.F90
+#
+initial_main.o: initial_main.F90 module_parallele.F90 module_principal.F90 module_wave.F90 module_drifter.F90 module_offline.F90 module_airseaflux.F90 module_modeanalysis.F90 module_grid.F90 module_my_outputs.F90 module_q.F90 module_curvgrdtoolbox.F90 module_cpl_oasis.F90
+#
+initial_bio.o: initial_bio.F90 module_principal.F90 module_parallele.F90 module_biobc.F90
+#
+initial_graph.o: initial_graph.F90 module_parallele.F90 module_principal.F90 module_parameter.F90
+#
+initial_mask_and_bathy.o: initial_mask_and_bathy.F90 module_parallele.F90 module_principal.F90 module_global.F90 module_mangrove.F90 module_ogcm.F90 module_webcanals.F90 module_grid.F90 module_forcages.F90
+#
+initial_tracer.o: initial_tracer.F90 module_principal.F90 module_parallele.F90
+#
+initial_sponge.o: initial_sponge.F90 module_principal.F90 module_parallele.F90 module_global.F90
+#
+initial_state_eq.o: initial_state_eq.F90 module_principal.F90 module_parallele.F90
+#
+initial_tide.o: initial_tide.F90 module_principal.F90 module_parallele.F90 module_s.F90 module_systeme.F90 module_forcages.F90
+#
+initial_with_obc.o: initial_with_obc.F90 module_parallele.F90 module_principal.F90
+#
+nitPelagic.o: nitPelagic.F90
+#
+internal_mode.o: internal_mode.F90 module_parallele.F90 module_principal.F90 module_q.F90 module_s.F90 module_webcanals.F90 module_offline.F90 module_external_mode.F90
+#
+io_switch.o: io_switch.F90 module_principal.F90 module_parallele.F90
+#
+kount_to_date.o: kount_to_date.F90 module_principal.F90
+#
+latlon_to_ij.o: latlon_to_ij.F90 module_principal.F90 module_parallele.F90 module_grid.F90
+#
+latlontoij.o: latlontoij.F90 module_principal.F90 module_parallele.F90 module_grid.F90
+#
+latlonztoijk.o: latlonztoijk.F90 module_principal.F90 module_parallele.F90
+#
+lissebathy.o: lissebathy.F90 module_principal.F90 module_parallele.F90
+#
+leastsquaresolver.o: leastsquaresolver.F90 module_principal.F90 module_s.F90 module_systeme.F90
+#
+main.o: main.F90 module_principal.F90 module_parallele.F90 module_s.F90 module_cpl_oasis.F90
+#
+mixsed_bio.o: mixsed_bio.F90 module_parallele.F90 module_principal.F90 module_my_outputs.F90
+#
+maskt_to_maskuvp.o: maskt_to_maskuvp.F90 module_principal.F90
+#
+sigstepgrid.o: sigstepgrid.F90 module_parallele.F90 module_principal.F90 module_global.F90 module_offline.F90
+#
+model_1d.o: model_1d.F90
+#
+model_2d.o: model_2d.F90 module_parallele.F90 module_principal.F90 module_airseaflux.F90 module_wave.F90 module_external_mode.F90 module_my_outputs.F90 module_modeanalysis.F90 module_offline.F90 module_parameter.F90 module_parameter_sedim.F90 module_cpl_surfex.F90 module_drifter.F90
+#
+model_3d.o: model_3d.F90 module_parallele.F90 module_principal.F90 module_wave.F90 module_drifter.F90 module_offline.F90 module_airseaflux.F90 module_s.F90 module_modeanalysis.F90 module_external_mode.F90 module_my_outputs.F90 module_cpl_oasis.F90 module_parameter.F90 module_parameter_sedim.F90 module_cpl_surfex.F90
+#
+model_offline.o: model_offline.F90 module_parallele.F90 module_principal.F90 module_drifter.F90 module_s.F90 module_offline.F90 module_airseaflux.F90 module_wave.F90 module_parameter.F90 module_parameter_sedim.F90
+#
+momentum_equations.o: momentum_equations.F90 module_parallele.F90 module_principal.F90 module_mangrove.F90
+#
+moveforward.o: moveforward.F90 module_principal.F90
+#
+netcdf.o: netcdf.F90 module_principal.F90 module_parallele.F90
+#
+obc_bio.o: obc_bio.F90 module_principal.F90 module_parallele.F90 module_biology.F90
+#
+obc_bio_upd.o: obc_bio_upd.F90 module_parameter.F90 module_forcages.F90 module_global.F90  module_parallele.F90 module_systeme.F90 module_principal.F90  module_biology.F90
+#
+obc_dz.o: obc_dz.F90 module_principal.F90 module_parallele.F90
+#
+obc_ext.o: obc_ext.F90 module_principal.F90 module_parallele.F90 module_q.F90
+#
+obc_h.o: obc_h.F90 module_principal.F90 module_parallele.F90
+#
+obc_int.o: obc_int.F90 module_principal.F90 module_parallele.F90 module_webcanals.F90
+#
+obc_lonlat.o: obc_lonlat.F90 module_principal.F90 module_parallele.F90
+#
+obc_mixsigstep.o: obc_mixsigstep.F90 module_principal.F90 module_parallele.F90
+#
+obc_mask.o: obc_mask.F90 module_principal.F90 module_parallele.F90
+#
+obc_river.o: obc_river.F90 module_principal.F90 module_parallele.F90
+#
+obc_scal.o: obc_scal.F90 module_principal.F90 module_parallele.F90 module_ogcm.F90
+#
+obc_turbulence.o: obc_turbulence.F90 module_principal.F90 module_parallele.F90
+#
+obc_depth.o: obc_depth.F90 module_principal.F90 module_parallele.F90
+#
+obc_ssh.o: obc_ssh.F90 module_principal.F90 module_parallele.F90 module_wave.F90
+#
+obc_surfstress.o: obc_surfstress.F90 module_principal.F90 module_parallele.F90
+#
+omega.o: omega.F90 module_parallele.F90 module_principal.F90 module_airseaflux.F90
+#
+pressure_gradient.o: pressure_gradient.F90 module_principal.F90 module_parallele.F90 module_modeanalysis.F90 module_ogcm.F90 module_s.F90 module_q.F90
+#
+quick_initial.o: quick_initial.F90 module_principal.F90 module_parallele.F90 module_q.F90
+#
+read_ogcm_fields.o: read_ogcm_fields.F90 module_principal.F90 module_parallele.F90 module_ogcm.F90 module_s.F90 module_systeme.F90
+#
+reset.o: reset.F90 module_principal.F90 module_parallele.F90
+#
+river_bio_upd.o: river_bio_upd.F90 module_principal.F90
+#
+river_upd.o: river_upd.F90 module_parallele.F90 module_principal.F90 module_s.F90
+#
+scalars.o: scalars.F90 module_principal.F90 module_parallele.F90 module_my_outputs.F90 module_webcanals.F90
+#
+sediment_bio.o: sediment_bio.F90 module_principal.F90
+#
+set_parameters.o: set_parameters.F90 module_parallele.F90 module_principal.F90 module_wave.F90 module_s.F90 module_optics.F90 module_airseaflux.F90 module_grid.F90
+#
+set_rivers.o: set_rivers.F90 module_parallele.F90 module_principal.F90 module_global.F90 module_s.F90
+#
+sigma_levels.o: sigma_levels.F90 module_parallele.F90 module_principal.F90 module_grid.F90
+#
+sortie_pt_fixe.o: sortie_pt_fixe.F90 module_principal.F90
+#
+source_tracer.o: source_tracer.F90 module_principal.F90 module_parallele.F90
+#
+stokesforces.o: stokesforces.F90 module_principal.F90 module_parallele.F90
+#
+strada.o: strada.F90 module_principal.F90 module_biobalance.F90 module_biobc.F90 module_biology.F90 module_s.F90 module_my_outputs.F90 module_webcanals.F90 module_parameter.F90 module_parameter_sedim.F90 module_sediment.F90 module_parallele.F90
+#
+s_model_main.o: s_model_main.F90
+#
+the_end.o: the_end.F90 module_principal.F90 module_parallele.F90 module_modeanalysis.F90
+#
+tide_analysis.o: tide_analysis.F90 module_principal.F90 module_parallele.F90 module_s.F90 module_systeme.F90
+#
+tide_netcdf_create_file.o: tide_netcdf_create_file.F90 module_principal.F90 module_parallele.F90 module_s.F90
+#
+tide_nodal_parameters.o: tide_nodal_parameters.F90 module_principal.F90 module_parallele.F90 module_s.F90 module_systeme.F90
+#
+time_step.o: time_step.F90 module_principal.F90 module_parallele.F90 module_s.F90 module_subcycle.F90 module_q.F90 module_cpl_oasis.F90
+#
+time_to_update_forcing_file.o: time_to_update_forcing_file.F90 module_principal.F90 module_parallele.F90
+#
+turbulence_adv.o: turbulence_adv.F90 module_principal.F90 module_parallele.F90
+#
+turbulence_k_eps.o: turbulence_k_eps.F90 module_principal.F90 module_parallele.F90
+#
+turbulence_gaspar.o: turbulence_gaspar.F90 module_parallele.F90 module_principal.F90 module_q.F90
+#
+tridiagonalsolver.o: tridiagonalsolver.F90 module_principal.F90
+#
+update_obcforcingterms.o: update_obcforcingterms.F90 module_principal.F90 module_parallele.F90
+#
+update_tide.o: update_tide.F90 module_principal.F90 module_s.F90 module_subcycle.F90
+#
+usersbiobc.o: usersbiobc.F90
+#
+vertmix.o: vertmix.F90 module_parallele.F90 module_principal.F90 module_cpl_oasis.F90 module_external_mode.F90 module_airseaflux.F90
+#
+wetdry_mask_airseafluxes.o: wetdry_mask_airseafluxes.F90 module_principal.F90
+#
+windstress.o: windstress.F90 module_principal.F90 module_wave.F90
+#
+z_averaged.o: z_averaged.F90 module_principal.F90 module_wave.F90
+#
+z_levels.o: z_levels.F90 module_principal.F90 module_parallele.F90
+#
+z_thickness.o: z_thickness.F90 module_principal.F90 module_parallele.F90
+#
+InitPelagic.o: InitPelagic.F90 module_parameter.F90 module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90  module_biology.F90 xModuleDeclaration.F90
+#
+LightParameters.o: LightParameters.F90 module_parameter.F90 module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90  module_biology.F90 xModuleDeclaration.F90
+#
+Eco3mParameters.o: Eco3mParameters.F90 module_parameter.F90 module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90  module_biology.F90 xModuleDeclaration.F90
+#
+Tendeco.o: Tendeco.F90 xModuleDeclaration.F90
+#
+Light.o: Light.F90 xModuleDeclaration.F90
+#
+Eco3m.o: Eco3m.F90 xModuleDeclaration.F90
+#
+Budget_Benthic.o: Budget_Benthic.F90 module_parameter.F90 module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90  module_biology.F90 xModuleDeclaration.F90
+#
+Budget_Export_Bottom.o: Budget_Export_Bottom.F90 module_parameter.F90 module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90  module_biology.F90 xModuleDeclaration.F90
+#
+Budget_River.o: Budget_River.F90 module_parameter.F90 module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90  module_biology.F90 xModuleDeclaration.F90
+#
+sortie_sedimentation.o: sortie_sedimentation.F90 module_parameter.F90 module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90  module_biology.F90 xModuleDeclaration.F90
+#
+BCFlux.o: BCFlux.F90 module_parameter.F90 module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90  module_biology.F90 xModuleDeclaration.F90
+#
+InitBenthic.o: InitBenthic.F90 module_parameter.F90 module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90  module_biology.F90 xModuleDeclaration.F90
+#
+DiaMeta.o: DiaMeta.F90 module_parameter.F90 module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 module_biology.F90 xModuleDeclaration.F90
+#
+SimpleDiaMeta.o: SimpleDiaMeta.F90 module_parameter.F90 module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90  module_biology.F90 xModuleDeclaration.F90
+#
+Reflec.o: Reflec.F90 module_parameter.F90 module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90  module_biology.F90 xModuleDeclaration.F90
+#
+oxygen_surfaceflux.o: oxygen_surfaceflux.F90 module_parameter.F90 module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90  module_biology.F90 xModuleDeclaration.F90
+#
+AirSeaCO2Flux.o: AirSeaCO2Flux.F90 module_parameter.F90 module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90  module_biology.F90 xModuleDeclaration.F90
+#
+CO2_Pressure_PH.o: CO2_Pressure_PH.F90 module_parameter.F90 module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90  module_biology.F90 xModuleDeclaration.F90
+#
+atm_bio_upd.o: atm_bio_upd.F90 module_parameter.F90 module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90  module_biology.F90 xModuleDeclaration.F90
+#
+InitNutDOxy.o: InitNutDOxy.F90 module_parameter.F90 module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90  module_biology.F90 xModuleDeclaration.F90
+#
+AtmDeposition.o: AtmDeposition.F90 module_parameter.F90 module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90  module_biology.F90 xModuleDeclaration.F90
+#
+InitDOxy.o: InitDOxy.F90 module_parameter.F90 module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90  module_biology.F90 xModuleDeclaration.F90

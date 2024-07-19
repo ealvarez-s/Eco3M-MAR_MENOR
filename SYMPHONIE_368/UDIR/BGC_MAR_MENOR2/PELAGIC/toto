@@ -1,0 +1,254 @@
+
+      SUMPPBGDL_plat   = 0.
+      SUMRPBGDL_plat   = 0.
+      SUMNPBGDL_plat   = 0.
+      SUMNETPPBGDL_plat= 0.
+      PPBGDL_plat      = 0.
+      RPBGDL_plat      = 0.
+      NPBGDL_plat      = 0.
+      NETPPBGDL_plat   = 0.
+      SUMGBACGDL_plat  = 0.
+      SUMUPTBACTDONGDL_plat    = 0.
+      SUMEXCHETERONGDL_plat    = 0.
+      SUMREMPOCGDL_plat = 0.
+      SUMREMPONGDL_plat = 0.
+      SUMLOSTPOCGDL_plat = 0.
+      SUMLOSTPONGDL_plat = 0.
+      SUMRESPPHYTOGDL_plat = 0.
+      SUMRESPTOTGDL_plat = 0.
+      SUMRESPZOOGDL_plat = 0.
+      SUMRPBTOTAL(5)   = 0.
+      RPBTOTAL(5)      = 0.
+      SUMNITRifTOTAL   = 0.
+      NITRifTOTAL      = 0.
+      SUMRESPTOTTOTAL  = 0.
+      RESPTOTTOTAL     = 0.
+      SUMEXUCTOTTOTAL  = 0.
+      EXUCTOTTOTAL     = 0.
+      SUMGBACTOTAL     = 0. 
+      SUMGBACDYF       = 0.
+      SUMGBACGDL       = 0.  
+      SUMGRAZCTOTAL    = 0.
+      GRAZCTOTAL       = 0.
+
+! Exportation flux
+      SUMEXPDYF   = 0.
+      SUMEXPGDL   = 0.
+
+      SUM_EXPORTC_BOT = 0.
+      SUM_EXPORTN_BOT = 0.
+      SUM_EXPORTP_BOT = 0.
+      SUM_EXPORTSI_BOT = 0.
+      EXPORTC_BOT = 0.
+      EXPORTN_BOT = 0.
+      EXPORTP_BOT = 0.
+      EXPORTSI_BOT = 0.
+      SUM_SEDC    = 0.
+      SUM_SEDP    = 0.
+      SUM_SEDN    = 0.
+      SUM_SEDSI   = 0.
+          SEDC    = 0.
+          SEDP    = 0.
+          SEDN    = 0.
+          SEDSI   = 0.
+
+! mise a zero des diagnostics 2D
+
+      TPS_PPB_2D=0
+      TPS_STRADA_2D=0
+      do j1=1,jmax ! debut boucle sur j
+      do i1=1,imax ! debut boucle sur i
+      do k=1,4 !8 attention ici...
+        PPB2D(i1,j1,k)   =0.
+      enddo
+      do k=1,4
+        NPB2D(i1,j1,k)   =0.
+        RPB2D(i1,j1,k)   =0.
+        CHL2D(i1,j1,k)   =0.
+      enddo
+      do k=1,27 ! 40   mais de qui se moque-t-on... 40...
+        EXP2D(i1,j1,k)   =0.
+      enddo
+!      do k=1,5
+!        NITRif2D(i1,j1,k)  =0.
+!        RESP2D(i1,j1,k)    =0.
+!      enddo
+        EXUCTOT2D(i1,j1) =0.
+        RPB2D(i1,j1,5)   =0.
+!claude verifier qu'il faut bien cidessous sum_ devant export caroline n'a pas
+        SUM_EXPORTC_BOT_2D(i1,j1)    =0.
+        SUM_EXPORTN_BOT_2D(i1,j1)    =0.
+        SUM_EXPORTP_BOT_2D(i1,j1)    =0.
+        SUM_EXPORTSI_BOT_2D(i1,j1)    =0.
+      enddo    ! fin de boucle i1
+      enddo    ! fin de boucle j1
+
+
+!       
+!      do vb=1,vbmax
+!      sumtot_bio(1,vb)=0.
+!      sumcoltot_bio(1,vb)=0.
+!      sumshelf_bio(1,vb)=0.
+!      sumcolshelf_bio(1,vb)=0.
+!      sumdeep_bio(1,vb)=0.
+!      sumcoldeep_bio(1,vb)=0.
+!      enddo  
+
+!! Integration area
+!!! Dyfamed
+!      IDYF = 276
+!      JDYF = 222
+!
+!
+!!! Gulf of Lion ds le repere global
+!      i1gdl = 113
+!      i2gdl = 214
+!      j1gdl = 172
+!      j2gdl = 232
+!
+!! bilan GDL inutile 
+!! il faudrait prendre la zone : I=113 -> 214
+!!                               J=157 -> 223 
+!! Medoc
+!      I1MEDOC = 152
+!      I2MEDOC = 215
+!      J1MEDOC = 122
+!      J2MEDOC = 183
+!
+!      ILIG = 220 
+
+      sumareagdl   = 0.
+      sumareagdl_plat = 0.
+      sumareatotal = 0.
+      sumareatotal_plat = 0.
+      sumarealig   = 0.
+      sumarea1000m = 0.
+      sumareamedoc = 0.
+      sumareadyf = 0.
+      sumareadiag = 0. 
+      sumareawmed = 0.
+      sumareaemed = 0.
+
+
+      do i1=1,imax ! debut boucle sur j
+      do j1=1,jmax ! debut boucle sur i
+      i2=i1+par%timax(1)      ! ds le repere global
+      j2=j1+par%tjmax(1)
+
+!      if (j2>=j1domain.and.j2<=j2domain.and.i2>=i1domain.and.i2<=i2domain) then     !vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+       if(mask_t(i1,j1,kmax+1)==1) then !>>>>>>>>>>>>>>
+       x2=dxdy_t(i1,j1)*mask_i_w(i1)*mask_j_w(j1)    ! surface de la maille
+
+        if (j2>=j1gdl.and.j2<=j2gdl.and.i2>=i1gdl.and.i2<=i2gdl) then
+!       if (j2>=j1gdl.and.j2<=j2gdl.and.i2>=i1gdl.and.i2<=i2gdl) then
+         sumareagdl = sumareagdl + x2
+          if(-depth_w(i1,j1,kmin_w(i1,j1))<=200.) then
+          sumareagdl_plat = sumareagdl_plat + x2
+          endif
+       endif
+
+       if (j2>=jdyf1.and.j2<=jdyf2.and.i2>=idyf1.and.i2<=idyf2) then
+         sumareadyf = sumareadyf + x2
+       endif
+
+       if (j2>=j1medoc.and.j2<=j2medoc.and.i2>=i1medoc.and.i2<=i2medoc) then
+         if(depth_t(i1,j1,1)<-2000.)                    &
+         sumareamedoc = sumareamedoc + x2
+       endif
+
+       sumareatotal = sumareatotal + x2
+
+! bassin ouest
+            if(lon_t(i1,j1)<10.*deg2rad.and.lon_t(i1,j1)>-5.6*deg2rad) then
+!             if(lon_t(i1,j1)<10.*deg2rad) then
+             sumareawmed = sumareawmed + x2
+         elseif(lon_t(i1,j1)>10.*deg2rad.and.lon_t(i1,j1)<15.*deg2rad.and. &
+                lat_t(i1,j1)>37.*deg2rad.and.lat_t(i1,j1)<42.*deg2rad)then 
+             sumareawmed = sumareawmed + x2
+         elseif(lon_t(i1,j1)>10.*deg2rad.and.lon_t(i1,j1)<12.25*deg2rad.and. &
+                lat_t(i1,j1)>42.*deg2rad.and.lat_t(i1,j1)<44.25*deg2rad)then
+             sumareawmed = sumareawmed + x2
+         elseif(lon_t(i1,j1)>15.*deg2rad.and.lon_t(i1,j1)<16.25*deg2rad.and. &
+                lat_t(i1,j1)>38.*deg2rad.and.lat_t(i1,j1)<40.25*deg2rad)then
+             sumareawmed = sumareawmed + x2
+!bassin est
+         else
+             if(lon_t(i1,j1)>5.6*deg2rad) then
+             sumareaemed = sumareaemed + x2
+             endif
+!          if(lon_t(i1,j1)<-5.6)'passe ici 5.6')
+         endif
+
+
+       if(-depth_w(i1,j1,kmin_w(i1,j1))<=200.) then
+       sumareatotal_plat = sumareatotal_plat + x2
+       endif
+
+!      if (i2>=ILIG) sumarealig = sumarealig + x2      ! repere global
+       if (j2>=j1ligure.and.j2<=j2ligure.and. &
+           i2>=i1ligure.and.i2<=i2ligure) then
+       if(depth_t(i1,j1,1)<-1000.)                    &
+       sumarea1000m = sumarea1000m + x2
+       if(depth_t(i1,j1,1)<-2000.)                    &
+       sumarealig = sumarealig + x2
+       endif
+
+      if (j2>=j1diag.and.j2<=j2diag.and. &
+          i2>=i1diag.and.i2<=i2diag) then
+       if(-depth_w(i1,j1,kmin_w(i1,j1))>=1500.)                    &
+       sumareadiag = sumareadiag + x2
+       endif
+
+
+      endif ! test masque
+!      endif ! test domain
+      enddo    ! fin de boucle i1
+      enddo    ! fin de boucle j1
+
+
+      SUM_BIOPOC_P1=0.
+      SUM_BIODOC_P1=0.
+      SUM_BIOPON_P1=0.
+      SUM_BIODON_P1=0.
+      SUM_BIONO3_P1=0.
+      SUM_BIONH3_P1=0.
+
+      SUM_HBIO_P1=0.
+      SUM_HBION_P1=0.
+
+#ifdef parallele
+! claude: a partir de ci-dessous les sumareatotal representent la somme sur tous les procs
+      call mpi_allreduce(sumareatotal,sum1glb,1,mpi_double_precision,  & !#MPI
+                         mpi_sum,par%comm2d,ierr)
+      sumareatotal=sum1glb
+      call mpi_allreduce(sumareatotal_plat,sum1glb,1,mpi_double_precision,  & !#MPI
+                         mpi_sum,par%comm2d,ierr)
+      sumareatotal_plat=sum1glb
+      call mpi_allreduce(sumarea1000m,sum1glb,1,mpi_double_precision,  & !#MPI
+                         mpi_sum,par%comm2d,ierr)
+      sumarea1000m=sum1glb
+      call mpi_allreduce(sumareagdl,sum1glb,1,mpi_double_precision,  & !#MPI
+                         mpi_sum,par%comm2d,ierr)
+      sumareagdl=sum1glb
+      call mpi_allreduce(sumareagdl_plat,sum1glb,1,mpi_double_precision,  & !#MPI
+                         mpi_sum,par%comm2d,ierr)
+      sumareagdl_plat=sum1glb
+      call mpi_allreduce(sumarealig,sum1glb,1,mpi_double_precision,  & !#MPI
+                         mpi_sum,par%comm2d,ierr)
+      sumarealig=sum1glb
+      call mpi_allreduce(sumareamedoc,sum1glb,1,mpi_double_precision,  & !#MPI
+                         mpi_sum,par%comm2d,ierr)
+      sumareamedoc=sum1glb
+      call mpi_allreduce(sumareadyf,sum1glb,1,mpi_double_precision,  & !#MPI
+                         mpi_sum,par%comm2d,ierr)
+      sumareadyf=sum1glb
+      call mpi_allreduce(sumareadiag,sum1glb,1,mpi_double_precision,  & !#MPI
+                         mpi_sum,par%comm2d,ierr)
+      sumareadiag=sum1glb
+      call mpi_allreduce(sumareawmed,sum1glb,1,mpi_double_precision,  & !#MPI
+                         mpi_sum,par%comm2d,ierr)
+      sumareawmed=sum1glb
+      call mpi_allreduce(sumareaemed,sum1glb,1,mpi_double_precision,  & !#MPI
+                         mpi_sum,par%comm2d,ierr)
+      sumareaemed=sum1glb
+#endif
