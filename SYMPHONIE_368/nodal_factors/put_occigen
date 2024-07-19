@@ -1,0 +1,33 @@
+#scp -r configbox marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_WM_20170514/.
+#scp -r SOURCES marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_WM_20170514/.
+#scp -r SOURCES UPDATE configbox marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_GLOBMED_20170529/.
+#scp -r ../GLOBMED marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/.
+#scp -r SOURCES configbox marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_GLOBMED_20170529/.
+#scp -r archives/s26.26_HAMILTON_3D.20171110.tar.gz marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/.
+#scp -r archives/s26.26_HAMILTON_3D_angle10.20171112.tar.gz marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/.
+#scp -r SOURCES                  marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_20180120_GLOBMED/.
+#scp -r faire_un_gif_anime marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/GLOBMED/OFFLINE/.
+#scp -r s26.thau_gridgenerator.20180201.tar.gz marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/.
+#scp -r SOURCES marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_20180326_GDL500M/.
+#scp -r UPDATE marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_20180326_GDL500M/.
+#scp -r configbox marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_20180326_GDL500M/.
+#scp -r FAIRE_HOT_RESTART marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_20180326_GDL500M/.
+#scp -r SOURCES configbox FAIRE_HOT_RESTART marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_20180329_LEO_V207/.
+#scp -r nodal_factors_12ondes nodal_factors marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_20180329_LEO_V207/.
+#scp -r SOURCES marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_20180326_GDL500M_V208/.
+#scp -r FAIRE_HOT_RESTART marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_20180120_GLOBMED/.
+#scp -r SOURCES configbox marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_NH_20171106/SYMPHONIE_SETE_v236/.
+#scp -r SOURCES configbox UPDATE nodal_factors_12ondes nodal_factors marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/VIOLAINE/S26/.
+#scp -r SOURCES configbox marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_NH_20171106/SYMPHONIE_SETE_v236/.
+#scp -r FAIRE_HOT_RESTART FAIRE_MAKEFILE marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/NADIA/SYMPHONIE_v241/.
+#scp -r SOURCES configbox marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/NADIA/SYMPHONIE_v242/.
+#scp -r SOURCES configbox marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_NH_20171106/SYMPHONIE_SETE_v244/.
+#scp -r SOURCES UPDATE marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_NH_20171106/SYMPHONIE_SETE_v246/.
+#scp -r SOURCES configbox marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/NGOC/SYMPHONIE_v249/.
+#scp -r SOURCES configbox marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_NH_20171106/SYMPHONIE_SETE_v249/.
+#scp -r SOURCES configbox marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_20190314_GDL500M_V249_NUWASOOYEON/.
+#scp -r UPDATE marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_NH_20171106/SYMPHONIE_SETE_v249/.
+#scp -r SOURCES marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_NH_20171106/SYMPHONIE_SETE_v250/.
+#scp -r FAIRE_HOT_RESTART marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_NH_20171106/SYMPHONIE_SETE_v259/.
+#scp -r SOURCES marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_NH_20171106/SYMPHONIE_SETE_v265/.
+ scp -r * marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/FONDPLAT_0FRIC_PERIODIQUE_SIGGEN.20180303/SYMPHONIE_v295/nodal_factors/.

@@ -1,0 +1,29 @@
+Depuis nuwa utiliser la commande:
+/sirocco/alld/tools/objects/showarg
+
+La commande:
+/sirocco/alld/tools/objects/showarg -h
+donne les explications, les references etc... soit:
+
+NAME AND VERSION
+ /sirocco/alld/tools/objects/showarg version 2.7 Mercurial revision 2831:3b6cc258bb14 of 2016-05-17 14:41 +0200
+
+USE
+  /sirocco/alld/tools/objects/showarg [OPTIONS] [ wave1 ... ]
+
+DESCRIPTION
+  Shows informations about a list of waves : Astronomic potential, pulsation, period, critical latitude, Doodson number and separation.
+  If no list of waves is given, show informations about all coded waves, sorted by increasing pulsation, but do not show waves separation.
+  The wave names are taken from Schureman (1940, Tab2)
+http://www.archive.org/details/manualofharmonic00schu
+whose convention is followed throughout this software.
+  It shows the Doodson number. A list of waves with their doodson number is available from the IHO at
+http://www.iho.int/mtg_docs/com_wg/IHOTC/IHOTC_Misc/TWLWG_Constituent_list.pdf
+
+OPTIONS :
+  -h,--help  show this help
+  --alias  followed by aliasing frequency in days
+  -s  followed by the start date in dd/mm/yyyy format
+  -f  followed by the end date in dd/mm/yyyy format
+  -a  show arguments periodically, by default every day
+  -i  followed by the daily frequency at which the arguments are shown. Enforced minimum is daily. Implies -a.
