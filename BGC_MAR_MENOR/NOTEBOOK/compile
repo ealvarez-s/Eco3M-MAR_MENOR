@@ -1,0 +1,2 @@
+ifort -o toto.exe $1 -check bounds -traceback -I/usr/local/netcdf/4.6.1/include -L/usr/local/netcdf/4.6.1/lib -lnetcdff -Wl,-rpath,/usr/local/intel/2018.2.046/compilers_and_libraries/linux/lib/intel64 -Wl,-rpath,/usr/local/hdf5/1.10.2/seq/lib -lnetcdf -lnetcdf
+
