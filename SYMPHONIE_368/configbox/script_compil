@@ -1,0 +1,5 @@
+#!/bin/bash
+make ifort=on
+expediteur=$PWD
+destination=${PWD/\/udir\//\/rdir\/}
+mv $expediteur/symphonie.exe $destination/.

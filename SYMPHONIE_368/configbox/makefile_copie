@@ -1,0 +1,540 @@
+#__________________________________________________________
+# Compilation du modele Symphonie
+#__________________________________________________________
+#
+# Compilation avec ifort: make ifort=on
+# Compilation avec f95:   make f95=on
+#
+# Les fichiers *.o *.f90 vont dans ../CDIR et l'executable symphonie dans RDIR
+# Commande pour lancer la simulation sous RDIR: symphonie
+#
+#__________________________________________________________
+# Liste des etiquettes de compilation: parametrer ETIQM
+#__________________________________________________________
+# Les etiquettes de compilation sont des lignes du type 
+# #ifdef name, #endif, introduites dans le code, servant à
+# délimiter des portions de routines qui seront prises en compte 
+# ou au contraire ignorees par la comilation
+#
+  ETIQM = 
+# ETIQM = -Dparallele -Dbidouille
+#__________________________________________________________
+
+.SUFFIXES:
+.SUFFIXES:  .o .F90
+
+
+CPP = cpp -P -traditional -Wcomment
+
+#USERDIR=../UDIR
+USERDIR=$(PWD)
+UPDATEDIR=../../UPDATE
+SOURCESDIR=../../SOURCES
+VPATHTMP=$(USERDIR):$(UPDATEDIR):$(SOURCESDIR)
+
+#__________________________________________________________
+# Options de compilations: parametrer F77FLAGS
+#__________________________________________________________
+#F77FLAGS= -check bounds
+#F77FLAGS= -check all
+ F77FLAGS= -O2 
+#F77FLAGS=
+#F77FLAGS= -check bounds -traceback
+#F77FLAGS= -g 
+#F77FLAGS= -gline -C=all
+#__________________________________________________________
+
+# Activer la biblio netcdf
+# Definie pou chaque compillateur
+# Desactiver la biblio netcdf
+#LIB=
+
+ifneq ($(gfortran),on)
+ifneq ($(ifort),on)
+ifneq ($(g95),on)
+ifneq ($(pgf90),on)
+#__________________
+#  NAG-F95 Compiler
+#
+LIB= /home/softs/F95/poc-netcdf/lib/libpoc-netcdf.a  /home/softs/F95/netcdf/lib/libnetcdf.a -lstdc++
+NETINC=/home/softs/F95/netcdf/include/
+
+OBJDIR=../../CDIR_F95/REGION
+VPATH=$(VPATHTMP):$(OBJDIR):.
+INC = -I $(NETINC) -I $(USERDIR)  -I $(UPDATEDIR) -I $(SOURCESDIR)
+#OPTIONM= $(INC) -g90 $(F77FLAGS) -save -maxcontin=200 -w 
+#------------------------------------------------------------------
+#Option compiler en f95 sur une machine et l'executer sur une autre:
+#OPTIONM= $(INC) $(F77FLAGS) -save -maxcontin=200 -w -unsharedf95
+#------------------------------------------------------------------
+#Option compiler en f95:
+#OPTIONM= $(INC) $(F77FLAGS) -g -gline -save -maxcontin=200 -w -PIC
+#OPTIONM= $(INC) -g -gline -save -w -PIC 
+OPTIONM= $(INC) $(F77FLAGS) -save -w -PIC  -maxcontin=200 -g -gline
+#OPTIONM= $(INC) $(F77FLAGS) -save -maxcontin=200 -w
+#------------------------------------------------------------------
+#F90=f95
+F90=f95
+SED =  
+else
+OBJDIR=../../CDIR_F95/REGION
+VPATH=$(VPATHTMP):$(OBJDIR):.
+INC = -I $(USERDIR)  -I $(UPDATEDIR) -I $(SOURCESDIR)
+OPTIONM= $(INC) $(F77FLAGS) -g -Msave -w -fPIC 
+#------------------------------------------------------------------
+F90=pgf90
+SED =  
+endif
+else
+#__________________
+#  g95 Compiler
+#
+OBJDIR=../../CDIR_F95/REGION
+VPATH=$(VPATHTMP):$(OBJDIR):.
+INC = -I $(USERDIR)  -I $(UPDATEDIR) -I $(SOURCESDIR)
+#OPTIONM= $(INC) -g90 $(F77FLAGS) -save -maxcontin=200 -w 
+#------------------------------------------------------------------
+#Option compiler en g95 sur une machine et l'executer sur une autre:
+#OPTIONM= $(INC) $(F77FLAGS) -save -maxcontin=200 -w -unsharedf95
+#------------------------------------------------------------------
+#Option compiler en g95:
+OPTIONM= $(INC) $(F77FLAGS) -g -i4 -fPIC
+#------------------------------------------------------------------
+F90=g95
+SED =  
+endif
+else
+
+#________________
+#  ifort Compiler
+#
+LIB=/home/softs/IFORT/poc-netcdf/lib/libpoc-netcdf.a /home/softs/IFORT/netcdf/lib/libnetcdf.a -lstdc++
+NETINC=/home/softs/IFORT/netcdf/include/
+
+OBJDIR=../../CDIR_IFORT/REGION
+VPATH=$(VPATHTMP):$(OBJDIR):.
+INC = -I$(USERDIR)   -I$(UPDATEDIR) -I$(SOURCESDIR) -I/usr/include 
+#OPTIONM= $(INC) -g $(F77FLAGS)
+#Option compiler avec ifort:
+#OPTIONM= $(INC) $(F77FLAGS) -assume 2underscores -assume byterecl
+# Grandes Grilles
+OPTIONM= $(INC) $(F77FLAGS) -module $(OBJDIR) -g -assume byterecl -fPIC -shared-intel -fp-model precise 
+F90=ifort
+SED = 
+endif
+
+else
+#__________________
+#  GNU-gfortran Compiler
+#
+LIB=/home/softs/GFORTRAN/poc-netcdf/lib/libpoc-netcdf.a /home/softs/GFORTRAN/netcdf/lib/libnetcdf.a -lstdc++
+NETINC=/home/softs/GFORTRAN/netcdf/include/
+OBJDIR=../../CDIR_GFORTRAN/REGION
+VPATH=$(VPATHTMP):$(OBJDIR):.
+INC = -I$(USERDIR)   -I$(UPDATEDIR) -I$(SOURCESDIR) -I/usr/include
+# Grandes Grilles
+OPTIONM= $(INC) $(F77FLAGS) -M $(OBJDIR) -g -fPIC 
+
+F90=gfortran
+SED = 
+endif
+
+#
+#
+#
+
+#  Rule from ".f" to ".o"
+#
+.F90.o:
+#	$(CPP)  $(ETIQM)  $< $(SED) > $(OBJDIR)/$*.f90
+#	cd $(OBJDIR); $(F90) $(OPTIONM) -c   $(OBJDIR)/$*.f90
+	echo $(VPATH); 
+	$(CPP)  $(ETIQM)  $< $(SED) > $(OBJDIR)/$*.f90
+	$(F90) $(OPTIONM) -c   $(OBJDIR)/$*.f90
+	@mv  $*.o $(OBJDIR)/.
+
+OBJSM =	module_principal.o\
+	module_forcages.o\
+	module_global.o\
+	module_graph.o\
+	module_parallele.o\
+	module_systeme.o\
+	allocate_global.o\
+	allocate_forcages.o\
+	allocate_systeme.o\
+	add_bi.o\
+	advection_bioup.o\
+	advection_scal.o\
+	airseaflux_demo.o\
+	airseaflux_fbk.o\
+	airseaflux_upd.o\
+	albedo_upd.o\
+	adve3Dto2D.o\
+        asselin_bio.o\
+        atlas.o\
+	biohz_to_bio.o\
+	biology.o\
+	botprescont.o\
+	bouees.o\
+	bulk_formulae.o\
+	cellbox_thickness.o\
+	chronos.o\
+	close_bio.o\
+	convect.o\
+	couple_modes.o\
+	cwave_int.o\
+	date_output.o\
+	date_to_kount.o\
+	density.o\
+	vertmix_coef.o\
+	dragcoef.o\
+	external_mode.o\
+	graph_out.o\
+	graph1D_out.o\
+	grid_out.o\
+	hot_restart.o\
+	hz_to_hxyr.o\
+	files_name.o\
+	initial_main.o\
+	initial_bio.o\
+	initial_lonlat_dxdy_coriolis.o\
+	initial_graph.o\
+	initial_mask_and_bathy.o\
+	initial_tracer.o\
+	initial_sponge.o\
+	initial_state_eq.o\
+	initial_tide.o\
+	initial_with_obc.o\
+	internal_mode.o\
+	interp_ogcm.o\
+        latlon_to_ij.o\
+        lissebathy.o\
+        kount_to_date.o\
+	mixsed_bio.o\
+	turbulent_length_scale.o\
+        mix_sig_step.o\
+	model_1d.o\
+	model_2d.o\
+	model_3d.o\
+	model_offline.o\
+	model_wave.o\
+	moveanddiffuse_uv.o\
+	move_ts.o\
+	moyenne_temps.o\
+	my_outputs.o\
+	nestedgrid.o\
+	nest_bio.o\
+	nest_inout.o\
+        obc_bio.o\
+        obc_dz.o\
+        obc_ext.o\
+        obc_h.o\
+        obc_hf_barotropic.o\
+	obc_int.o\
+	obc_lonlat.o\
+	obc_mixsigstep.o\
+	obc_mask.o\
+	obc_river.o\
+	obc_scal.o\
+	obc_tken.o\
+	obc_depth.o\
+	obc_zta.o\
+	offline_inout.o\
+	omega.o\
+	presgrad.o\
+	quick_initial.o\
+	read_ogcm_fields.o\
+	reset.o\
+	river_bio_upd.o\
+	river_upd.o\
+	vertmix_sal.o\
+	scalars.o\
+	sediment_bio.o\
+	set_parameters.o\
+	set_rivers.o\
+	sigma_levels.o\
+	sortie_pt_fixe.o\
+	source_tracer.o\
+        strada.o\
+        surdetermine.o\
+	symphonie.o\
+	vertmix_tem.o\
+	the_end.o\
+	tide_analysis.o\
+	tide_netcdf_create_file.o\
+	tide_nodal_parameters.o\
+	initial_time_step.o\
+	turbulent_kinetic_energy.o\
+	tridiagsyst.o\
+	tridiagsyst_dbp.o\
+        update_obcforcingterms.o\
+        update_tide.o\
+        momentum_equations.o\
+	veldxdz_veldydz_to_vel.o\
+	wave_propagation_mode.o\
+        wetdry_mask_airseafluxes.o\
+	windstress.o\
+	z_averaged.o\
+	z_levels.o\
+	z_thickness.o\
+	maskt_to_maskuvp.o\
+#__________________________________________________________
+# Compilation:
+#__________________________________________________________
+#
+# Pour Symphonie:
+#
+symphonie.exe: $(OBJSM)
+	cd $(OBJDIR) ; $(F90) $(OPTIONM) $(ETIQM) -o ../../RDIR/REGION/symphonie.exe $(OBJSM) $(LIB)
+clean : 
+	rm *mod ; cd $(OBJDIR) ; rm *.f90 *.o *.mod ../../RDIR/REGION/symphonie.exe
+#
+module_principal.o: module_principal.F90 parameter variables_texte.h  biology.h
+#
+module_forcages.o: module_forcages.F90 parameter variables_texte.h  biology.h
+#
+module_global.o: module_global.F90 parameter variables_texte.h  biology.h
+#
+module_graph.o: module_graph.F90 parameter variables_texte.h  biology.h
+#
+module_parallele.o: module_parallele.F90 parameter variables_texte.h  biology.h
+#
+module_systeme.o: module_systeme.F90 parameter variables_texte.h  biology.h
+#
+allocate_forcages.o: allocate_forcages.F90 parameter variables_texte.h
+#
+allocate_global.o: allocate_global.F90 parameter variables_texte.h
+#
+allocate_systeme.o: allocate_systeme.F90 parameter variables_texte.h
+#
+symphonie.o: symphonie.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+add_bi.o: add_bi.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+advection_bioup.o: advection_bioup.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h     
+#
+airseaflux_demo.o: airseaflux_demo.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+airseaflux_fbk.o: airseaflux_fbk.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+airseaflux_upd.o: airseaflux_upd.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+albedo_upd.o: albedo_upd.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+advection_scal.o: advection_scal.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+adve3Dto2D.o: adve3Dto2D.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+asselin_bio.o: asselin_bio.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h     
+#
+atlas.o: atlas.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+biohz_to_bio.o: biohz_to_bio.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h     
+#
+biology.o: biology.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h     
+#
+botprescont.o: botprescont.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+bouees.o: bouees.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+bulk_formulae.o: bulk_formulae.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+cellbox_thickness.o: cellbox_thickness.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+chronos.o: chronos.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+close_bio.o: close_bio.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h     
+#
+convect.o: convect.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+couple_modes.o: couple_modes.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+cwave_int.o: cwave_int.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+date_output.o: date_output.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+date_to_kount.o: date_to_kount.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+density.o: density.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+vertmix_coef.o: vertmix_coef.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+dragcoef.o: dragcoef.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+external_mode.o: external_mode.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h     
+#
+graph_out.o: graph_out.F90  parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h
+#
+graph1D_out.o: graph1D_out.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+grid_out.o: grid_out.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+hot_restart.o: hot_restart.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h     
+#
+hz_to_hxyr.o: hz_to_hxyr.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+files_name.o: files_name.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+initial_main.o: initial_main.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+initial_bio.o: initial_bio.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h     
+#
+initial_lonlat_dxdy_coriolis.o: initial_lonlat_dxdy_coriolis.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+initial_graph.o: initial_graph.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h       
+#
+initial_mask_and_bathy.o: initial_mask_and_bathy.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+initial_tracer.o: initial_tracer.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h     
+#
+initial_sponge.o: initial_sponge.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+initial_state_eq.o: initial_state_eq.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+initial_tide.o: initial_tide.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h       
+#
+initial_with_obc.o: initial_with_obc.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+internal_mode.o: internal_mode.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+interp_ogcm.o: interp_ogcm.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+latlon_to_ij.o: latlon_to_ij.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+lissebathy.o: lissebathy.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+kount_to_date.o: kount_to_date.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+mixsed_bio.o: mixsed_bio.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h     
+#
+turbulent_length_scale.o: turbulent_length_scale.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+mix_sig_step.o: mix_sig_step.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+model_1d.o: model_1d.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+model_2d.o: model_2d.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+model_3d.o: model_3d.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+nestedgrid.o: nestedgrid.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+nest_bio.o: nest_bio.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h     
+#
+nest_inout.o: nest_inout.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+model_offline.o: model_offline.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+model_wave.o: model_wave.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h     
+#
+moveanddiffuse_uv.o: moveanddiffuse_uv.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+move_ts.o: move_ts.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+moyenne_temps.o: moyenne_temps.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+my_outputs.o: my_outputs.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+obc_bio.o: obc_bio.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h     
+#
+obc_dz.o: obc_dz.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h     
+#
+obc_ext.o: obc_ext.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+obc_h.o: obc_h.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+obc_hf_barotropic.o: obc_hf_barotropic.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+obc_int.o: obc_int.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+obc_lonlat.o: obc_lonlat.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+obc_mixsigstep.o: obc_mixsigstep.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+obc_mask.o: obc_mask.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+obc_river.o: obc_river.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+obc_scal.o: obc_scal.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+obc_tken.o: obc_tken.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+obc_depth.o: obc_depth.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+obc_zta.o: obc_zta.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+offline_inout.o: offline_inout.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+omega.o: omega.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+presgrad.o: presgrad.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+vertmix_sal.o: vertmix_sal.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+quick_initial.o: quick_initial.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+read_ogcm_fields.o: read_ogcm_fields.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+reset.o: reset.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+river_bio_upd.o: river_bio_upd.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h     
+#
+river_upd.o: river_upd.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+scalars.o: scalars.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+sediment_bio.o: sediment_bio.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h     
+#
+set_parameters.o: set_parameters.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+set_rivers.o: set_rivers.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+sigma_levels.o: sigma_levels.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+sortie_pt_fixe.o: sortie_pt_fixe.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h     
+#
+source_tracer.o: source_tracer.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h     
+#
+strada.o: strada.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h     
+#
+surdetermine.o: surdetermine.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h      
+#
+vertmix_tem.o: vertmix_tem.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+the_end.o: the_end.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+tide_analysis.o: omega.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h       
+#
+tide_netcdf_create_file.o: omega.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h       
+#
+tide_nodal_factors.o: omega.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h       
+#
+initial_time_step.o: initial_time_step.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h     
+#
+turbulent_kinetic_energy.o: turbulent_kinetic_energy.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+tridiagsyst.o: tridiagsyst.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+tridiagsyst_dbp.o: tridiagsyst_dbp.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+update_obcforcingterms.o: update_obcforcingterms.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h     
+#
+update_tide.o: update_tide.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h     
+#
+momentum_equations.o: momentum_equations.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+veldxdz_veldydz_to_vel.o: veldxdz_veldydz_to_vel.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+wave_propagation_mode.o: wave_propagation_mode.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+wetdry_mask_airseafluxes.o: wetdry_mask_airseafluxes.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+windstress.o: windstress.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+z_averaged.o: z_averaged.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+z_levels.o: z_levels.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+z_thickness.o: z_thickness.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    
+#
+maskt_to_maskuvp.o: maskt_to_maskuvp.F90 parameter module_forcages.F90 module_global.F90 module_graph.F90 module_parallele.F90 module_systeme.F90 module_principal.F90 variables_texte.h biology.h    

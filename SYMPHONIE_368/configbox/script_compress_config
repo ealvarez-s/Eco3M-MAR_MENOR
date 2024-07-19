@@ -1,0 +1,208 @@
+# compress_config S.26 MEDOC2014 s26.medoc2014.20140620
+# compress_config S.26 GAM s26.gam.201406240
+# compress_config S.26 S-WM111 s26.s-wm111.20140629
+# compress_config S.26 MERCATOFF s26.mercatoff.20140721
+# compress_config S.26 LOCKEX2 s26.lockex2.20140820
+# compress_config S.26 BOBSHELFS26 s26.bobshelf.20140820
+# compress_config S.26 WETDRY2 s26.temporary
+# compress_config S.26 BOBSHELFS26 s26.bobshelf.20140823
+# compress_config S.26 KUNSHEN-COASTAL-002 s26.kunshen.20140826
+# compress_config S.26 BOBSHELFS26 s26.bobshelf.20140827
+# compress_config S.26 BOBLAND s26.bobland.20140827
+# compress_config S.26 BOBSHELFS26 s26.bobshelf.20140918
+# compress_config S.26 STIQS s26.stiqs.20140926
+# compress_config S.26 MERCATOFF s26.mercatoff.20140927
+# compress_config S.26 MERCATOFF s26.mercatoff.20141004
+# compress_config S.26 BULKACAD  s26.bulkacad.20141008
+# compress_config S.26 BOBSHELFS26 s26.bobshelf.20141014
+# compress_config S.26 MEDOC2014 s26.medoc2014.20141026
+# compress_config S.26 BOBSHELFS26 s26.bobshelf.20141105
+# compress_config S.26 BAROCLINIC_VORTEX s26.baroclinic_vortex.20141118
+# compress_config S26 BAROCLINIC_VORTEX s26.baroclinic_vortex.20141127
+# compress_config S26 WMS36 s26.wms36.20141215
+# compress_config S26 WMS36 s26.wms36.20141217
+# compress_config S26 test_sigstep s26.test_sigstep.20141219
+# compress_config S26 WMS36 s26.wms36.20150111
+# compress_config S26 TAIWAN1 s26.taiwan1.20150125
+# compress_config S26 BOBSHELF s26.bobshelf.20150202
+# compress_config S26 TEST_1DV s26.test_1dv.20150302
+# compress_config S26 TAIWAN1 s26.taiwan1.20150316
+# compress_config S26 TAIWAN1 s26.taiwan1.20150323
+# compress_config S26 DOUALA26 s26.douala26.20150327
+# compress_config S26 SEAMOUNT s26.seamount.20150622
+# compress_config S26 SEAMOUNT s26.test1dv.20150705
+# compress_config S26 LOCKEX s26.lockex.20150711
+# compress_config S26 TEST_CASCADING s26.test_cascading.20150716
+# compress_config S26 SEAMOUNT2 s26.seamount2.20150909
+# compress_config S26 SEAMOUNT2 s26.seamount2.20150911
+# compress_config S26 SEAMOUNT2 s26.seamount2.20150912
+# compress_config S26 SEAMOUNT2 s26.seamount2.20150913
+# compress_config S26 BAROCLINIC_VORTEX s26.baroclinic_vortex.20150919
+# compress_config S26 SEAMOUNT2 s26.seamount2.20151002
+# compress_config S26 SEAMOUNT2 s26.seamount2.20151004
+# compress_config S26 SEAMOUNT2 s26.seamount2.20151008
+# compress_config S26 SEAMOUNT3 s26.seamount3.20151025
+# compress_config S26 SEAMOUNT4 s26.seamount4.20151108
+# compress_config S26 SEAMOUNT5 s26.seamount5.20151112
+# compress_config S26 WMS36 s26.wms36.20151129
+# compress_config S26 SABL_1DV s26.sabl_1dv.20151209
+# compress_config S26 S-WM111 s26.s-wm111.20151209
+# compress_config S26 BAROCLINIC_JET s26.baroclinic_jet.20160117
+# compress_config S26 BAROCLINIC_JET s26.baroclinic_jet.20160201
+# compress_config S26 THAU s26.thau.20160205
+# compress_config S26 BAROCLINIC_JET s26.baroclinic_jet.20160210
+# compress_config S26 THAU s26.thau.20160213
+# compress_config S26 WMS36 s26.wms36.20160216
+# compress_config S26 TESTCASE_WAVE s26.testcase_wave.20160325
+# compress_config S26 SCV s26.scv.20160329
+# compress_config S26 SABL_1DV s26.sabl_1dv.20160401
+# compress_config S26 TESTCASE_WAVE_BIG s26.tmp.20160815
+# compress_config S26 1DV s26.1dv.20160831
+# compress_config S26 DOUALA_VarOutput s26.DOUALA_VarOutput.20170126
+# compress_config S26 FUSION_TESTWAVE s26.FUSION_TESTWAVE.20170202
+# compress_config S26 RIVER4 s26.RIVER4.20170613
+# compress_config S26 NEMOMED12 s26.NEMOMED12.20170719
+# compress_config S26 20_HAMILTON s26.20_hamilton.20171027
+# compress_config S26 21_TINGKIRBY94 s26.21_tingkirby94.20171027
+# compress_config S26 22_FONDPLAT3D s26.22_fondplat3d_20171031
+# compress_config S26 22_FONDPLAT3D_OBC s26.22_fondplat3d_obc_20171031
+# compress_config S26 23_TINGKIRBY94_3D s26.23_tingkirby94_3d.20171102
+# compress_config S26 24_SLOPEBARRE_3D s26.24_SLOPEBARRE_3D.20171106
+# compress_config S26 26_HAMILTON_3D s26.26_HAMILTON_3D.20171108
+# compress_config S26 26_HAMILTON_3D s26.26_HAMILTON_3D.20171110
+# compress_config S26 27_FONDPLAT3D_PERIODIQUE s26.27_FONDPLAT3D_PERIODIQUE.20171118
+# compress_config S26 28_FONDPLAT3D_PERIODIQUE100M s26.28_FONDPLAT3D_PERIODIQUE100M.20171120
+# compress_config S26 29_HAMILTON_3D s26.29_HAMILTON_3D.20171121
+# compress_config S26 30_HALLER2002 s26.30_HALLER2002.20171128
+# compress_config S26 31_PERPIGNAN_2DV s26.31_PERPIGNAN_2DV.20171209
+# compress_config S26 32_FONDPLAT_0FRIC s26.32_FONDPLAT_0FRIC.20180113
+# compress_config S26 33_FONDPLAT_0FRIC_OPEN s26.33_FONDPLAT_0FRIC_OPEN.20180130
+# compress_config S26 32_FONDPLAT_0FRIC s26.32_FONDPLAT_0FRIC.20180131
+# compress_config S26 THAU s26.thau_gridgenerator.20180201
+# compress_config S26 34_FONDPLAT_0FRIC_OPEN_STRETCHED s26.34_FONDPLAT_0FRIC_OPEN_STRETCHED.20180301
+# compress_config S26 36_FONDPLAT_0FRIC_PERIODIQUE_SIGGEN s26_36_FONDPLAT_0FRIC_PERIODIQUE_SIGGEN.20180303
+# compress_config S26 SCS s26_SCS.20180515
+# compress_config S26 TAIWAN s26_TAIWAN.20180515
+# compress_config S26 NH_MAUPAS s26_NH_MAUPAS_SOLITON_KANARSKA2007_20180902
+#./compress_config S26 NONE symphonie_v240
+#./compress_config S26 NONE symphonie_v241_20181211
+#./compress_config S26 NONE symphonie_v242_20181220
+#./compress_config S26 KEPS1DV symphonie_keps1dv_20190113
+#./compress_config S26 NONE symphonie_v243_20190114
+#./compress_config S26 NONE symphonie_v244_20190122
+#./compress_config S26 NONE symphonie_v245_20190209
+#./compress_config S26 NONE symphonie_v246_20190222
+#./compress_config SYMPHONIE NONE symphonie_v247_20190303
+#./compress_config SYMPHONIE NONE symphonie_v248_20190304
+#./compress_config SYMPHONIE NONE symphonie_v249_20190308
+#./compress_config SYMPHONIE NONE symphonie_v250_20190403
+#./compress_config SYMPHONIE NONE symphonie_v251_20190411
+#./compress_config SYMPHONIE NONE symphonie_v252_20190423
+#./compress_config SYMPHONIE TOYMODEL symphonie_toymodel_v252_20190429
+#./compress_config SYMPHONIE NONE symphonie_v253_20190508
+#./compress_config SYMPHONIE NONE symphonie_v254_20190512
+#./compress_config SYMPHONIE NONE symphonie_v255_20190526
+#./compress_config SYMPHONIE NONE symphonie_v256_20190611
+#./compress_config SYMPHONIE NONE symphonie_v257_20190709
+#./compress_config SYMPHONIE NONE symphonie_v258_20190719
+#./compress_config SYMPHONIE NONE symphonie_v259_20191001
+#./compress_config SYMPHONIE NONE symphonie_v260_20191019
+#./compress_config SYMPHONIE NONE symphonie_v261_20191023
+#./compress_config SYMPHONIE NONE symphonie_v262_20191024
+#./compress_config SYMPHONIE NONE symphonie_v263_20191024
+#./compress_config SYMPHONIE NONE symphonie_v264_20191028
+#./compress_config SYMPHONIE NONE symphonie_v265_20191101
+#./compress_config SYMPHONIE NONE symphonie_v267_20191119
+#./compress_config SYMPHONIE NONE symphonie_v268_20191124
+#./compress_config SYMPHONIE NONE symphonie_v269_20191211
+#./compress_config SYMPHONIE NONE symphonie_v270_20191213
+#./compress_config SYMPHONIE NONE symphonie_v271_20191215
+#./compress_config SYMPHONIE NONE symphonie_v272_20200118
+#./compress_config SYMPHONIE NONE symphonie_v273_20200207
+#./compress_config SYMPHONIE NONE symphonie_v274_20200210
+#./compress_config SYMPHONIE NONE symphonie_v275_20200303
+#./compress_config SYMPHONIE NONE symphonie_v279_20200425
+#./compress_config SYMPHONIE NONE symphonie_v281_20200507
+#./compress_config SYMPHONIE NONE symphonie_v283_20200515
+#./compress_config SYMPHONIE NONE symphonie_v285_20200609
+#./compress_config SYMPHONIE NONE symphonie_v286_20200701
+#./compress_config SYMPHONIE NONE symphonie_v287_20200906
+#./compress_config SYMPHONIE NONE symphonie_v288_20200917
+#./compress_config SYMPHONIE NONE symphonie_v289_20201001
+#./compress_config SYMPHONIE NONE symphonie_v290_20201031
+#./compress_config SYMPHONIE_v291 RECTIMAR symphonie_rectimar_v291_20201112
+#./compress_config SYMPHONIE_v292 NONE symphonie_v292_20201122
+#./compress_config SYMPHONIE_v295 NONE symphonie_v295_20210201
+#./compress_config SYMPHONIE NONE symphonie_v296_20210302
+#./compress_config SYMPHONIE NONE symphonie_v297_20210307
+#./compress_config SYMPHONIE NONE symphonie_v298_20210308
+#./compress_config SYMPHONIE NONE symphonie_v299_20210321
+#./compress_config SYMPHONIE NONE symphonie_v300_20210324
+#./compress_config SYMPHONIE_v301 TEST_ADVECTION symphonie_test_advection_v301_20210406
+#./compress_config SYMPHONIE NONE symphonie_v301_20210429
+#./compress_config SYMPHONIE NONE symphonie_v302_20210529
+#./compress_config SYMPHONIE NONE symphonie_v303_20210805
+#./compress_config SYMPHONIE NONE symphonie_v304_20210811
+#./compress_config SYMPHONIE NONE symphonie_v305_20210823
+#./compress_config SYMPHONIE NONE symphonie_v306_20210823
+#./compress_config SYMPHONIE NONE symphonie_v307_20210827
+#./compress_config SYMPHONIE NONE symphonie_v308_20210915
+#./compress_config SYMPHONIE NONE symphonie_v309_20211012
+#./compress_config SYMPHONIE NONE symphonie_v310_20211105
+#./compress_config SYMPHONIE_v310 NONE symphonie_v310_20211112
+#./compress_config SYMPHONIE_v310 POUR_JULIETTE symphonie_pour_juliette_v310_20211115
+#./compress_config SYMPHONIE_v311 POUR_JULIETTE symphonie_pour_juliette_v311_20211116
+#./compress_config SYMPHONIE_v311 NONE symphonie_v311_20211116
+#./compress_config SYMPHONIE_v312 NONE symphonie_v312_20211120
+#./compress_config SYMPHONIE_v315 NONE symphonie_v315_20211210
+#./compress_config SYMPHONIE_v318 NONE symphonie_v318_20211223
+#./compress_config SYMPHONIE_v319 NONE symphonie_v319_20211227
+#./compress_config SYMPHONIE_v320 NONE symphonie_v320_20220103
+#./compress_config SYMPHONIE_v321 NONE symphonie_v321_20220122
+#./compress_config SYMPHONIE_v322 NONE symphonie_v322_20220125
+#./compress_config SYMPHONIE_v323 NONE symphonie_v323_20220126
+#./compress_config SYMPHONIE_v324 NONE symphonie_v324_20220212
+#./compress_config SYMPHONIE_v325 NONE symphonie_v325_20220213
+#./compress_config SYMPHONIE_v326 NONE symphonie_v326_20220215
+#./compress_config SYMPHONIE_v327 NONE symphonie_v327_20220219
+#./compress_config SYMPHONIE_v328 NONE symphonie_v328_20220223
+#./compress_config SYMPHONIE_v329 NONE symphonie_v329_20220223
+#./compress_config SYMPHONIE_v330 NONE symphonie_v330_20220224
+#./compress_config SYMPHONIE_v331 NONE symphonie_v331_20220227
+#./compress_config SYMPHONIE_v332 NONE symphonie_v332_20220228
+#./compress_config SYMPHONIE_v333 NONE symphonie_v333_20220302
+#./compress_config SYMPHONIE_v334 NONE symphonie_v334_20220304
+#./compress_config SYMPHONIE_v335 NONE symphonie_v335_20220307
+#./compress_config SYMPHONIE_v336 NONE symphonie_v336_20220308
+#./compress_config SYMPHONIE_v337 NONE symphonie_v337_20220318
+#./compress_config SYMPHONIE_v338 NONE symphonie_v338_20220320
+#./compress_config SYMPHONIE_v339 NONE symphonie_v339_20220324
+#./compress_config SYMPHONIE_v340 NONE symphonie_v340_20220327
+#./compress_config SYMPHONIE_v341 NONE symphonie_v341_20220401
+#./compress_config SYMPHONIE_v342 NONE symphonie_v342_20220403
+#./compress_config SYMPHONIE_v343 NONE symphonie_v343_20220404
+#./compress_config SYMPHONIE_v344 NONE symphonie_v344_20220405
+#./compress_config SYMPHONIE_v345 NONE symphonie_v345_20220408
+#./compress_config SYMPHONIE_v346 NONE symphonie_v346_20220427
+#./compress_config SYMPHONIE_v347 NONE symphonie_v347_20220518
+#./compress_config SYMPHONIE_v347 BATHY_VARIABLE symphonie_cas_test
+#./compress_config SYMPHONIE_v348 NONE symphonie_v348_20220621
+#./compress_config SYMPHONIE_v349 NONE symphonie_v349_20220702
+#./compress_config SYMPHONIE_v350 NONE symphonie_v350_20220725
+#./compress_config SYMPHONIE_v351 NONE symphonie_v351_20220815
+#./compress_config SYMPHONIE_v352 NONE symphonie_v352_20220819
+#./compress_config SYMPHONIE_v353 NONE symphonie_v353_20220904
+#./compress_config SYMPHONIE_v354 NONE symphonie_v354_20220917
+#./compress_config SYMPHONIE_v355 NONE symphonie_v355_20221030
+#./compress_config SYMPHONIE_v357 NONE symphonie_v357_20221025
+#./compress_config SYMPHONIE_v358 NONE symphonie_v358_20221030
+#./compress_config SYMPHONIE_v359 NONE symphonie_v359_20221206
+#./compress_config SYMPHONIE_v360 NONE symphonie_v360_20221212
+#./compress_config SYMPHONIE_v361 NONE symphonie_v361_20230103
+#./compress_config SYMPHONIE_v362 NONE symphonie_v362_20230106
+#./compress_config SYMPHONIE_v363 NONE symphonie_v363_20230115
+#./compress_config SYMPHONIE_v364 NONE symphonie_v364_20230117
+#./compress_config SYMPHONIE_v365 NONE symphonie_v365_20230106
+#./compress_config SYMPHONIE_v366 NONE symphonie_v366_20230218
+#./compress_config SYMPHONIE_v367 NONE symphonie_v367_20230323
+ ./compress_config SYMPHONIE_v368 NONE symphonie_v368_20230423

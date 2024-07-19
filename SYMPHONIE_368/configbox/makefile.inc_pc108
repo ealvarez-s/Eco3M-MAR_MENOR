@@ -1,0 +1,48 @@
+#__________________________________________________________
+#__________________________________________________________
+# Options de compilations: parametrer F77FLAGS
+#__________________________________________________________
+# Intel version
+# EOS version : 
+#######################################################################################################################################################################
+# Currently Loaded Modulefiles:
+#  1) intel/16.1.1             2) intelmpi/5.1.2.150       3) hdf5/1.8.14_intelmpi     4) intel/mkl.11.0.5         5) netcdf/4.3.2             6) pnetcdf/1.5.0_intelmpi
+#######################################################################################################################################################################
+
+
+# Compileur 
+#F90=mpif90  
+F90=mpiifort
+
+# Config
+CONF=REGION
+COMP=IFORT
+COMPMOD=-module
+
+
+# Optimisatinos, debug, ... flags
+# -zero (initialise les variables locales) -ftrapuv (voir si les variables ne sont pas utilisees)
+ F77FLAGS= -g -traceback -O0 -ftrapuv -fpe0 -check bounds
+#F77FLAGS= -O2 -traceback -fp-model precise
+
+# parallel netcdf and netcdf librairie
+#LIB=/home/softs/intel/lib/libpnetcdf.a /home/softs/intel/lib64/libnetcdff.a -lnetcdf -lnetcdff $(OASISLIB)
+# Dessous la version de BASE
+#LIB=/home/softs/lib64/libpnetcdf.a /home/softs/lib64/libnetcdff.a /home/softs/lib64/libnetcdf.a -lcurl -lhdf5 -lhdf5_hl $(OASISLIB)
+# Janvier 2019 version intel-18... 
+LIB=/home/softs/intel-18.0.2/lib64/libnetcdff.a  /home/softs/intel-18.0.2/lib64/libnetcdf.a  /home/softs/intel-18.0.2/lib64/libpnetcdf.a -lcurl -lhdf5 -lhdf5_hl $(OASISLIB)
+
+# Include for netcdf.h directory
+#NETINC=-I/home/softs/include
+# Dessous la version de BASE
+#NETINC=-I/home/softs/intel-12/openmpi-2.1.5/include
+# Janvier 2019 version intel-18...
+NETINC=-I/home/softs/intel-18.0.2/include
+
+#cas particulier portable pmx
+#LIB=/home/softs/intel-13.1.0/lib/libpnetcdf.a -lnetcdff -lnetcdf  -lstdc++
+
+
+#__________________________________________________________
+#__________________________________________________________
+

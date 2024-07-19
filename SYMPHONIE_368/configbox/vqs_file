@@ -1,0 +1,16 @@
+https://docs.google.com/document/d/1lCiiOzhpXSxY0fMnc9iKGCnMSZWYbfQBy1ypdYAXQG0/edit
+5     2    ! nombre de h, nombre de regions
+...........................................
+10. 40. 10000. 0.01 ! lon, lat, dist(km), weight
+4773. -4773. 
+4000. -4773. 
+3000. -4773. 
+1500. -4773.
+10.    20.
+...........................................
+18.112885 41.450274 250. 1. ! lon, lat, dist(km), weight
+4773. -4773. 
+1200. -4773.
+1000.  63.
+150.   63.
+10.    20.

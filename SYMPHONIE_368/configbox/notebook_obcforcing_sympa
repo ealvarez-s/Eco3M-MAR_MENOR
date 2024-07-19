@@ -1,0 +1,17 @@
+*******************************************************************************
+Large scale OGCM files in the Open Boundary Conditions:
+*******************************************************************************
+Set the following parameter to 1 to add the OGCM forcing (0 otherwise):
+0                  !  1=on  0=off                                       IOBC_AF
+2                  !  2="online interpolation"
+sympa              !  OGCM key
+../../../PRODELTA/list_ogcm_uvts
+../../../PRODELTA/list_ogcm_grid
+none
+6.                 ! Periodicity (hours) of the ogcm fields           OBCINFO(1)
+...............................................................................
+Date of the first field in the lists:
+Y     M     D      H      M    S
+2007  11    03     06     00   00 
+Add the Inverse Barometer if not contained in the ssh ogcm fied:
+1                  ! 1=add the BI   0=otherwise                       BI_ONOFF

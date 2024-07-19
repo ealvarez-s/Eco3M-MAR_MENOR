@@ -1,0 +1,76 @@
+1787,1861d1786
+< Ceyhan
+< 36.5613 35.561   (ref debit: http://www.fao.org/docrep/field/003/S8479E/S8479E07.htm)
+<        5 ! distance (grid indexes) from the mouth where upw
+<     180. ! Default Value (if no river file) River discharge
+<    10.000 ! In case of an additionnal water way, give the wa
+<     0.000 ! Incoming salinity
+<     8.000 ! Annual minimum value of the incoming temperature
+<         2 ! Month of the annual minimum value of the incomin
+<    22.000 ! Annual maximim value of the incoming temperature
+<         0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+<         0 ! 1 if a data discharge file is available, 0 other
+<  24.      ! Discharge data file periodicity (hours)
+< ../../../../FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+< 1998  01    01     12     00      00  ! Year Month Day Hour
+< **************************************************************************
+< Seyhan
+< 36.7107 34.9055 (ref: Yuce et al. American Journal of Engineering, Technology and Society.  Vol. 2, No. 4, 2015, pp. 77-84.)  
+<        5 ! distance (grid indexes) from the mouth where upw
+<     146. ! Default Value (if no river file) River discharge
+<    10.000 ! In case of an additionnal water way, give the wa
+<     0.000 ! Incoming salinity
+<     8.000 ! Annual minimum value of the incoming temperature
+<         2 ! Month of the annual minimum value of the incomin
+<    22.000 ! Annual maximim value of the incoming temperature
+<         0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+<         0 ! 1 if a data discharge file is available, 0 other
+<  24.      ! Discharge data file periodicity (hours)
+< ../../../../FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+< 1998  01    01     12     00      00  ! Year Month Day Hour
+< **************************************************************************
+< Koprucay
+< 36.828 31.1734     (Ref debit Wikipedia)
+<        5 ! distance (grid indexes) from the mouth where upw
+<     117. ! Default Value (if no river file) River discharge
+<    10.000 ! In case of an additionnal water way, give the wa
+<     0.000 ! Incoming salinity
+<     8.000 ! Annual minimum value of the incoming temperature
+<         2 ! Month of the annual minimum value of the incomin
+<    22.000 ! Annual maximim value of the incoming temperature
+<         0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+<         0 ! 1 if a data discharge file is available, 0 other
+<  24.      ! Discharge data file periodicity (hours)
+< ../../../../FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+< 1998  01    01     12     00      00  ! Year Month Day Hour
+< **************************************************************************
+< Gediz
+< 38.5854 26.818  (Debit estime de: Modeling Scenarios for Water Allocation in the Gediz Basin, Turkey)
+<        5 ! distance (grid indexes) from the mouth where upw
+<     10. ! Default Value (if no river file) River discharge
+<    10.000 ! In case of an additionnal water way, give the wa
+<     0.000 ! Incoming salinity
+<     8.000 ! Annual minimum value of the incoming temperature
+<         2 ! Month of the annual minimum value of the incomin
+<    22.000 ! Annual maximim value of the incoming temperature
+<         0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+<         0 ! 1 if a data discharge file is available, 0 other
+<  24.      ! Discharge data file periodicity (hours)
+< ../../../../FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+< 1998  01    01     12     00      00  ! Year Month Day Hour
+< **************************************************************************
+< Buyuk Menderes (Méandre)
+< 37.5464 27.1991  (sais pas)
+<        5 ! distance (grid indexes) from the mouth where upw
+<     25. ! Default Value (if no river file) River discharge
+<    10.000 ! In case of an additionnal water way, give the wa
+<     0.000 ! Incoming salinity
+<     8.000 ! Annual minimum value of the incoming temperature
+<         2 ! Month of the annual minimum value of the incomin
+<    22.000 ! Annual maximim value of the incoming temperature
+<         0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+<         0 ! 1 if a data discharge file is available, 0 other
+<  24.      ! Discharge data file periodicity (hours)
+< ../../../../FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+< 1998  01    01     12     00      00  ! Year Month Day Hour
+< **************************************************************************

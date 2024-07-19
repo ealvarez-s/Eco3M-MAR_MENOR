@@ -1,0 +1,23 @@
+use "20080802_000000_geoz.nc"
+use "grille_geoz.nc"
+set win 1
+fill/lev=(-0.05)(-0.003,0.005,0.0005)(0.05) u_geos[i=169,j=100:220,d=1],latitude_u[i=169,j=100:220,d=2],depth_u[i=169,j=100:220,d=2]
+frame/file=ugeos1.gif
+
+use "20080802_000000_sigma.nc"
+use "grille_sigma.nc"
+set win 2
+fill/lev=(-0.05)(-0.003,0.005,0.0005)(0.05) u_geos[i=169,j=100:220,d=3],latitude_u[i=169,j=100:220,d=4],depth_u[i=169,j=100:220,d=4]
+frame/file=ugeos2.gif
+
+use "20080802_000000_sig0.nc"
+use "grille_sig0.nc"
+set win 3
+fill u_geos[i=169,j=100:220,d=5],latitude_u[i=169,j=100:220,d=6],depth_u[i=169,j=100:220,d=6]
+frame/file=ugeos3.gif
+
+use "20080802_000000_sigpom.nc"
+use "grille_sigpom.nc"
+set win 4
+fill/nolabels/lev=(-inf)(-0.003,0.005,0.0005)(inf) u_geos[i=169,j=100:220,d=7],latitude_u[i=169,j=100:220,d=8],depth_u[i=169,j=100:220,d=8]
+frame/file=ugeos4.gif

@@ -1,0 +1,9 @@
+ ! NOAA/PMEL TMAP
+ ! FERRET v6.93  
+ ! Linux 2.6.32-504.el6.x86_64 64-bit - 11/13/14
+ ! 15-May-20 10:29     
+
+use M2.Sreanalysis_2D.marine.nc
+shade/i=400:800/j=300:700 0.5*(flux_oi*flux_oi+flux_oj*flux_oj)^0.5
+!vector/i=400:800/j=300:700/xskip=10/yskip=10/length=4./color=white/ove flux_oi , flux_oj
+ vector/i=400:800/j=300:700/ove flux_oi , flux_oj

@@ -1,0 +1,52 @@
+#scp -r SOURCES configbox nodal_factors mkconfdir mkregiondir marsale@eos.calmip.univ-toulouse.fr:/tmpdir/marsale/S26_joseph_20170515/.
+#scp -r SOURCES UPDATE configbox marsale@eos.calmip.univ-toulouse.fr:/tmpdir/marsale/S26_bobshelf_20170308/.
+#scp s26.thau_gridgenerator.20180201.tar.gz marsale@eos.calmip.univ-toulouse.fr:/tmpdir/marsale/.
+#scp -r SOURCES kouj@eos.calmip.univ-toulouse.fr:/tmpdir/kouj/S26_patrick_205/.
+#scp -r configbox kouj@eos.calmip.univ-toulouse.fr:/tmpdir/kouj/S26_patrick_205/.
+#scp *compres* kouj@eos.calmip.univ-toulouse.fr:/tmpdir/kouj/S26_patrick_205/.
+#scp -r SOURCES marsale@eos.calmip.univ-toulouse.fr:/tmpdir/marsale/PATRICK_IMPORTANT/S26_NH_20171106/S26_HAMILTON_EBERSOLE/.
+#scp -r UPDATE  marsale@eos.calmip.univ-toulouse.fr:/tmpdir/marsale/PATRICK_IMPORTANT/S26_NH_20171106/S26_HAMILTON_EBERSOLE/.
+#scp -r SOURCES marsale@eos.calmip.univ-toulouse.fr:/tmpdir/marsale/PATRICK_IMPORTANT/S26_20180509_OLYMPE/.
+#scp -r configbox marsale@eos.calmip.univ-toulouse.fr:/tmpdir/marsale/PATRICK_IMPORTANT/S26_20180509_OLYMPE/.
+#scp * marsale@eos.calmip.univ-toulouse.fr:/tmpdir/marsale/PATRICK_IMPORTANT/S26_20180509_OLYMPE/.
+#scp s26_SCS.20180515.tar.gz  marsale@eos.calmip.univ-toulouse.fr:/tmpdir/marsale/PATRICK_IMPORTANT/.
+#scp -r SOURCES marsale@eos.calmip.univ-toulouse.fr:/tmpdir/marsale/PATRICK_IMPORTANT/S26_20180515_SCS/.
+#scp -r nodal_factors marsale@eos.calmip.univ-toulouse.fr:/tmpdir/marsale/PATRICK_IMPORTANT/S26_20180515_SCS/.
+#scp -r SOURCES marsale@eos.calmip.univ-toulouse.fr:/tmpdir/marsale/PATRICK_IMPORTANT/S26_20180515_SCS/.
+#scp -r configbox marsale@eos.calmip.univ-toulouse.fr:/tmpdir/marsale/PATRICK_IMPORTANT/S26_20180515_SCS/.
+#scp -r SOURCES configbox cestour@eos.calmip.univ-toulouse.fr:/tmpdir/cestour/CHALLENGE/S26/.
+#scp -r SOURCES configbox UPDATE marsale@eos.calmip.univ-toulouse.fr:/tmpdir/marsale/PATRICK_IMPORTANT/S26_NH_20171106/S26_HALLER2002_ARTICLE_EN_CONSTRUCTION/.
+#scp -r FAIRE_HOT_RESTART cestour@eos.calmip.univ-toulouse.fr:/tmpdir/cestour/CHALLENGE/S26/.
+#scp -r SOURCES configbox UPDATE marsale@eos.calmip.univ-toulouse.fr:/tmpdir/marsale/AMICOBIO_LEGOS/S26_VERSION_MESOCHALLENGE/.
+#scp -r SOURCES configbox UPDATE nodal_factor* marsale@eos.calmip.univ-toulouse.fr:/tmpdir/marsale/PATRICK_IMPORTANT/SVNU_THAI/SYMPHONIE/.
+#scp -r SOURCES configbox marsale@eos.calmip.univ-toulouse.fr:/tmpdir/marsale/PATRICK_IMPORTANT/SVNU_THAI/SYMPHONIE_v235/.
+#scp -r SOURCES configbox toduy@olympe.calmip.univ-toulouse.fr:/tmpdir/toduy/VER_V233_modifiled/S26/.
+#scp -r SOURCES configbox marsale@olympe.calmip.univ-toulouse.fr:/tmpdir/marsale/PATRICK_IMPORTANT/S26_OBC_V242/.
+#scp -r SOURCES UPDATE configbox marsale@olympe.calmip.univ-toulouse.fr:/tmpdir/marsale/SYMPHONIE_v246_BS/.
+#scp -r nodal_factors marsale@olympe.calmip.univ-toulouse.fr:/tmpdir/marsale/SYMPHONIE_v246_BS/.
+#scp -r SOURCES configbox duhaut@olympe.calmip.univ-toulouse.fr:/tmpdir/duhaut/NGOC/SIMU_SYMPHONIE/SYMPHONIE_v235/.
+#scp -r SOURCES configbox marsale@olympe.calmip.univ-toulouse.fr:/tmpdir/marsale/PATRICK_IMPORTANT/THAU_REMICAILLIBOTTE/SYMPHONIE_v252/.
+#scp -r SOURCES configbox marsale@olympe.calmip.univ-toulouse.fr:/tmpdir/marsale/PATRICK_IMPORTANT/THAU_REMICAILLIBOTTE/SYMPHONIE_v253/.
+#scp -r SOURCES configbox marsale@olympe.calmip.univ-toulouse.fr:/tmpdir/marsale/PATRICK_IMPORTANT/THAU_REMICAILLIBOTTE/SYMPHONIE_v253/.
+#scp -r SOURCES UPDATE configbox weiss@olympe.calmip.univ-toulouse.fr:/tmpdir/weiss/MODELE/s26/.
+#scp -r SOURCES UPDATE configbox kouj@olympe.calmip.univ-toulouse.fr:/tmpdir/kouj/SYMPHONIE_259/.
+#scp -r faire_un_gif_anime kouj@olympe.calmip.univ-toulouse.fr:/tmpdir/kouj/LIBREVILLE_20191014/OFFLINE/.
+#scp -r nodal_factor* kouj@olympe.calmip.univ-toulouse.fr:/tmpdir/kouj/SYMPHONIE_259/.
+#scp -r SOURCES UPDATE configbox marsale@olympe.calmip.univ-toulouse.fr:/tmpdir/marsale/CLAUDE_IMPORTANT/S26_NOV18/.
+#scp -r SOURCES                  marsale@olympe.calmip.univ-toulouse.fr:/tmpdir/marsale/CLAUDE_IMPORTANT/S26_NOV18/.
+#scp -r SOURCES                  kouj@olympe.calmip.univ-toulouse.fr:/tmpdir/kouj/SYMPHONIE_260/.
+#scp -r SOURCES        configbox marsale@olympe.calmip.univ-toulouse.fr:/tmpdir/marsale/CLAUDE_IMPORTANT/S26_NOV18/.
+#scp -r FAIRE_HOT_RESTART kouj@olympe.calmip.univ-toulouse.fr:/tmpdir/kouj/SYMPHONIE_264/.
+#scp -r SOURCES                  kouj@olympe.calmip.univ-toulouse.fr:/tmpdir/kouj/SYMPHONIE_265/.
+#scp -r SOURCES FAIRE_HOT_RESTART configbox kouj@olympe.calmip.univ-toulouse.fr:/tmpdir/kouj/SYMPHONIE_266/.
+#scp -r SOURCES UPDATE configbox marsale@olympe.calmip.univ-toulouse.fr:/tmpdir/marsale/CLAUDE_IMPORTANT/SYMPHONIE_v266/.
+#scp -r FAIRE_HOT_RESTART cestour@olympe.calmip.univ-toulouse.fr:/tmpdir/cestour/S26_NOV18/.
+#scp -r SOURCES UPDATE configbox cestour@olympe.calmip.univ-toulouse.fr:/tmpdir/cestour/SYMPHONIE_V266_WW3/.
+#scp -r SOURCES UPDATE configbox cestour@olympe.calmip.univ-toulouse.fr:/tmpdir/cestour/SYMPHONIE_V268_LISA/.
+#scp -r SOURCES UPDATE           kouj@olympe.calmip.univ-toulouse.fr:/tmpdir/kouj/SYMPHONIE_268/.
+#scp -r SOURCES configbox marsale@olympe.calmip.univ-toulouse.fr:/tmpdir/marsale/PATRICK_IMPORTANT/SYMPHONIE_NH_2020/.
+#scp -r FAIRE_HOT_RESTART marsale@olympe.calmip.univ-toulouse.fr:/tmpdir/marsale/PATRICK_IMPORTANT/FONDPLAT_0FRIC_PERIODIQUE_SIGGEN.20180303/SYMPHONIE_v289/.
+#scp -r SOURCES UPDATE marsale@olympe.calmip.univ-toulouse.fr:/tmpdir/marsale/PATRICK_IMPORTANT/HamiltonEbersole2001TestCase_janvier2021/SYMPHONIE_V279_V294_HAMILTON_EBERSOLE_FIGURE9/.
+#scp -r SOURCES UPDATE configbox nodal_factors marsale@olympe.calmip.univ-toulouse.fr:/tmpdir/marsale/PATRICK_IMPORTANT/SYMPHONIE_v295_NEWPORT/.
+#scp compiler_symphonie_oasis_sur_nuwa.tar.gz marsale@olympe.calmip.univ-toulouse.fr:/tmpdir/marsale/PATRICK_IMPORTANT/SYMPHONIE_v295_NEWPORT/configbox/.
+ scp notebook_tide* marsale@olympe.calmip.univ-toulouse.fr:/tmpdir/marsale/PATRICK_IMPORTANT/SYMPHONIE_v295_NEWPORT/configbox/.

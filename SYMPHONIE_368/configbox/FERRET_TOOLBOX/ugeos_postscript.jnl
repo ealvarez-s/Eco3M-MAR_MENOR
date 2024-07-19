@@ -1,0 +1,9 @@
+use "20080802_000000_geoz.nc"
+use "grille_geoz.nc"
+go bold
+set mode metafile
+set win 1
+fill u_geos[i=50:150,j=169,d=1],longitude_u[i=50:150,j=169,d=2],depth_u[i=50:150,j=169,d=2]
+cancel mode metafile
+SPAWN Fprint -o ugeos.ps -l cps -p portrait -R metafile.plt
+SPAWN rm metafile.plt

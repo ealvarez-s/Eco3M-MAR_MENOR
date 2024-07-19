@@ -1,0 +1,11 @@
+#!/bin/bash
+DIR=$1
+ls $DIR/*nc > ../../../TAIWAN1/LIST/list_dir
+ls $DIR/*nc > ../../../TAIWAN1/LIST/list_foc
+ls $DIR/*nc > ../../../TAIWAN1/LIST/list_hs
+ls $DIR/*nc > ../../../TAIWAN1/LIST/list_t
+ls $DIR/*nc > ../../../TAIWAN1/LIST/list_taw
+ls $DIR/*nc > ../../../TAIWAN1/LIST/list_two
+ls $DIR/*nc > ../../../TAIWAN1/LIST/list_uss
+ls $DIR/*nc > ../../../TAIWAN1/LIST/list_hsw
+

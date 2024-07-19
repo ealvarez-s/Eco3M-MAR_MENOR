@@ -1,0 +1,53 @@
+************************************************ Do not touch this line please 1
+0   ! 1=activer modele de transport sedimentaire 0 sinon               IMODELBIO
+2   ! Nombre de variables                                                  KBMAX
+************************************************ Do not touch this line please 2
+Vitesses de chutes en m/s (convention de signe: <0) 1 ligne par variable
+-0.0       ! variable 1                                                   WSED()
+-0.0001    ! variable 2
+************************************************ Do not touch this line please 3
+Concentration dans chaque fleuve. 
+Une ligne de séparation par fleuve puis 1 ligne par variable:
+fleuve1:
+ 00.       ! variable 1                                              RIVER_BIO()
+ 00.       ! variable 2
+fleuve2:
+ 00.       ! variable 1
+ 00.       ! variable 2
+fleuve3:
+ 00.       ! variable 1
+100.       ! variable 2
+fleuve4:
+ 00.       ! variable 1
+ 00.       ! variable 2
+fleuve5:
+ 00.       ! variable 1
+ 00.       ! variable 2
+************************************************ Do not touch this line please 4
+Disposer des points sources pour faire des nappes de dipersion
+3          ! nombre de points source. Une ligne de separation par source: KSOMAX
+................................................................................
+source 1:
+0 110 19  ! si 1 latitude & longitude de la source si 0 points de grille
+1 -50. -0.! si 1 prof en mètres si 0 niveaux verticaux min et max
+1  2      ! numero min et max des variables concernées
+100.      ! concentration de la source
+2004  12    15     06     00      00   Date d'apparition an/mois/j/h/m/s
+2004  12    15     06     30      00   Date d'extinction an/mois/j/h/m/s
+source 2:
+0 110 20      ! si 1 latitude & longitude de la source si 0 points de grille
+1 -50. 0.     ! si 1 prof en mètres si 0 niveaux verticaux min et max
+1  2          ! numero min et max des variables concernées
+100.          ! concentration de la source
+2004  12    15     06     00      00   Date d'apparition an/mois/j/h/m/s
+2004  12    15     06     30      00   Date d'extinction an/mois/j/h/m/s
+source 3:
+0 110 21      ! si 1 latitude & longitude de la source si 0 points de grille
+1 -50. 0.     ! si 1 prof en mètres si 0 niveaux verticaux min et max
+1  2          ! numero min et max des variables concernées
+100.          ! concentration de la source
+2004  12    15     06     00      00   Date d'apparition an/mois/j/h/m/s
+2004  12    15     06     30      00   Date d'extinction an/mois/j/h/m/s
+************************************************ Do not touch this line please 5
+
+

@@ -1,0 +1,26 @@
+******************************************************************************
+0                   ! Nbre de bouees                                      KBOMAX
+******************************************************************************
+180                 ! position archivée toutes les X secondes dans bouees.out
+******************************************************************************
+42.9 6.0 -30. 0     ! bouton4=1: i j k, bouton4=0: lat lon z de la bouee
+2004 12 15 03 00 00 ! date de "lacher" an mois jour heure minute seconde
+******************************************************************************
+42.9 6.0 -30. 0     ! bouton4=1: i j k, bouton4=0: lat lon z de la bouee
+2004 12 20 03 00 00 ! date de "lacher" an mois jour heure minute seconde
+******************************************************************************
+42.9 6.0 -30. 0     ! bouton4=1: i j k, bouton4=0: lat lon z de la bouee
+2004 12 25 03 00 00 ! date de "lacher" an mois jour heure minute seconde
+******************************************************************************
+42.9 6.0 -30. 0     ! bouton4=1: i j k, bouton4=0: lat lon z de la bouee
+2004 12 30 03 00 00 ! date de "lacher" an mois jour heure minute seconde
+******************************************************************************
+42.9 6.0 -30. 0     ! bouton4=1: i j k, bouton4=0: lat lon z de la bouee
+2004 01 05 03 00 00 ! date de "lacher" an mois jour heure minute seconde
+******************************************************************************
+42.9 6.0 -30. 0     ! bouton4=1: i j k, bouton4=0: lat lon z de la bouee
+2004 01 10 03 00 00 ! date de "lacher" an mois jour heure minute seconde
+******************************************************************************
+42.9 6.0 -30. 0     ! bouton4=1: i j k, bouton4=0: lat lon z de la bouee
+2004 01 15 03 00 00 ! date de "lacher" an mois jour heure minute seconde
+******************************************************************************

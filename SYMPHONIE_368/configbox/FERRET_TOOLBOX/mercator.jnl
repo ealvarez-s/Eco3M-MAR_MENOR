@@ -1,0 +1,8 @@
+use iaea-PSY4V1R3_1dAV_20110309_20110310_gridS_R20110316.nc
+use iaea-PSY4V1R3_1dAV_20110309_20110310_gridT_R20110316.nc
+use iaea-PSY4V1R3_1dAV_20110309_20110310_gridU_R20110316.nc
+use iaea-PSY4V1R3_1dAV_20110309_20110310_gridV_R20110316.nc
+fill/k=1/i=130:230/j=40:180 VOTEMPER[d=2]
+vector/ove/k=1/xskip=2/yskip=2/length=2 VOZOCRTX[d=3],VOMECRTY[d=4]
+frame/file="Imagetest1.gif"
+q

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#CONF="GASCOGNE"
+CONF=$1
+
+rm -r RDIR/$CONF
+rm -r UDIR/$CONF
+rm -r CDIR_F95/$CONF
+rm -r CDIR_IFORT/$CONF
+rm -r CDIR_GFORTRAN/$CONF
+
+rm RDIR/*
+rm -r RDIR/tmp
+rm -r RDIR/restart_input
+rm -r RDIR/restart_output
+rm UDIR/*
+rm CDIR_F95/*
+rm CDIR_IFORT/*
+rm CDIR_GFORTRAN/*

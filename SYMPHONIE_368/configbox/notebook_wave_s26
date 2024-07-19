@@ -1,0 +1,38 @@
+  - Interpolation of the wave model outputs on the symphonie model grid  -
+______________________________________________________________________________
+1                    ! 0: off / 1: on                                IWVE
+ww3_iowaga           ! wave model type
+1                    ! wave obc type                                 WAVE_OBC_TYPE
+..............................................................................
+/data/marp/ww3_heloise_MED-UG/list_dir
+/data/marp/ww3_heloise_MED-UG/list_foc
+/data/marp/ww3_heloise_MED-UG/list_hs
+/data/marp/ww3_heloise_MED-UG/list_t
+/data/marp/ww3_heloise_MED-UG/list_taw
+/data/marp/ww3_heloise_MED-UG/list_two
+/data/marp/ww3_heloise_MED-UG/list_uss
+/data/marp/ww3_heloise_MED-UG/list_hsw
+
+
+Notice:
+http://sirocco.omp.obs-mip.fr/outils/Symphonie/Documentation/notebook.htm#wave
+
+wave obc type:
+
+WAVE_OBC_TYPE=1:
+The forcing fields did not take the wave effect into account
+
+WAVE_OBC_TYPE=2:
+The forcing fields took the wave effect into account and provide Lagrangian currents
+
+WAVE_OBC_TYPE=3:
+The forcing fields took the wave effect into account and provide eulerian currents
+
+/data/marp/ww3_heloise_MED-UG/list_dir
+/data/marp/ww3_heloise_MED-UG/list_foc
+/data/marp/ww3_heloise_MED-UG/list_hs
+/data/marp/ww3_heloise_MED-UG/list_t
+/data/marp/ww3_heloise_MED-UG/list_taw
+/data/marp/ww3_heloise_MED-UG/list_two
+/data/marp/ww3_heloise_MED-UG/list_uss
+/data/marp/ww3_heloise_MED-UG/list_hsw

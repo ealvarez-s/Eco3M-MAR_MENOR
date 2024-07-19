@@ -1,0 +1,32 @@
+#__________________________________________________________
+#__________________________________________________________
+# Options de compilations: parametrer F77FLAGS
+#__________________________________________________________
+# gfortran version
+# nuwa version 
+###########################################################
+# Currently Loaded Modulefiles:
+#  1) gnu/4.7.2(default)   2) gnu_ompi/1.6.3       3) netcdf/4.1.3
+##########################################################
+
+# Compillateur 
+F90=mpif90
+
+# Config
+CONF=XXXXX
+COMP=GFORTRAN
+COMPMOD=-J
+
+
+# Optimisatinos, debug, ... flags
+# DO NOT USE -O3  optimization
+F77FLAGS= -O2 -fbacktrace -ffree-line-length-none
+
+# parallel netcdf and netcdf librairie
+LIB=/home2/ocean/softs/gnu/lib/libpnetcdf.a -L/usr/local/netcdf4-tools/lib -lnetcdff -lnetcdf
+
+# Include repertoire pour netcdf.h, ...
+NETINC=-I/usr/local/netcdf4-tools/include -I/home2/ocean/softs/gnu/include/
+
+#__________________________________________________________
+#__________________________________________________________

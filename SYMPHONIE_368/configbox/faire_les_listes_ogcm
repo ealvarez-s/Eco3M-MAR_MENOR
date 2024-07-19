@@ -1,0 +1,10 @@
+DIR=$1
+echo $DIR
+ls $DIR/*gridT*nc  > list_var_T
+ls $DIR/*gridS*nc  > list_var_S
+ls $DIR/*gridU*nc  > list_var_U
+ls $DIR/*gridV*nc  > list_var_V
+ls $DIR/*grid2D*nc > list_var_SSH
+ls $DIR/*gridT*nc  > list_grid_T
+ls $DIR/*gridU*nc  > list_grid_U
+ls $DIR/*gridV*nc  > list_grid_V

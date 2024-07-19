@@ -1,0 +1,8 @@
+#scp -r SOURCES UPDATE configbox marp@nuwa:/sirocco/marp/BS_POUR_NADIA/SYMPHONIE_v246/.
+#scp archives/symphonie_v247_20190303.tar.gz marp@nuwa:/sirocco/marp/BS_POUR_NADIA/.
+#scp -r SOURCES UPDATE configbox marp@nuwa:/sirocco/marp/SYMPHONIE_v249/.
+#scp -r SOURCES configbox marp@nuwa:/sirocco/marp/SYMPHONIE_v256/.
+#scp -r SOURCES configbox duht@nuwa:/sirocco/duht/SYMPHONIE/S26_v257/.
+#scp -r SOURCES configbox duht@nuwa:/sirocco/duht/SYMPHONIE/S26_v258/.
+#scp -r SOURCES UPDATE configbox marp@nuwa:/sirocco/marp/SYMPHONIE/.
+ scp -r SOURCES        configbox marp@nuwa:/sirocco/marp/SYMPHONIE/.

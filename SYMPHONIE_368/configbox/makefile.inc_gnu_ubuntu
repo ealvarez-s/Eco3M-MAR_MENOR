@@ -1,0 +1,27 @@
+#__________________________________________________________
+#__________________________________________________________
+# Options de compilations: parametrer F77FLAGS
+#__________________________________________________________
+# gfortran version
+
+# Compillateur 
+F90=mpif90
+
+# Config
+CONF=XXXXX
+COMP=GFORTRAN
+COMPMOD=-J
+
+
+# Optimisatinos, debug, ... flags
+# DO NOT USE -O3  optimization
+F77FLAGS= -O2 -fbacktrace -ffree-line-length-none
+
+# parallel netcdf and netcdf librairie
+LIB=/usr/local/lib/libpnetcdf.a -lnetcdff -lnetcdf
+
+# Include repertoire pour netcdf.h, ...
+NETINC=-I/usr/local/include -I/usr/include/
+
+#__________________________________________________________
+#__________________________________________________________

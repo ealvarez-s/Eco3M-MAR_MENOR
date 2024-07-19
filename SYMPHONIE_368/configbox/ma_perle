@@ -1,0 +1,10 @@
+mkdir tmp
+for i in *.F90
+do
+sed -e 's/stop/stop /g' $i > tmp/$i
+done
+for i in *.F90
+do
+mv tmp/$i $i
+done
+rm -r tmp

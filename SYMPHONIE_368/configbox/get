@@ -1,0 +1,2 @@
+cp ../../SOURCES/$1 .
+cp ../../UPDATE/$1 .

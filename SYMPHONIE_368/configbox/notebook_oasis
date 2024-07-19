@@ -1,0 +1,55 @@
+&notebook_oasis_names
+cl_model_name = 'symph1'
+cl_grid_name = 'sym1'
+/
+&notebook_cpl
+l_cpl_ocn_sst=.T.
+l_cpl_ocn_maskt=.FALSE.
+l_cpl_ocn_masku=.FALSE.
+l_cpl_ocn_maskv=.FALSE.
+l_cpl_ocn_ssh=.FALSE.
+l_cpl_ocn_ucur=.FALSE.
+l_cpl_ocn_vcur=.FALSE.
+l_cpl_atm_rain=.FALSE.
+l_cpl_atm_evap=.FALSE.
+l_cpl_atm_wat=.F.
+l_cpl_atm_rad=.F.
+l_cpl_atm_heat=.F.
+l_cpl_atm_ir=.F.
+l_cpl_atm_lat=.F.
+l_cpl_atm_sens=.FALSE.
+l_cpl_atm_pa=.FALSE.
+l_cpl_atm_fwsu=.F.
+l_cpl_atm_fwsv=.F.
+/
+
+! NOTE: cette version est celle de mon premier
+! cas test qui se resume à un envoi de la part
+! d'un modele n°1 à un modele n°2 se contentant de
+! recevoir. Le notebook ci-dessus est celui de
+! l'envoyeur. Le notebook du receveur etant:
+
+&notebook_oasis_names
+cl_model_name = 'symph2'
+cl_grid_name = 'sym2'
+/
+&notebook_cpl
+l_cpl_ocn_sst=.F.
+l_cpl_ocn_maskt=.FALSE.
+l_cpl_ocn_masku=.FALSE.
+l_cpl_ocn_maskv=.FALSE.
+l_cpl_ocn_ssh=.FALSE.
+l_cpl_ocn_ucur=.FALSE.
+l_cpl_ocn_vcur=.FALSE.
+l_cpl_atm_rain=.FALSE.
+l_cpl_atm_evap=.FALSE.
+l_cpl_atm_wat=.F.
+l_cpl_atm_rad=.F.
+l_cpl_atm_heat=.T.
+l_cpl_atm_ir=.F.
+l_cpl_atm_lat=.F.
+l_cpl_atm_sens=.FALSE.
+l_cpl_atm_pa=.FALSE.
+l_cpl_atm_fwsu=.F.
+l_cpl_atm_fwsv=.F.
+/

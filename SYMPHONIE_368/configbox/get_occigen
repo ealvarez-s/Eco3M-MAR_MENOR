@@ -1,0 +1,3 @@
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_GLOBMED_20170529/configbox/notebook_bathy.f .
+#scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/VIOLAINE/S26_v236/configbox/notebook_airseaflux_ecmwf_s26.f .
+ scp marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/FONDPLAT_0FRIC_PERIODIQUE_SIGGEN.20180303/SYMPHONIE_v295/configbox/notebook_tide* .

@@ -1,0 +1,77 @@
+********************************************************************************
+0         ! nb d'harmoniques maree (0 si la maree n'est pas simulee)
+********************************************************************************
+0   : 0 ondes+2 pot. 1 ondes+pot.astro, 2 ondes+pot.charge, 3 ondes     TIDEFORCES
+0   : 1 analyse harmonique activée. 0 sinon.                         TIDEANA_YESNO
+1   : Spinup (en jours) accordé avant de commencer l'analyse        TIDEANA_SPINUP
+0.5 : Echantillonage (en heures) analyse (si <=0 chaque itération)   TIDEANA_DELTA
+_______________________________________________________________________________
+/home/marp/simulations/GASCOGNE/TIDES/M2.nc
+/home/marp/simulations/GASCOGNE/TIDES/M2.nc
+/home/marp/simulations/GASCOGNE/TIDES/M2.nc
+/home/marp/simulations/GASCOGNE/TIDES/2000/M2_nodal.txt
+2                !nu nomemclature
+0.242334         !Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+/home/marp/simulations/GASCOGNE/TIDES/N2.nc
+/home/marp/simulations/GASCOGNE/TIDES/N2.nc
+/home/marp/simulations/GASCOGNE/TIDES/N2.nc
+/home/marp/simulations/GASCOGNE/TIDES/2000/N2_nodal.txt
+2                !nu nomemclature
+0.046398         !Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+/home/marp/simulations/GASCOGNE/TIDES/S2.nc
+/home/marp/simulations/GASCOGNE/TIDES/S2.nc
+/home/marp/simulations/GASCOGNE/TIDES/S2.nc
+/home/marp/simulations/GASCOGNE/TIDES/2000/S2_nodal.txt
+2                !nu nomemclature
+0.112841         !Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+/home/marp/simulations/GASCOGNE/TIDES/K2.nc
+/home/marp/simulations/GASCOGNE/TIDES/K2.nc
+/home/marp/simulations/GASCOGNE/TIDES/K2.nc
+/home/marp/simulations/GASCOGNE/TIDES/2000/K2_nodal.txt
+2                !nu nomemclature
+0.030704         !Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+/home/marp/simulations/GASCOGNE/TIDES/K1.nc
+/home/marp/simulations/GASCOGNE/TIDES/K1.nc
+/home/marp/simulations/GASCOGNE/TIDES/K1.nc
+/home/marp/simulations/GASCOGNE/TIDES/2000/K1_nodal.txt
+1                !nu nomemclature
+0.141565         !Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+/home/marp/simulations/GASCOGNE/TIDES/O1.nc
+/home/marp/simulations/GASCOGNE/TIDES/O1.nc
+/home/marp/simulations/GASCOGNE/TIDES/O1.nc
+/home/marp/simulations/GASCOGNE/TIDES/2000/O1_nodal.txt
+1                !nu nomemclature
+0.100514         !Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+/home/marp/simulations/GASCOGNE/TIDES/P1.nc
+/home/marp/simulations/GASCOGNE/TIDES/P1.nc
+/home/marp/simulations/GASCOGNE/TIDES/P1.nc
+/home/marp/simulations/GASCOGNE/TIDES/2000/P1_nodal.txt
+1                !nu nomemclature
+0.046843         !Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+/home/marp/simulations/GASCOGNE/TIDES/Q1.nc
+/home/marp/simulations/GASCOGNE/TIDES/Q1.nc
+/home/marp/simulations/GASCOGNE/TIDES/Q1.nc
+/home/marp/simulations/GASCOGNE/TIDES/2000/Q1_nodal.txt
+1                !nu nomemclature
+0.019256         !Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+/home/marp/simulations/GASCOGNE/TIDES/M4.nc
+/home/marp/simulations/GASCOGNE/TIDES/M4.nc
+/home/marp/simulations/GASCOGNE/TIDES/M4.nc
+/home/marp/simulations/GASCOGNE/TIDES/2000/M4_nodal.txt
+2                !nu nomemclature
+0.               !Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+
+
+
+
+Voir egalement doc en ligne:
+http://sirocco.omp.obs-mip.fr/outils/Symphonie/Documentation/notebook.htm#tide

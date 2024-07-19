@@ -1,0 +1,31 @@
+0         ! 1=Lagragian drifters routine is on (=0 otherwise)                                          ! DRIFTER_ONOFF
+notebook  ! initial mode: "notebook" or "fortran"                                                      ! DRIFTER_INITIAL_MODE
+180.      ! sampling (seconds) of the outputs (<0 if no ascii output)                                  ! DRIFTER_OUT_SAMPLING
+0         ! Output files format: 0= one file per drifter, 1= one file with all drifters per mpi rank, 2= a single netcdf file per sampling  ! drifter_output_files
+2         ! Runge-Kutta order (RK1, RK2 or RK4) for drifters time stepping. RK2 is recommended.        ! rungekutta_order
+1         ! Time steps ratio: drifters time step over momentum equations time step (i.e. dt_drf/dti_fw)! dt_drf_over_dti_fw
+0 6       ! 1/0 (on/off) and storage index in drifter_l array for individual buoancy vertical velocity ! flag_buo_w,id_wdrifter
+0         ! 1 = add tke-dependent random vertical velocity, 2 = KH-dependent radom w, 0 = no random w  ! drifter_random_w
+0         ! flag_stay_in_water=1 to prevent particles from settling on the bottom (0 otherwise)
+-- if "notebook" mode: give now the drifter list --- check that nbomax is big enough in parameter ----
+42.9 6.0 -30. 0     ! arg4=1: i j k, arg4=0: lat lon z of the drifter
+0.                  ! vertical_buoyancy_velocity
+2010 10 01 01 01 01 ! year,month,day,hour,minute,second
+42.9 6.0 -30. 0     ! arg4=1: i j k, arg4=0: lat lon z of the drifter
+0.                  ! vertical_buoyancy_velocity
+2010 10 01 01 01 01 ! year,month,day,hour,minute,second
+42.9 6.0 -30. 0     ! arg4=1: i j k, arg4=0: lat lon z of the drifter
+0.                  ! vertical_buoyancy_velocity
+2010 10 01 01 01 01 ! year,month,day,hour,minute,second
+42.9 6.0 -30. 0     ! arg4=1: i j k, arg4=0: lat lon z of the drifter
+0.                  ! vertical_buoyancy_velocity
+2010 10 01 01 01 01 ! year,month,day,hour,minute,second
+42.9 6.0 -30. 0     ! arg4=1: i j k, arg4=0: lat lon z of the drifter
+0.                  ! vertical_buoyancy_velocity
+2010 10 01 01 01 01 ! year,month,day,hour,minute,second
+42.9 6.0 -30. 0     ! arg4=1: i j k, arg4=0: lat lon z of the drifter
+0.                  ! vertical_buoyancy_velocity
+2010 10 01 01 01 01 ! year,month,day,hour,minute,second
+2  2  1   1         ! arg4=1: i j k, arg4=0: lat lon z of the drifter
+0.                  ! vertical_buoyancy_velocity
+2010 10 01 01 01 01 ! year,month,day,hour,minute,second

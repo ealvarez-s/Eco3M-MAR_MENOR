@@ -1,0 +1,4 @@
+use "20101101_000000.nc"
+use "../OFFLINE/grid.nc"
+set win 1
+fill tem[k=30,d=1],longitude_t[d=2],latitude_t[d=2]

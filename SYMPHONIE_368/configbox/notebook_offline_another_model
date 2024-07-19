@@ -1,0 +1,28 @@
+&notebook_offline
+!---------------------------------------------------------------------------------
+!set the "offline procedure" parameters:
+ioffline=2   ! 0=not used    | 1=create files | 2=read files               
+removetide=0 ! 0=total field | 1=remove tides from the total field      
+!---------------------------------------------------------------------------------
+!Files directory & name of the file containing the list of the offline file:
+directory_offline='../../../REGION/OFFLINE'
+   offlinefile(1)='../../../REGION/liste_u'
+   offlinefile(2)='../../../REGION/liste_v'
+   offlinefile(3)='../../../REGION/liste_t'
+   offlinefile(4)='../../../REGION/liste_s'
+   offlinefile(5)='../../../REGION/liste_ssh'
+   offlinefile(6)='../../../REGION/liste_kz'
+   offlinefile(7)='../../../REGION/liste_w'
+!---------------------------------------------------------------------------------
+! Relevant if ioffline=1: 
+! Additional variables (relevant if ioffline=1) : (yes=1, no=0)
+  ofl_rotation=0  ! rotated currents (eastward & northward) 
+  ofl_rhp=0       ! potential density
+!---------------------------------------------------------------------------------
+! Relevant if ioffline=2: 
+  flag_kz_enhanced=0 ! if=1 kz is enhanced by subroutine offline_kz_convect_adjust
+/
+Note: 1- no outputs if first periodicity <=0 (useful to let the spin-up pass)
+      2- When the lastest date is passed, we continue with the latest periodicity
+DO NOT MODIFY THE NEXT LINE AS IT IS THE SIGNAL EXPECTED BY S TO START THE TIME LIST!!!!
+Periodicity (hours) ! until yyyy / mm / dd / hh / mm / ss ! Don't touch this line 

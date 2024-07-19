@@ -1,0 +1,5 @@
+use lonlat.nc
+fill mask_t,LONGITUDE_T,LATITUDE_T
+contour/lev=(0 1200 20 -3)/color=0/ove/nolabel i_index_t[d=1],longitude_t[d=1],latitude_t[d=1]
+contour/lev=(0 1200 20 -3)/color=0/ove/nolabel j_index_t[d=1],longitude_t[d=1],latitude_t[d=1]
+

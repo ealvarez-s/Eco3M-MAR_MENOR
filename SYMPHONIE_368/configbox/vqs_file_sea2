@@ -1,0 +1,60 @@
+https://docs.google.com/document/d/1lCiiOzhpXSxY0fMnc9iKGCnMSZWYbfQBy1ypdYAXQG0/edit
+6     1    ! nombre de h, nombre de regions
+...........................................
+117. 7.  10000. 1. ! lon, lat, dist(km), weight
+10400. -10400.     ! bathy(m) , bathy enveloppe (m) Mes notes: H2/H1=1
+1000.  -10400.     ! bathy(m) , bathy enveloppe (m) Mes notes: H2/H1=10.4
+300.   -6000.      ! bathy(m) , bathy enveloppe (m)            H2/H1=20
+100.   -2000       ! bathy(m) , bathy enveloppe (m)            H2/H1=20
+20.    -800        ! bathy(m) , bathy enveloppe (m)            H2/H1=40
+1.     -200.       ! bathy(m) , bathy enveloppe (m)            H2/H1=200
+
+
+Note: pour cette distribution je recommande de choisir les coordonnees sigma simple.
+Donc dans notebook_vertcoord:
+igesig=0       ! 0=sigma coordinate  1=generalized coordinate      
+
+
+! Explications
+
+Ligne 1:
+117. 7.   lon0, lat0 de reference pour cette abaque
+10000.    Distance en km d'influence autour de lon0, lat0
+1.        Poids de cette abaque
+
+Les 2 lignes suivantes:
+10400. -10400. ! Ces 2 valeurs correspondent à la valeur max de la bathy (hmax)
+1000.  -10400.
+
+colonne 1 bathy vraie en metres
+colonne 2 est negative donc par convention il s'agit de la "bathymetrie enveloppe en metres"
+Si la bathy est comprise entre 10400m et 1000m, la bathy enveloppe est plate (10400m) autrement dit
+les niveaux sigma (deduit de la bathy enveloppe) seront plats, soit "grille Z" 
+
+Noter que le rapport 10400/1000 est de l'ordre de 10
+
+Ligne suivante:
+300.   -6000.
+Le rapport 6000/300 est de l'ordre de 20, contre 10 en ligne precedente. 
+L'augmentation du rapport signifie que la vraie bathy diminue plus vite que la bathy enveloppe.
+Il y aura donc moins de niveaux au dessus du fond pour h=300 que pour h=1000.
+A contrario le nombre de niveau serait resté le meme si le rapport etait reste le même (cas 100% sigma)
+
+Ligne suivante:
+100.   -2000       ! bathy(m) , bathy enveloppe (m)            H2/H1=20
+Le rapport, 20, ne change pas par rapport à la ligne précédente. Cela signifie que la bathy enveloppe
+est parallele à la vraie bathy entre 300m et 100m afin d'eviter de sauter trop de marches dans
+cette gamme partculière de bathy où on a à la fois de fortes pentes et une colonne d'eau relativement
+peu epaisse.
+
+Ligne suivante:
+20.    -800        ! bathy(m) , bathy enveloppe (m)            H2/H1=40
+Le rapport, 40, recommence à augmenter (à la ligne precedente on avait un rapport de 20)
+On recommence donc à sauter des marches
+
+
+Ligne suivante:
+1.     -200.       ! bathy(m) , bathy enveloppe (m)            H2/H1=200
+Le rapport, 200, continue d'augmenter (à la ligne precedente on avait un rapport de 40)
+On continue donc à sauter des marches
+

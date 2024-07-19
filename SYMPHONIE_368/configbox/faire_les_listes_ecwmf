@@ -1,0 +1,11 @@
+DIR=$1
+echo $DIR
+ls $DIR/*nc > liste_ecmwf_ssr
+ls $DIR/*nc > liste_ecmwf_ir
+ls $DIR/*nc > liste_ecmwf_u10m
+ls $DIR/*nc > liste_ecmwf_v10m
+ls $DIR/*nc > liste_ecmwf_p0m
+ls $DIR/*nc > liste_ecmwf_t2m
+ls $DIR/*nc > liste_ecmwf_dp2m
+ls $DIR/*nc > liste_ecmwf_rain
+

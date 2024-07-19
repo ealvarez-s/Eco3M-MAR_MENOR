@@ -1,0 +1,118 @@
+--------------------------------------------------------------------------------
+0   : 1=tides computed, 0 otherwise
+--------------------------------------------------------------------------------
+Forces:                                                                TIDEFORCES 
+1   : 0=obc+2pot, 1=obc+astro.pot, 2=obc+SLApot, 3=obc only, 4=pot only, 5 nothing but analysis
+--------------------------------------------------------------------------------
+Harmonic Reanalysis:
+1   : 1=perfom harmonic reanalysis. 0 otherwise                   TIDEANA_YESNO
+5   : Spinup (days) before starting harmonic reanalysis             TIDEANA_SPINUP
+0.1 : reanalysis time sampling (hours) (every iteration if <=0)      TIDEANA_DELTA
+--------------------------------------------------------------------------------
+Boundary conditions: standard or clamped (preliminary reanalysis procedure)
+1.  : 1=standard   0=clamped   0.xxx = partly clamped
+--------------------------------------------------------------------------------
+External field treatment: Interpolation or not? Velocity axis convention?
+1         : 1=interpolate 0=do not interpolate (if reanalysis on the same grid)
+alongaxis : Velocity components: alongaxis or earthaxis ?
+--------------------------------------------------------------------------------
+PATH ACCESS to the directories:
+directory of the external forcing files:
+../../../FES2012/
+directory of the "detiding" files (relevant if detiding not based on forcing files):
+nodirectory
+directory of the output (reanalysis) files:
+../../../FES2012/REGION/
+directory of the nodal parameters files:
+../../nodal_factors/2000/
+--------------------------------------------------------------------------------
+0                    ! 1=the following harmonic is selected, 0 otherwise
+M2.FES2012.elev.nc   ! ssh (and possibly lsa) input forcing file
+M2.FES2012.uv.nc     ! u,v input forcing file
+none                 ! "detiding" file (if "none" detiding is made with forcing files)
+M2.Sreanalysis.nc    ! Ouput reanalysis file
+none ! M2.FES2014.nc ! LSA file
+M2_nodal.txt         ! input nodal parameters file
+2                    ! nu nomemclature
+0.242334             ! Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+0                    ! 1=the following harmonic is selected, 0 otherwise
+N2.FES2012.elev.nc   ! ssh (and possibly lsa) input forcing file
+N2.FES2012.uv.nc     ! u,v input forcing file
+none                 ! "detiding" file (if "none" detiding is made with forcing files)
+N2.Sreanalysis.nc    ! Ouput reanalysis file
+none ! N2.FES2014.nc ! LSA file
+N2_nodal.txt         ! input nodal parameters file
+2                    ! nu nomemclature
+0.046398             ! Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+0                    ! 1=the following harmonic is selected, 0 otherwise
+S2.FES2012.elev.nc   ! ssh (and possibly lsa) input forcing file
+S2.FES2012.uv.nc     ! u,v input forcing file
+none                 ! "detiding" file (if "none" detiding is made with forcing files)
+S2.Sreanalysis.nc    ! Ouput reanalysis file
+none ! S2.FES2014.nc ! LSA file
+S2_nodal.txt         ! input nodal parameters file
+2                    ! nu nomemclature
+0.112841             ! Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+0                    ! 1=the following harmonic is selected, 0 otherwise
+K2.FES2012.elev.nc   ! ssh (and possibly lsa) input forcing file
+K2.FES2012.uv.nc     ! u,v input forcing file
+none                 ! "detiding" file (if "none" detiding is made with forcing files)
+K2.Sreanalysis.nc    ! Ouput reanalysis file
+none ! K2.FES2014.nc ! LSA file
+K2_nodal.txt         ! input nodal parameters file
+2                    ! nu nomemclature
+0.030704             ! Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+0                    ! 1=the following harmonic is selected, 0 otherwise
+K1.FES2012.elev.nc   ! ssh (and possibly lsa) input forcing file
+K1.FES2012.uv.nc     ! u,v input forcing file
+none                 ! "detiding" file (if "none" detiding is made with forcing files)
+K1.Sreanalysis.nc    ! Ouput reanalysis file
+none ! K1.FES2014.nc ! LSA file
+K1_nodal.txt         ! input nodal parameters file
+1                    ! nu nomemclature
+0.141565             ! Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+0                    ! 1=the following harmonic is selected, 0 otherwise
+O1.FES2012.elev.nc   ! ssh (and possibly lsa) input forcing file
+O1.FES2012.uv.nc     ! u,v input forcing file
+none                 ! "detiding" file (if "none" detiding is made with forcing files)
+O1.Sreanalysis.nc    ! Ouput reanalysis file
+none ! O1.FES2014.nc ! LSA file
+O1_nodal.txt         ! input nodal parameters file
+1                    ! nu nomemclature
+0.100514             ! Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+0                    ! 1=the following harmonic is selected, 0 otherwise
+P1.FES2012.elev.nc   ! ssh (and possibly lsa) input forcing file
+P1.FES2012.uv.nc     ! u,v input forcing file
+none                 ! "detiding" file (if "none" detiding is made with forcing files)
+P1.Sreanalysis.nc    ! Ouput reanalysis file
+none ! P1.FES2014.nc ! LSA file
+P1_nodal.txt         ! input nodal parameters file
+1                    ! nu nomemclature
+0.046843             ! Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+0                    ! 1=the following harmonic is selected, 0 otherwise
+Q1.FES2012.elev.nc   ! ssh (and possibly lsa) input forcing file
+Q1.FES2012.uv.nc     ! u,v input forcing file
+none                 ! "detiding" file (if "none" detiding is made with forcing files)
+Q1.Sreanalysis.nc    ! Ouput reanalysis file
+none ! Q1.FES2014.nc ! LSA file
+Q1_nodal.txt         ! input nodal parameters file
+1                    ! nu nomemclature
+0.019256             ! Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+0                    ! 1=the following harmonic is selected, 0 otherwise
+M4.FES2012.elev.nc   ! ssh (and possibly lsa) input forcing file
+M4.FES2012.uv.nc     ! u,v input forcing file
+none                 ! "detiding" file (if "none" detiding is made with forcing files)
+M4.Sreanalysis.nc    ! Ouput reanalysis file
+none ! M4.FES2014.nc ! LSA file
+M4_nodal.txt         ! input nodal parameters file
+2                    ! nu nomemclature
+0.                   ! Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________

@@ -1,0 +1,42 @@
+  - Interpolation of the wave model outputs on the symphonie model grid  -
+______________________________________________________________________________
+0                    ! 0: off / 1: on                                           (iwve)
+ww3_iowaga           ! wave model type                                          (txt_wavemodeltype)
+1                    ! wave obc type                                            (wave_obc_type)
+0                    ! wave model variables are 0=instantaneous 1=time-averaged (ww3_flagcumul)
+..............................................................................
+../../../REGION/list_dir
+../../../REGION/list_foc
+../../../REGION/list_hs
+../../../REGION/list_t
+../../../REGION/list_taw
+../../../REGION/list_two
+../../../REGION/list_uss
+../../../REGION/list_hsw
+
+! WARNING: the wave-current effect requires the "stokes" key compilation in the "makefile" file
+! ATTENTION si interaction courant-vagues activer la clef de compilation "stokes" dans makefile
+
+
+wave obc type:
+
+WAVE_OBC_TYPE=1:
+The forcing fields did not take the wave effect into account
+
+WAVE_OBC_TYPE=2:
+The forcing fields took the wave effect into account and provide Lagrangian currents
+
+WAVE_OBC_TYPE=3:
+The forcing fields took the wave effect into account and provide eulerian currents
+
+Exemple de script pour faire les listes:
+#!/bin/bash
+DIR=$1
+ls $DIR/*nc > ../../../REGION/list_dir
+ls $DIR/*nc > ../../../REGION/list_foc
+ls $DIR/*nc > ../../../REGION/list_hs
+ls $DIR/*nc > ../../../REGION/list_t
+ls $DIR/*nc > ../../../REGION/list_taw
+ls $DIR/*nc > ../../../REGION/list_two
+ls $DIR/*nc > ../../../REGION/list_uss
+ls $DIR/*nc > ../../../REGION/list_hsw

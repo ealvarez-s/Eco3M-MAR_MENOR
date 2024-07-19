@@ -1,0 +1,31 @@
+#!/bin/bash
+
+#CONF="MEDOC"
+CONF=$1
+
+mkdir RDIR/$CONF
+mkdir RDIR/$CONF/tmp
+mkdir RDIR/$CONF/restart_input
+mkdir RDIR/$CONF/restart_output
+mkdir RDIR/$CONF/restart_outbis
+sed -e 's/REGION/'$CONF'/g' configbox/notebook_list.f > RDIR/$CONF/notebook_list.f
+
+mkdir UDIR/$CONF
+#cp SOURCES/module_parameter.F90 UDIR/$CONF/.
+#cp UPDATE/module_parameter.F90 UDIR/$CONF/.
+#cp configbox/makefile UDIR/$CONF/.
+#cp configbox/makefile.inc* UDIR/$CONF/.
+#cp configbox/parameter UDIR/$CONF/.
+cp configbox/get UDIR/$CONF/.
+cp configbox/s RDIR/$CONF/.
+cp configbox/key_list_author RDIR/$CONF/.
+#cp configbox/namelist_parameter_grid RDIR/$CONF/.
+sed -e 's/REGION/'$CONF'/g' configbox/makefile > UDIR/$CONF/makefile
+sed -e 's/REGION/'$CONF'/g' configbox/makefile.inc > UDIR/$CONF/makefile.inc
+sed -e 's/REGION/'$CONF'/g' configbox/makefile.inc_gnu_gen > UDIR/$CONF/makefile.inc_gnu_gen
+
+mkdir CDIR_F95/$CONF
+mkdir CDIR_IFORT/$CONF
+mkdir CDIR_GFORTRAN/$CONF
+
+echo $1 > RDIR/$CONF/title_for_netcdf_files

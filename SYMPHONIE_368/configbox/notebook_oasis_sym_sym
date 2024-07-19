@@ -1,0 +1,8 @@
+&notebook_oasis_sym_sym
+oasis_symsym_onoff=0
+oasis_symsym_retrots=0
+cl_model_name = 'OCEAN2' ! character*6
+oasis_dir='../OCEAN2/oasis_input_files/'
+cl_model_num=2
+kmax_recv=50 ! kmax de l'autre modele
+/

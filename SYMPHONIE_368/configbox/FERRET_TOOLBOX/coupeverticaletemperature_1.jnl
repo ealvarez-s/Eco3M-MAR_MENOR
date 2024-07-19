@@ -1,0 +1,6 @@
+use "20080802_000000_domsingle.nc"
+use "grille_domsingle.nc"
+set win 1
+fill tem[j=100,d=1],longitude_t[j=100,d=2],depth_t[j=100,d=2]
+set win 2
+fill tem[i=100,d=1],latitude_t[i=100,d=2],depth_t[i=100,d=2]

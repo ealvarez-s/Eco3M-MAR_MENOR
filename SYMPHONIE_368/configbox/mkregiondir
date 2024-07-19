@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#CONF="TEST"
+CONF=$1
+
+mkdir ../$CONF
+mkdir ../$CONF/OFFLINE
+mkdir ../$CONF/NOTEBOOK
+mkdir ../$CONF/GRAPHIQUES
+mkdir ../$CONF/BATHYMASK
+mkdir ../$CONF/LIST
+mkdir ../$CONF/3DMODES
+cd configbox
+
+for i in notebook*
+do
+ sed -e 's/REGION/'$CONF'/g' $i > ../../$CONF/NOTEBOOK/$i
+done
+cp *.txt ../../$CONF/NOTEBOOK/.
+
+cd ..

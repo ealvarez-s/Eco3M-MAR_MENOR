@@ -1,0 +1,9 @@
+# scp -r FAIRE_MAKEFILE marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_bobshelf_20170308/.
+# scp -r S26 marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_WM_20170514
+# scp -r WM marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/WM
+# scp -r FES2014_AVEC_LSA marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/.
+# scp -r notebook_tide_fes2014 marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/.
+# scp -r nodal_factors marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/S26_WM_20170514/.
+# scp notebook_rivers_add_line.F90 marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/WM/NOTEBOOK/.
+# scp notebook_atlas marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/GLOBMED/NOTEBOOK/.
+ scp compiler_symphonie_oasis_sur_nuwa.tar.gz marsaleix@occigen.cines.fr:/scratch/cnt0026/lat0088/marsaleix/S26_2016-Bench/FONDPLAT_0FRIC_PERIODIQUE_SIGGEN.20180303/SYMPHONIE_v295/configbox/.

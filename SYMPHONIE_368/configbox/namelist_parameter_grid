@@ -1,0 +1,9 @@
+ &parameter_grid
+iglb=110                  ! dimension along the Oi axis (global grid)
+jglb=54                   ! dimension along the Oj axis (global grid)
+kmax=20                   ! dimension along the Ok vertical axis
+nbdom_imax=4              ! number of subdomains along the Oi axis
+nbdom_jmax=2              ! number of subdomains along the Oj axis
+iperiodicboundary=.false. ! periodic boundaries in the Oi direction (if .true.)
+jperiodicboundary=.false. ! periodic boundaries in the Oj direction (if .true.)
+ /

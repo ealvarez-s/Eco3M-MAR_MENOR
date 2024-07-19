@@ -1,0 +1,4 @@
+use "20110309_120103.nc"
+use "grille.nc"
+set win 1
+fill ssh[d=1],longitude_t[d=2],latitude_t[d=2]

@@ -1,0 +1,80 @@
+#!/bin/bash
+
+# Sauvegarde d'une configuration complete modele+fichiers:
+# Exemple: compress_config SYMPHONIE2010.9 MEDOC402 nom_archive
+# Fichier produit: nom_archive.tar.gz
+
+#ATTENTION: detarer le fichier au dessus du repertoire principal
+
+VERSION=$1
+CONF=$2
+NAME=$3
+TITRE=$NAME'.tar'
+
+#echo $TITRE > ../$VERSION/RDIR/$CONF/'title_for_netcdf_files'
+#echo $TITRE > ../$VERSION/SOURCES/'model_name'
+date       >> ../$VERSION/UDIR/$CONF/'historique_des_archives'
+echo $NAME >> ../$VERSION/UDIR/$CONF/'historique_des_archives'
+date       >> ../$VERSION/RDIR/$CONF/'historique_des_archives'
+echo $NAME >> ../$VERSION/RDIR/$CONF/'historique_des_archives'
+
+pwd > adresse_de_la_version
+
+rm RDIR/$CONF/*.exe
+rm RDIR/$CONF/*.out
+rm RDIR/$CONF/tmp/*
+rm RDIR/$CONF/restart_input/*
+rm RDIR/$CONF/restart_output/*
+rm RDIR/$CONF/restart_outbis/*
+rm RDIR/$CONF/*dat
+rm ../$CONF/GRAPHIQUES/*.nc
+rm CDIR_GFORTRAN/$CONF/*
+rm CDIR_INTEL/$CONF/*
+rm CDIR_F95/$CONF/*
+rm CDIR_IFORT/$CONF/*
+rm ../$CONF/OFFLINE/*list*
+rm ../$CONF/OFFLINE/*.nc
+
+cp compress_config* configbox/.
+cp script_compress_config configbox/.
+
+#tar cvf $TITRE ../$VERSION/UDIR/$CONF ../$VERSION/RDIR/$CONF ../$CONF ../GRAPHIQUES/$CONF ../$VERSION/CDIR_IFORT/$CONF
+#tar cvf $TITRE ../$VERSION/SOURCES ../$VERSION/UPDATE ../$VERSION/UDIR/$CONF ../$VERSION/RDIR/$CONF ../$CONF/* ../$CONF/OFFLINE ../GRAPHIQUES/$CONF ../$VERSION/CDIR_IFORT/$CONF
+
+#tar cvf $TITRE ../$VERSION/configbox ../$VERSION/SOURCES ../$VERSION/UPDATE ../$VERSION/UDIR/$CONF ../$VERSION/RDIR/$CONF ../$CONF/* ../$CONF/OFFLINE ../GRAPHIQUES/$CONF ../$VERSION/CDIR_IFORT/$CONF
+
+#tar cvf $TITRE ../$VERSION/configbox ../$VERSION/SOURCES ../$VERSION/UPDATE ../$VERSION/UDIR/$CONF ../$VERSION/RDIR/$CONF ../$CONF/* ../$CONF/OFFLINE ../$VERSION/CDIR_IFORT/$CONF
+
+# VERSION TRES COMPLETE:
+#tar cvf $TITRE ../$VERSION/SUBCYCLING ../$CONF/notebook* ../$CONF/*dat ../$CONF/*nc ../$VERSION/UDIR/$CONF/makefile ../$VERSION/UDIR/$CONF/*F90 ../GRAPHIQUES/$CONF ../$VERSION/FAIRE_HOT_RESTART ../$VERSION/FAIRE_MAKEFILE ../$VERSION/nodal_factors ../$VERSION/configbox ../$VERSION/SOURCES ../$VERSION/UPDATE ../$VERSION/RDIR/$CONF ../$CONF/OFFLINE ../$VERSION/CDIR_IFORT/$CONF
+
+# VERSION SANS GRAPHIQUES NI LES FICHIERS .nc du repertoire des notebook
+#tar cvf $TITRE ../$CONF/NOTEBOOK ../$CONF/BATHYMASK ../$CONF/LIST ../$VERSION/*config ../$VERSION/mkregiondir ../$VERSION/UDIR/$CONF/makefile ../$VERSION/UDIR/$CONF/*F90 ../$VERSION/FAIRE_HOT_RESTART ../$VERSION/FAIRE_MAKEFILE ../$VERSION/nodal_factors ../$VERSION/configbox ../$VERSION/SOURCES ../$VERSION/UPDATE/*F90 ../$VERSION/RDIR/$CONF ../$VERSION/CDIR_IFORT/$CONF
+
+# VERSION expurgee TP DOUALA
+#tar cvf $TITRE ../$CONF/GRAPHIQUES/*jnl ../$CONF/OFFLINE/*jnl ../$CONF/NOTEBOOK ../$CONF/rivers_discharge ../$CONF/BATHYMASK ../$CONF/LIST ../$VERSION/removeconfdir   ../$VERSION/mkconfdir ../$VERSION/*config ../$VERSION/mkregiondir ../$VERSION/UDIR/$CONF/makefile ../$VERSION/UDIR/$CONF/*F90 ../$VERSION/UDIR/$CONF/readme ../$VERSION/nodal_factors ../$VERSION/configbox ../$VERSION/SOURCES ../$VERSION/RDIR/$CONF/notebook_list.f ../$VERSION/RDIR/$CONF/s ../$VERSION/RDIR/$CONF/key_list_author ../$VERSION/CDIR_IFORT/$CONF ../$VERSION/UPDATE ../$VERSION/RDIR/$CONF/restart_input ../$VERSION/RDIR/$CONF/restart_output ../$VERSION/RDIR/$CONF/restart_outbis ../$VERSION/RDIR/$CONF/tmp ../$CONF/description ../$VERSION/tools ../$VERSION/FAIRE_HOT_RESTART ../$VERSION/FAIRE_MAKEFILE ../$CONF/references/*pdf
+
+# VERSION SANS GRAPHIQUES MAIS AVEC LES FICHIERS .nc du repertoire des notebook
+#tar cvf $TITRE ../$VERSION/SUBCYCLING ../$CONF/*.nc ../$CONF/notebook* ../$CONF/*dat ../$VERSION/UDIR/$CONF/makefile ../$VERSION/UDIR/$CONF/*F90 ../$VERSION/FAIRE_HOT_RESTART ../$VERSION/FAIRE_MAKEFILE ../$VERSION/nodal_factors ../$VERSION/configbox ../$VERSION/SOURCES ../$VERSION/UPDATE ../$VERSION/RDIR/$CONF ../$CONF/OFFLINE ../$VERSION/CDIR_IFORT/$CONF
+
+#tar cvf $TITRE ../$VERSION/FAIRE_HOT_RESTART ../$VERSION/FAIRE_MAKEFILE ../$VERSION/nodal_factors ../$VERSION/configbox ../$VERSION/SOURCES ../$VERSION/UPDATE ../$VERSION/UDIR/$CONF ../$VERSION/RDIR/$CONF ../$CONF/* ../$CONF/OFFLINE ../$VERSION/CDIR_IFORT/$CONF
+
+# Tout le contenu de UDIR:
+#tar cvf $TITRE ../$CONF/GRAPHIQUES/*jnl ../$CONF/OFFLINE/*jnl ../$CONF/NOTEBOOK ../$CONF/rivers_discharge ../$CONF/BATHYMASK ../$CONF/LIST ../$VERSION/removeconfdir   ../$VERSION/mkconfdir ../$VERSION/*config ../$VERSION/mkregiondir ../$VERSION/UDIR/$CONF ../$VERSION/nodal_factors ../$VERSION/configbox ../$VERSION/SOURCES ../$VERSION/RDIR/$CONF/notebook_list.f ../$VERSION/RDIR/$CONF/s ../$VERSION/RDIR/$CONF/key_list_author ../$VERSION/CDIR_IFORT/$CONF ../$VERSION/CDIR_INTEL/$CONF ../$VERSION/UPDATE ../$VERSION/RDIR/$CONF/restart_input ../$VERSION/RDIR/$CONF/restart_output ../$VERSION/RDIR/$CONF/restart_outbis ../$VERSION/RDIR/$CONF/tmp ../$CONF/description ../$VERSION/FAIRE_HOT_RESTART ../$VERSION/FAIRE_MAKEFILE ../$CONF/references/*pdf
+
+# VERSION sans tools
+#tar cvf $TITRE ../$CONF/GRAPHIQUES/*jnl ../$CONF/GRAPHIQUES/faire_un_gif_anime/*jnl ../$CONF/OFFLINE/*jnl ../$CONF/NOTEBOOK/notebook* ../$CONF/rivers_discharge ../$CONF/BATHYMASK ../$CONF/LIST ../$VERSION/removeconfdir   ../$VERSION/mkconfdir ../$VERSION/*config ../$VERSION/mkregiondir ../$VERSION/UDIR/$CONF/makefile* ../$VERSION/UDIR/$CONF/*F90 ../$VERSION/UDIR/$CONF/readme ../$VERSION/nodal_factors ../$VERSION/configbox ../$VERSION/SOURCES/*F90 ../$VERSION/RDIR/$CONF/notebook_list.f ../$VERSION/RDIR/$CONF/s ../$VERSION/RDIR/$CONF/key_list_author ../$VERSION/CDIR_IFORT/$CONF ../$VERSION/CDIR_INTEL/$CONF ../$VERSION/UPDATE/*F90 ../$VERSION/RDIR/$CONF/restart_input ../$VERSION/RDIR/$CONF/restart_output ../$VERSION/RDIR/$CONF/restart_outbis ../$VERSION/RDIR/$CONF/tmp ../$CONF/description ../$VERSION/FAIRE_HOT_RESTART ../$VERSION/FAIRE_MAKEFILE ../$CONF/references/*pdf ../$VERSION/RDIR/$CONF/*gnu* ../$VERSION/SOURCES/model_name ../$CONF/debit_1h ../$CONF/OFFLINE/toto compress_config script_compress_config ../$VERSION/RDIR/$CONF/*jnl ../$VERSION/RDIR/$CONF/script_gnuplot ../$VERSION/RDIR/$CONF/*pour_archive ../$VERSION/RDIR/$CONF/periode_input vider_les_corbeilles
+
+# Tout le contenu de UDIR et RDIR
+#tar cvf $TITRE ../$CONF/GRAPHIQUES/*jnl ../$CONF/OFFLINE/*jnl ../$CONF/NOTEBOOK ../$CONF/rivers_discharge ../$CONF/BATHYMASK ../$CONF/LIST ../$VERSION/removeconfdir   ../$VERSION/mkconfdir ../$VERSION/*config ../$VERSION/mkregiondir ../$VERSION/UDIR/$CONF ../$VERSION/nodal_factors ../$VERSION/configbox ../$VERSION/SOURCES ../$VERSION/RDIR/$CONF ../$VERSION/CDIR_IFORT/$CONF ../$VERSION/CDIR_INTEL/$CONF ../$VERSION/script_compress_config ../$VERSION/compress_config* ../$VERSION/adresse_de_la_version
+
+# Tout le contenu de UDIR et RDIR et tout le contenu de $CONF
+#tar cvf $TITRE ../$CONF ../$VERSION/removeconfdir   ../$VERSION/mkconfdir ../$VERSION/*config ../$VERSION/mkregiondir ../$VERSION/UDIR/$CONF ../$VERSION/nodal_factors ../$VERSION/configbox ../$VERSION/SOURCES ../$VERSION/RDIR/$CONF ../$VERSION/CDIR_IFORT/$CONF ../$VERSION/CDIR_INTEL/$CONF ../$VERSION/script_compress_config ../$VERSION/compress_config* ../$VERSION/adresse_de_la_version ../$VERSION/UPDATE/*F90
+
+# VERSION minimum SOURCES et configbox
+#tar cvf $TITRE ../$VERSION/configbox ../$VERSION/SOURCES ../$VERSION/script_compress_config ../$VERSION/compress_config* ../$VERSION/adresse_de_la_version
+
+# VERSION SOURCES , configbox , FAIRE_HOT_RESTART , nodal_factors, FAIRE_MAKEFILE
+tar cvf $TITRE ../$VERSION/configbox ../$VERSION/SOURCES ../$VERSION/script_compress_config ../$VERSION/compress_config* ../$VERSION/adresse_de_la_version ../$VERSION/FAIRE_HOT_RESTART ../$VERSION/nodal_factors ../$VERSION/FAIRE_MAKEFILE
+
+gzip $TITRE

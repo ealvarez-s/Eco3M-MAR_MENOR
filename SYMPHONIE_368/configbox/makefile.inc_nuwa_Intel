@@ -1,0 +1,32 @@
+#__________________________________________________________
+#__________________________________________________________
+# Options de compilations: parametrer F77FLAGS
+#__________________________________________________________
+# INTEL version
+# nuwa version
+###########################################################
+# Currently Loaded Modulefiles:
+#   1) intel/14.0.1.106                 2) intel/14.0.1.106/openmpi-1.6.5   3) netcdf/4.1.3
+############################################################
+
+# Compillateur 
+F90=mpif90
+
+# Config
+CONF=XXXXX
+COMP=IFORT
+COMPMOD=-module
+
+
+# Optimisatinos, debug, ... flags
+# DO NOT USE -O3  optimization
+F77FLAGS= -O2 -traceback 
+
+# parallel netcdf and netcdf librairie
+LIB=/home/ocean/softs/intel-14.0.1.106/lib/libpnetcdf.a -L/home/ocean/softs/intel-14.0.1.106/lib -lnetcdff  -lnetcdf
+
+# Include repertoire pour netcdf.h, ...
+NETINC=-I/home/ocean/softs/intel-14.0.1.106/
+
+#__________________________________________________________
+#__________________________________________________________

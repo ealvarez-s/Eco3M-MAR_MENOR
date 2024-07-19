@@ -1,0 +1,6 @@
+use "20080802_000000_sigma.nc"
+use "grille_sigma.nc"
+set win 1
+fill u_geos[j=100,d=1],longitude_u[j=100,d=2],depth_u[j=100,d=2]
+set win 2
+fill u_geos[i=228,d=1],latitude_u[i=228,d=2],depth_u[i=228,d=2]

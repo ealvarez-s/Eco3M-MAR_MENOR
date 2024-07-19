@@ -1,0 +1,11 @@
+DIR=$1
+echo $DIR
+ls $DIR/*CUMUL*nc > liste_arome_ssr
+ls $DIR/*CUMUL*nc > liste_arome_ir
+ls $DIR/*Z.nc > liste_arome_u10m
+ls $DIR/*Z.nc > liste_arome_v10m
+ls $DIR/*Z.nc > liste_arome_p0m
+ls $DIR/*Z.nc > liste_arome_t2m
+ls $DIR/*Z.nc > liste_arome_dp2m
+ls $DIR/*CUMUL*nc > liste_arome_rain
+
