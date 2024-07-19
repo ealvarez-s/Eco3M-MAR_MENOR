@@ -1,0 +1,28 @@
+#!/bin/bash
+#SBATCH -J mBvOm
+#SBATCH -N 5
+###SBATCH --time=2-01:00:00
+###SBATCH --time=01:00:00
+#SBATCH --time=24:00:00
+###SBATCH --time=00:30:00
+###SBATCH -t 1-00:00:00
+#SBATCH --ntasks-per-node=36
+#SBATCH --ntasks-per-core=1
+
+echo Bonjour du noeud `hostname`
+rm fort*
+rm tmp/*
+
+
+module purge
+
+module load intel/18.2 intelmpi/18.2 hdf5/1.10.2-intelmpi netcdf/4.6.1-intelmpi pnetcdf/1.9.0-intelmpi
+
+export OMPI_FC=ifort
+export OMPI_CC=icc
+export OMP_CXX=icpc
+
+
+module list 2> currently_loaded_modulefile
+
+mpiexec.hydra -n 179 ./S26.exe

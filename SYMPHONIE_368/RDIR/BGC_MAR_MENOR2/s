@@ -1,0 +1,29 @@
+#!/bin/bash
+ulimit -s unlimited
+
+module list 2> currently_loaded_modulefiles
+
+#grep "^ *#ifdef " ../../SOURCES/*F90 ../../UPDATE/*F90 ../../UDIR/REGION/*F90|awk '{print $2}'|sort|uniq > key_list
+#diff -w key_list key_list_author || { echo "Ces clefs de compilation ne sont pas identifiees" && exit 1; }
+
+rm tmp/*
+rm kount
+rm fort*
+rm toto
+rm restart_output/*
+rm restart_outbis/*
+whoami > authors_of_the_simulation
+nbl=`ps -aux | grep symphonie.exe | wc -l`
+#echo $nbl
+if [ "$nbl" -gt 1 ]; then
+echo "COMMAND CANCELLED SINCE symphonie.exe IS ALREADY RUNNING..."
+/usr/bin/ogg123 /home/marp/sounds/KDE_Beep_Connect.ogg
+/usr/bin/ogg123 /home/marp/sounds/KDE_Beep_Connect.ogg
+/usr/bin/ogg123 /home/marp/sounds/KDE_Beep_Connect.ogg
+else
+time mpirun -np $1 symphonie.exe
+ll -tra restart*/chanel9_000000
+#mail -s 'End of Run' marp@aero.obs-mip.fr < kount
+#/usr/bin/ogg123 /home/marp/sounds/KDE_Beep_Connect.ogg
+#/usr/bin/ogg123 ../../configbox/first_run_jingle.ogg 
+fi

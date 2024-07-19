@@ -1,0 +1,9 @@
+ ! NOAA/PMEL TMAP
+ ! FERRET v6.93  
+ ! Linux 2.6.32-504.el6.x86_64 64-bit - 11/13/14
+ !  2-Mar-24 21:20     
+
+use "tmp/grid.nc"
+shade hm_w
+shade/lev=(0.2 10 0.2)(10 100 10) hm_w
+q
