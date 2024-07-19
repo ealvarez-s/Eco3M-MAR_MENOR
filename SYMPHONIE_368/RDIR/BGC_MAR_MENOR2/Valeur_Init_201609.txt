@@ -1,0 +1,15 @@
+Amonium      : 25.00 
+Silicate     : 45.00
+Phosphate    :  0.03
+Nitrate      :  1.00
+Ph           :  7.97
+Oxygen       :  210.
+Chlorophylle : 6.00
+micro-phyto  : 6*0.6
+nano-phyto   : 6*0.35
+pico-phyto   : 6*0.15
+zoo          : 3.
+nano-zoo     : 0.5
+micro-zoo    : 1.
+meso-zoo     : 1.         
+

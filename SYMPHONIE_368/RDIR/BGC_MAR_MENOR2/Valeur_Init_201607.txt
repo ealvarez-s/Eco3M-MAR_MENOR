@@ -1,0 +1,8 @@
+Amonium      : 25.00 
+Silicate     : 25.00
+Phosphate    :  0.15
+Nitrate      :  1.00
+Ph           :  8.00
+Oxygen       :  8.00
+Chlorophylle : 10.00
+
