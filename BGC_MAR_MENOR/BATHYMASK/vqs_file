@@ -1,0 +1,49 @@
+https://docs.google.com/document/d/1lCiiOzhpXSxY0fMnc9iKGCnMSZWYbfQBy1ypdYAXQG0/edit
+3     1    ! nombre de h, nombre de regions
+...........................................
+117. 7.  10000. 1. ! lon, lat, dist(km), weight
+112. -112.
+4.    -16. 
+1.    -8.
+
+
+
+
+
+112. -112.
+20.   -40.
+4.    -15. 
+1.    -7.
+
+! Explications
+Ligne 1:
+
+117. 7.   lon0, lat0 de reference pour cette abaque
+10000.    Distance en km d'influence autour de lon0, lat0
+1.        Poids de cette abaque
+
+Les 2 lignes suivantes:
+10400. -10400.
+1000.  -10400.
+
+colonne 1 bathy vraie en metres
+colonne 2 est negative donc par convention il s'agit de la "bathymetrie enveloppe en metres"
+Si la bathy est comprise entre 10400m et 1000m, la bathy enveloppe est plate (10400m) autrement dit
+les niveaux sigma (deduit de la bathy enveloppe) seront plats, soit "grille Z" 
+
+Noter que le rapport 10400/1000 est de l'ordre de 10
+
+Ligne suivante:
+100.   -2000.
+Le rapport 2000/100 est de l'ordre de 20, contre 10 en ligne precedente. 
+L'augmentation du rapport signifie que la vraie bathy diminue plus vite que la bathy enveloppe.
+Il y aura donc moins de niveaux au dessus du fond pour h=100 que pour h=1000.
+A contrario le nombre de niveau serait rester le meme si le rapport etait reste le même (cas 100% sigma)
+
+Ligne suivante:
+10.    -700. 
+Le rapport, 70, continue d'augmenter
+
+Ligne suivante:
+1.     -200. 
+Le rapport, 200, continue d'augmenter
