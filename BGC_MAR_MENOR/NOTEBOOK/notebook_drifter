@@ -1,0 +1,18 @@
+0         ! 1=Lagragian drifters routine is on (=0 otherwise) ! DRIFTER_ONOFF
+notebook  ! initial mode: "notebook" or "fortran"             ! DRIFTER_INITIAL_MODE
+180.      ! sampling (seconds) of the outputs (individual file, ascii format) (<0 if no ascii output) ! DRIFTER_OUT_SAMPLING
+-- if "notebook" mode: give now the drifter list --- check that nbomax is big enough in parameter ----
+42.9 6.0 -30. 0     ! arg4=1: i j k, arg4=0: lat lon z of the drifter
+2010 10 01 01 01 01 ! year,month,day,hour,minute,second
+42.9 6.0 -30. 0     ! arg4=1: i j k, arg4=0: lat lon z of the drifter
+2010 10 01 01 01 01 ! year,month,day,hour,minute,second
+42.9 6.0 -30. 0     ! arg4=1: i j k, arg4=0: lat lon z of the drifter
+2010 10 01 01 01 01 ! year,month,day,hour,minute,second
+42.9 6.0 -30. 0     ! arg4=1: i j k, arg4=0: lat lon z of the drifter
+2010 10 01 01 01 01 ! year,month,day,hour,minute,second
+42.9 6.0 -30. 0     ! arg4=1: i j k, arg4=0: lat lon z of the drifter
+2010 10 01 01 01 01 ! year,month,day,hour,minute,second
+42.9 6.0 -30. 0     ! arg4=1: i j k, arg4=0: lat lon z of the drifter
+2010 10 01 01 01 01 ! year,month,day,hour,minute,second
+2  2  1   1         ! arg4=1: i j k, arg4=0: lat lon z of the drifter
+2010 10 01 01 01 01 ! year,month,day,hour,minute,second

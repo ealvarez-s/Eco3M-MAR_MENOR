@@ -1,0 +1,13 @@
+*******************************************************************************
+Large scale OGCM files in the Open Boundary Conditions:
+*******************************************************************************
+Set the following parameter to 1 to add the OGCM forcing (0 otherwise):
+0                  !  1=on  0=off
+2                  !  2="online interpolation"
+sympa              !  OGCM key
+../../../BGC_MAR_MENOR/LIST/list_ogcm_uvts
+../../../BGC_MAR_MENOR/LIST/list_ogcm_grid
+...............................................................................
+Add the Inverse Barometer if not contained in the ssh ogcm fied:
+1  ! 1=add the BI   0=otherwise                       BI_ONOFF
+0  ! netcdf time is the middle (0) or the end (1) of the sampling period

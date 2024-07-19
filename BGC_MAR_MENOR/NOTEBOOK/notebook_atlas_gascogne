@@ -1,0 +1,91 @@
+********************************************************************************
+Garonne
+45.01065 -0.55946
+       10 ! distance (grid indexes) from the mouth where upwind advection is applied
+ -999.000 ! Default Value (if no river file) River discharge  m3/s      RIVERFLUX(:,1)
+   10.000 ! In case of an additionnal water way, give HRIVER,CROSSRESOLRIVER,ALONGRESOLRIVER of the firt point
+    0.000 ! Incoming salinity                                           RIVER_S(:)
+    8.000 ! Annual minimum value of the incoming temperature            RIVER_TMIN(:)
+        2 ! Month of the annual minimum value of the incoming temperature
+   24.000 ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+ 24.      ! Discharge data file periodicity (hours)                     RIVERINFO(:)
+../../../RIVERS/debit_garonne_20102018.dat
+2010  01    01     00     00      00  ! Year Month Day Hour Minute Second
+********************************************************************************
+Dordogne
+45.01486 -0.49988
+       10 ! distance (grid indexes) from the mouth where upwind advection is applied
+ -999.000 ! Default Value (if no river file) River discharge  m3/s      RIVERFLUX(:,1)
+   10.000 ! In case of an additionnal water way, give HRIVER,CROSSRESOLRIVER,ALONGRESOLRIVER of the firt point
+    0.000 ! Incoming salinity                                           RIVER_S(:)
+    8.000 ! Annual minimum value of the incoming temperature            RIVER_TMIN(:)
+        2 ! Month of the annual minimum value of the incoming temperature
+   24.000 ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+ 24.      ! Discharge data file periodicity (hours)                     RIVERINFO(:)
+../../../RIVERS/debit_dordogne_20102018_incomplet.dat
+2010  01    01     00     00      00  ! Year Month Day Hour Minute Second of the
+********************************************************************************
+Adour
+43.529210  -1.522001
+       10 ! distance (grid indexes) from the mouth where upwind advection is applied
+ -999.000 ! Default Value (if no river file) River discharge  m3/s      RIVERFLUX(:,1)
+   10.000 ! In case of an additionnal water way, give HRIVER,CROSSRESOLRIVER,ALONGRESOLRIVER of the firt point
+    0.000 ! Incoming salinity                                           RIVER_S(:)
+    8.000 ! Annual minimum value of the incoming temperature            RIVER_TMIN(:)
+        2 ! Month of the annual minimum value of the incoming temperature
+   24.000 ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+ 24.      ! Discharge data file periodicity (hours)                     RIVERINFO(:)
+../../../RIVERS/debit_adour_20102018_incomplet.dat
+2010  01    01     00     00      00
+********************************************************************************
+Charente
+45.97541 -0.98845
+       10 ! distance (grid indexes) from the mouth where upwind advection is applied
+ -999.000 ! Default Value (if no river file) River discharge  m3/s      RIVERFLUX(:,1)
+   10.000 ! In case of an additionnal water way, give HRIVER,CROSSRESOLRIVER,ALONGRESOLRIVER of the firt point
+    0.000 ! Incoming salinity                                           RIVER_S(:)
+    8.000 ! Annual minimum value of the incoming temperature            RIVER_TMIN(:)
+        2 ! Month of the annual minimum value of the incoming temperature
+   24.000 ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+ 24.      ! Discharge data file periodicity (hours)                     RIVERINFO(:)
+../../../RIVERS/debit_charente_20102018.dat
+2010  01    01     00     00      00
+********************************************************************************
+Loire 
+47.29268 -1.94770
+       10 ! distance (grid indexes) from the mouth where upwind advection is applied
+ -999.000 ! Default Value (if no river file) River discharge  m3/s      RIVERFLUX(:,1)
+   10.000 ! In case of an additionnal water way, give HRIVER,CROSSRESOLRIVER,ALONGRESOLRIVER of the firt point
+    0.000 ! Incoming salinity                                           RIVER_S(:)
+    8.000 ! Annual minimum value of the incoming temperature            RIVER_TMIN(:)
+        2 ! Month of the annual minimum value of the incoming temperature
+   24.000 ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+ 24.      ! Discharge data file periodicity (hours)                     RIVERINFO(:)
+../../../RIVERS/debit_loire_20102018.dat
+2010  01    01     00     00      00
+********************************************************************************
+Vilaine
+47.50642 -2.37669
+       10 ! distance (grid indexes) from the mouth where upwind advection is applied
+ -999.000 ! Default Value (if no river file) River discharge  m3/s      RIVERFLUX(:,1)
+   10.000 ! In case of an additionnal water way, give HRIVER,CROSSRESOLRIVER,ALONGRESOLRIVER of the firt point
+    0.000 ! Incoming salinity                                           RIVER_S(:)
+    8.000 ! Annual minimum value of the incoming temperature            RIVER_TMIN(:)
+        2 ! Month of the annual minimum value of the incoming temperature
+   24.000 ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+ 24.      ! Discharge data file periodicity (hours)                     RIVERINFO(:)
+../../../RIVERS/debit_vilaine_20102018.dat
+2010  01    01     00     00      00
+********************************************************************************

@@ -1,0 +1,21 @@
+
+ 3-D ecosystem model - Light penetration characteristics
+
+ Implementation: Karline Soetaert - Caroline Ulses 
+                 NIOO-CEME
+
+ PARAMETERS
+
+###################################################################
+
+! Extinction of light
+0.05		-		AlbedoBio         Part of radiation that is reflected
+0.57      	-		pHeat             Part of solar radiation in heat
+0.5		-		pLONG             Part of PAR with a long wavelength (Fast attenuation)
+
+0.45            /m		kro	          Background attenuation coefficient for longer wavelength PAR (>600 nm)                 
+0.00635         /m		kbo             
+0.0181				krp
+0.0654		/mmolN/m	kbp
+0.776				lr
+0.728				lb

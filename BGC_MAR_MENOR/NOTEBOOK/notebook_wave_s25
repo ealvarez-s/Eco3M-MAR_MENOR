@@ -1,0 +1,35 @@
+  - Interpolation of the wave model outputs on the symphonie model grid  -
+______________________________________________________________________________
+0                    ! 0: off / 1: on                                IWVE
+ww3                  ! wave model type
+1                    ! wave obc type                                 WAVE_OBC_TYPE
+1.                   ! periodicity (hours) of the wave model outputs WAVEDT(1)
+2004 02 04 00 00 00  ! time (y/m/d/h/m/s) of the first field         WAVEDT(2)
+..............................................................................
+../../../TET15M/file_list_t.txt     ! file list for the wave period
+../../../TET15M/file_list_hs.txt    ! file list for the wave significant height
+../../../TET15M/file_list_dir.txt   ! file list for the wave direction
+../../../TET15M/file_list_two.txt   ! file list for the wave direction
+../../../TET15M/file_list_taw.txt   ! file list for the wave direction
+../../../TET15M/file_list_usf.txt   ! file list for the stokes velocity
+../../../TET15M/file_list_l.txt     ! file list for the wavelenght
+../../../TET15M/file_list_foc.txt   ! file list for the surfaceflux of TKE
+../../../TET15M/file_list_hsw.txt   ! file list for the wave significant height of the wind sea
+24                                  ! Number of fields per file WAVEDT(3)
+..............................................................................
+
+
+Notice:
+http://sirocco.omp.obs-mip.fr/outils/Symphonie/Documentation/notebook.htm#wave
+
+wave obc type:
+
+WAVE_OBC_TYPE=1:
+The forcing fields did not take the wave effect into account
+
+WAVE_OBC_TYPE=2:
+The forcing fields took the wave effect into account and provide Lagrangian currents
+
+WAVE_OBC_TYPE=3:
+The forcing fields took the wave effect into account and provide eulerian currents
+

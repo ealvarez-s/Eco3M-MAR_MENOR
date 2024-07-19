@@ -1,0 +1,82 @@
+
+ 3-D ecosystem model - Eco3Med: Phytoplankton characteristics
+
+ Implementation: Karline Soetaert - Caroline Ulses
+                 NIOO-CEME
+
+ PARAMETERS
+
+###################################################################
+
+! Primary production
+2.6e-3		mmolC/J		PhyMaxSyne		Rendement quantique maximal for Synechococcus      !1.95e-4     2.2  
+3.1e-3      	mmolC/J         PhyMaxNano              Rendement quantique maximal for NanoPhytoplankton  !2.2e-4      2.6  
+4.3e-3    	mmolC/J		PhyMaxDia		Rendement quantique maximal for Diatomees          !3.3e-4      3.6  
+0.02           	m2/mgChl	AbsChlSyne		Specific absorption coefficient of Chlorophylle for Synechococcus     
+0.01            m2/mgChl        AbsChlNano              Specific absorption coefficient of Chlorophylle for NanoPhytoplankton
+0.007          	m2/mgChl	AbsChlDia		Specific absorption coefficient of Chlorophylle for Diatomees
+0.4e-3        	sec		Tau_renewSyne		Time of Renewal of photosystems for Synechococcus 
+1.6e-3         	sec             Tau_renewNano           Time of Renewal of photosystems for NanoPhytoplankton
+1.9e-3         	sec		Tau_renewDia		Time of Renewal of photosystems for Diatomees
+18.           	m2/J		Sig_PS2Syne		Eficient section of psII for Synechococcus
+12.             m2/J            Sig_PS2Nano             Eficient section of psII for NanoPhytoplankton
+9.            	m2/J		Sig_PS2Dia		Eficient section of psII for Diatomees   
+2.6e-8		-		kd			Dimensionless photoinhibition rate                 !2.6 au 20181113 essai SIMU9 -50%
+2.e-4		-		krep			Rate of repair of photoinhibition damaged PSII      
+2.		-		NGeider			Power in the quota depending function for exsudation
+
+0.05 !0.1145         	mmolN/mmolC	minNCSyne		Minimun internal N/C quota for Synechococcus           
+0.2  !0.229         	mmolN/mmolC	maxNCSyne		Maximum internal N/C quota for Synechococcus     
+0.004 !0.0034       	mmolP/mmolC	minPCSyne		Minimun internal P/C Ratio for Synechococcus           
+0.019 !0.0068	        mmolP/mmolC	maxPCSyne		Maximun internal P/C Ratio for Synechococcus       
+
+0.05 !0.072          	mmolN/mmolC     minNCNano               Minimun internal N/C quota for NanoPhytoplankton
+0.2  !0.126           mmolN/mmolC     maxNCNano               Maximum internal N/C quota for NanoPhytoplankton
+0.002          	mmolP/mmolC     minPCNano               Minimun internal P/C Ratio for NanoPhytoplankton
+0.019 !0.005          	mmolP/mmolC     maxPCNano               Maximun internal P/C Ratio for NanoPhytoplankton
+
+0.05          	mmolN/mmolC	minNCDia		Minimun internal N/C quota for Diatomees           
+0.2           	mmolN/mmolC	maxNCDia		Maximum internal N/C quota for Diatomees 
+0.002 !0.005       	mmolP/mmolC	minPCDia		Minimun internal P/C Ratio for Diatomees           
+0.019 !0.02       	mmolP/mmolC	maxPCDia		Maximun internal P/C Ratio for Diatomees       
+0.05  !0.04         	mmolSi/mmolC	minSiCDia		Minimum internal Si/C Ratio for Diatomees
+0.19  !0.136          	mmolsi/mmolC	maxSiCDia		Maximun internal Si/C Ratio for Diatomees
+      
+!Respiration
+0.3 	       	mmolC		RespCostSyne		Respiration cost for growth for Syneccochoccus
+0.25            mmolC           RespCostNano            Respiration cost for growth for NanoPhytoplankton
+0.2            	mmolC		RespCostDia		Respiration cost for growth for Diatomees
+
+!Chorophylle production
+2.3            	mgChl/mmolN  	ChlNSyneMax  		Syneccochoccus    maximum Chl : N ratio
+2.3             mgChl/mmolN     ChlNNanoMax             NanoPhytoplankton maximum Chl : N ratio
+2.3            	mgChl/mmolN  	ChlNDiaMax 		Diatomees         maximum Chl : N ratio
+
+! Nutrient uptake
+0.5            	mmolN/m3	KNitrateSyne		Half-saturation constant for Nitrate   uptake for Syneccochoccus
+0.7             mmolN/m3        KNitrateNano            Half-saturation constant for Nitrate   uptake for NanoPhytoplankton
+1.             	mmolN/m3	KNitrateDia		Half-saturation constant for Nitrate   uptake for Diatomees
+0.1           	mmolN/m3	KAmmoSyne		Half-saturation constant for Ammonium  uptake for Syneccochoccus
+0.3            	mmolN/m3        KAmmoNano               Half-saturation constant for Ammonium  uptake for NanoPhytoplankton
+0.7            	mmolN/m3	KAmmoDia		Half-saturation constant for Ammonium  uptake for Diatomees
+0.005         	mmolP/m3	KPSyne			Half-saturation constant for Phosphate uptake for Syneccochoccus
+0.015          	mmolP/m3        KPNano                  Half-saturation constant for Phosphate uptake for NanoPhytoplankton
+0.05           	mmolP/m3	KPDia			Half-saturation constant for Phosphate uptake for Diatomees
+1.2            	mmolSi/m3	KSiDia			Half-saturation constant for Silicate  uptake for Diatomees
+0.578          	mmolN/m3	KInhibAmmo		Inhibition constant for Nitrate by Ammonium for Syneccochoccus
+0.82		-		InhibAmmo		Inhibition parameter for Nitrate by Ammonium  for Syneccochoccus
+0.397          	mmolC/mmolN	fRespNit		C-cost for Nitrate uptake
+0.198           mmolC/mmolN	fRespAmmo		C-cost for Ammonium uptake
+0.155           mmolC/mmolP	fRespP			C-cost for Phosphate uptake
+0.140		mmolC/mmolSi	fRespSi			C-cost for Silice uptake
+
+!Mortality
+0.9e-6	/s		MortSyne		Mortality of Syneccochoccus ! 3.15      3.15
+0.5e-6  /s              MortNano                Mortality of NanoPhytoplankton ! 2.25    2.
+0.2e-6  /s              MortDia                	Mortality of Diatomees  ! 2.         1.8
+
+0.9		-		PropDia			Ratio Small/Large POM of diatom cadavers   !.9
+
+! Temperature function
+2.		/degC		Q10_P			Coefficient of temperature function
+14.		degC		TREF_P			Reference temperature

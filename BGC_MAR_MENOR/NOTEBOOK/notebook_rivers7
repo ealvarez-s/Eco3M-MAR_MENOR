@@ -1,0 +1,2360 @@
+131 ! 116
+************************************************************
+OumErrabia
+     3 ! river mouth location along i axis
+   462 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+  117.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+rioGuadario
+   108 ! river mouth location along i axis
+   585 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   30.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Guadalmedina
+   136 ! river mouth location along i axis
+   601 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   30.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Guadalhorce
+   134 ! river mouth location along i axis
+   599 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    8.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Fiumorbo
+   701 ! river mouth location along i axis
+   675 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    3.700 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Ortolo
+   673 ! river mouth location along i axis
+   666 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     3 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    0.900 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Oso
+   689 ! river mouth location along i axis
+   662 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    1.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Rizzanese
+   676 ! river mouth location along i axis
+   673 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    3.700 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Solenzara
+   697 ! river mouth location along i axis
+   671 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    2.300 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Taravo
+   676 ! river mouth location along i axis
+   675 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    7.300 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Ventilegne
+   677 ! river mouth location along i axis
+   659 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     3 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    1.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Cavo
+   692 ! river mouth location along i axis
+   664 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    1.200 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Liamone
+   682 ! river mouth location along i axis
+   694 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     3 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   14.200 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Porto
+   686 ! river mouth location along i axis
+   702 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    2.800 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Sagone
+   682 ! river mouth location along i axis
+   695 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     3 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    0.700 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Fango
+   689 ! river mouth location along i axis
+   709 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    2.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Var
+   679 ! river mouth location along i axis
+   796 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+ -999.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/var.ascii
+2009  01    01     12     00      00
+************************************************************
+LaRoya
+   697 ! river mouth location along i axis
+   793 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   15.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Nervia
+   698 ! river mouth location along i axis
+   792 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    2.600 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Alto
+   717 ! river mouth location along i axis
+   691 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    1.400 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Bravona
+   710 ! river mouth location along i axis
+   681 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    0.800 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Tavignano
+   708 ! river mouth location along i axis
+   678 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   11.500 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Golo
+   719 ! river mouth location along i axis
+   695 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   14.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Regino
+   707 ! river mouth location along i axis
+   711 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    0.400 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Bevinco
+   720 ! river mouth location along i axis
+   701 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     1 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    0.600 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Impero
+   715 ! river mouth location along i axis
+   787 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    1.500 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Centa
+   725 ! river mouth location along i axis
+   790 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   10.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Sansobbia
+   745 ! river mouth location along i axis
+   796 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    1.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Alcantara
+   757 ! river mouth location along i axis
+   425 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    9.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Moulouya
+   202 ! river mouth location along i axis
+   526 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   21.100 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Garigliano
+   796 ! river mouth location along i axis
+   564 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+  120.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Tevere
+   775 ! river mouth location along i axis
+   608 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+  217.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Ombrone
+   767 ! river mouth location along i axis
+   668 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   32.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Cornia
+   765 ! river mouth location along i axis
+   689 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    2.900 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Bruna
+   767 ! river mouth location along i axis
+   675 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    6.800 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Albegna
+   767 ! river mouth location along i axis
+   658 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   15.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Arno
+   777 ! river mouth location along i axis
+   725 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   84.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/Arno.ascii
+2001  01    01     12     00      00
+************************************************************
+Serchio
+   780 ! river mouth location along i axis
+   729 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   46.100 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Cecina
+   772 ! river mouth location along i axis
+   704 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     3 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   15.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Entella
+   770 ! river mouth location along i axis
+   775 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   13.800 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Magra
+   781 ! river mouth location along i axis
+   748 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   40.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Petronio
+   771 ! river mouth location along i axis
+   770 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     3 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    1.240 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Polcevera
+   760 ! river mouth location along i axis
+   790 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    4.800 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Bisagno
+   761 ! river mouth location along i axis
+   788 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    2.380 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Volturno
+   800 ! river mouth location along i axis
+   549 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     3 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   82.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Garigliano
+   801 ! river mouth location along i axis
+   559 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     3 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+  120.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Agri
+   846 ! river mouth location along i axis
+   472 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   20.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Ofanto
+   863 ! river mouth location along i axis
+   515 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   15.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Ofanto_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+Pescara
+   846 ! river mouth location along i axis
+   592 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     1 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   57.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Pescara_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+Sangro
+   847 ! river mouth location along i axis
+   578 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     1 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    9.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Sangro_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+Tronto
+   851 ! river mouth location along i axis
+   613 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   17.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Tronto_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+Foglia
+   858 ! river mouth location along i axis
+   671 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    7.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Foglia_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+Brenta
+   886 ! river mouth location along i axis
+   734 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     1 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   93.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Brenta_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+Po
+   884 ! river mouth location along i axis
+   720 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+ 1560.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/Po_01012011.ascii
+2011  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Adige
+   885 ! river mouth location along i axis
+   732 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+  235.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Adige_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+Reno
+   864 ! river mouth location along i axis
+   713 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     1 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   95.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Reno_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+Uniti
+   858 ! river mouth location along i axis
+   704 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   10.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Uniti_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+Acheloos
+   897 ! river mouth location along i axis
+   342 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   51.400 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Acheloos_mens.ascii
+2010  01   15  12     00      00  ! Year Month Day Hour
+************************************************************
+VijoseAoos
+   915 ! river mouth location along i axis
+   435 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+  145.300 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Vijose_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+SemanSemani
+   919 ! river mouth location along i axis
+   438 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   32.800 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Seman_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+Schkumbini
+   926 ! river mouth location along i axis
+   443 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   35.300 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Schkumbini_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+Erzeni
+   935 ! river mouth location along i axis
+   453 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   13.400 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Erzeni_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+Neretva
+   935 ! river mouth location along i axis
+   539 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+  234.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Neretva_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+Krka
+   923 ! river mouth location along i axis
+   598 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   39.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Krka_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+Cetina
+   933 ! river mouth location along i axis
+   570 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   37.300 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Cetina_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+Segura
+   282 ! river mouth location along i axis
+   647 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     1 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   26.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Tagliamento
+   924 ! river mouth location along i axis
+   730 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   70.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Tagliamento_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+Piave
+   909 ! river mouth location along i axis
+   736 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+  135.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Piave_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+Sile
+   904 ! river mouth location along i axis
+   738 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   33.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Sile_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+Nil
+   944 ! river mouth location along i axis
+    58 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+  475.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Aliakmon
+   973 ! river mouth location along i axis
+   369 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   73.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/EGEE_14022020/Aliakmon_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+VadarAxios
+   979 ! river mouth location along i axis
+   367 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   158.   ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/EGEE_14022020/Vadaraxios_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+Buna
+   946 ! river mouth location along i axis
+   468 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+  352.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Buna_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+Mati
+   942 ! river mouth location along i axis
+   456 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   25.300 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Mati_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+DubrovnikHydroelectric
+   940 ! river mouth location along i axis
+   517 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     3 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   90.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Dubrovn_hydr_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+Ombla
+   940 ! river mouth location along i axis
+   516 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   21.300 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Ombla_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+Neretva
+   937 ! river mouth location along i axis
+   539 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+  234.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Neretva_mens.ascii
+2010  01   15     12     00      00  ! Year Month Day Hour
+************************************************************
+SenjHydroelectricCroatie
+   943 ! river mouth location along i axis
+   660 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   60.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Senj_Hydro_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+Isonzo
+   938 ! river mouth location along i axis
+   721 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+  170.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/FLEUVES_ADRIATIC/ADR_MENS/Isonzo_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+************************************************************
+Chelif
+   291 ! river mouth location along i axis
+   550 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   49.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+NestosMesta
+  1023 ! river mouth location along i axis
+   341 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   58.00 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+DragonCreek
+  1058 ! river mouth location along i axis
+   113 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   24.400 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Manavgat
+  1049 ! river mouth location along i axis
+   144 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     3 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+  147.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Evros Maritsa
+  1041 ! river mouth location along i axis
+   314 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+  200.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Jucar
+   308 ! river mouth location along i axis
+   693 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   13.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Mijares
+   326 ! river mouth location along i axis
+   729 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   14.700 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Palancia
+   313 ! river mouth location along i axis
+   717 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    1.500 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Ebre
+   372 ! river mouth location along i axis
+   760 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+ -999.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/ebre_2009.ascii
+2009  01    01     12     00      00
+************************************************************
+Cervol
+   353 ! river mouth location along i axis
+   752 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    0.430 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Sebaou
+   423 ! river mouth location along i axis
+   553 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   23.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Foix
+   412 ! river mouth location along i axis
+   775 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    0.300 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Francoli
+   391 ! river mouth location along i axis
+   776 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    1.200 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Gaya
+   399 ! river mouth location along i axis
+   776 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    0.600 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Soummam
+   458 ! river mouth location along i axis
+   531 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     1 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   22.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Guadiana
+    27 ! river mouth location along i axis
+   625 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+  104.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Llobregat
+   432 ! river mouth location along i axis
+   774 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   19.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Tordera
+   464 ! river mouth location along i axis
+   783 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    5.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Besos
+   438 ! river mouth location along i axis
+   779 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    4.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Sebou
+    54 ! river mouth location along i axis
+   500 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     3 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+  137.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Bouregreg
+    50 ! river mouth location along i axis
+   491 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     3 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   23.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Ter
+   488 ! river mouth location along i axis
+   795 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   17.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Fluvia
+   489 ! river mouth location along i axis
+   806 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   11.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Muga
+   490 ! river mouth location along i axis
+   807 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    3.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Tet
+   498 ! river mouth location along i axis
+   835 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     1 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+ -999.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/tet.ascii
+2000  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Agly
+   499 ! river mouth location along i axis
+   837 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     1 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+ -999.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/agly_01012000.ascii
+2000  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Tech
+   495 ! river mouth location along i axis
+   828 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     1 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+ -999.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/tech.ascii
+2009  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Herault
+   529 ! river mouth location along i axis
+   858 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+ -999.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/herault_01012000.ascii
+2000  01    01     12     00      00  ! Year Month Day Hour Minute Second of the first data
+************************************************************
+Orb
+   522 ! river mouth location along i axis
+   859 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+ -999.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/orb_beziers010104_2011.ascii
+2004  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Aude
+   519 ! river mouth location along i axis
+   858 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+ -999.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/aude2000_2011.ascii
+2000  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+GrandRhone
+   585 ! river mouth location along i axis
+   832 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+ -999.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/grand_rhone_1998_2011.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+PetitRhone
+   571 ! river mouth location along i axis
+   848 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+ -999.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/petit_rhone_1998_2011.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Guadalquivir
+    65 ! river mouth location along i axis
+   607 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     3 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+  164.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Medjerda
+   615 ! river mouth location along i axis
+   480 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    3.900 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Tirso
+   623 ! river mouth location along i axis
+   607 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     3 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+    4.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Argens
+   655 ! river mouth location along i axis
+   795 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+ -999.000 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/argens.ascii
+2009  01    01     12     00      00
+************************************************************
+Zrmanja
+   927 ! river mouth location along i axis
+   627 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       10 ! distance (grid indexes) from the mouth where upw
+   29.800 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        0 ! 1 if a data discharge file is available, 0 other
+ 24.      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/anonymous.ascii
+1998  01    01     12     00      00  ! Year Month Day Hour
+************************************************************
+Bosphorus
+  1096 ! river mouth location along i axis
+   270 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     3 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       5 ! distance (grid indexes) from the mouth where upw
+   9500. ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+   17.000 ! Incoming salinity
+    10.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   24.000 ! Annual maximim value of the incoming temperature
+        1 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 2191.5   ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/Bosphore_dec2019.ascii 
+2010  05    14     12     00      00  ! Year Month Day Hour
+************************************************************
+Bosphorus
+  1096 ! river mouth location along i axis
+   269 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     3 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       5 ! distance (grid indexes) from the mouth where upw
+   9500. ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+   17.000 ! Incoming salinity
+   10.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   24.000 ! Annual maximim value of the incoming temperature
+        1 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 2191.5   ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/Bosphore_dec2019.ascii
+2010  05    14     12     00      00  ! Year Month Day Hour
+************************************************************
+Struma Strymon
+  1004 ! river mouth location along i axis
+   356 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       5  ! distance (grid indexes) from the mouth where upw
+     110. ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/EGEE_14022020/Struma_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+**************************************************************************
+Spercheios
+   944 ! river mouth location along i axis
+   326 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     1 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       5  ! distance (grid indexes) from the mouth where upw
+     62. ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/EGEE_14022020/Spercheios_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+**************************************************************************
+Pinios
+   962 ! river mouth location along i axis
+   354 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     1 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       5  ! distance (grid indexes) from the mouth where upw
+      81. ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/EGEE_14022020/Pinios_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+**************************************************************************
+Gallikos
+   982 ! river mouth location along i axis
+   370 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       5  ! distance (grid indexes) from the mouth where upw
+     39.5 ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/EGEE_14022020/Gallikos_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+**************************************************************************
+Loudias
+   978 ! river mouth location along i axis
+   370 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       5  ! distance (grid indexes) from the mouth where upw
+      23. ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/EGEE_14022020/Loudias_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+**************************************************************************
+Kucuk Menderes
+  1002 ! river mouth location along i axis
+   233 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       5 ! distance (grid indexes) from the mouth where upw
+      5. ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/EGEE_14022020/Kucuk_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+**************************************************************************
+KaraMenderes   Old Scaramander
+  1028 ! river mouth location along i axis
+   295 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       5  ! distance (grid indexes) from the mouth where upw
+      11. ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/EGEE_14022020/Karamenderes_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+**************************************************************************
+Gediz
+  1008 ! river mouth location along i axis
+   254 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       5 ! distance (grid indexes) from the mouth where upw
+    10. ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/EGEE_14022020/Gediz_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+**************************************************************************
+Buyuk Menderes (Méandre)
+   993 ! river mouth location along i axis
+   226 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     2 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       5 ! distance (grid indexes) from the mouth where upw
+    25. ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/EGEE_14022020/Buyuk_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+**************************************************************************
+Koprucay
+  1045 ! river mouth location along i axis
+   152 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       5 ! distance (grid indexes) from the mouth where upw
+    117. ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/EGEE_14022020/Koprucay_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+**************************************************************************
+Bakircay
+  1018 ! river mouth location along i axis
+   260 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       5 ! distance (grid indexes) from the mouth where upw
+      7. ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/EGEE_14022020/Bakircay_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+**************************************************************************
+Ceyhan
+  1107 ! river mouth location along i axis
+    85 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       5 ! distance (grid indexes) from the mouth where upw
+    180. ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/EGEE_14022020/Ceyhan_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+**************************************************************************
+Seyhan
+  1100 ! river mouth location along i axis
+    96 ! river mouth location along j axis
+0      ! length (grid nodes) of an additionnal water way
+     4 ! Flux Direction 1=incr i, 2=incr j, 3=decr i, 4=decr j
+       5 ! distance (grid indexes) from the mouth where upw
+    146. ! Default Value (if no river file) River discharge
+   10.000 ! In case of an additionnal water way, give the wa
+    0.000 ! Incoming salinity
+    8.000 ! Annual minimum value of the incoming temperature
+        2 ! Month of the annual minimum value of the incomin
+   22.000 ! Annual maximim value of the incoming temperature
+        0 ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+        1 ! 1 if a data discharge file is available, 0 other
+ 730.5      ! Discharge data file periodicity (hours)
+/tmpdir/cestour/FLEUVES/DEBIT_POUR_OPERATIONNEL/EGEE_14022020/Seyhan_mens.ascii
+2010  01    15     12     00      00  ! Year Month Day Hour
+**************************************************************************

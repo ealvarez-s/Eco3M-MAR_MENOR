@@ -1,0 +1,72 @@
+
+
+ 3-D ecosystem model - Eco3Med: chemical "oxygen" characteristics
+
+
+ Implementation: F. Kessouri, C. Ulses
+                 L.A Toulouse
+
+ PARAMETERS
+
+
+#################################################################
+! cette partie concerne les échanges à l'interface océan-atmosphère
+1 ! Choix de la paramétrisation des échanges air-mer 1: W&McG 99, 2:W92, 3:W09, 4:LM86, 5:N00, 6:W14, 7:H06 8:L13, 9:Y17, 10:BM18, 11:S09 12:W97 13:V10?
+
+!cette partie concerne les reactions chimiques (nitrification - respiration)
+0.03         -           1/d     	nuOXYGENNHs                  Max NHs oxidation rate by O2
+0.1          -           1/d     	nuNITNHs                 Max NHs oxidation rate by NOs
+0.1          -           1/d     	nuOXYGENODU                  Max ODU oxidation rate by O2
+0.1          -           1/d     	nuNITODU                 Max ODU oxidation rate by NOs
+
+1.           -           mmolO2/m3   	kNHsoxidSatOX      	Half-saturation constant for O2 limitation in NHs oxidation by O2
+30.          -           mmolO2/m3   	kNHsoxidNOsInOX    	Half-saturation constant for O2 inhibition in NHs inhibition by NOs
+0.3          -           mmolN/m3    	kNHsoxidNOsSatNOs  	Half-saturation constant for NOs limitation in NHs oxidation by O2
+
+1.           -           mmolO2/m3   	kODUoxidSatOX      	Half-saturation constant for O2 limitation in ODU oxidation by O2
+30.          -           mmolO2/m3   	kODUoxidNOsInOX    	Half-saturation constant for O2 inhibition in ODU inhibition by NOs
+0.3          -           mmolN/m3    	kODUoxidNOsSatNOs  	Half-saturation constant for NOs limitation in ODU oxidation by O2
+
+3.           -           mmolO2/m3   	kOxicMinSatOX   	Half-saturation constant for O2 limitation in oxic respiration
+
+30.          -           mmolO2/m3   	kDenitInOX      	Half-saturation constant for O2 inhibition in denitrification
+0.3          -           mmolN/m3   	kDenitSatNOs    	Half-saturation constant for O2 limitation in denitrification
+
+0.005        -           mmolO2/m3   	kAnoxMinInOX    	Half-saturation constant for O2 inhibition in anoxic respiration
+0.005        -           mmolN/m3   	kAnoxMinInNOs   	Half-saturation constant for O2 inhibition in anoxic respiration
+
+100.         -           mmolFe/m3   	kSolFormSatIron   	Half-saturation constant for Iron limitation in solid ODU formation
+
+0.2          -                   	Rsolid            	Pourcentage of ODU production that is deposited as a solid
+
+1.           -           molO2/molC 	gammaC_OX           	Mol O2 used per mol C in oxic respiration
+2.           -           molO2/molNHs 	gammaNHs_OX         	Mol O2 needed to oxidize 1 mol of NHs in nitrification
+1.           -           molO2/molODU 	gammaODU_OX         	Mol O2 needed to oxidize 1 mol of ODU
+
+1.           -           molODU/molC 	gammaPOC_ODU        	Mol ODU formed  per mol C in anoxic respiration
+
+0.8          -           molNOs/molC 	gammaPOC_NOs        	Mol NOs used per mol C in denitrification
+0.6          -           molNOs/molNHs 	gammaNHs_NOs         	Mol NOs needed to oxidize 1 mol of NHs
+0.8          -           molNOs/molODU 	gammaODU_NOs         	Mol NOs needed to oxidize 1 mol of ODU
+
+0.067       -           mmolIRON/m3    iron                    iron concentration in the water column
+
+! cette partie concerne l'impact de l'anoxie sur les organismes et certains processus -
+! quand l'O2 devient limitant dans le modèle
+
+! zooplankton
+
+1.           -           mmolC/m-3  	ksatMortZoo         	Half-saturation constant for mortality
+0.25         -           1/d        	AnoxMort            	Mortality rate in anoxia
+
+! detritus: POC and PON and POP
+
+2.7          -           mmolO2/m-3  	ksatOxicHydrol      	Half-saturation for oxic hydrolysis
+
+
+ 
+### sources:
+
+
+
+

@@ -1,0 +1,42 @@
+  - Interpolation of the wave model outputs on the symphonie model grid  -
+______________________________________________________________________________
+0                    ! 0: off / 1: on                                           (iwve)
+ww3_iowaga           ! wave model type                                          (txt_wavemodeltype)
+1                    ! wave obc type                                            (wave_obc_type)
+0                    ! wave model variables are 0=instantaneous 1=time-averaged (ww3_flagcumul)
+..............................................................................
+../../../BGC_MAR_MENOR/list_dir
+../../../BGC_MAR_MENOR/list_foc
+../../../BGC_MAR_MENOR/list_hs
+../../../BGC_MAR_MENOR/list_t
+../../../BGC_MAR_MENOR/list_taw
+../../../BGC_MAR_MENOR/list_two
+../../../BGC_MAR_MENOR/list_uss
+../../../BGC_MAR_MENOR/list_hsw
+
+! WARNING: the wave-current effect requires the "stokes" key compilation in the "makefile" file
+! ATTENTION si interaction courant-vagues activer la clef de compilation "stokes" dans makefile
+
+
+wave obc type:
+
+WAVE_OBC_TYPE=1:
+The forcing fields did not take the wave effect into account
+
+WAVE_OBC_TYPE=2:
+The forcing fields took the wave effect into account and provide Lagrangian currents
+
+WAVE_OBC_TYPE=3:
+The forcing fields took the wave effect into account and provide eulerian currents
+
+Exemple de script pour faire les listes:
+#!/bin/bash
+DIR=$1
+ls $DIR/*nc > ../../../BGC_MAR_MENOR/list_dir
+ls $DIR/*nc > ../../../BGC_MAR_MENOR/list_foc
+ls $DIR/*nc > ../../../BGC_MAR_MENOR/list_hs
+ls $DIR/*nc > ../../../BGC_MAR_MENOR/list_t
+ls $DIR/*nc > ../../../BGC_MAR_MENOR/list_taw
+ls $DIR/*nc > ../../../BGC_MAR_MENOR/list_two
+ls $DIR/*nc > ../../../BGC_MAR_MENOR/list_uss
+ls $DIR/*nc > ../../../BGC_MAR_MENOR/list_hsw

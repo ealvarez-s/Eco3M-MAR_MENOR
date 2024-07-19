@@ -1,0 +1,14 @@
+1         ! 1=Lagragian drifters routine is on (=0 otherwise) ! DRIFTER_ONOFF
+notebook  ! initial mode: "notebook" or "fortran"             ! DRIFTER_INITIAL_MODE
+86400.   ! sampling (seconds) of the outputs (individual file, ascii format) (<0 if no ascii output) ! DRIFTER_OUT_SAMPLING
+-- if "notebook" mode: give now the drifter list --- check that nbomax is big enough in parameter ----
+ 920. 164. 65. 1
+ 2018 10 15 12 0 0 
+ 924. 166. 65. 1
+ 2018 10 15 12 0 0 
+ 923. 161. 65. 1
+ 2018 10 15 12 0 0 
+ 918. 163. 65. 1
+ 2018 10 15 12 0 0 
+ 918. 167. 65. 1
+ 2018 10 15 12 0 0 

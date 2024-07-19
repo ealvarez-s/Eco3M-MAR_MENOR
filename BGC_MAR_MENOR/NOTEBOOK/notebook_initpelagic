@@ -1,0 +1,32 @@
+
+ 3-D ecosystem model - Eco3Med: Phytoplankton characteristics
+
+ Implementation: Karline Soetaert - Caroline Ulses
+                 NIOO-CEME
+
+ PARAMETERS
+
+###################################################################
+
+5                           ! Choice about the initialisation: 1 = using Dyfamed profiles
+                            ! 2 = Nutriments linear regression ,3 = Nutriments Low Resolution Model, 4: Nut fn of rho
+! Initialisation using Dyfamed profils
+/tmpdir/jhabib/simulations/initdyfamed/   ! Directory containing files
+031130                      ! Date of initialisation AAMMJJ
+6.                         ! CoefDiaC: Deduction of DiaC from DiaChl
+0.04436                     ! CoefZooC: Deduction of ZooC from DiaC  
+6.                          ! CoefSyneC: Deduction of SyneC from SyneChl
+6.                          ! CoefNanoC: Deduction of SyneC from NanoChl
+0.9                    ! PropMOP: Ratio small/large particulate organic matter
+0.1                         ! InitLPOSi: Large particulate organic silice
+0.                          ! InitAmmonium
+
+! Writing of the initial profiles for the Femme Environment
+1                           ! 1:yes 0:no
+172 41                       ! Coordinates (I,J) of the output point
+
+! nudging term
+0                             ! Inudging 1:yes 0:no
+2006 01 02                    ! Datenudgbegin
+2011 12 31                    ! Datenudgend
+

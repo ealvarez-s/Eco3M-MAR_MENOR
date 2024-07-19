@@ -1,0 +1,160 @@
+--------------------------------------------------------------------------------
+0   : 1=tides computed, 0 otherwise
+--------------------------------------------------------------------------------
+Forces:                                                                TIDEFORCES 
+0   : 0=obc+2pot, 1=obc+astro.pot, 2=obc+SLApot, 3=obc only, 4=pot only, 5 nothing but analysis
+--------------------------------------------------------------------------------
+Harmonic Reanalysis:
+1   : 1=perfom harmonic reanalysis. 0 otherwise                   TIDEANA_YESNO
+4   : Spinup (days) before starting harmonic reanalysis             TIDEANA_SPINUP
+0.1 : reanalysis time sampling (hours) (every iteration if <=0)      TIDEANA_DELTA
+--------------------------------------------------------------------------------
+Boundary conditions: standard or clamped (preliminary reanalysis procedure)
+1.  : 1=standard   0=clamped   0.xxx = partly clamped
+--------------------------------------------------------------------------------
+External field treatment: Interpolation or not? Velocity axis convention?
+1         : 1=interpolate 0=do not interpolate (if reanalysis on the same grid)
+alongaxis : Velocity components: alongaxis or earthaxis ?
+--------------------------------------------------------------------------------
+PATH ACCESS to the directories:
+directory A of the external forcing files:
+../../../FES_2012_2014/
+directory B of the "detiding" files (relevant if detiding not based on forcing files):
+nodirectory
+directory C of: 1 the output reanalysis files (if any) and 2 the SSH bias correction files (if any):
+../../../FES_2012_2014/BGC_MAR_MENOR/
+directory D of the nodal parameters files:
+../../nodal_factors/2000/
+--------------------------------------------------------------------------------
+0                              ! 1=the following harmonic is selected, 0 otherwise
+M2.FES2012.elev.nc             ! ssh input forcing file (in directory A)
+M2.FES2012.uv.nc               ! u,v input forcing file (in directory A)
+none                           ! "detiding" file (if "none" detiding is made with forcing files, in directory B)
+M2.Sreanalysis.nc              ! Ouput reanalysis file (in directory C)
+M2.FES2014.nc                  ! LSA file (in directory A)
+none ! M2.sshbiascorrection.nc ! SSH bias correction file if any ('none' otherwise, in directory C)
+M2_nodal.txt                   ! input nodal parameters file (in directory D)
+2                              ! nu nomemclature
+0.242334                       ! Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+0                              ! 1=the following harmonic is selected, 0 otherwise
+N2.FES2012.elev.nc             ! ssh input forcing file (in directory A)
+N2.FES2012.uv.nc               ! u,v input forcing file (in directory A)
+none                           ! "detiding" file (if "none" detiding is made with forcing files, in directory B)
+N2.Sreanalysis.nc              ! Ouput reanalysis file (in directory C)
+N2.FES2014.nc                  ! LSA file (in directory A)
+none ! N2.sshbiascorrection.nc ! SSH bias correction file if any ('none' otherwise, in directory C)
+N2_nodal.txt                   ! input nodal parameters file (in directory D)
+2                              ! nu nomemclature
+0.046398                       ! Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+0                              ! 1=the following harmonic is selected, 0 otherwise
+S2.FES2012.elev.nc             ! ssh input forcing file (in directory A)
+S2.FES2012.uv.nc               ! u,v input forcing file (in directory A)
+none                           ! "detiding" file (if "none" detiding is made with forcing files, in directory B)
+S2.Sreanalysis.nc              ! Ouput reanalysis file (in directory C)
+S2.FES2014.nc                  ! LSA file (in directory A)
+none ! S2.sshbiascorrection.nc ! SSH bias correction file if any ('none' otherwise, in directory C)
+S2_nodal.txt                   ! input nodal parameters file (in directory D)
+2                              ! nu nomemclature
+0.112841                       ! Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+0                              ! 1=the following harmonic is selected, 0 otherwise
+K2.FES2012.elev.nc             ! ssh input forcing file (in directory A)
+K2.FES2012.uv.nc               ! u,v input forcing file (in directory A)
+none                           ! "detiding" file (if "none" detiding is made with forcing files, in directory B)
+K2.Sreanalysis.nc              ! Ouput reanalysis file (in directory C)
+K2.FES2014.nc                  ! LSA file (in directory A)
+none ! K2.sshbiascorrection.nc ! SSH bias correction file if any ('none' otherwise, in directory C)
+K2_nodal.txt                   ! input nodal parameters file (in directory D)
+2                              ! nu nomemclature
+0.030704                       ! Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+0                              ! 1=the following harmonic is selected, 0 otherwise
+K1.FES2012.elev.nc             ! ssh input forcing file (in directory A)
+K1.FES2012.uv.nc               ! u,v input forcing file (in directory A)
+none                           ! "detiding" file (if "none" detiding is made with forcing files, in directory B)
+K1.Sreanalysis.nc              ! Ouput reanalysis file (in directory C)
+K1.FES2014.nc                  ! LSA file (in directory A)
+none ! K1.sshbiascorrection.nc ! SSH bias correction file if any ('none' otherwise, in directory C)
+K1_nodal.txt                   ! input nodal parameters file (in directory D)
+1                              ! nu nomemclature
+0.141565                       ! Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+0                              ! 1=the following harmonic is selected, 0 otherwise
+O1.FES2012.elev.nc             ! ssh input forcing file (in directory A)
+O1.FES2012.uv.nc               ! u,v input forcing file (in directory A)
+none                           ! "detiding" file (if "none" detiding is made with forcing files, in directory B)
+O1.Sreanalysis.nc              ! Ouput reanalysis file (in directory C)
+O1.FES2014.nc                  ! LSA file (in directory A)
+none ! O1.sshbiascorrection.nc ! SSH bias correction file if any ('none' otherwise, in directory C)
+O1_nodal.txt                   ! input nodal parameters file (in directory D)
+1                              ! nu nomemclature
+0.100514                       ! Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+0                              ! 1=the following harmonic is selected, 0 otherwise
+P1.FES2012.elev.nc             ! ssh input forcing file (in directory A)
+P1.FES2012.uv.nc               ! u,v input forcing file (in directory A)
+none                           ! "detiding" file (if "none" detiding is made with forcing files, in directory B)
+P1.Sreanalysis.nc              ! Ouput reanalysis file (in directory C)
+P1.FES2014.nc                  ! LSA file (in directory A)
+none ! P1.sshbiascorrection.nc ! SSH bias correction file if any ('none' otherwise, in directory C)
+P1_nodal.txt                   ! input nodal parameters file (in directory D)
+1                              ! nu nomemclature
+0.046843                       ! Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+0                              ! 1=the following harmonic is selected, 0 otherwise
+Q1.FES2012.elev.nc             ! ssh input forcing file (in directory A)
+Q1.FES2012.uv.nc               ! u,v input forcing file (in directory A)
+none                           ! "detiding" file (if "none" detiding is made with forcing files, in directory B)
+Q1.Sreanalysis.nc              ! Ouput reanalysis file (in directory C)
+Q1.FES2014.nc                  ! LSA file (in directory A)
+none ! Q1.sshbiascorrection.nc ! SSH bias correction file if any ('none' otherwise, in directory C)
+Q1_nodal.txt                   ! input nodal parameters file (in directory D)
+1                              ! nu nomemclature
+0.019256                       ! Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+0                              ! 1=the following harmonic is selected, 0 otherwise
+M4.FES2012.elev.nc             ! ssh input forcing file (in directory A)
+M4.FES2012.uv.nc               ! u,v input forcing file (in directory A)
+none                           ! "detiding" file (if "none" detiding is made with forcing files, in directory B)
+M4.Sreanalysis.nc              ! Ouput reanalysis file (in directory C)
+M4.FES2014.nc                  ! LSA file (in directory A)
+none ! M4.sshbiascorrection.nc ! SSH bias correction file if any ('none' otherwise, in directory C)
+M4_nodal.txt                   ! input nodal parameters file (in directory D)
+2                              ! nu nomemclature
+0.                             ! Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+0                              ! 1=the following harmonic is selected, 0 otherwise
+2N2.FES2012.elev.nc            ! ssh input forcing file (in directory A)
+2N2.FES2012.uv.nc              ! u,v input forcing file (in directory A)
+none                           ! "detiding" file (if "none" detiding is made with forcing files, in directory B)
+2N2.Sreanalysis.nc             ! Ouput reanalysis file (in directory C)
+2N2.FES2014.nc                 ! LSA file (in directory A)
+none !2N2.sshbiascorrection.nc ! SSH bias correction file if any ('none' otherwise, in directory C)
+2N2_nodal.txt                  ! input nodal parameters file (in directory D)
+2                              ! nu nomemclature
+0.006267                       ! Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+0                              ! 1=the following harmonic is selected, 0 otherwise
+Mu2.FES2012.elev.nc            ! ssh input forcing file (in directory A)
+Mu2.FES2012.uv.nc              ! u,v input forcing file (in directory A)
+none                           ! "detiding" file (if "none" detiding is made with forcing files, in directory B)
+Mu2.Sreanalysis.nc             ! Ouput reanalysis file (in directory C)
+Mu2.FES2014.nc                 ! LSA file (in directory A)
+none !Mu2.sshbiascorrection.nc ! SSH bias correction file if any ('none' otherwise, in directory C)
+Mu2_nodal.txt                  ! input nodal parameters file (in directory D)
+2                              ! nu nomemclature
+0.005841                       ! Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________
+0                              ! 1=the following harmonic is selected, 0 otherwise
+Nu2.FES2012.elev.nc            ! ssh input forcing file (in directory A)
+Nu2.FES2012.uv.nc              ! u,v input forcing file (in directory A)
+none                           ! "detiding" file (if "none" detiding is made with forcing files, in directory B)
+Nu2.Sreanalysis.nc             ! Ouput reanalysis file (in directory C)
+Nu2.FES2014.nc                 ! LSA file (in directory A)
+none !Nu2.sshbiascorrection.nc ! SSH bias correction file if any ('none' otherwise, in directory C)
+Nu2_nodal.txt                  ! input nodal parameters file (in directory D)
+2                              ! nu nomemclature
+0.009094                       ! Amplitude d'equilibre (en mètres) (Apel p215)
+_______________________________________________________________________________

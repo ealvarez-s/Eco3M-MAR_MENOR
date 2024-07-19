@@ -1,0 +1,30 @@
+
+ 3-D ecosystem model - Eco3Med: Remineralisation characteristics
+
+ Implementation: Karline Soetaert - Caroline Ulses
+                 NIOO-CEME
+
+ PARAMETERS
+
+###################################################################
+
+! Remineralisation
+2.e-6           /s              RemRateSMOPC            Remineralisation rate for Small Particulate Organic Carbon      ! 5.e-7   1.25e-5
+2.4e-6          /s               RemRateSMOPN            Remineralisation rate for Small Particulate Organic Nitrogen    ! 6.e-7   1.52e-5
+2.8e-6           /s              RemRateSMOPP            Remineralisation rate for Small Particulate Organic Phosphate   ! 7.e-7   1.81e-5
+2.312e-7         /s		RemRateSMOPSi		Remineralisation rate for Small Particulate Organic Silicium     
+4.64e-6 	/s		RemRateSMOPChl		Remineralisation rate for Small Particulate Organic Chlorophylle      
+
+2.e-6         	/s		RemRateLMOPC		Remineralisation rate for Large Particulate Organic Carbon      
+2.4e-6        	/s		RemRateLMOPN		Remineralisation rate for Large Particulate Organic Nitrogen     
+2.8e-6	        /s		RemRateLMOPP            Remineralisation rate for Large Particulate Organic Phosphate     
+2.312e-7         /s		RemRateLMOPSi           Remineralisation rate for Large Particulate Organic Silicium      
+
+2.95           	/degC		Q10_Rem			Temperature coefficient for remineralisation
+20.		C		TREF_Rem		Reference temperature for remineralisation
+
+! Nitrification
+2.37            /degC		Q10_Nit			Temperature coefficient for nitrification dans fonction Fred
+5.91e-7         /s		NitriRate               Maximum Nitrification Rate at 0 dg C 
+1.0             -		Gamma_M                 To account for the effect of mixing on primary production
+10.		degC		TREF_Nit		Reference temperature for nitrification

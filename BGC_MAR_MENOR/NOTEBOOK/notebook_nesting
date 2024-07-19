@@ -1,0 +1,39 @@
+********************************************************************************
+Menu pour forcer la simulation avec une "symphonie Maman"
+................................................................................
+0 ! 0 néant 1 Forcage par une "Symphonie Maman"                    NEST_ONOFF_IN
+../../../MAMAN/OUTPUTS/   ! Chemin d'accés aux fichiers:        NEST_PATH_IN(0)
+2004 09 01 00 00 00 !A/M/J/H/M/S date création 1er fichier "Maman" NEST_DT_IN(2)
+0.25    ! Périodicité du forçage en heures                         NEST_DT_IN(1)
+10      ! Tous les $1 fichiers il un gros fichier démarrage        NEST_FULL_IN
+../../../MAMAN/  ! Accés notebook_grid Symphonie Maman          NEST_PATH_IN(1)
+********************************************************************************
+Menu pour forcer des "symphonie Filles"
+................................................................................
+0 ! Nbre de "Symphonie Filles" à guider (0 Néant)                     NEST_ONOFF_OUT
+../../../BGC_MAR_MENOR/OUTPUTS/             ! Chemin d'accés aux fichiers:       NEST_PATH_OUT(0)
+2004 01 05 01 00 00 !A/M/J/H/M/S date création 1er fichier "Fille"    NEST_DT_OUT(2)
+1.         ! Périodicité du forçage en heures                         NEST_DT_OUT(1)
+1          ! Tous les $1 fichiers il un gros fichier démarrage        NEST_FULL_OUT
+../../../FILLE1/         ! Accés notebook_grid Symphonie Fille       NEST_PATH_OUT(1)
+../../../FILLE2/         ! Accés notebook_grid Symphonie Fille           NEST_PATH_OUT(2)
+../../../FILLE3/        ! Accés notebook_grid Symphonie Fille           NEST_PATH_OUT(3)
+
+
+
+Explications:
+
+Ici nous sommes dans le repertoire de la maman. C'est la deuxieme
+partie du notebook (Menu pour forcer des "symphonie Filles") qui
+nous interesse. 
+
+On a indiqué:
+- Le nombre de filles, c.a.d. 1.
+- Le repertoire où la maman deposera ses sorties: GASCOGNE/OUTPUTS
+- La date à laquelle le premier fichier sera ecrit.
+- La durée entre chaque sortie (ici 24h)
+- Qu'un fichier sur 7 sera 3D (pouvant servir à une initialisation complete)
+  alors que les autres seront des "petits" fichiers pour forcer les limites
+  uniquement.
+- Le repetoire où la maman trouvera des informations sur la grille de sa fille
+  c.a.d. CANTABRIQUE/NOTEBOOK

@@ -1,0 +1,53 @@
+
+ Benthic coupling - Benthic characteristics
+
+ Implementation: Karline Soetaert - Caroline Ulses
+                 NIOO-CEME
+
+ PARAMETERS
+
+###################################################################
+
+! Benthic model : 0=none ; 1=reflection ; 2=simple dia meta ; 3=dia meta
+1			   IBenthic	
+
+! Initialisation using Sedimentation files
+BENTHIC_REC/      ! Directory containing files
+199                          ! NRECBENTHstart (record number)
+391                          ! NRECBENTHend
+
+! Decay rates
+2                          NumBDET     Number of detritus class
+1                          BTfunc      Degradation rate is function of bottom T
+Case with one class
+0.08        	/d         DecayRate   Decay Rate (1 detritus class) Ref : 1,2
+0.08            /d         cDet20SED  Degradation rate
+Case with 2 classes 
+0.09            /d         kFast       Degradation rate   Ref : 1,3,4
+0.00005         /d         kSlow       Degradation rate   Ref : 1,3,4
+0.8                        pFast       part of fast degradation rate Ref: 1
+0.08            /d         cFDet20SED  Degradation rate   Ref : 2,5
+0.0001          /d         cSDet20SED  Degradation rate   Ref : 2,5
+2.                         BQ10        Q10 factor for mineralisation 
+0.15          molN/molC    NCrFD       NC ratio of fast detritus
+0.08          molN/molC    NCrSD       NC ratio of slow detritus
+
+! Phosphorus and silicium 
+0.33                       pPMin        Ref : c, results of Denis 99
+1.                         pSiMin
+
+! Default values of meta-model parameters (for the simple meta-model)
+0.8                       pNit         Ref : 6,c
+0.05                       pdeNit       Ref 1,2
+
+! Meta-model
+230     	mmolO2/m3  O2bw		Oxygen concentration at the bottom water mean value Denis
+
+
+References:
+1: Pastor et al
+2: Denis 1999
+3: Westrich and Berner 1984
+4: Boudreau and Ruddick 1991
+5: MetroMed
+6 : Soetaert et al 2000 : 0.4<pNit<1
