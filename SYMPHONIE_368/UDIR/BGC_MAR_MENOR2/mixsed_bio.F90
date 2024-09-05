@@ -191,8 +191,8 @@
       enddo       ; enddo
 !......................................................
 ! TEST TENDECO
-     anyv3d(:,:,:,id_kh_over_dz)=0.
-     wsed(1,:)=0.
+!     anyv3d(:,:,:,id_kh_over_dz)=0.
+!     wsed(1,:)=0.
 
       do 200 vb=1,vbmax
 
@@ -303,7 +303,7 @@
 ! Avec la modif du schema d'advection, A ce stade bio_t est homogene A
 ! bio_t*dz_t de sorte que la multiplication par dz_t est restreinte A
 ! tendancebio_t: !01-05-19
-!      tendancebio_t(i,j,k,vb)=0./86400.
+!      tendancebio_t(i,j,k,vb)=1./86400.
       tridia_in(i,j,k,4)= bio_t(i,j,k,vb)                     &
           +dti_fw*tendancebio_t(i,j,k,vb)                     &
                         *mask_t(i,j,kmax)                        &    !28/02/03
@@ -313,7 +313,7 @@
       enddo
       enddo
 
- fluxbio_w(:,:,vb,:)=0. ! removing fluxes from 1 (bottom) and 2 (surface)
+! fluxbio_w(:,:,vb,:)=0. ! removing fluxes from 1 (bottom) and 2 (surface)
 
 
 !......................................................
@@ -363,7 +363,7 @@
 ! Avec la modif du schema d'advection, A ce stade bio_t est homogene A
 ! bio_t*dz_t de sorte que la multiplication par dz_t est restreinte A
 ! tendancebio_t:
-!      tendancebio_t(i,j,k,vb)=0./86400.
+!      tendancebio_t(i,j,k,vb)=1./86400.
       tridia_in(i,j,k,4)= bio_t(i,j,k,vb)                     &
           +dti_fw*tendancebio_t(i,j,k,vb)                     &
                         *mask_t(i,j,kmax)                     &    !28/02/03

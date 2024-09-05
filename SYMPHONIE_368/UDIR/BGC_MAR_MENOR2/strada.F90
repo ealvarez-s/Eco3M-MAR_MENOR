@@ -95,7 +95,7 @@
       itime=itimebio                                                   !14/12/01
 
 ! TEST put velocity to 0
-!     call biobalance_gateA 
+     call biobalance_gateA 
 
 !.............................................
 ! LES FORCAGES:
@@ -126,11 +126,11 @@
       if(imodelbio==1) then !ECO3M-S>
 !           if(modulo(iteration3d,modulo_biotimestep)==0)call biology !19-07-21        
 ! TEST put velocity to 0
-       call biology !19-07-21
+        call biology !19-07-21
          endif                 !ECO3M-S>
       if(l_sedim_s)call run_sediment(1) !MUSTANG>
 ! TEST put velocity to 0
-!     call biobalance_gateB                                            !23-11-13
+      call biobalance_gateB                                            !23-11-13
       call s_cpu('eco3m-mustang-gateB',0)
 
 ! Decommenter cette ligne pour verifier la parallelisation#
@@ -143,17 +143,17 @@
 ! Concentration at river input grid point (just before advection) 
       if(nriver.ge.1)call obc_bio(1) ! river input  ! appel deplacE le !14-03-17
 ! TEST put velocity to 0
-!                    call biobalance_gateF                             !23-11-13
+                     call biobalance_gateF                             !23-11-13
 
 ! TEST put velocity to 0
-!     call biobalance_gateC       !23-11-13
+      call biobalance_gateC       !23-11-13
       call s_cpu('advection+gateC',0)
 
 ! advection:
 ! TEST put velocity to 0
-      veldydz_u(:,:,:,1)=0.
-      veldxdz_v(:,:,:,1)=0.
-      omega_w(:,:,:,1)=0.
+!      veldydz_u(:,:,:,1)=0.
+!      veldxdz_v(:,:,:,1)=0.
+!      omega_w(:,:,:,1)=0.
       if(flag3d==1.and.flag3dbio==0)call advection_bio                       !14-07-14
 ! Pas de porte ici car bio_t est bio_t*dz_t !01-05-19
 
@@ -164,7 +164,7 @@
 ! flux turbulents & sédimentation
       call mixsed_bio
 ! TEST put velocity to 0
-!     call biobalance_gateD                                            !23-11-13
+      call biobalance_gateD                                            !23-11-13
       call s_cpu('mixedbio+gateD',0)
 
 ! Echange canaux avant (puis apres) advection_bio_rmnegval3d_plus !12-05-19
@@ -183,9 +183,9 @@
 
 ! conditions aux limites
 ! TEST put velocity to 0
-!     if(biobc_extforcing==1)call biobc_nudging_area ! Zone de rappel  !27-04-13
+      if(biobc_extforcing==1)call biobc_nudging_area ! Zone de rappel  !27-04-13
 ! TEST put velocity to 0
-!                            call biobalance_gateE                     !23-11-13
+                             call biobalance_gateE                     !23-11-13
 
       if(nbcanal>0) then !m°v°m> !22-04-19
          call webcanals_gt1_to_gt2_bio
