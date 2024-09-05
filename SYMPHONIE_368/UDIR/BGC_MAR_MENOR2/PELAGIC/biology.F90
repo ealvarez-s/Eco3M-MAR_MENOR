@@ -40,7 +40,11 @@
                           gbac_trans(kmax),grazherbi_trans(kmax),graztot_trans(kmax),  &
                           FLUX_RespPpi(kmax),FLUX_RespPni(kmax),FLUX_RespPmi(kmax),  &
                           FLUX_PPBpi(kmax),FLUX_PPBni(kmax),FLUX_PPBmi(kmax), &
-                          FLUX_UptNiti(kmax),FLUX_UptAmmoi(kmax),FLUX_UptPi(kmax),FLUX_UptPbi(kmax)
+                          FLUX_UptNiti(kmax),FLUX_UptAmmoi(kmax),FLUX_UptPi(kmax),FLUX_UptPbi(kmax) , &
+                          TOT_COL_N, TOT_COL_P, TOT_COL_Si , &
+                          bEuphoticLayerDepth , &
+                          bPAR(kmax)
+
 
       double precision :: mask_trans(kmax),bpH(kmax)
 !     integer indice_bio(9),kk      !bio
@@ -228,7 +232,12 @@
                        ,FLUX_UptNiti          &
                        ,FLUX_UptAmmoi         &
                        ,FLUX_UptPi            &
-                       ,FLUX_UptPbi )
+                       ,FLUX_UptPbi           &
+                       ,TOT_COL_N             &
+                       ,TOT_COL_P             &
+                       ,TOT_COL_Si            &
+                       ,bEuphoticLayerDepth   &
+                       ,bPAR                  )
 
           do vb=1,vbmax
           do k=1,kmax
@@ -242,7 +251,8 @@
 
           do k=1,kmax
 !           print*,i1,j1,k,oPH(k)
-            sPH(i1,j1,k)=bPH(k)
+            sPH(i1,j1,k)=bpH(k)
+            sPAR(i1,j1,k)=bPAR(k)
 !           pCO2W(i1,j1,k)=oPCO2(k)
 !           print*,'apres tendeco',k,sPH(i1,j1,k)
           enddo
@@ -292,13 +302,18 @@
           j2=j1+par%tjmax(1)
 
      if(i2.eq.195.and.j2.eq.202) then
-     do k=1,kmax
-     print*,'biolo apres',k,tendancebio_t(i1,j1,k,30)
-     enddo
+!     do k=1,kmax
+!     print*,'biolo apres',k,tendancebio_t(i1,j1,k,30)
+!     enddo
+     print*,'biolo apres',TOT_COL_N,TOT_COL_P,TOT_COL_Si
 !     stop'biolo'
      endif
 
+      TOT_COL_N_t(i1,j1)=TOT_COL_N_t(i1,j1)+TOT_COL_N
+      TOT_COL_P_t(i1,j1)=TOT_COL_P_t(i1,j1)+TOT_COL_P
+      TOT_COL_Si_t(i1,j1)=TOT_COL_Si_t(i1,j1)+TOT_COL_Si
 
+      EuphoticLayerDepth_t(i1,j1)=EuphoticLayerDepth_t(i1,j1)+bEuphoticLayerDepth
     
 !      if(i2.eq.335.and.j2.eq.32) then
 !      write(55,*),UptPTOPLAYER,ExcbactPO4PTOPLAYER,ExcZooPO4PTOPLAYER,UptbactPTOPLAYER
@@ -831,7 +846,12 @@
                      ,FLUX_UptNiti          &
                      ,FLUX_UptAmmoi         &
                      ,FLUX_UptPi            &
-                     ,FLUX_UptPbi )
+                     ,FLUX_UptPbi           &
+                     ,TOT_COL_N             &
+                     ,TOT_COL_P             &
+                     ,TOT_COL_Si            &
+                     ,bEuphoticLayerDepth   &
+                     ,bPAR        )
 
 
         do vb=1,vbmax
