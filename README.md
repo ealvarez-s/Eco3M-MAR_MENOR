@@ -1,7 +1,11 @@
 Code: SYMPHONIE_368/SOURCES
+
 Code modifications: SYMPHONIE_368/UDIR (compile here with make)
+
 Running directory: SYMPHONIE_368/RDIR
+
 Depending on compiler:
+
   SYMPHONIE_368/CDIR_IFORT
   SYMPHONIE_368/CDIR_GFORTRAN
 
@@ -17,6 +21,7 @@ Atmospheric forcing in:
 meteo/
 
 Directories not included, create them:
+
 SYMPHONIE_368/RDIR/BGC_MAR_MENOR2/restart_input/
 SYMPHONIE_368/RDIR/BGC_MAR_MENOR2/restart_outbis/
 SYMPHONIE_368/RDIR/BGC_MAR_MENOR2/restart_output/
