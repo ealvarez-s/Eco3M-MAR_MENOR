@@ -1,10 +1,10 @@
 ********************************************************************************
 Output fields for graphics:
-../../../BGC_MAR_MENOR/GRAPHIQUES/RUN_TEST3/                      DIRGRAPH
+../../../BGC_MAR_MENOR/GRAPHIQUES/RUN_reference_10days_output/       DIRGRAPH
 120 ! dim_varid
 1   ! 1> regular in time  2> dates defined in notebook_dateoutput    IDATE_OUTPUT
-0.2 ! gives the periodicity (in days) if the previous line = 1
-1. !gives the periodicity (in days) for the supp outputs
+10. ! gives the periodicity (in days) if the previous line = 1
+10. ! gives the periodicity (in days) for the supp outputs
 Note: the related subroutines are graph_out.F90 and netcdf.F90
 ********************************************************************************
 30 2D horizontal scalar variables                        GRH_NB
@@ -62,8 +62,8 @@ Note: the related subroutines are graph_out.F90 and netcdf.F90
 0 unused space....
 ................................................................................
 20 3D scalar variables on '_t' points                  GRH_NB
-0  Potential temperature                                  1
-0  Salinity                                               2
+1  Potential temperature                                  1
+1  Salinity                                               2
 1  Potential density                                      3
 1  Passive tracers                                        4
 0  OGCM forcing potential temperature (temobc)            5
