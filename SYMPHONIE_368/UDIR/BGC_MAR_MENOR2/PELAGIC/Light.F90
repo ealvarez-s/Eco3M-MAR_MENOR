@@ -171,18 +171,18 @@
         PAR_Z(I) =  ParLong  + ParShort 
 
           ! Calculation of the Euphotic Layer Depth  
-!          IF (PelagicVertical) THEN
-!          IF(EuphoCalculation.EQ.1.AND.ParBot.LT.0.01*PAR_Z(1)) THEN
+        !  IF (PelagicVertical) THEN
+          IF(EuphoCalculation.EQ.1.AND.ParBot.LT.0.01*PAR_Z(1)) THEN
 
-!           ParTop = ParTopLong + ParTopShort
+           ParTop = ParTopLong + ParTopShort
 
-!           EuphoticLayerDepth =  DepthInt(I) + Thickness(I)*log( 0.01*PAR_Z(1) / ParTop )                & 
-!                                                           /log( ParBot      / ParTop )
-!           EuphoCalculation = 0 
+           EuphoticLayerDepth =  DepthInt(I) + Thickness(I)*log( 0.01*PAR_Z(1) / ParTop )                & 
+                                                           /log( ParBot      / ParTop )
+           !EuphoCalculation = 0 
 
-!           IEupho=I !Indice du bas de la couche euphotique
-!          ENDIF      
-!          ENDIF !PelagicVertical
+           IEupho=I !Indice du bas de la couche euphotique
+          ENDIF      
+        !  ENDIF !PelagicVertical
 
 
          ! PAR also decreases due to calcite scattering

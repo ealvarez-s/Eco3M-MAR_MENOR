@@ -176,7 +176,11 @@
       ,uptnitsw  &
       ,uptammosw &
       ,uptpsw  &
-      ,uptpbsw                                            
+      ,uptpbsw  &
+      ,TOT_COL_N_t &
+      ,TOT_COL_P_t &
+      ,TOT_COL_Si_t &
+      ,EuphoticLayerDepth_t                                            
                                                      
       double precision,allocatable,dimension(:,:) ::                    &
        CBDet,                                                           &
@@ -257,6 +261,9 @@
 
       double precision,allocatable,dimension(:,:,:) ::                  &
        sPH
+
+      double precision,allocatable,dimension(:,:,:) ::                  &
+       sPAR
 
       double precision,allocatable,dimension(:,:) ::                    &
        pCO2W
@@ -1053,6 +1060,8 @@ contains
 
       allocate(sPH(0:imax+1,0:jmax+1,kmax)); sPH=0.
 
+      allocate(sPAR(0:imax+1,0:jmax+1,kmax)); sPAR=0.
+
       allocate(pCO2W(0:imax+1,0:jmax+1)) ; pCO2W=0.
 
 
@@ -1232,7 +1241,11 @@ contains
       ,uptnitsw(0:imax+1,0:jmax+1)  &
       ,uptammosw(0:imax+1,0:jmax+1)&
       ,uptpsw(0:imax+1,0:jmax+1)  &
-      ,uptpbsw(0:imax+1,0:jmax+1))                  
+      ,uptpbsw(0:imax+1,0:jmax+1)  &
+      ,TOT_COL_N_t(0:imax+1,0:jmax+1) &
+      ,TOT_COL_P_t(0:imax+1,0:jmax+1) &
+      ,TOT_COL_Si_t(0:imax+1,0:jmax+1) &
+      ,EuphoticLayerDepth_t(0:imax+1,0:jmax+1) )                  
 !      ,netppb2d(0:imax+1,0:jmax+1))
 
       nitrif2d=0.
@@ -1349,6 +1362,10 @@ contains
       uptammosw=0.
       uptpsw=0.
       uptpbsw=0.
+      TOT_COL_N_t=0.
+      TOT_COL_P_t=0.
+      TOT_COL_Si_t=0.
+      EuphoticLayerDepth_t=0.
 
       allocate(CBDet(imax,jmax),                                        &
        CBFDet(imax,jmax),                                               &

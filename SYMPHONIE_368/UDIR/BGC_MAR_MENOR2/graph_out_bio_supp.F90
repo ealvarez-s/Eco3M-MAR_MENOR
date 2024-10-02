@@ -302,23 +302,48 @@
   200 continue
 
 ! PH---------------------------------------------------
-!      if(loop_netcdf==1) then !=======>
-!         do k=1,kmax
-!         do j=0,jmax+1 !30-07-14
-!         do i=0,imax+1
-!!          if (mask_t(i,j,kmax  ).ne.0) then
-!!          anyvar3d(i,j,k)=spH(i,j,max0(k,kmin_w(i,j))) 
-!          if (mask_t(i,j,k  ).ne.0) then
-!          anyvar3d(i,j,k)=spH(i,j,k)
-!          else
-!           anyvar3d(i,j,k)=-9999.
-!          endif
-!         enddo
-!         enddo
-!         enddo
-!      endif                  !=======>
-!      texte80(1)='pH'     ; texte80(2)='unit'                       ! variable;units
-!      call netcdf_main('_t')
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=0,jmax+1 !30-07-14
+         do i=0,imax+1
+!          if (mask_t(i,j,kmax  ).ne.0) then
+!          anyvar3d(i,j,k)=spH(i,j,max0(k,kmin_w(i,j))) 
+          if (mask_t(i,j,k  ).ne.0) then
+          anyvar3d(i,j,k)=sPH(i,j,k)
+          else
+           anyvar3d(i,j,k)=-9999.
+          endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======>
+      texte80(1)='pH'     ; texte80(2)='unit'    ! variable;units
+      write(texte80(3),'(a)')'pH'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+
+!--------------------------------------------------------
+
+! PAR---------------------------------------------------
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=0,jmax+1
+         do i=0,imax+1
+          if (mask_t(i,j,k  ).ne.0) then
+          anyvar3d(i,j,k)=sPAR(i,j,k)
+          else
+           anyvar3d(i,j,k)=-9999.
+          endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======>
+      texte80(1)='PAR'     ; texte80(2)='w/m2'      ! variable;units
+      write(texte80(3),'(a)')'PAR'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
 
 !--------------------------------------------------------
 
@@ -493,6 +518,85 @@
 
         call netcdf_main('_t')
 !        print*,'ppb tracee'
+
+
+      if(loop_netcdf==1) then !=====
+!! reduction des sorties a la zone de calcul
+           do j=1,jmax
+           do i=1,imax
+              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
+                anyvar2d(i,j)=TOT_COL_N_t(i,j)/tps_ppb_2d
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+            enddo
+        endif
+        texte80(1)='tot_N' ; texte80(2)='mmolN/m2'
+      write(texte80(3),'(a)')'total N'
+      texte80(4)=texte80(3)
+     texte80(5)='TYX' ; texte80(7)='real'
+
+        call netcdf_main('_t')
+
+      if(loop_netcdf==1) then !=====
+!! reduction des sorties a la zone de calcul
+           do j=1,jmax
+           do i=1,imax
+              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
+                anyvar2d(i,j)=TOT_COL_P_t(i,j)/tps_ppb_2d
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+            enddo
+        endif
+        texte80(1)='tot_P' ; texte80(2)='mmolP/m2'
+      write(texte80(3),'(a)')'total P'
+      texte80(4)=texte80(3)
+     texte80(5)='TYX' ; texte80(7)='real'
+
+        call netcdf_main('_t')
+
+      if(loop_netcdf==1) then !=====
+!! reduction des sorties a la zone de calcul
+           do j=1,jmax
+           do i=1,imax
+              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
+                anyvar2d(i,j)=TOT_COL_Si_t(i,j)/tps_ppb_2d
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+            enddo
+        endif
+        texte80(1)='tot_Si' ; texte80(2)='mmolSi/m2'
+      write(texte80(3),'(a)')'total Si'
+      texte80(4)=texte80(3)
+     texte80(5)='TYX' ; texte80(7)='real'
+
+        call netcdf_main('_t')
+
+
+      if(loop_netcdf==1) then !=====
+! reduction des sorties a la zone de calcul
+           do j=1,jmax
+           do i=1,imax
+              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
+                anyvar2d(i,j)=EuphoticLayerDepth_t(i,j)/tps_ppb_2d
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+            enddo
+        endif
+        texte80(1)='z_eu' ; texte80(2)='m'
+      write(texte80(3),'(a)')'depth of the euphotic layer'
+      texte80(4)=texte80(3)
+     texte80(5)='TYX' ; texte80(7)='real'
+
+        call netcdf_main('_t')
+
 !!*****************************************************************
 ! production primaire nette
 ! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
@@ -5028,11 +5132,17 @@
       uptammosw(i,j)=0.
       uptpsw(i,j)=0.
       uptpbsw(i,j)=0.
+      TOT_COL_N_t(i,j)=0.
+      TOT_COL_P_t(i,j)=0.
+      TOT_COL_Si_t(i,j)=0.
+      EuphoticLayerDepth_t(i,j)=0.
 !          SurfNetPP2D(i,j)=0.
-!        do k=1,kmax
-!        nitrif3d(i,j,k)=0.
-!        uptnit3d(i,j,k)=0.
-!        enddo
+        do k=1,kmax
+!!        nitrif3d(i,j,k)=0.
+!!        uptnit3d(i,j,k)=0.
+         sPH(i,j,k)=0.
+         sPAR(i,j,k)=0.
+        enddo
         enddo    ! fin de boucle i1
         enddo    ! fin de boucle j1
 ! fin remise a zero

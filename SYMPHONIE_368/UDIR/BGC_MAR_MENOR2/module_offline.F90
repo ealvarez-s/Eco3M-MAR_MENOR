@@ -5048,9 +5048,9 @@ contains
         sshobc_w(i,j,1)=sshobc_w(i,j,2)
         sshobc_w(i,j,2)=max(anyvar2d(i,j)*mask_t(i,j,kmax) &   !20-12-14
                                 ,wetdry_cst2-h_w(i,j))
-        sshobc_w(i,j,0)=0.
-        sshobc_w(i,j,1)=0.
-        sshobc_w(i,j,2)=0.
+!        sshobc_w(i,j,0)=0.
+!        sshobc_w(i,j,1)=0.
+!        sshobc_w(i,j,2)=0.
        enddo ; enddo
       endif                       !--               -->
 
@@ -6197,7 +6197,7 @@ contains
        do k=kmin_u(i,j),kmax
         velobc_u(i,j,k,2)=velobc_u(i,j,k,2)+x1*(abs(velobc_u(i,j,k,2))+small1)
        enddo
-        velobc_u(i,j,:,:)=0.
+!        velobc_u(i,j,:,:)=0.
       enddo ; enddo
 
       do j=1,jmax+1 ; do i=0,imax+1
@@ -6220,7 +6220,7 @@ contains
        do k=kmin_v(i,j),kmax
         velobc_v(i,j,k,2)=velobc_v(i,j,k,2)+x1*(abs(velobc_v(i,j,k,2))+small1)
        enddo
-        velobc_v(i,j,:,:)=0.
+!        velobc_v(i,j,:,:)=0.
       enddo ; enddo
 
 #ifdef bidon

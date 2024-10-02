@@ -1,8 +1,8 @@
 &notebook_time
 
 ! Enter the time for the start and the end of the simulation:
-datesim(1:6,1)= 2016 , 11 , 01 , 12  , 00  , 00  ! Start time (yyyy mm dd hh mm ss)
-datesim(1:6,2)= 2016 , 11 , 30 , 12  , 00  , 00  ! Start time (yyyy mm dd hh mm ss)
+datesim(1:6,1)= 2016 , 09 , 01 , 12  , 00  , 00  ! Start time (yyyy mm dd hh mm ss)
+datesim(1:6,2)= 2017 , 12 , 31 , 12  , 00  , 00  ! End time (yyyy mm dd hh mm ss)
 
 ! Define datesim(1:6,2) from a maximum number of iterations of the internal mode:
  iteration3d_max=-999 ! active if > 0 . Number of iterations from datesim(1:6,1)

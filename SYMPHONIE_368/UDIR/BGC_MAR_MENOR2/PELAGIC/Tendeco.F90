@@ -28,7 +28,10 @@
                       ,oUptBactNTOPLAYER,oUptBactNINT,oUptBactNDEEP,oPH,oPCO2              &
                       ,oRespPi,oRespZi,oRespBi,oGbaci,oGrazHerbii,oGrazToti                &
                       ,oPPBpi,oPPBni,oPPBmi,oRespPpi,oRespPni,oRespPmi,oUptNiti,oUptAmmoi  &
-                      ,oUptPi,oUptPBi)                     
+                      ,oUptPi,oUptPBi                                                      &
+                      ,oTotalN,oTotalP,oTotalSi                                            &
+                      ,oEuphoticLayerDepth                                                 &
+                      ,oPAR)
 
 
 !_____________________________________________________________________
@@ -195,6 +198,12 @@
       DOUBLE PRECISION :: oUptAmmoi(NumpelagicBoxes)
       DOUBLE PRECISION :: oUptPi(NumpelagicBoxes)
       DOUBLE PRECISION :: oUptPBi(NumpelagicBoxes)
+!      DOUBLE PRECISION :: oTotalC
+      DOUBLE PRECISION :: oTotalN
+      DOUBLE PRECISION :: oTotalP
+      DOUBLE PRECISION :: oTotalSi
+      DOUBLE PRECISION :: oEuphoticLayerDepth
+      DOUBLE PRECISION :: oPAR(NumpelagicBoxes)
 !---------------------------------------------------------------------*
 
 !---------------------------------------------------------------------*
@@ -415,7 +424,7 @@
          oTENDANCEBIO(NumpelagicBoxes-I+1,iAlkalinity)= dAlkalinity(I)
          oPH(NumpelagicBoxes-I+1)=PH(I)
 !        oPCO2(NumpelagicBoxes-I+1)=pCO2(I)
-
+         oPAR(NumpelagicBoxes-I+1)=PAR_Z(I)
 
 ! Flux from Eco3m to Diagnostics
          oPPBi(NumpelagicBoxes-I+1)       = PPBi(I)
@@ -439,6 +448,9 @@
          oUptPBi(NumpelagicBoxes-I+1)     = vUptBactP(I)
 
        ENDDO
+         oTotalN     = TotalN
+         oTotalP     = TotalP
+         oTotalSi     = TotalSi
 
 ! Conversion in s
        DO KB = 1 , xsvardeclare
@@ -472,7 +484,7 @@
 
 
 ! Euphotic Layer Depth
-!      oEuphoticLayerDepth=EuphoticLayerDepth 
+       oEuphoticLayerDepth=EuphoticLayerDepth 
 
 ! Brut primary production
        oPrimProdTot  = TotalPPB
