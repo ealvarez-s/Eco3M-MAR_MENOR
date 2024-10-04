@@ -1,0 +1,21 @@
+name: belich-legos
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - mpich           # MPI library (you may replace with Intel MPI for better compatibility)
+  - hdf5            # HDF5 support (required for NetCDF-4)
+  - netcdf-fortran  # Fortran bindings for NetCDF
+  - cmake           # CMake for building projects
+  - libtool         # For building libraries like Parallel NetCDF
+  - autoconf        # For configuring build environments
+  - automake        # Automake for build scripts
+  - m4              # Required by autoconf
+  - make            # Make utility for building
+
+# Optional Python bindings for NetCDF
+#  - python
+#  - netcdf4  # Python interface for NetCDF
+
+# Install PnetCDF within the environment
+# (see instructions)
