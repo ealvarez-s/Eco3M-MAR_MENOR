@@ -1721,8 +1721,7 @@ contains
             if(status/=0)stop 'stop nf_get_var_double time_counter_'
 
             do ogcmtimecounter_=1,max_time_counter_
-!            status=nf_get_vara_double(ncid_,var_id,ogcmtimecounter_,1,x1); &
-!               if(status/=0)stop 'erreur1 nf_get_vara_double module_offline'
+!            status=nf_get_vara_double(ncid_,var_id,ogcmtimecounter_,1,x1);if(status/=0)stop 'erreur1 nf_get_vara_double module_offline'
              x1=time_counter_(ogcmtimecounter_)
              x2=-999.
              if(index(txt_units,'days')/=0)x2=86400.
@@ -1734,10 +1733,8 @@ contains
 
             status=nf_inq_varid(ncid_,'cumulativetime',var_id)
             if(status==0) then !xxxxxxx>
-               status=nf_get_vara_double(ncid_,var_id,ogcmtimecounter_,1,x3); &
-                    if(status/=0)stop 'erreur2 nf_get_vara_double module_offline'
-               status=nf_get_att_text(ncid_,var_id,'units',txt_units); &
-                    if(status/=0)stop 'erreur nf_get_att_text module_offline'
+             status=nf_get_vara_double(ncid_,var_id,ogcmtimecounter_,1,x3);if(status/=0)stop 'erreur2 nf_get_vara_double module_offline'
+             status=nf_get_att_text(ncid_,var_id,'units',txt_units);if(status/=0)stop 'erreur nf_get_att_text module_offline'
              if(index(txt_units,'hours')==0) &
              stop 'Unites cumulativetime incorrectes'
              ofl_period_next=x3*3600.
@@ -3114,8 +3111,7 @@ contains
       endif                  !--------->
       texte80(1)='grid_angle'   ; texte80(2)='°'            ! variable ; units
       texte80(5)='YX' ; texte80(7)='real'
-      texte80(3)='Angle_from_Oi_axis_to_OE_axis' ; &
-         texte80(4)='https://docs.google.com/presentation/d/1FmAXNCdY_vL5KCUvkY0AxOQ6u145xQc1q-3cfXL1shU/edit#slide=id.p'
+      texte80(3)='Angle_from_Oi_axis_to_OE_axis' ;            texte80(4)='https://docs.google.com/presentation/d/1FmAXNCdY_vL5KCUvkY0AxOQ6u145xQc1q-3cfXL1shU/edit#slide=id.p'
       if(flag_offline_binary==0)call netcdf_main('_t')
       if(flag_offline_binary==1)call offlinegbin('_t') !18-06-18
 
@@ -7352,7 +7348,7 @@ contains
           allocate(binaryfile_tab3d_i2(i1:i2,j1:j2,k1:k2))
           read(10+loop_,iostat=error_)binaryfile_tab3d_i2 ; if(error_/=0)stop 'STOP ERROR 3 binary2netcdf'
           else
-           stop 'erreur format sur texte80(7)'
+           stop'erreur format sur texte80(7)'
           endif
 
           i1=2 ; i2=imaxbf(loop_)-1 ; j1=2 ; j2=jmaxbf(loop_)-1
