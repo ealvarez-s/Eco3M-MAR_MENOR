@@ -18,4 +18,4 @@ dependencies:
 #  - netcdf4  # Python interface for NetCDF
 
 # Install PnetCDF within the environment
-# (see instructions)
+# (see HT_compile_Eco3M_IEOcluster.pdf)
