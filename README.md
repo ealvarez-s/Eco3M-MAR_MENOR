@@ -19,7 +19,7 @@ SYMPHONIE_368/RDIR/BGC_MAR_MENOR2/restart_outbis/\
 SYMPHONIE_368/RDIR/BGC_MAR_MENOR2/restart_output/\
 SYMPHONIE_368/RDIR/BGC_MAR_MENOR2/tmp/
 
-## CONFIG ---------------------------------------------
+## REGION ---------------------------------------------
 Setup in: BGC_MAR_MENOR
 
 Offline files with the circulation in: BGC_MAR_MENOR/OFFLINE/
