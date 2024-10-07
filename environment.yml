@@ -12,7 +12,9 @@ dependencies:
   - automake        # Automake for build scripts
   - m4              # Required by autoconf
   - make            # Make utility for building
-
+  - hdf5=*=mpi_mpich* # HDF5 with MPI Support
+  - mpi4py          # for NetCDF with parallel I/O support
+  
 # Optional Python bindings for NetCDF
 #  - python
 #  - netcdf4  # Python interface for NetCDF
