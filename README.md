@@ -1,4 +1,4 @@
-In Olympe: source ∼/.bashrc
+In Olympe: source ∼/.bashrc\
 In IEO-cluster: follow instructions in *HT_compile_Eco3M_IEOcluster.pdf*
 
 ## CODE   ---------------------------------------------
