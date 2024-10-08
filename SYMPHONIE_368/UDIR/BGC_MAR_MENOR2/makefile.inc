@@ -12,8 +12,8 @@
 
 # Compillateur, MPI wrapper -------------------------------------------------------------------
 #F90=mpif90
-#F90=mpiifort
-F90=mpifort
+F90=mpiifort
+#F90=mpifort
 
 #  option specifies where to put .mod files
 CONF=BGC_MAR_MENOR2
@@ -25,11 +25,12 @@ COMPMOD=-module
 # DO NOT USE -O3  optimization
 #F77FLAGS= -g -traceback -O0 -ftrapuv -fpe0 -check all 
 #F77FLAGS= -g -traceback -O0 -ftrapuv -fpe0 -check bounds
- F77FLAGS= -g -traceback -O0 -check bounds -fp-model precise -diag-disable=10448
+# F77FLAGS= -g -traceback -O0 -check bounds -fp-model precise -diag-disable=10448
+F77FLAGS= -g -O2 -traceback -fp-model precise -diag-disable=10448
 
 # F77FLAGS= -O2 -fallow-argument-mismatch -ffree-line-length-none
 # F77FLAGS= -O2 -fbacktrace
 
 # parallel netcdf and netcdf librairies
 NETINC=-I/home/alvarez/miniconda3/envs/belich-legos-r/include
-LIB=-L/home/alvarez/miniconda3/envs/belich-legos-r/lib -lnetcdff -lnetcdf -lpnetcdf
+LIB=-L/home/alvarez/miniconda3/envs/belich-legos-r/lib -lnetcdff -lnetcdf -lpnetcdf ###/home/alvarez/miniconda3/envs/belich-legos-r/lib/libpnetcdf.a
