@@ -10,8 +10,11 @@ directory='../../../BGC_MAR_MENOR/NOTEBOOK/'             ! Directory of the note
 nomfichier(1)='notebook_time.f'                   ! Departure/End time of the runs, time steps,...
 
 ! GRID
-nomfichier(2) ='notebook_grid_ieo48.f'             ! Dimensions, projection, mpi, ...
-!nomfichier(2) ='notebook_grid_ieo54.f'            ! full domain      
+!nomfichier(2) ='notebook_grid_ieo48.f'            ! only active subdomains for 1 node
+!nomfichier(2) ='notebook_grid_ieo54.f'            ! full domain for 1 node
+nomfichier(2) ='notebook_grid_ieo95.f'             ! only active subdomains for 2 nodes
+!nomfichier(2) ='notebook_grid_ieo112.f'           ! full domain for 2 nodes      
+      
 nomfichier(3) ='notebook_bathy.f'                 ! Land/Sea mask, bathymetry, wetdrying,...   
 nomfichier(13)='notebook_vertcoord.f'             ! Vertical coordinate, sigma stretching,...
 

@@ -1,0 +1,47 @@
+#!/bin/bash
+#SBATCH -J test_95
+#SBATCH -N 2
+#SBATCH --nodelist=c01,c02
+#SBATCH --partition=hpc
+####SBATCH --time=2-01:00:00
+####SBATCH --time=01:00:00
+####SBATCH -t 1-00:00:00
+####SBATCH --time=00:05:00
+####SBATCH --ntasks=96
+#SBATCH --ntasks-per-node=48
+#SBATCH --ntasks-per-core=1
+
+#### echo Bonjour du noeud `hostname`
+rm fort*
+rm tmp/*
+
+#### module purge
+#### module load intel/18.2 intelmpi/18.2 hdf5/1.10.2-intelmpi netcdf/4.6.1-intelmpi pnetcdf/1.9.0-intelmpi
+conda activate belich-legos-r
+export LD_LIBRARY_PATH=/home/alvarez/miniconda3/envs/belich-legos-r/lib:$LD_LIBRARY_PATH
+export SLURM_CONF=/home/alvarez/slurm.conf
+
+##export OMPI_FC=ifort
+##export OMPI_CC=icc
+##export OMP_CXX=icpc
+
+#### module list 2> currently_loaded_modulefile
+
+echo "Job ID: ${SLURM_JOB_ID}"
+echo "Local ID: ${SLURM_LOCALID}"
+echo "NodeList: ${SLURM_JOB_NODELIST}"
+echo "Tareas: ${SLURM_NTASKS}"
+echo "Tareas/nodo: ${SLURM_TASKS_PER_NODE}"
+echo "SubmitDir: ${SLURM_SUBMIT_DIR}"
+echo "SubmitHost: ${SLURM_SUBMIT_HOST}"
+echo "Conf.file: ${SLURM_CONF}"
+
+#### module list 2> currently_loaded_modulefile
+
+####I_MPI_HYDRA_BOOTSTRAP=ssh
+####mpiexec.hydra -n 92 ./S26.exe
+
+####I_MPI_HYDRA_BOOTSTRAP=ssh
+mpirun -np 95 ./S26.exe
+
+####srun --ntasks 92 ./S26.exe
