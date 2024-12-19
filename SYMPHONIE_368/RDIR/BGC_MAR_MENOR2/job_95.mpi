@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -J test_95
+#SBATCH -J offline_
 #SBATCH -N 2
 #SBATCH --nodelist=c01,c02
 #SBATCH --partition=hpc
@@ -7,7 +7,7 @@
 ####SBATCH --time=01:00:00
 ####SBATCH -t 1-00:00:00
 ####SBATCH --time=00:05:00
-####SBATCH --ntasks=96
+####SBATCH --ntasks=95
 #SBATCH --ntasks-per-node=48
 #SBATCH --ntasks-per-core=1
 
@@ -17,8 +17,8 @@ rm tmp/*
 
 #### module purge
 #### module load intel/18.2 intelmpi/18.2 hdf5/1.10.2-intelmpi netcdf/4.6.1-intelmpi pnetcdf/1.9.0-intelmpi
-conda activate belich-legos-r
-export LD_LIBRARY_PATH=/home/alvarez/miniconda3/envs/belich-legos-r/lib:$LD_LIBRARY_PATH
+conda activate belich-legos-r2
+export LD_LIBRARY_PATH=/home/alvarez/miniconda3/envs/belich-legos-r2/lib:$LD_LIBRARY_PATH
 export SLURM_CONF=/home/alvarez/slurm.conf
 
 ##export OMPI_FC=ifort
@@ -39,9 +39,8 @@ echo "Conf.file: ${SLURM_CONF}"
 #### module list 2> currently_loaded_modulefile
 
 ####I_MPI_HYDRA_BOOTSTRAP=ssh
-####mpiexec.hydra -n 92 ./S26.exe
+####mpiexec.hydra -n 95 ./S26.exe
 
-####I_MPI_HYDRA_BOOTSTRAP=ssh
 mpirun -np 95 ./S26.exe
 
-####srun --ntasks 92 ./S26.exe
+####srun --ntasks 95 ./S26.exe

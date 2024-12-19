@@ -42,7 +42,7 @@ nomfichier(34)='notebook_nh.f'                    ! m0v0m
 
 ! TRACERS
 nomfichier(10)='notebook_tracer.f'                ! Eulerian (passive)
-nomfichier(12)='notebook_bio'                     ! Eulerian (bio)
+nomfichier(12)='notebook_bio_lowSed_highInput'    ! Eulerian (bio)
 nomfichier(16)='notebook_drifter'                 ! Lagrangian
 
 ! BIO
