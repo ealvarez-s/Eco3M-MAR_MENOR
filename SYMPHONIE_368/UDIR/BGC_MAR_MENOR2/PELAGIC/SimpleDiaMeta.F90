@@ -177,25 +177,25 @@
 
 ! Phosphorus and silicium fluxes in mmol/m2/d
 
-! Test modif Alex 22/03/2017 forcing P sed => water col according to N:P
-! ratio
+! Test modif Alex 22/03/2017 forcing P sed => water col according to N:P ratio
+! EVA commented this part, PFlux gets pPMin from notebook_benthic
+!! Bassin W 
+!      IF(mask_t(i,j,kmax+1).EQ.1.and.lon_t(i,j)*rad2deg>-5.6)then !debut test
+!
+!      if ((lon_t(i,j)*rad2deg<10).or.    &
+!        (lon_t(i,j)*rad2deg>10.and.lon_t(i,j)*rad2deg<15.and.lat_t(i,j)*rad2deg>37.and.lat_t(i,j)*rad2deg<42).or. &
+!        (lon_t(i,j)*rad2deg>10.and.lon_t(i,j)*rad2deg<12.25.and.lat_t(i,j)*rad2deg>42.and.lat_t(i,j)*rad2deg<44.25).or. &
+!        (lon_t(i,j)*rad2deg>15.and.lon_t(i,j)*rad2deg<16.25.and.lat_t(i,j)*rad2deg>38.and.lat_t(i,j)*rad2deg<40.25))then
+!           PFlux =  (NO3Flux + NH3Flux)/22 
+!! Bassin E
+!       else 
+!           PFlux =  (NO3Flux + NH3Flux)/27
+!       endif
+!
+!       ENDIF 
 
-! Bassin W 
-      IF(mask_t(i,j,kmax+1).EQ.1.and.lon_t(i,j)*rad2deg>-5.6)then !debut test
-
-      if ((lon_t(i,j)*rad2deg<10).or.    &
-        (lon_t(i,j)*rad2deg>10.and.lon_t(i,j)*rad2deg<15.and.lat_t(i,j)*rad2deg>37.and.lat_t(i,j)*rad2deg<42).or. &
-        (lon_t(i,j)*rad2deg>10.and.lon_t(i,j)*rad2deg<12.25.and.lat_t(i,j)*rad2deg>42.and.lat_t(i,j)*rad2deg<44.25).or. &
-        (lon_t(i,j)*rad2deg>15.and.lon_t(i,j)*rad2deg<16.25.and.lat_t(i,j)*rad2deg>38.and.lat_t(i,j)*rad2deg<40.25))then
-           PFlux =  (NO3Flux + NH3Flux)/22 
-! Bassin E
-       else 
-           PFlux =  (NO3Flux + NH3Flux)/27
-       endif
-
-       ENDIF 
- 
-!       PFlux =  PBDet(I,J) * DecayRate *  pPMin
+!! EVA: PFlux gets pPMin from notebook_benthic 
+      PFlux =  PBDet(I,J) * DecayRate *  pPMin
       SiFlux = SiBDet(I,J) * DecayRate * pSiMin
 
 
