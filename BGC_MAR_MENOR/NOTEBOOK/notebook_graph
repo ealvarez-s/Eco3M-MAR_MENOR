@@ -1,9 +1,9 @@
 ********************************************************************************
 Output fields for graphics:
-../../../BGC_MAR_MENOR/GRAPHIQUES/RUN_reference_10days_output/       DIRGRAPH
+../../../BGC_MAR_MENOR/GRAPHIQUES/RUN_test_95_online/                DIRGRAPH
 120 ! dim_varid
 1   ! 1> regular in time  2> dates defined in notebook_dateoutput    IDATE_OUTPUT
-10. ! gives the periodicity (in days) if the previous line = 1
+1.0 ! gives the periodicity (in days) if the previous line = 1
 10. ! gives the periodicity (in days) for the supp outputs
 Note: the related subroutines are graph_out.F90 and netcdf.F90
 ********************************************************************************
@@ -18,7 +18,7 @@ Note: the related subroutines are graph_out.F90 and netcdf.F90
 0  Time scale of the nudging OBC layer for 3D u,v     8
 0  Sea surface height of the forcing OGCM (SSHobc)    9
 0  Layer thickness: h+ssh                            10
-0  PAR2 light penetration chanel 2 & albedo          11
+1  PAR2 light penetration chanel 2 & albedo          11
 0  SSH - SSHobc                                      12
 0  wet/dry areas                                     13
 0  Inverse Barometer                                 14
