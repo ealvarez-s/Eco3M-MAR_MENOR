@@ -826,13 +826,13 @@
 !          print*,'passe2'
 
 
-           bio_t(i,j,:,iNitrate)    = 1.00
-           bio_t(i,j,:,iAmmonium)   = 25.00 
-           bio_t(i,j,:,iPhosphate)  = 0.3
-           bio_t(i,j,:,iSilice)     = 45.00
-           bio_t(i,j,:,ioxygen)     = 210.0
+           bio_t(i,j,:,iNitrate)    = 2.5 !1.00
+           bio_t(i,j,:,iAmmonium)   = 1.0 !25.00 
+           bio_t(i,j,:,iPhosphate)  = 0.3 !0.3
+           bio_t(i,j,:,iSilice)     = 30  !45.00
+           bio_t(i,j,:,ioxygen)     = 200 !210.0
 
-           bio_t(i,j,:,iDiaChl)     = 6.00
+           bio_t(i,j,:,iDiaChl)     = 10.00 !6.00
            bio_t(i,j,:,iZooNanoC)   = 0.35
            bio_t(i,j,:,iZooMicroC)  = 0.5
            bio_t(i,j,:,iZooMesoC)   = 0.1
@@ -844,15 +844,15 @@
            bio_t(i,j,:,iDiaChl)     = 0.50*bio_t(i,j,:,iDiaChl)
 
 
-           bio_t(i,j,:,imOdC)       = 100.00
+           bio_t(i,j,:,imOdC)       = 218.63 !100.00
            bio_t(i,j,:,imOdN)       = bio_t(i,j,:,imOdC)*RedfieldNC
            bio_t(i,j,:,imOdP)       = bio_t(i,j,:,imOdC)*RedfieldPC
 
 !          bio_t(i,j,k,iBactC)      = bio_t(i,j,k,imOdC)   / 200. * 3.
            bio_t(i,j,:,ibactc)      = 4.00
 
-           bio_t(i,j,:,iDIC)        = 1850.0
-           bio_t(i,j,:,iALKALINITY) = 2300.0
+           bio_t(i,j,:,iDIC)        = 1890 !1850.0
+           bio_t(i,j,:,iALKALINITY) = 2150 !2300.0
            bio_t(i,j,:,ismopc)      = 10.0
            bio_t(i,j,:,ismopn)      = bio_t(i,j,:,ismopc)*RedfieldNC
            bio_t(i,j,:,ismopp)      = bio_t(i,j,:,ismopc)*RedfieldPC

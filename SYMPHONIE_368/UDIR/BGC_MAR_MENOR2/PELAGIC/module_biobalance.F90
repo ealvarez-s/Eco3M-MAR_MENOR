@@ -59,93 +59,6 @@ contains
       fluxSiemed = 700.e9/365.0/24.0/3600.0/sumareaemed !  RIBERA 2003
       fluxAMwmed  = 1300.e9/365./24./3600./sumareawmed  ! MOYENNE MOOSE
 
-!!! Modif Alex 25/01/2018 On fait un test sur les dépôts atmosph
-!      fluxNwmed  = 40000.e9/365.0/24.0/3600.0/sumareawmed ! MID
-!      fluxPwmed  = 550.e9/365.0/24.0/3600.0/sumareawmed !  MID
-!      fluxSiwmed = 709.e9/365.0/24.0/3600.0/sumareawmed !  RIBERA 2003
-!      fluxNemed  = 23000.e9/365.0/24.0/3600.0/sumareaemed ! LOW MID
-!      fluxPemed  = 670.e9/365.0/24.0/3600.0/sumareaemed !  MID
-!      fluxSiemed = 700.e9/365.0/24.0/3600.0/sumareaemed !  RIBERA 2003
-!      fluxAMwmed  = 1300.e9/365./24./3600./sumareawmed  ! MOYENNE MOOSE
-
-!! Modif Alex 01/12 On passe à l'échelle Mid de Ribera 2003
-!      fluxNwmed  = 41434.e9/365.0/24.0/3600.0/sumareawmed ! RIBERA 2003
-!      fluxPwmed  = 527.e9/365.0/24.0/3600.0/sumareawmed !  RIBERA 2003
-!      fluxSiwmed = 1455.e9/365.0/24.0/3600.0/sumareawmed !  RIBERA 2003
-!      fluxNemed  = 39843.e9/365.0/24.0/3600.0/sumareaemed ! RIBERA 2003
-!      fluxPemed  = 668.e9/365.0/24.0/3600.0/sumareaemed !  RIBERA 2003
-!      fluxSiemed = 2581.e9/365.0/24.0/3600.0/sumareaemed !  RIBERA 2003
-!      fluxAMwmed  = 1300.e9/365./24./3600./sumareawmed  ! MOYENNE MOOSE
-
-!! Modif Alex 01/12 On passe à l'échelle High de Ribera 2003
-!      fluxNwmed  = 72825.e9/365.0/24.0/3600.0/sumareawmed ! RIBERA 2003
-!      fluxPwmed  = 697.e9/365.0/24.0/3600.0/sumareawmed !  RIBERA 2003
-!      fluxSiwmed = 2201.e9/365.0/24.0/3600.0/sumareawmed !  RIBERA 2003
-!      fluxNemed  = 73621.e9/365.0/24.0/3600.0/sumareaemed ! RIBERA 2003
-!      fluxPemed  = 957.e9/365.0/24.0/3600.0/sumareaemed !  RIBERA 2003
-!      fluxSiemed = 5153.e9/365.0/24.0/3600.0/sumareaemed !  RIBERA 2003
-!      fluxAMwmed  = 1300.e9/365./24./3600./sumareawmed  ! MOYENNE MOOSE
-
-       do i=1,imax
-      do j=1,jmax
-
-      IF(mask_t(i,j,kmax+1).EQ.1.and.lon_t(i,j)*rad2deg>-5.6)then !debut test
-
-! bassin ouest
-        if  ((lon_t(i,j)*rad2deg<10.and.lon_t(i,j)*rad2deg>-5.6).or.    &
-        lon_t(i,j)*rad2deg>10.and.lon_t(i,j)*rad2deg<15.and.lat_t(i,j)*rad2deg>37.and.lat_t(i,j)*rad2deg<42.or. &
-        lon_t(i,j)*rad2deg>10.and.lon_t(i,j)*rad2deg<12.25.and.lat_t(i,j)*rad2deg>42.and.lat_t(i,j)*rad2deg<44.25.or. &
-        lon_t(i,j)*rad2deg>15.and.lon_t(i,j)*rad2deg<16.25.and.lat_t(i,j)*rad2deg>38.and.lat_t(i,j)*rad2deg<40.25) then
-
-
-!             fluxbio_w(i,j,iNitrate,2)  = fluxNwmed
-!             fluxbio_w(i,j,iPhosphate,2)= fluxPwmed
-             fluxbio_w(i,j,iSilice,2)   = fluxSiwmed
-
-!             fluxbio_w(i,j,iAmmonium,2)   = fluxAMwmed
-!             fluxbio_w(i,j,ismopn,2)   = fluxNwmed*.3
-!             fluxbio_w(i,j,imodn,2)   = fluxNwmed*.4
-!             fluxbio_w(i,j,ismopp,2)   = fluxPwmed!*3
-!             fluxbio_w(i,j,imodp,2)   = fluxPwmed
-!             fluxbio_w(i,j,ismopsi,2)   = fluxSiwmed*.3
-
-!bassin est
-         else
-!           if(lon_t(i,j)*rad2deg>-5.6) then
-!             fluxbio_w(i,j,iNitrate,2)  = fluxNemed
-!             fluxbio_w(i,j,iPhosphate,2)= fluxPemed
-             fluxbio_w(i,j,iSilice,2)   = fluxSiemed
-
-!             fluxbio_w(i,j,iAmmonium,2)   = fluxAMwmed
-!             fluxbio_w(i,j,ismopn,2)   = fluxNemed*.3
-!             fluxbio_w(i,j,imodn,2)   = fluxNemed*.4
-!             fluxbio_w(i,j,ismopp,2)   = fluxPemed!*3
-!             fluxbio_w(i,j,imodp,2)   = fluxPemed
-!             fluxbio_w(i,j,ismopsi,2)   = fluxSiemed*.3
-!           endif
-
-         endif
-
-! Kanakidou 2012 cf med8_clim
-         if(lat_t(i,j)*rad2deg>38) then
-             fluxbio_w(i,j,iNitrate,2)  = ((70*lat_t(i,j)*rad2deg-2460)/14/365/24/3600)*2/3/3 !2/3 NO3-
-            fluxbio_w(i,j,iAmmonium,2)  = ((70*lat_t(i,j)*rad2deg-2460)/14/365/24/3600)*1/3/3 !1/3 NH4+
-!             fluxbio_w(i,j,iAmmonium,2)  = 0. !ajout le 2023/02/21 commenté le   2023/02/22
-
-         else !  if(lat_t(i,j)*rad2deg<=38) then
-             fluxbio_w(i,j,iNitrate,2)  = ((9.6277278562 * lat_t(i,j)*rad2deg-165.8536585366) &
-                                          /14/365/24/3600) * 2/3/3 ! 2/3 NO3-
-             fluxbio_w(i,j,iAmmonium,2)  = ((9.6277278562 * lat_t(i,j)*rad2deg-165.8536585366) &
-                                          /14/365/24/3600) * 1/3/3 ! 1/3 NH4+
-!             fluxbio_w(i,j,iAmmonium,2)  = 0. !ajout le 2023/02/21 commenté le 2023/02/22
-
-         endif
-
-
-         endif
-      enddo
-      enddo
-
 ! flux des rivieres en condition limite de surface turbulence dans le cas nemoffline
       if(flag_nemoffline==1) then !wwwwwwwwwwwwwwwww>       !25-12-14
          do kr=1,nriver
@@ -177,7 +90,7 @@ contains
 
       subroutine biobalance_gateD
       implicit none
-      call budget_export_bottom
+!      call budget_export_bottom
 
       end subroutine biobalance_gateD
 
