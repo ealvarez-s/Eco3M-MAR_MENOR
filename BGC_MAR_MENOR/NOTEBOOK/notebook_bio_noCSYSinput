@@ -1,0 +1,536 @@
+************************************************ Do not touch this line please 1                    
+1     ! 1=activer modele de transport biogeochimique (0 sinon)                                      
+37    ! Nombre de variables                                                                         
+1800.    ! Pas de temps de la bio (en sec) Si  = 0 pareil que la physique  DTI_BIO                  
+************************************************ Do not touch this line please 2                    
+Vitesses de chutes en m/s (convention de signe: <0) 1 ligne par variable                            
+-0.0     zoonanoc                                                                                   
+-0.0     zoomicroc                                                                                  
+-0.0     zoomesoc                                                                                   
+-0.0     synec                                                                                      
+-0.0     synen                                                                                      
+-0.0     synep                                                                                      
+-0.0     synechl                                                                                    
+-0.0     nanoc                                                                                      
+-0.0     nanon                                                                                      
+-0.0     nanop                                                                                      
+-0.0     nanochl                                                                                    
+-8.E-6   diac                                                                                       
+-8.E-6   dian                                                                                       
+-8.E-6   diap                                                                                       
+-8.E-6   diachl                                                                                     
+-8.E-6   diasi                                                                                      
+-0.0     bactc                                                                                      
+-8.E-6   smopc                                                                                      
+-8.E-6   smopn                                                                                      
+-8.E-6   smopp                                                                                      
+-8.E-6   smopchl                                                                                    
+-8.E-6   smopsi                                                                                     
+-4.E-3 lmopc                                                                                        
+-4.E-3 lmopn                                                                                        
+-4.E-3 lmopp                                                                                        
+-4.E-3 lmopsi                                                                                       
+-0.0     modc                                                                                       
+-0.0     modn                                                                                       
+-0.0     modp                                                                                       
+-0.0     nitrate                                                                                    
+-0.0     ammonium                                                                                   
+-0.0     phosphate                                                                                  
+-0.0     silice                                                                                     
+-0.0     oxygen                                                                                     
+-0.0     odu                                                                                        
+-0.0     dic                                                                                        
+-0.0     talk                                                                                 
+************************************************ Do not touch this line please 3                    
+Concentration dans chaque fleuve.                                                                   
+Une ligne de séparation par fleuve puis 1 ligne par variable:                                       
+fleuve1
+0.      ! variable 1                                                                                
+0.      ! variable 2                                                                                
+0.      ! variable 3                                                                                
+0.      ! variable 4                                                                                
+0.      ! variable 5                                                                                
+0.      ! variable 6                                                                                
+0       ! variable 7                                                                                
+0.      ! variable 8                                                                                
+0.      ! variable 9                                                                                
+0.      ! variable 10                                                                               
+0.      ! variable 11                                                                               
+0.      ! variable 12                                                                               
+0.      ! variable 13                                                                               
+0.      ! variable 14                                                                               
+0.      ! variable 15                                                                               
+0.      ! variable 16                                                                               
+0.      ! variable 17                                                                               
+43.8    ! variable 18                                                                               
+7.3     ! variable 19                                                                               
+0.46    ! variable 20                                                                               
+0.      ! variable 21                                                                               
+0.      ! variable 22                                                                               
+7.8     ! variable 23                                                                               
+1.3     ! variable 24                                                                               
+0.08    ! variable 25                                                                               
+1.3     ! variable 26                                                                               
+60      ! variable 27                                                                               
+10.     ! variable 28                                                                               
+0.625   ! variable 29                                                                               
+50.   ! variable 30                                                                               
+0.1     ! variable 31                                                                               
+1.     ! variable 32                                                                               
+5.    ! variable 33                                                                               
+0.      ! variable 34                                                                               
+0.   ! variable 35                                                                                  
+   0.00                                                                                         
+   0.00                                                                                         
+0        !lecture concentration dans un fichier                                                     
+8761.      !resolution temporelle (en heures) du fichier concentration                              
+/tmpdir/jhabib/simulations/GLOBMED2/RIVERBIO/RiverBio_alb9100_20112019_dic13_globmed_ifort.dat        
+2011  06     01    00     00      00  ! an mois jour h m s pour NC=1                                
+fleuve2
+0.      ! variable 1                                                                                
+0.      ! variable 2                                                                                
+0.      ! variable 3                                                                                
+0.      ! variable 4                                                                                
+0.      ! variable 5                                                                                
+0.      ! variable 6                                                                                
+0       ! variable 7                                                                                
+0.      ! variable 8                                                                                
+0.      ! variable 9                                                                                
+0.      ! variable 10                                                                               
+0.      ! variable 11                                                                               
+0.      ! variable 12                                                                               
+0.      ! variable 13                                                                               
+0.      ! variable 14                                                                               
+0.      ! variable 15                                                                               
+0.      ! variable 16                                                                               
+0.      ! variable 17                                                                               
+43.8    ! variable 18                                                                               
+7.3     ! variable 19                                                                               
+0.46    ! variable 20                                                                               
+0.      ! variable 21                                                                               
+0.      ! variable 22                                                                               
+7.8     ! variable 23                                                                               
+1.3     ! variable 24                                                                               
+0.08    ! variable 25                                                                               
+1.3     ! variable 26                                                                               
+60      ! variable 27                                                                               
+10.     ! variable 28                                                                               
+0.625   ! variable 29                                                                               
+50.   ! variable 30  
+0.1     ! variable 31 
+1.     ! variable 32 
+5.    ! variable 33                                                                               
+0.      ! variable 34                                                                               
+0.   ! variable 35                                                                                  
+   0.00                                                                                         
+   0.00                                                                                         
+0        !lecture concentration dans un fichier                                                     
+8761.      !resolution temporelle (en heures) du fichier concentration                              
+/tmpdir/jhabib/simulations/GLOBMED2/RIVERBIO/RiverBio_alb9100_20112019_dic13_globmed_ifort.dat        
+2011  06     01    00     00      00  ! an mois jour h m s pour NC=1                                
+fleuve3
+0.      ! variable 1                                                                                
+0.      ! variable 2                                                                                
+0.      ! variable 3                                                                                
+0.      ! variable 4                                                                                
+0.      ! variable 5                                                                                
+0.      ! variable 6                                                                                
+0       ! variable 7                                                                                
+0.      ! variable 8                                                                                
+0.      ! variable 9                                                                                
+0.      ! variable 10                                                                               
+0.      ! variable 11                                                                               
+0.      ! variable 12                                                                               
+0.      ! variable 13                                                                               
+0.      ! variable 14                                                                               
+0.      ! variable 15                                                                               
+0.      ! variable 16                                                                               
+0.      ! variable 17                                                                               
+43.8    ! variable 18                                                                               
+7.3     ! variable 19                                                                               
+0.46    ! variable 20                                                                               
+0.      ! variable 21                                                                               
+0.      ! variable 22                                                                               
+7.8     ! variable 23                                                                               
+1.3     ! variable 24                                                                               
+0.08    ! variable 25                                                                               
+1.3     ! variable 26                                                                               
+60      ! variable 27                                                                               
+10.     ! variable 28                                                                               
+0.625   ! variable 29                                                                               
+50.   ! variable 30  
+0.1     ! variable 31 
+1.     ! variable 32 
+5.    ! variable 33                                                                               
+0.      ! variable 34                                                                               
+0.   ! variable 35                                                                                  
+   0.00                                                                                         
+   0.00                                                                                         
+0        !lecture concentration dans un fichier                                                     
+8761.      !resolution temporelle (en heures) du fichier concentration                              
+/tmpdir/jhabib/simulations/GLOBMED2/RIVERBIO/RiverBio_alb9100_20112019_dic13_globmed_ifort.dat        
+2011  06     01    00     00      00  ! an mois jour h m s pour NC=1                                
+fleuve4
+0.      ! variable 1                                                                                
+0.      ! variable 2                                                                                
+0.      ! variable 3                                                                                
+0.      ! variable 4                                                                                
+0.      ! variable 5                                                                                
+0.      ! variable 6                                                                                
+0       ! variable 7                                                                                
+0.      ! variable 8                                                                                
+0.      ! variable 9                                                                                
+0.      ! variable 10                                                                               
+0.      ! variable 11                                                                               
+0.      ! variable 12                                                                               
+0.      ! variable 13                                                                               
+0.      ! variable 14                                                                               
+0.      ! variable 15                                                                               
+0.      ! variable 16                                                                               
+0.      ! variable 17                                                                               
+43.8    ! variable 18                                                                               
+7.3     ! variable 19                                                                               
+0.46    ! variable 20                                                                               
+0.      ! variable 21                                                                               
+0.      ! variable 22                                                                               
+7.8     ! variable 23                                                                               
+1.3     ! variable 24                                                                               
+0.08    ! variable 25                                                                               
+1.3     ! variable 26                                                                               
+60      ! variable 27                                                                               
+10.     ! variable 28                                                                               
+0.625   ! variable 29                                                                               
+50.   ! variable 30  
+0.1     ! variable 31 
+1.     ! variable 32 
+5.    ! variable 33                                                                               
+0.      ! variable 34                                                                               
+0.   ! variable 35                                                                                  
+   0.00                                                                                         
+   0.00                                                                                         
+0        !lecture concentration dans un fichier                                                     
+8761.      !resolution temporelle (en heures) du fichier concentration                              
+/tmpdir/jhabib/simulations/GLOBMED2/RIVERBIO/RiverBio_alb9100_20112019_dic13_globmed_ifort.dat        
+2011  06     01    00     00      00  ! an mois jour h m s pour NC=1                                
+fleuve5
+0.      ! variable 1                                                                                
+0.      ! variable 2                                                                                
+0.      ! variable 3                                                                                
+0.      ! variable 4                                                                                
+0.      ! variable 5                                                                                
+0.      ! variable 6                                                                                
+0       ! variable 7                                                                                
+0.      ! variable 8                                                                                
+0.      ! variable 9                                                                                
+0.      ! variable 10                                                                               
+0.      ! variable 11                                                                               
+0.      ! variable 12                                                                               
+0.      ! variable 13                                                                               
+0.      ! variable 14                                                                               
+0.      ! variable 15                                                                               
+0.      ! variable 16                                                                               
+0.      ! variable 17                                                                               
+43.8    ! variable 18                                                                               
+7.3     ! variable 19                                                                               
+0.46    ! variable 20                                                                               
+0.      ! variable 21                                                                               
+0.      ! variable 22                                                                               
+7.8     ! variable 23                                                                               
+1.3     ! variable 24                                                                               
+0.08    ! variable 25                                                                               
+1.3     ! variable 26                                                                               
+60      ! variable 27                                                                               
+10.     ! variable 28                                                                               
+0.625   ! variable 29                                                                               
+50.   ! variable 30  
+0.1     ! variable 31 
+1.     ! variable 32 
+5.    ! variable 33                                                                               
+0.      ! variable 34                                                                               
+0.   ! variable 35                                                                                  
+   0.00                                                                                         
+   0.00                                                                                         
+0        !lecture concentration dans un fichier                                                     
+8761.      !resolution temporelle (en heures) du fichier concentration                              
+/tmpdir/jhabib/simulations/GLOBMED2/RIVERBIO/RiverBio_tyr9100_20112019_dic13_globmed_ifort.dat        
+2011  06     01    00     00      00  ! an mois jour h m s pour NC=1                                
+fleuve6
+0.      ! variable 1                                                                                
+0.      ! variable 2                                                                                
+0.      ! variable 3                                                                                
+0.      ! variable 4                                                                                
+0.      ! variable 5                                                                                
+0.      ! variable 6                                                                                
+0       ! variable 7                                                                                
+0.      ! variable 8                                                                                
+0.      ! variable 9                                                                                
+0.      ! variable 10                                                                               
+0.      ! variable 11                                                                               
+0.      ! variable 12                                                                               
+0.      ! variable 13                                                                               
+0.      ! variable 14                                                                               
+0.      ! variable 15                                                                               
+0.      ! variable 16                                                                               
+0.      ! variable 17                                                                               
+43.8    ! variable 18                                                                               
+7.3     ! variable 19                                                                               
+0.46    ! variable 20                                                                               
+0.      ! variable 21                                                                               
+0.      ! variable 22                                                                               
+7.8     ! variable 23                                                                               
+1.3     ! variable 24                                                                               
+0.08    ! variable 25                                                                               
+1.3     ! variable 26                                                                               
+60      ! variable 27                                                                               
+10.     ! variable 28                                                                               
+0.625   ! variable 29                                                                               
+50.   ! variable 30  
+0.1     ! variable 31 
+1.     ! variable 32 
+5.    ! variable 33                                                                               
+0.      ! variable 34                                                                               
+0.   ! variable 35                                                                                  
+   0.00                                                                                         
+   0.00                                                                                         
+0        !lecture concentration dans un fichier                                                     
+8761.      !resolution temporelle (en heures) du fichier concentration                              
+/tmpdir/jhabib/simulations/GLOBMED2/RIVERBIO/RiverBio_nwe9100_20112019_dic13_globmed_ifort.dat        
+2011  06     01    00     00      00  ! an mois jour h m s pour NC=1                                
+fleuve7
+0.      ! variable 1                                                                                
+0.      ! variable 2                                                                                
+0.      ! variable 3                                                                                
+0.      ! variable 4                                                                                
+0.      ! variable 5                                                                                
+0.      ! variable 6                                                                                
+0       ! variable 7                                                                                
+0.      ! variable 8                                                                                
+0.      ! variable 9                                                                                
+0.      ! variable 10                                                                               
+0.      ! variable 11                                                                               
+0.      ! variable 12                                                                               
+0.      ! variable 13                                                                               
+0.      ! variable 14                                                                               
+0.      ! variable 15                                                                               
+0.      ! variable 16                                                                               
+0.      ! variable 17                                                                               
+43.8    ! variable 18                                                                               
+7.3     ! variable 19                                                                               
+0.46    ! variable 20                                                                               
+0.      ! variable 21                                                                               
+0.      ! variable 22                                                                               
+7.8     ! variable 23                                                                               
+1.3     ! variable 24                                                                               
+0.08    ! variable 25                                                                               
+1.3     ! variable 26                                                                               
+60      ! variable 27                                                                               
+10.     ! variable 28                                                                               
+0.625   ! variable 29                                                                               
+50.   ! variable 30  
+0.1     ! variable 31 
+1.     ! variable 32 
+5.    ! variable 33                                                                               
+0.      ! variable 34                                                                               
+0.   ! variable 35                                                                                  
+   0.00                                                                                         
+   0.00                                                                                         
+0        !lecture concentration dans un fichier                                                     
+8761.      !resolution temporelle (en heures) du fichier concentration                              
+/tmpdir/jhabib/simulations/GLOBMED2/RIVERBIO/RiverBio_tyr9100_20112019_dic13_globmed_ifort.dat        
+2011  06     01    00     00      00  ! an mois jour h m s pour NC=1                                
+fleuve8
+0.      ! variable 1                                                                                
+0.      ! variable 2                                                                                
+0.      ! variable 3                                                                                
+0.      ! variable 4                                                                                
+0.      ! variable 5                                                                                
+0.      ! variable 6                                                                                
+0       ! variable 7                                                                                
+0.      ! variable 8                                                                                
+0.      ! variable 9                                                                                
+0.      ! variable 10                                                                               
+0.      ! variable 11                                                                               
+0.      ! variable 12                                                                               
+0.      ! variable 13                                                                               
+0.      ! variable 14                                                                               
+0.      ! variable 15                                                                               
+0.      ! variable 16                                                                               
+0.      ! variable 17                                                                               
+43.8    ! variable 18                                                                               
+7.3     ! variable 19                                                                               
+0.46    ! variable 20                                                                               
+0.      ! variable 21                                                                               
+0.      ! variable 22                                                                               
+7.8     ! variable 23                                                                               
+1.3     ! variable 24                                                                               
+0.08    ! variable 25                                                                               
+1.3     ! variable 26                                                                               
+60      ! variable 27                                                                               
+10.     ! variable 28                                                                               
+0.625   ! variable 29                                                                               
+50.   ! variable 30  
+0.1     ! variable 31 
+1.     ! variable 32 
+5.    ! variable 33                                                                               
+0.      ! variable 34                                                                               
+0.   ! variable 35                                                                                  
+   0.00                                                                                         
+   0.00                                                                                         
+0        !lecture concentration dans un fichier                                                     
+8761.      !resolution temporelle (en heures) du fichier concentration                              
+/tmpdir/jhabib/simulations/GLOBMED2/RIVERBIO/RiverBio_nwe9100_20112019_dic13_globmed_ifort.dat        
+2011  06     01    00     00      00  ! an mois jour h m s pour NC=1                                
+fleuve9
+0.      ! variable 1                                                                                
+0.      ! variable 2                                                                                
+0.      ! variable 3                                                                                
+0.      ! variable 4                                                                                
+0.      ! variable 5                                                                                
+0.      ! variable 6                                                                                
+0       ! variable 7                                                                                
+0.      ! variable 8                                                                                
+0.      ! variable 9                                                                                
+0.      ! variable 10                                                                               
+0.      ! variable 11                                                                               
+0.      ! variable 12                                                                               
+0.      ! variable 13                                                                               
+0.      ! variable 14                                                                               
+0.      ! variable 15                                                                               
+0.      ! variable 16                                                                               
+0.      ! variable 17                                                                               
+43.8    ! variable 18                                                                               
+7.3     ! variable 19                                                                               
+0.46    ! variable 20                                                                               
+0.      ! variable 21                                                                               
+0.      ! variable 22                                                                               
+7.8     ! variable 23                                                                               
+1.3     ! variable 24                                                                               
+0.08    ! variable 25                                                                               
+1.3     ! variable 26                                                                               
+60      ! variable 27                                                                               
+10.     ! variable 28                                                                               
+0.625   ! variable 29                                                                               
+50.   ! variable 30  
+0.1     ! variable 31 
+1.     ! variable 32 
+5.    ! variable 33                                                                               
+0.      ! variable 34                                                                               
+0.   ! variable 35                                                                                  
+   0.00                                                                                         
+   0.00                                                                                         
+0        !lecture concentration dans un fichier                                                     
+8761.      !resolution temporelle (en heures) du fichier concentration                              
+/tmpdir/jhabib/simulations/GLOBMED2/RIVERBIO/RiverBio_tyr9100_20112019_dic13_globmed_ifort.dat        
+2011  06     01    00     00      00  ! an mois jour h m s pour NC=1                                
+fleuve10
+0.      ! variable 1                                                                                
+0.      ! variable 2                                                                                
+0.      ! variable 3                                                                                
+0.      ! variable 4                                                                                
+0.      ! variable 5                                                                                
+0.      ! variable 6                                                                                
+0       ! variable 7                                                                                
+0.      ! variable 8                                                                                
+0.      ! variable 9                                                                                
+0.      ! variable 10                                                                               
+0.      ! variable 11                                                                               
+0.      ! variable 12                                                                               
+0.      ! variable 13                                                                               
+0.      ! variable 14                                                                               
+0.      ! variable 15                                                                               
+0.      ! variable 16                                                                               
+0.      ! variable 17                                                                               
+43.8    ! variable 18                                                                               
+7.3     ! variable 19                                                                               
+0.46    ! variable 20                                                                               
+0.      ! variable 21                                                                               
+0.      ! variable 22                                                                               
+7.8     ! variable 23                                                                               
+1.3     ! variable 24                                                                               
+0.08    ! variable 25                                                                               
+1.3     ! variable 26                                                                               
+60      ! variable 27                                                                               
+10.     ! variable 28                                                                               
+0.625   ! variable 29                                                                               
+50.   ! variable 30  
+0.1     ! variable 31 
+1.     ! variable 32 
+5.    ! variable 33                                                                               
+0.      ! variable 34                                                                               
+0.   ! variable 35                                                                                  
+   0.00                                                                                         
+   0.00                                                                                         
+0        !lecture concentration dans un fichier                                                     
+8761.      !resolution temporelle (en heures) du fichier concentration                              
+/tmpdir/jhabib/simulations/GLOBMED2/RIVERBIO/RiverBio_nwe9100_20112019_dic13_globmed_ifort.dat        
+2011  06     01    00     00      00  ! an mois jour h m s pour NC=1                                
+************************************************ Do not touch this line please 4                    
+Disposer des points sources pour faire des nappes de dipersion                                      
+0          ! nombre de points source. Une ligne de separation par source: KSOMAX                    
+*** ligne pour rien                                                                                 
+************************************************ Do not touch this line please 5                    
+Condition aux limites ouvertes                                        BIOBC_TYPE                    
+2 ! variable 1  ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 2  ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 3  ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 4  ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 5  ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 6  ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 7  ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 8  ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 9  ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 10 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 12 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 12 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 13 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 14 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 15 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 16 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe     ! oublie dans un premier 
+2 ! variable 17 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 18 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 19 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 20 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 22 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 22 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 23 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 24 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 25 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 26 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 27 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 28 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 29 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 30 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe, 4 1D sur 5 pts ob, 5 en fn d
+2 ! variable 32 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe,                             
+2 ! variable 32 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe, 4 1D sur 5 pts ob, 5 en fn d
+2 ! variable 33 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe, 4 1D sur 5 pts ob, 5 en fn d
+2 ! variable 34 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+2 ! variable 35 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe  5 en fn de sal              
+2 ! variable 36 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe, 4 1D sur 5 pts ob, 5 en fn d
+2 ! variable 37 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
+************************************************                                                    
+730. !resolution temporelle (en heures) du fichier concentration                                    
+../../../BGC_MAR_MENOR/ATM/CO2LampedusaMonthly1992-2022_ifort.dat                            
+1992 05 1 00 00 00 ! an mois jour h m s pour NC=1                                                   
+0 ! Deposition of dust                                                                              
+3 !1:aladin2015, 2:regcm2015, 3:aladin2018                                                          
+../../../GLOBMED2/NOTEBOOK/list_dust_dd                                                             
+../../../GLOBMED2/NOTEBOOK/list_dust_wdr                                                            
+0.0007  ! fraction of phosphore in the total flux                                                   
+0.15  ! soluble fraction of phosphore                                                               
+1     ! average on the preceding period                                                             
+0 ! Deposition of anthropogenic nitrate                                                             
+/tmpdir/jhabib/simulations/GLOBMED/NOTEBOOK/list_nitrate_dd                                         
+/tmpdir/jhabib/simulations/GLOBMED/NOTEBOOK/list_nitrate_wdr                                        
+/tmpdir/jhabib/simulations/GLOBMED/NOTEBOOK/list_nitrate_wdw                                        
+1     ! average on the preceding period                                                             
+0 ! Deposition of anthropogenic ammonium                                                            
+/tmpdir/jhabib/simulations/GLOBMED/NOTEBOOK/list_ammonium_dd                                        
+/tmpdir/jhabib/simulations/GLOBMED/NOTEBOOK/list_ammonium_wdr                                       
+/tmpdir/jhabib/simulations/GLOBMED/NOTEBOOK/list_ammonium_wdw                                       
+1     ! average on the preceding period                                                             
+************************************************ Do not touch this line please 6                    
+0 172 41 !26 70 70 72                                                          !     I1DBIO IPTBIO J
+************************************************ Do not touch this line please 7                    
+0  !Si 1 la grille pour modele bio est reduite                                                      
+1 762 1 554         !  MBIO1 MBIO2 NBIO1 NBIO2  grille du modele bio                                
+                                                                                                    
