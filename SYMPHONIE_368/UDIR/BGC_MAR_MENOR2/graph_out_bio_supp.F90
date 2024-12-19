@@ -811,28 +811,28 @@
 !        print*,'nitrif tracee'
 !!!*****************************************************************
 !!! NDepo  
-!
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1) then
-!                anyvar2d(i,j)=NDepo(i,j)
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!          endif
-!        texte80(1)='NDepo' ; texte80(2)='mmol/m2/d'
-!        call netcdf_main('_t')
-!!        print*,'nitrif tracee'
+
+      if(loop_netcdf==1) then !=======>
+           do j=1,jmax
+           do i=1,imax
+            anyvar2d(i,j)=-9999.
+           enddo
+           enddo
+
+           do j=1,jmax
+           do i=1,imax
+
+              if (mask_t(i,j,kmax+1)==1) then
+                anyvar2d(i,j)=NDepo(i,j)
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+             enddo
+          endif
+        texte80(1)='NDepo' ; texte80(2)='mmol/m2/d'
+        call netcdf_main('_t')
+!        print*,'nitrif tracee'
 !!!*****************************************************************
 !!! PDepo  
 !

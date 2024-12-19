@@ -192,7 +192,7 @@
 !......................................................
 ! TEST TENDECO
 !     anyv3d(:,:,:,id_kh_over_dz)=0.
-!     wsed(1,:)=0.
+      wsed(1,:)=0.
 
       do 200 vb=1,vbmax
 
@@ -314,7 +314,7 @@
       enddo
 
 ! fluxbio_w(:,:,vb,:)=0. ! removing fluxes from 1 (bottom) and 2 (surface)
-
+! fluxbio_w(:,:,iSilice,1)=0. ! removing Siflux from bottom (1)
 
 !......................................................
 ! Bottom & surface boundary conditions:
