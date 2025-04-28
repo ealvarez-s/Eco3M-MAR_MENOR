@@ -4,19 +4,22 @@
 !https://docs.google.com/document/d/1TRF8uYjsVen8EiY0rERHw3YxiofZmpZ6cH_sEhWiMwA/edit?usp=sharing
 
 ! DIRECTORY
-directory='../../../BGC_MAR_MENOR/NOTEBOOK/'      ! Directory of the notebooks
+directory='../../../BGC_MAR_MENOR/NOTEBOOK/'             ! Directory of the notebooks
 
 ! TIME
-nomfichier(1)='notebook_time_LR.f'                ! Departure/End time of the runs, time steps,...
+nomfichier(1)='notebook_time.f'                   ! Departure/End time of the runs, time steps,...
 
 ! GRID
-nomfichier(2) ='notebook_grid_LR.f'               ! 1 node
+nomfichier(2) ='notebook_grid_ieo24.f'            ! only active subdomains for 1 node
+!nomfichier(2) ='notebook_grid_ieo54.f'            ! full domain for 1 node
+!nomfichier(2) ='notebook_grid_ieo95.f'             ! only active subdomains for 2 nodes
+!nomfichier(2) ='notebook_grid_ieo112.f'           ! full domain for 2 nodes      
       
-nomfichier(3) ='notebook_bathy_LR.f'              ! Land/Sea mask, bathymetry, wetdrying,...   
+nomfichier(3) ='notebook_bathy.f'                 ! Land/Sea mask, bathymetry, wetdrying,...   
 nomfichier(13)='notebook_vertcoord.f'             ! Vertical coordinate, sigma stretching,...
 
 ! FORCING
-nomfichier(4) ='notebook_rivers_LR'               ! RIVERS
+nomfichier(4) ='notebook_rivers'                  ! RIVERS
 nomfichier(7) ='notebook_airseaflux_ecmwf_s26.f'  ! METEO
 nomfichier(8) ='notebook_obcforcing_nemo.f'       ! OGCM
 nomfichier(22)='notebook_wave.f'                  ! WAVES
@@ -26,15 +29,15 @@ nomfichier(22)='notebook_wave.f'                  ! WAVES
  nomfichier(11)='notebook_tide_fes2012_v211'
 
 ! I/O
-nomfichier(20)='notebook_offline_LR.f'            ! Offline files
-nomfichier(21)='notebook_graph_LR'                ! Outputs files for graph
+nomfichier(20)='notebook_offline.f'               ! Offline files
+nomfichier(21)='notebook_graph'                  ! Outputs files for graph
 
 ! PHYSIC
 nomfichier(5)='notebook_advection.f'              ! Advection schemes
 nomfichier(9)='notebook_visco.f'                  ! Turbulence schemes
 nomfichier(15)='notebook_optical.f'               ! Light attenuation
 nomfichier(17)='notebook_eqstate.f'               ! Equations of state
-nomfichier(14)='notebook_sponge_LR.f'        ! OBC schemes, nudging layer
+nomfichier(14)='notebook_spongelayer.f'           ! OBC schemes, nudging layer
 nomfichier(34)='notebook_nh.f'                    ! m0v0m
 
 ! TRACERS
