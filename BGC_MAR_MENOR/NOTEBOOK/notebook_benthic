@@ -13,8 +13,8 @@
 
 ! Initialisation using Sedimentation files
 BENTHIC_REC/      ! Directory containing files
-199                          ! NRECBENTHstart (record number)
-391                          ! NRECBENTHend
+000008                          ! NRECBENTHstart (record number)
+012015                          ! NRECBENTHend
 
 ! Decay rates
 2                          NumBDET     Number of detritus class
