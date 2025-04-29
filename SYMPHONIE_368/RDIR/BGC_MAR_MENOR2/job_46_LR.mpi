@@ -28,9 +28,8 @@ echo "LD_LIBRARY_PATH después de cargar Intel MPI: $LD_LIBRARY_PATH"
 ##export OMPI_CC=icc
 ##export OMP_CXX=icpc
 
-
 export I_MPI_PMI_LIBRARY=/usr/lib/x86_64-linux-gnu/libpmi2.so
-#export I_MPI_DEBUG=5
+export I_MPI_DEBUG=5
 #mpiexec.hydra -n 16 ./S26.exe
 mpirun -np 1 ./S26.exe
 
