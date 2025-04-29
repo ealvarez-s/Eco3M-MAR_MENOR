@@ -23,6 +23,7 @@ SYMPHONIE_368/RDIR/BGC_MAR_MENOR2/tmp/
 Setup in: BGC_MAR_MENOR
 
 Offline files with the circulation in: BGC_MAR_MENOR/OFFLINE/
+Offline files for low-resolution in: BGC_MAR_MENOR/OFFLINE_LR/
 
 Boundary conditions and initialization in: GLOBMED2/
 
