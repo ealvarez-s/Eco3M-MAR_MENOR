@@ -1,0 +1,135 @@
+     4     6    19           ! Number of sub-domains in each direction & nbdom
+          25          43  ! iglb jglb
+------------------------
+           0              ! sub-domain order number
+           0           1  ! sub-domain (i,j) indexes in the mpi space
+           1              ! number of cycles in one principal time step
+     0      8      8         ! i start i end imax
+     7     16      9         ! j start j end jmax
+    -2      5      1     -2     -2      4     -2      6         ! Neighbors: w e n s ws es wn en
+------------------------
+           1              ! sub-domain order number
+           0           2  ! sub-domain (i,j) indexes in the mpi space
+           1              ! number of cycles in one principal time step
+     0      8      8         ! i start i end imax
+    14     23      9         ! j start j end jmax
+    -2      6      2      0     -2      5     -2      7         ! Neighbors: w e n s ws es wn en
+------------------------
+           2              ! sub-domain order number
+           0           3  ! sub-domain (i,j) indexes in the mpi space
+           1              ! number of cycles in one principal time step
+     0      8      8         ! i start i end imax
+    21     30      9         ! j start j end jmax
+    -2      7      3      1     -2      6     -2      8         ! Neighbors: w e n s ws es wn en
+------------------------
+           3              ! sub-domain order number
+           0           4  ! sub-domain (i,j) indexes in the mpi space
+           1              ! number of cycles in one principal time step
+     0      8      8         ! i start i end imax
+    28     37      9         ! j start j end jmax
+    -2      8     -2      2     -2      7     -2      9         ! Neighbors: w e n s ws es wn en
+------------------------
+           4              ! sub-domain order number
+           1           0  ! sub-domain (i,j) indexes in the mpi space
+           1              ! number of cycles in one principal time step
+     6     14      8         ! i start i end imax
+     0      9      9         ! j start j end jmax
+    -2     10      5     -2     -2     -2      0     11         ! Neighbors: w e n s ws es wn en
+------------------------
+           5              ! sub-domain order number
+           1           1  ! sub-domain (i,j) indexes in the mpi space
+           1              ! number of cycles in one principal time step
+     6     14      8         ! i start i end imax
+     7     16      9         ! j start j end jmax
+     0     11      6      4     -2     10      1     12         ! Neighbors: w e n s ws es wn en
+------------------------
+           6              ! sub-domain order number
+           1           2  ! sub-domain (i,j) indexes in the mpi space
+           1              ! number of cycles in one principal time step
+     6     14      8         ! i start i end imax
+    14     23      9         ! j start j end jmax
+     1     12      7      5      0     11      2     13         ! Neighbors: w e n s ws es wn en
+------------------------
+           7              ! sub-domain order number
+           1           3  ! sub-domain (i,j) indexes in the mpi space
+           1              ! number of cycles in one principal time step
+     6     14      8         ! i start i end imax
+    21     30      9         ! j start j end jmax
+     2     13      8      6      1     12      3     14         ! Neighbors: w e n s ws es wn en
+------------------------
+           8              ! sub-domain order number
+           1           4  ! sub-domain (i,j) indexes in the mpi space
+           1              ! number of cycles in one principal time step
+     6     14      8         ! i start i end imax
+    28     37      9         ! j start j end jmax
+     3     14      9      7      2     13     -2     15         ! Neighbors: w e n s ws es wn en
+------------------------
+           9              ! sub-domain order number
+           1           5  ! sub-domain (i,j) indexes in the mpi space
+           1              ! number of cycles in one principal time step
+     6     14      8         ! i start i end imax
+    35     43      8         ! j start j end jmax
+    -2     15     -2      8      3     14     -2     -2         ! Neighbors: w e n s ws es wn en
+------------------------
+          10              ! sub-domain order number
+           2           0  ! sub-domain (i,j) indexes in the mpi space
+           1              ! number of cycles in one principal time step
+    12     20      8         ! i start i end imax
+     0      9      9         ! j start j end jmax
+     4     16     11     -2     -2     -2      5     17         ! Neighbors: w e n s ws es wn en
+------------------------
+          11              ! sub-domain order number
+           2           1  ! sub-domain (i,j) indexes in the mpi space
+           1              ! number of cycles in one principal time step
+    12     20      8         ! i start i end imax
+     7     16      9         ! j start j end jmax
+     5     17     12     10      4     16      6     18         ! Neighbors: w e n s ws es wn en
+------------------------
+          12              ! sub-domain order number
+           2           2  ! sub-domain (i,j) indexes in the mpi space
+           1              ! number of cycles in one principal time step
+    12     20      8         ! i start i end imax
+    14     23      9         ! j start j end jmax
+     6     18     13     11      5     17      7     -2         ! Neighbors: w e n s ws es wn en
+------------------------
+          13              ! sub-domain order number
+           2           3  ! sub-domain (i,j) indexes in the mpi space
+           1              ! number of cycles in one principal time step
+    12     20      8         ! i start i end imax
+    21     30      9         ! j start j end jmax
+     7     -2     14     12      6     18      8     -2         ! Neighbors: w e n s ws es wn en
+------------------------
+          14              ! sub-domain order number
+           2           4  ! sub-domain (i,j) indexes in the mpi space
+           1              ! number of cycles in one principal time step
+    12     20      8         ! i start i end imax
+    28     37      9         ! j start j end jmax
+     8     -2     15     13      7     -2      9     -2         ! Neighbors: w e n s ws es wn en
+------------------------
+          15              ! sub-domain order number
+           2           5  ! sub-domain (i,j) indexes in the mpi space
+           1              ! number of cycles in one principal time step
+    12     20      8         ! i start i end imax
+    35     43      8         ! j start j end jmax
+     9     -2     -2     14      8     -2     -2     -2         ! Neighbors: w e n s ws es wn en
+------------------------
+          16              ! sub-domain order number
+           3           0  ! sub-domain (i,j) indexes in the mpi space
+           1              ! number of cycles in one principal time step
+    18     25      7         ! i start i end imax
+     0      9      9         ! j start j end jmax
+    10     -2     17     -2     -2     -2     11     -2         ! Neighbors: w e n s ws es wn en
+------------------------
+          17              ! sub-domain order number
+           3           1  ! sub-domain (i,j) indexes in the mpi space
+           1              ! number of cycles in one principal time step
+    18     25      7         ! i start i end imax
+     7     16      9         ! j start j end jmax
+    11     -2     18     16     10     -2     12     -2         ! Neighbors: w e n s ws es wn en
+------------------------
+          18              ! sub-domain order number
+           3           2  ! sub-domain (i,j) indexes in the mpi space
+           1              ! number of cycles in one principal time step
+    18     25      7         ! i start i end imax
+    14     23      9         ! j start j end jmax
+    12     -2     -2     17     11     -2     13     -2         ! Neighbors: w e n s ws es wn en
