@@ -1,0 +1,13 @@
+name: to_download_CMEMS
+channels:  
+  - conda-forge
+dependencies:
+  - copernicusmarine
+  - python>=3.9,<3.12
+  - R=4.1
+  - r-base
+  - r-essentials
+
+## conda activate to_download_CMEMS
+## copernicusmarine --version
+## copernicusmarine login
