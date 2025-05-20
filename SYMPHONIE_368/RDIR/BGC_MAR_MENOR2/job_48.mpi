@@ -24,16 +24,13 @@ source /home/alvarez/intel/oneapi/mpi/2021.13/env/vars.sh --force
 #echo "LD_LIBRARY_PATH después de cargar Intel MPI: $LD_LIBRARY_PATH"
 
 export I_MPI_PMI_LIBRARY=/usr/lib/x86_64-linux-gnu/libpmi2.so
-export I_MPI_DEBUG=0
-
+export I_MPI_DEBUG=5
 
 #export I_MPI_PIN=1
 #export I_MPI_PIN_DOMAIN=core
 #export I_MPI_PIN_ORDER=compact
 #export KMP_AFFINITY=granularity=fine,compact,1,0
 ####export OMP_NUM_THREADS=1   # o el valor real si usás OpenMP
-
-
 
 ##mpiexec.hydra -n 24 ./S26.exe
 mpirun -np 24 ./S26.exe
