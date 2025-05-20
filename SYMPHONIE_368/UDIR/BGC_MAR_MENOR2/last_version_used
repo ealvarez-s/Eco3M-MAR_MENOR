@@ -523,3 +523,262 @@ clef compilation:  -g -traceback -O0 -check bounds -fp-model precise -diag-disab
 clef modele key1: 
 clef modele key2:  -Dparallele -Dbenthic
 
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Mon 07 Oct 2024 12:59:23 PM CEST
+mpifort
+clef compilation:  -g -traceback -O0 -check bounds -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Mon 07 Oct 2024 01:11:32 PM CEST
+mpiifort
+clef compilation:  -g -traceback -O0 -check bounds -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Mon 07 Oct 2024 01:44:53 PM CEST
+mpiifort
+clef compilation:  -g -traceback -O0 -check bounds -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Mon 07 Oct 2024 02:04:34 PM CEST
+mpiifort
+clef compilation:  -g -traceback -O0 -check bounds -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Mon 07 Oct 2024 02:47:46 PM CEST
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Thu 19 Dec 2024 04:17:07 PM CET
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Tue 18 Mar 2025 03:38:38 PM CET
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Tue 18 Mar 2025 04:09:48 PM CET
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Tue 18 Mar 2025 04:26:16 PM CET
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Tue 18 Mar 2025 04:33:23 PM CET
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Tue 18 Mar 2025 04:59:20 PM CET
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Tue 18 Mar 2025 05:11:20 PM CET
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Tue 18 Mar 2025 05:19:03 PM CET
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Tue 18 Mar 2025 05:33:40 PM CET
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Wed 19 Mar 2025 11:22:50 AM CET
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Wed 19 Mar 2025 11:37:18 AM CET
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Tue 08 Apr 2025 12:36:36 PM CEST
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Tue 08 Apr 2025 12:49:05 PM CEST
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Tue 08 Apr 2025 01:07:03 PM CEST
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Tue 08 Apr 2025 02:35:55 PM CEST
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Tue 08 Apr 2025 03:48:36 PM CEST
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Tue 08 Apr 2025 03:54:56 PM CEST
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Tue 08 Apr 2025 04:31:25 PM CEST
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Thu 10 Apr 2025 02:03:07 PM CEST
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Fri 02 May 2025 03:52:09 PM CEST
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Tue 06 May 2025 03:20:23 PM CEST
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Tue 06 May 2025 04:05:47 PM CEST
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Tue 06 May 2025 04:11:39 PM CEST
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Tue 06 May 2025 04:19:12 PM CEST
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Wed 07 May 2025 10:26:59 AM CEST
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Wed 07 May 2025 02:10:56 PM CEST
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Wed 07 May 2025 04:04:33 PM CEST
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Mon 19 May 2025 02:31:18 PM CEST
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Mon 19 May 2025 02:39:27 PM CEST
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Mon 19 May 2025 02:43:28 PM CEST
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Mon 19 May 2025 03:03:59 PM CEST
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+
+/home/alvarez/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+Mon 19 May 2025 03:07:49 PM CEST
+mpiifort
+clef compilation:  -g -O2 -traceback -fp-model precise -diag-disable=10448
+clef modele key1: 
+clef modele key2:  -Dparallele -Dbenthic
+

@@ -835,16 +835,21 @@
       call mpi_allreduce(x1,x2,1,mpi_double_precision,mpi_max,par%comm2d,ierr)
 !     loopmaxbio=int(x2)+1
       loopmaxbio=ceiling(x2)
+!!EA      if(loopmaxbio>50) then
+!!EA         loopmaxbio=50
+!!EA      endif   
       dti_fwsubio=dti_fw/loopmaxbio
 
       if(par%rank==0)then
        open(unit=3,file='tmp/dti_bio',position='append')
-        write(3,*)real(elapsedtime_now/86400.),loopmaxbio,real(x2),real(dti_fwsubio)
+         write(3,*)real(elapsedtime_now/86400.),loopmaxbio,real(x2),real(dti_fwsubio)
+!         write(3,*)real(elapsedtime_now/86400.),loopmaxbio,real(x2),real(dti_fwsubio), &
+!           i, j, k, i+par%timax(1),j+par%tjmax(1), k
        close(3)
       endif
 
-!     write(6,*)'loopmaxbio horizontal',loopmaxbio
-      if(loopmaxbio>50) then !m°v°m> !06-05-19
+!      write(6,*)'loopmaxbio horizontal',loopmaxbio
+      if(loopmaxbio>10000) then !m°v°m> !06-05-19
       do k=1,kmax !05-11-21
       do j=1,jmax ; do i=1,imax
 !       do k=kmerged_t(i,j)+1,kmax

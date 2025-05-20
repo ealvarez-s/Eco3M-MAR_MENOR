@@ -365,22 +365,21 @@
        close(3)
 
 
-! Pour test de sensibilite: test sur Gibraltar origine
-!       open(unit=3,file='espartel_inorigin')
-!       if(par%rank==0)then
-!       open(unit=3,file='espartel_19042019')
-!        open(unit=3,file='espartel_20042019_etroit')
-         open(unit=3,file='espartel_30042019')    ! utile pour TIDE8 et autres avant?
-!        open(unit=3,file='espartel_04052019')    ! utile pour TIDE3 --> TIDE7
-         do j=575,555,-1
-!!                       write(3,'(i3,40(1x,f5.0))')j,(glob_h(i,j),i=68,98)
-                         read(3,*)j1,(glob_h(i,j),i=68,98)
-              if(j1/=j)stop 'concord pas'
-         enddo
-         close(3)
-!       stop
-!       endif
-
+!! Pour test de sensibilite: test sur Gibraltar origine
+!!       open(unit=3,file='espartel_inorigin')
+!!       if(par%rank==0)then
+!!       open(unit=3,file='espartel_19042019')
+!!        open(unit=3,file='espartel_20042019_etroit')
+!         open(unit=3,file='espartel_30042019')    ! utile pour TIDE8 et autres avant?
+!!        open(unit=3,file='espartel_04052019')    ! utile pour TIDE3 --> TIDE7
+!         do j=575,555,-1
+!!!                       write(3,'(i3,40(1x,f5.0))')j,(glob_h(i,j),i=68,98)
+!                         read(3,*)j1,(glob_h(i,j),i=68,98)
+!              if(j1/=j)stop 'concord pas'
+!         enddo
+!         close(3)
+!!       stop
+!!       endif
 
 
 

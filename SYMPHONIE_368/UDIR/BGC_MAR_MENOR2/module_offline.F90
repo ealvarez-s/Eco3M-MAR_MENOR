@@ -400,13 +400,17 @@ contains
       nc_=0
   212 read(3,*,end=211)period_,i1,i2,i3,i4,i5,i6
       call datetokount(i1,i2,i3,i4,i5,i6)
+      !write(6,*)'elapsedtime_out (offline_initial)     =',elapsedtime_out
+      !write(6,*)'elapsedtime_now (offline_initial)     =',elapsedtime_now
 
       if(elapsedtime_out>elapsedtime_now) then !-------->
        nc_=nc_+1
        ofl_rec_max=nc_
        if(par%rank==0)write(4,rec=nc_)period_*3600.,elapsedtime_out
-      endif                                    !-------->
-
+      endif
+      !-------->
+      !write(6,*)'ofl_rec_max (offline_initial)     =',ofl_rec_max
+      !write(6,*)'ofl_rec_now (offline_initial)     =',ofl_rec_now
       if(nc_<=1) then !1111111>                     ! 09-05-14
          ofl_period_now= period_*3600.              ! periodicite en cours
          ofl_period_next=period_*3600.              ! periodicite a suivre
@@ -422,7 +426,8 @@ contains
           write(6,*)'nc_             =',nc_
          endif                           !........>
       endif          !1111111>
-
+      !write(6,*)'ofl_rec_max (offline_initial)     =',ofl_rec_max
+      !write(6,*)'ofl_rec_now (offline_initial)     =',ofl_rec_now   
       goto 212
 
   211 continue
@@ -467,8 +472,11 @@ contains
 #endif
 
 ! Faire la liste format binaire acces direct:
+      !write(6,*)'ofl_rec_now (offline_initial before readthelists) =',ofl_rec_now
+      !write(6,*)'elapsedtime_now (offline_initial before readthelists) =',elapsedtime_now
       if(ioffline==2)call offline_readthelists(0) !30-03-11
-
+      !write(6,*)'ofl_rec_now (offline_initial after readthelists) =',ofl_rec_now
+      !write(6,*)'ofl_rec_max (offline_initial after readthelists) =',ofl_rec_max
       if(ioffline.eq.1) then !11111111111111111>
 
 ! Si phase ecriture, ecrire le fichier de grille:
@@ -773,17 +781,21 @@ contains
 
 ! Lecture champ "0"
        nc=ofl_rec_now
+       !write(6,*)'ofl_rec_now(offline_read champ 0 before call)     =',ofl_rec_now  
        call offline_read_file
        ofl_rec_now=ofl_rec_now+1
+       !write(6,*)'ofl_rec_now(offline_read champ 0 after call)     =',ofl_rec_now
 
 
 ! Lecture champ "2"
        ofl_readtime_prev=ofl_readtime_next
        ofl_period_prev=  ofl_period_next
        nc=ofl_rec_now
+       !write(6,*)'ofl_rec_now(offline_read champ 2 before call)     =',ofl_rec_now
        call offline_read_file
        ofl_rec_now=ofl_rec_now+1
-
+       !write(6,*)'ofl_rec_now(offline_read champ 2 after call)     =',ofl_rec_now
+       
        offline_init_status=1 ! initial phase is done 
 
       else                    !-iterative-phase->
@@ -793,8 +805,10 @@ contains
         ofl_readtime_prev=ofl_readtime_next
         ofl_period_prev  =ofl_period_next
         nc=ofl_rec_now
+        !write(6,*)'ofl_rec_now(offline_read champ n before call)     =',ofl_rec_now
         call offline_read_file
         ofl_rec_now=ofl_rec_now+1
+        !write(6,*)'ofl_rec_now(offline_read champ n after call)     =',ofl_rec_now
 
        endif                                      !>>>>>>>>>>
 
@@ -1697,6 +1711,8 @@ contains
             read(txt_units(k+20:k+21),*)minute_
             read(txt_units(k+23:k+24),*)second_
             call datetokount(year_,month_,day_,hour_,minute_,second_) ! donne elapsedtime_out
+            !write(6,*)'elapsedtime_now (within readthelist) = ',elapsedtime_now
+            !write(6,*)'elapsedtime_out (within readthelist) = ',elapsedtime_out
 
             status=nf_inq_var(ncid_,var_id,texte30,var_type,var_dims,tabdim,i4)
 
@@ -1772,6 +1788,7 @@ contains
                write(7,*)ofl_period_next,' ofl_period_next'
 
              ofl_rec_max=nc_
+             !write(6,*)'ofl_rec_max (offline_readthelists within loop) =',ofl_rec_max
 !            if(ofl_readtime_next<=elapsedtime_now) then !----->
 !              ofl_rec_now=nc_
 !              ofl_period_now=ofl_period_next
@@ -1810,8 +1827,12 @@ contains
         nc_=1
         do loop1_=0,nbdom-1
          write(texte30,'(a,i0)')trim(tmpdirname)//'tmpfile',loop1_
+         !write(6,*)'ofl_rec_now (within readthelist loop1_) = ',ofl_rec_now
+         !write(6,*)'ofl_rec_max (within readthelist loop_1) = ',ofl_rec_max
+         !write(6,*)'elapsedtime_now (within readthelist loop_1) = ',elapsedtime_now
          open(unit=7,file=texte30)
- 1692         read(7,'(a)',end=1677)filename_
+1692          read(7,'(a)',end=1677)filename_
+              !write(6,*)'read filename (within readthelist) = ',filename_
               read(7,*)i0
               read(7,*)ogcmtimecounter_
               read(7,*)ofl_readtime_next
@@ -1887,6 +1908,7 @@ contains
 
       enddo ! fin de boucle sur loop_ sur les listes ascii
  2731 call mpi_allreduce(flag_stop,k0,1,mpi_integer,mpi_sum,par%comm2d,ierr)
+!      write(6,*)'k0 (after mpi_allreduce in offline_readthelist) = ',k0 
       if(k0/=0) stop 'ERREUR OFFLINE LISTES BINAIRES' !09-05-18
 #ifdef parallele
       call mpi_barrier(par%comm2d,k_out)
@@ -1894,24 +1916,40 @@ contains
 
 !     stop 'KIKO'
 
+!      if (par%rank == 0) then
+!         if (ofl_rec_now >= ofl_rec_max) then
+!            ofl_rec_now = -999  ! Evitar que MPI propague un valor incorrecto
+!         endif
+!      endif
+      
 ! Le proc 0 va envoyer ses valeurs aux autres proc.
+      !! write(6,*) 'Rank:', par%rank, ' Before MPI_BCAST: ofl_rec_now=', ofl_rec_now      
       call mpi_bcast(ofl_rec_max      ,1,mpi_integer         ,0,par%comm2d,ierr)
       call mpi_bcast(ofl_readtime_next,1,mpi_double_precision,0,par%comm2d,ierr)
       call mpi_bcast(ofl_rec_now      ,1,mpi_integer         ,0,par%comm2d,ierr)
       call mpi_bcast(ofl_period_now   ,1,mpi_double_precision,0,par%comm2d,ierr)
       call mpi_bcast(ofl_period_next  ,1,mpi_double_precision,0,par%comm2d,ierr)
-
+      !! write(6,*) 'Rank:', par%rank, ' After MPI_BCAST: ofl_rec_now=', ofl_rec_now
+      
 ! WARNING:
       flag_stop=0
+!      write(6,*)'ofl_rec_now (WARNING in offline_readthelist)     ',ofl_rec_now
+!      write(6,*)'ofl_rec_max (WARNING in offline_readthelist)     ',ofl_rec_max
+!      write(6,*)'elapsedtime_now (WARNING in offline_readthelist)     ',elapsedtime_now
       if(ofl_rec_now<0.or.ofl_rec_now==ofl_rec_max) then !-warning->
        flag_stop=1
+       write(6,*)'ofl_rec_max (offline_initial)     =',ofl_rec_max  
        if(par%rank==0) then !wwww>
         write(10+par%rank,*)'Pas de fichier offline dispo etat initial'
         write(10+par%rank,*)'ofl_rec_now=',ofl_rec_now
         write(10+par%rank,*)'ofl_rec_max=',ofl_rec_max
        endif                !www>
       endif                                              !-warning->
+
+      if(ofl_rec_now >= ofl_rec_max) write(6,*) "Stopping execution: ofl_rec_now exceeded limit"
+      
       call mpi_allreduce(flag_stop,k0,1,mpi_integer,mpi_sum,par%comm2d,ierr)
+!      write(6,*)'k0 (WARNING in offline_readthelist) = ',k0
       if(k0/=0) stop 'ERREUR OFFLINE LISTES BINAIRES see fortxxx files'
 
       cpu_seconds=MPI_Wtime ( ) - cpu_seconds
