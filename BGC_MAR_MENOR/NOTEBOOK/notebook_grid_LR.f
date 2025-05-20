@@ -35,11 +35,11 @@ southpole_lat=9999.       ! latitude  (° decimal) of the grid south pole (antip
 
 ! lonlatfile='../../../LR_MM/BATHYMASK/lonlat_4col.txt'   ! format ascii i,j,lon,lat
 ! lonlatfile='../../../BGC_MAR_MENOR/BATHYMASK/bathycote_in.nc'
- lonlatfile='../../../BGC_MAR_MENOR/OFFLINE_LR/grid_LR_MM.nc' ! OFFLINE MODE
+ lonlatfile='../../../BGC_MAR_MENOR/OFFLINE_LR/LR_MM_T29/grid.nc' ! OFFLINE MODE
 
 !***  MPI SECTION *******
-nbdom_imax=1                       ! number of subdomains along the Oi axis
-nbdom_jmax=1                       ! number of subdomains along the Oj axis
+nbdom_imax=4                       ! number of subdomains along the Oi axis
+nbdom_jmax=6                       ! number of subdomains along the Oj axis
 iperiodicboundary=.false.          ! periodic boundaries in the Oi direction (if .true.)
 jperiodicboundary=.false.           ! periodic boundaries in the Oj direction (if .true.)
 discard_lonlat_periodicity=0        ! if =1 periodicity (if any) do not apply on lon,lat
@@ -48,13 +48,13 @@ discard_lonlat_periodicity=0        ! if =1 periodicity (if any) do not apply on
 ! .. The "default" option automatically gives a regular mpi map including 100% masked subdomains. Other
 ! distributions requires an input file whose name (other than 'default') is given in the next line:
  mpi_map_file_name='default'        
-! mpi_map_file_name='../../../BGC_MAR_MENOR/BATHYMASK/description_domaine_60_46_FALSE.next'
+ mpi_map_file_name='../../../BGC_MAR_MENOR/BATHYMASK/description_domaine_LR.next'
 
 ! .. Lost subdomains (if any) must be recovered when netcdf files will be created. 
 ! Lost areas coordinates and ranks in charge of plugging are listed in a file whose name
 ! (other than 'none') is given in the next line:
  mpi_hole_plugging='none'
-! mpi_hole_plugging='../../../BGC_MAR_MENOR/BATHYMASK/description_trous_60_46_FALSE.txt'
+ mpi_hole_plugging='../../../BGC_MAR_MENOR/BATHYMASK/description_trous_LR.txt'
 ! Details: https://docs.google.com/document/d/1CeW2GhCUSjmx_f7oIeFICK6gX-7WrV3hTIMCVgQ4-24/edit
 !**********
 

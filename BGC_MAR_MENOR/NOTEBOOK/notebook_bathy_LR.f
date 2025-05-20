@@ -10,7 +10,7 @@
 ! texte250='../../../MAR_MENOR/BATHYMASK/bathycote_in_step2.ijh'           ! land sea "mapped" mask and bathymetry "i,j,h" format
 ! texte250='../../../MAR_MENOR/BATHYMASK/bathycote_in_V4.ijh'              ! land sea "mapped" mask and bathymetry "i,j,h" format
 ! texte250='../../../MAR_MENOR/BATHYMASK/bathycote_in_V6.ijh'              ! land sea "mapped" mask and bathymetry "i,j,h" format
-  texte250='../../../BGC_MAR_MENOR/BATHYMASK/bathycote_in.ijh'          ! land sea "mapped" mask and bathymetry "i,j,h" format
+  texte250='../../../BGC_MAR_MENOR/BATHYMASK/bathycote_in.ijh'       ! land sea "mapped" mask and bathymetry "i,j,h" format
 ! texte250='../../../MAR_MENOR/OFFLINE/full_grid.nc'              ! land sea "mapped" mask and bathymetry "i,j,h" format
 ! texte250='none' ! if no file h=h1d
 ! h1d=100.        ! if no file h=h1d !Case5: homogeneous case
