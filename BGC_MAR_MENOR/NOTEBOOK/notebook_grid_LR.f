@@ -35,8 +35,10 @@ southpole_lat=9999.       ! latitude  (° decimal) of the grid south pole (antip
 
 ! lonlatfile='../../../LR_MM/BATHYMASK/lonlat_4col.txt'   ! format ascii i,j,lon,lat
 ! lonlatfile='../../../BGC_MAR_MENOR/BATHYMASK/bathycote_in.nc'
- lonlatfile='../../../BGC_MAR_MENOR/OFFLINE_LR/LR_MM_T29/grid.nc' ! OFFLINE MODE
-
+ lonlatfile='../../../BGC_MAR_MENOR/OFFLINE_LR/LR_MM_T31/grid.nc' ! OFFLINE MODE
+! lonlatfile='../../../BGC_MAR_MENOR/OFFLINE_LR/grid_LR_MM.nc'
+! lonlatfile='../../../BGC_MAR_MENOR/OFFLINE_LR/grid_LR_MM_depth.nc'      
+      
 !***  MPI SECTION *******
 nbdom_imax=4                       ! number of subdomains along the Oi axis
 nbdom_jmax=6                       ! number of subdomains along the Oj axis

@@ -2,7 +2,7 @@
 
 ! Enter the time for the start and the end of the simulation:
 datesim(1:6,1)= 2016 , 01 , 04 , 12  , 00  , 00  ! Start time (yyyy mm dd hh mm ss)
-datesim(1:6,2)= 2016 , 01 , 31 , 13  , 00  , 00  ! End time (yyyy mm dd hh mm ss)
+datesim(1:6,2)= 2016 , 01 , 09 , 13  , 00  , 00  ! End time (yyyy mm dd hh mm ss)
 
 ! Define datesim(1:6,2) from a maximum number of iterations of the internal mode:
  iteration3d_max=-999 ! active if > 0 . Number of iterations from datesim(1:6,1)
@@ -31,7 +31,7 @@ restartfileperiod=30.    ! XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXProduction periodicity
 ! Option 2: give the internal step (iteration2d_max_now will be adjusted)
 !  dti_fw=180.             ! internal time step in seconds
   dti_fw=10.                ! internal time step in seconds
-  modulo_biotimestep=20
+  modulo_biotimestep=10
 ! time stepping method for T,S, & baroclinic current:
 timestep_type=1            ! 0=Leap-Frog 1=Forward-Backward
 

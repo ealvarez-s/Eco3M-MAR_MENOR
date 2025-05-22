@@ -16,8 +16,8 @@ flag_offline_binary=0  ! 0=netcdf 1=binary
 
 !---------------------------------------------------------------------------------
 !Files directory & name of the file containing the list of the offline file:
-directory_offline='../../../BGC_MAR_MENOR/OFFLINE_LR/LR_MM_T29/'
-   offlinefile(1)='../../../BGC_MAR_MENOR/OFFLINE_LR/LR_MM_T29/liste_offline.txt'
+directory_offline='../../../BGC_MAR_MENOR/OFFLINE_LR/LR_MM_T31/'
+   offlinefile(1)='../../../BGC_MAR_MENOR/OFFLINE_LR/LR_MM_T31/liste_offline.txt'
    offlinefile(2)='none'
    offlinefile(3)='none'
    offlinefile(4)='none'

@@ -2,7 +2,7 @@
 
 ! Enter the time for the start and the end of the simulation:
 datesim(1:6,1)= 2016 , 01 , 04 , 12  , 00  , 00  ! Start time (yyyy mm dd hh mm ss)
-datesim(1:6,2)= 2016 , 01 , 31 , 13  , 00  , 00  ! End time (yyyy mm dd hh mm ss)
+datesim(1:6,2)= 2016 , 01 , 08 , 13  , 00  , 00  ! End time (yyyy mm dd hh mm ss)
 
 !datesim(1:6,1)= 2016 , 01,  01 , 10  , 00  , 00  ! Start time (yyyy mm dd hh mmss)
 !datesim(1:6,2)= 2017 , 12 , 31 , 17  , 00  , 00  ! End   time (yyyy mm dd hhmmss)
