@@ -13,13 +13,13 @@ nomfichier(1)='notebook_time_LR_LF.f'         ! Departure/End time of the runs, 
 nomfichier(2) ='notebook_grid_LR.f'               ! 1 node
       
 nomfichier(3) ='notebook_bathy_LR.f'              ! Land/Sea mask, bathymetry, wetdrying,...   
-nomfichier(13)='notebook_vertcoord.f'             ! Vertical coordinate, sigma stretching,...
+nomfichier(13)='notebook_vertcoord_LR.f'          ! Vertical coordinate, sigma stretching,...
 
 ! FORCING
 nomfichier(4) ='notebook_rivers_LR'               ! RIVERS
 nomfichier(7) ='notebook_airseaflux_ecmwf_s26.f'  ! METEO
-!nomfichier(8) ='notebook_obcforcing_nemo.f'       ! OGCM
-nomfichier(8) ='notebook_obcforcing_sympa_s26.f'  ! OGCM
+nomfichier(8) ='notebook_obcforcing_nemo.f'       ! OGCM
+!nomfichier(8) ='notebook_obcforcing_sympa_s26.f'  ! OGCM
 nomfichier(22)='notebook_wave.f' ! WAVES
 !nomfichier(11)='notebook_tide'                   ! TIDES
 !nomfichier(11)='notebook_tide_fes2014'     
