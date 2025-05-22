@@ -849,7 +849,7 @@
       endif
 
 !      write(6,*)'loopmaxbio horizontal',loopmaxbio
-      if(loopmaxbio>10000) then !m°v°m> !06-05-19
+      if(loopmaxbio>50) then !m°v°m> !06-05-19
       do k=1,kmax !05-11-21
       do j=1,jmax ; do i=1,imax
 !       do k=kmerged_t(i,j)+1,kmax
@@ -920,7 +920,7 @@
 
 !     enddo       ; enddo
       call graph_out
-      stop 'loopmaxbio>50 see fortxxx error files'
+      stop 'loopmaxbio>100 see fortxxx error files'
       endif                  !m°v°m>
 
       end subroutine advection_bio_substep
