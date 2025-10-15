@@ -1,0 +1,39 @@
+Instrucciones completas aqui:
+https://www.intel.com/content/www/us/en/docs/oneapi/installation-guide-linux/2024-2/install-with-command-line.html#GUID-56B16998-1363-40F5-A6D5-6A3D5B877F37
+
+Ejemplo de descarga (base and hpc toolkits):
+wget https://registrationcenter-download.intel.com/akdlm/IRC_NAS/cca951e1-31e7-485e-b300-fe7627cb8c08/intel-oneapi-base-toolkit-2025.1.0.651_offline.sh
+wget https://registrationcenter-download.intel.com/akdlm/IRC_NAS/d0df6732-bf5c-493b-a484-6094bea53787/intel-oneapi-hpc-toolkit-2025.1.0.666_offline.sh
+
+Como instalar:
+OPCION 1> Non-interactive (silent) installation, which allows you to define the installation configuration only once and does not require any user input during installation:
+Como root:
+sudo sh ./l_[Toolkit Name]Kit_[version].sh -a --silent --eula accept
+Como user:
+sh ./l_[Toolkit Name]Kit_[version].sh -a --silent --eula accept
+
+OPCION 2> Interactive mode, which prompts you to select or confirm certain options during the installation process:
+Como root:
+sudo sh ./l_[Toolkit Name]Kit_[version].sh -a --cli
+Como user:
+sh ./l_[Toolkit Name]Kit_[version].sh -a --cli
+
+
+YO HE USADO:
+sh ./l_BaseKit_p_2024.2.1.100_offline.sh -a --silent --eula accept
+sh ./l_HPCKit_p_2024.2.1.79_offline.sh -a --silent --eula accept
+
+Como user, queda instalado en:
+~/intel/oneapi
+
+Set up environment to use Intel compilers:
+export PATH=~/intel/oneapi/mpi/latest/bin:$PATH
+export LD_LIBRARY_PATH=~/intel/oneapi/mpi/latest/lib:$LD_LIBRARY_PATH
+source ~/intel/oneapi/setvars.sh
+
+Si se necesita re-exportar las variables:
+source ~/intel/oneapi/setvars.sh --force
+
+Check:
+mpirun --version
+mpiifort --version

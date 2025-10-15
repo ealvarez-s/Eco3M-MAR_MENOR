@@ -3,8 +3,9 @@ channels:
   - conda-forge
 dependencies:
   - copernicusmarine
-  - python>=3.9,<3.12
-  - R=4.1
+  - python>=3.9,<=3.13
+  - xarray>=2024.10.0
+  - R=4.4
   - r-base
   - r-essentials
 

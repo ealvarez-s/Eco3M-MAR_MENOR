@@ -1,0 +1,36 @@
+Recibido de peticiones@csic.es el 2025-03-26:
+
+    parallel_studio_xe_2019_update5_composer_edition.tgz
+    Informacion Licencia
+
+Informacion para la Instalacion:
+    Servidor de Licencias: granado.csic.es puerto=28518
+    Advertencia licencia: Licencia en red limitada en cuanto a numero de usuarios simultaneos.
+    En determinados momentos, puede no haber disponibilidad de ellas.
+    Direccion de contacto para consultas/problemas con este programa: aic@sgai.csic.es
+
+
+Para acceder al servidor de licencias, debe hacerse con la VPN CSIC activada (VPN FortiClient, requiere 2FA).
+
+Requiere PPP
+comprobar con: dpkg -l | grep ppp
+instalar con: sudo apt-get install ppp
+
+Para instalar FortiClientVPN:
+descargar de: https://saco.csic.es/index.php/s/6mWr7TzaQeCN4ZF
+tar –xvf forticlientsslvpn_linux<version>.tar.gz
+cd forticlientsslvpn
+./fortisslvpn.sh &. (pide root password en algun momento)
+Conecction: Acceso al Campus
+Server: https://vpnssl-externa.csic.es
+Puerto: 443
+User: NIF con letra mayuscula
+Password: intranet CSIC
+
+
+Para instalar Intel-Parallel_Studio:
+tar -xvzf parallel_studio_xe_2019_update5_composer_edition.tgz
+cd parallel_studio_xe_2019_update5_composer_edition
+./install.sh
+## Seleccionar opciones que llevan a “Use Intel® Software License Manager”
+Port@host for license server: 28518@granado.csic.es

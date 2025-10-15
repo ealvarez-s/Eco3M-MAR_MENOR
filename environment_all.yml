@@ -1,4 +1,4 @@
-name: belich-legos-r
+name: belich-all
 channels:
   - conda-forge
   - defaults
@@ -14,13 +14,17 @@ dependencies:
   - make            # Make utility for building
   - hdf5=*=mpi_mpich* # HDF5 with MPI Support
   - mpi4py          # for NetCDF with parallel I/O support
-  
-# Optional Python bindings for NetCDF
-#  - python=3.7.*
+  - copernicusmarine    # Copernicus Marine Toolbox
+  - python>=3.9,<=3.13  # works for python 3.9-3.13 (both included)
+  - xarray>=2024.10.0   
 #  - netcdf4  # Python interface for NetCDF
-  - R=4.1
+  - R=4.4
   - r-base
   - r-essentials
 
 # Install PnetCDF within the environment
 # (see instructions)
+
+## conda activate belich-all
+## copernicusmarine --version
+## copernicusmarine login

@@ -1,0 +1,163 @@
+Instrucciones completas aqui:
+https://www.intel.com/content/www/us/en/docs/oneapi/installation-guide-linux/2024-2/install-with-command-line.html#GUID-56B16998-1363-40F5-A6D5-6A3D5B877F37
+
+Ejemplo de descarga (base and hpc toolkits):
+wget https://registrationcenter-download.intel.com/akdlm/IRC_NAS/cca951e1-31e7-485e-b300-fe7627cb8c08/intel-oneapi-base-toolkit-2025.1.0.651_offline.sh
+wget https://registrationcenter-download.intel.com/akdlm/IRC_NAS/d0df6732-bf5c-493b-a484-6094bea53787/intel-oneapi-hpc-toolkit-2025.1.0.666_offline.sh
+
+Como instalar:
+OPCION 1> Non-interactive (silent) installation, which allows you to define the installation configuration only once and does not require any user input during installation:
+Como root:
+sudo sh ./[Toolkit Name]Kit_[version].sh -a --silent --eula accept
+Como user:
+sh ./[Toolkit Name]Kit_[version].sh -a --silent --eula accept
+
+OPCION 2> Interactive mode, which prompts you to select or confirm certain options during the installation process:
+Como root:
+sudo sh ./[Toolkit Name]Kit_[version].sh -a --cli
+Como user:
+sh ./[Toolkit Name]Kit_[version].sh -a --cli
+
+
+YO HE USADO:
+#sh ./l_BaseKit_p_2024.2.1.100_offline.sh -a --silent --eula accept
+#sh ./l_HPCKit_p_2024.2.1.79_offline.sh -a --silent --eula accept
+
+sh ./intel-oneapi-base-toolkit-2025.1.0.651_offline.sh -a --silent --eula accept
+sh ./intel-oneapi-hpc-toolkit-2025.1.0.666_offline.sh -a --silent --eula accept
+
+
+## Como user, queda instalado en:
+~/intel/oneapi
+
+## Set up environment to use Intel compilers (yo he puesto esto en mi .bashrc):
+export PATH=~/intel/oneapi/mpi/latest/bin:$PATH
+export LD_LIBRARY_PATH=~/intel/oneapi/mpi/latest/lib:$LD_LIBRARY_PATH
+source ~/intel/oneapi/setvars.sh
+
+## Si se necesita re-exportar las variables:
+source ~/intel/oneapi/setvars.sh --force
+
+## Check wrappers:
+which mpirun
+which mpiifort
+which mpiicx
+which mpiicpx
+
+
+## Si en algun momento no se encuentra zlib, hay que instalarla y compilar hdf5 y netcdf-c con ella (pasandosela con CPPFLAGS="-I$HOME/local/zlib-1.2.13/include" LDFLAGS="-L$HOME/local/zlib-1.2.13/lib")
+tar xf zlib-1.2.13.tar.gz
+cd zlib-1.2.13
+./configure --prefix=$HOME/local/zlib-1.2.13
+make
+make install
+
+
+## Yo voy a instalar todas las librerias en $HOME/local, si no existe, crearla.
+## ORDEN: pnetcdf > hdf5 (requiere zlib) > netcdf-c (requiere zlib)(hay que enlazar pnetcdf y hdf5) > netcdf-fortran (hay que enlazar pnetcdf, hdf5 y necdf-c)
+
+### Pnetcdf
+wget https://parallel-netcdf.github.io/Release/pnetcdf-1.12.3.tar.gz
+tar xf pnetcdf-1.12.3.tar.gz
+cd pnetcdf-1.12.3
+
+### (por seguridad) eliminar intentos de compilacion anteriores
+make clean
+rm -rf config.log
+rm -rf autom4te.cache
+
+### Exportar wrappers (opcional), los base compilers son icx en lugar de icc y ifx en lugar de ifort
+export FC=mpiifort
+export CC=mpiicx
+export CXX=mpiicpx
+export F77=mpiifort
+export F77=mpiifort
+
+## Por seguridad, quitar posibles rutas a conda y forzar de nuevo los links mpi
+unset CFLAGS CXXFLAGS FFLAGS LDFLAGS CPATH LIBRARY_PATH LD_LIBRARY_PATH
+source ~/intel/oneapi/setvars.sh --force
+
+./configure --prefix=$HOME/local/pnetcdf-1.12.3 CC=mpiicx CXX=mpiicpx FC=mpiifort F77=mpiifort --enable-shared --enable-parallel --enable-fortran
+make
+make install
+
+export PNETCDF_DIR=$HOME/local/pnetcdf-1.12.3
+export PATH=$PNETCDF_DIR/bin:$PATH
+export LD_LIBRARY_PATH=$PNETCDF_DIR/lib:$LD_LIBRARY_PATH
+
+
+
+## HDF5
+wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.12/hdf5-1.12.1/src/hdf5-1.12.1.tar.gz
+tar xf hdf5-1.12.1.tar.gz
+cd hdf5-1.12.1
+source ~/intel/oneapi/setvars.sh --force
+
+./configure --prefix=$HOME/local/hdf5-1.12.1 CC=mpiicx CXX=mpiicpx FC=mpiifort F77=mpiifort --enable-parallel --enable-shared --enable-fortran CPPFLAGS="-I$HOME/local/zlib-1.2.13/include" LDFLAGS="-L$HOME/local/zlib-1.2.13/lib"
+make
+make install
+
+export HDF5_DIR=$HOME/local/hdf5-1.12.1
+export PATH=$HDF5_DIR/bin:$PATH
+export LD_LIBRARY_PATH=$HDF5_DIR/lib:$LD_LIBRARY_PATH
+
+
+## NetCDF-C
+wget https://github.com/Unidata/netcdf-c/archive/refs/tags/v4.9.2.tar.gz -O netcdf-c-4.9.2.tar.gz
+tar xf netcdf-c-4.9.2.tar.gz
+cd netcdf-c-4.9.2
+
+./configure --prefix=$HOME/local/netcdf-c-4.9.2 --enable-parallel --enable-shared --enable-netcdf-4 --enable-dap --enable-pnetcdf --disable-libxml2 --d\
+isable-byterange CC=mpiicx CXX=mpiicpx FC=mpiifort F77=mpiifort CPPFLAGS="-I$HOME/local/pnetcdf-1.12.3/include -I$HOME/local/hdf5-1.12.1/include -I$HOME/local/zlib-1.2.13/include" LDFLAGS="-L$HOME/local/pnetcdf-1.12.3/lib -L$HOME/local/hdf5-1.12.1/lib -L$HOME/local/zlib-1.2.13/lib"
+make
+make install
+
+export NETCDF_DIR=$HOME/local/netcdf-c-4.9.2
+export PATH=$NETCDF_DIR/bin:$PATH
+export LD_LIBRARY_PATH=$NETCDF_DIR/lib:$LD_LIBRARY_PATH
+
+
+## NetCDF-Fortran
+wget https://github.com/Unidata/netcdf-fortran/archive/refs/tags/v4.6.1.tar.gz -O netcdf-fortran-4.6.1.tar.gz
+tar xf netcdf-fortran-4.6.1.tar.gz
+cd netcdf-fortran-4.6.1
+
+./configure --prefix=$HOME/local/netcdf-fortran-4.6.1 --enable-shared CC=mpiicx CXX=mpiicpx FC=mpiifort F77=mpiifort CPPFLAGS="-I$HOME/local/netcdf-c-4.9.2/include -I$HOME/local/hdf5-1.12.3/include -I$HOME/local/pnetcdf-1.12.3/include" LDFLAGS="-L$HOME/local/netcdf-c-4.9.2/lib -L$HOME/local/hdf5-1.12.3/lib -L$HOME/local/pnetcdf-1.12.3/lib -lpnetcdf"
+make
+make install
+
+export NETCDF_FORTRAN_DIR=$HOME/local/netcdf-fortran-4.6.1
+export PATH=$NETCDF_FORTRAN_DIR/bin:$PATH
+export LD_LIBRARY_PATH=$NETCDF_FORTRAN_DIR/lib:$LD_LIBRARY_PATH
+
+
+
+
+## Comprueba las rutas para enlazar en makefile.inc:
+$PNETCDF_DIR/bin/pnetcdf-config --all
+nc-config --libdir
+nc-config --includedir
+
+## Dentro de makefile.inc
+NETINC=-I/home/alvarez/local/pnetcdf-1.12.3/include -I/home/alvarez/local/netcdf-c-4.9.2/include -I/home/alvarez/local/netcdf-fortran-4.6.1/include
+LIB=-L/home/alvarez/local/pnetcdf-1.12.3/lib -lpnetcdf -L/home/alvarez/local/netcdf-c-4.9.2/lib -lnetcdf -L/home/alvarez/local/netcdf-fortran-4.6.1/lib -lnetcdff
+
+## Compilar
+
+cd ~/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/UDIR/BGC_MAR_MENOR2
+make
+
+
+## Colocar paths dentro del job script
+export PNETCDF_DIR=$HOME/local/pnetcdf-1.12.3
+export HDF5_DIR=$HOME/local/hdf5-1.12.1
+export NETCDF_DIR=$HOME/local/netcdf-c-4.9.2
+export NETCDF_FORTRAN_DIR=$HOME/local/netcdf-fortran-4.6.1
+export PATH=$PNETCDF_DIR/bin:$HDF5_DIR/bin:$NETCDF_DIR/bin:$NETCDF_FORTRAN_DIR/bin:$PATH
+export LD_LIBRARY_PATH=$PNETCDF_DIR/lib:$HDF5_DIR/lib:$NETCDF_DIR/lib:$NETCDF_FORTRAN_DIR/lib:$LD_LIBRARY_PATH
+export CPATH=$PNETCDF_DIR/include:$HDF5_DIR/include:$NETCDF_DIR/include:$NETCDF_FORTRAN_DIR/include:$CPATH
+
+
+## Correr
+cd ~/EVA/Eco3M-MAR_MENOR/SYMPHONIE_368/RDIR/BGC_MAR_MENOR2
+sbatch job_24_HR_oneAPI.mpi

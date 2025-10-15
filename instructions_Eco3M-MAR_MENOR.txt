@@ -1,0 +1,27 @@
+TO DO
+
+## INSTALL
+git clone git@github.com:ealvarez-s/Eco3M-MAR_MENOR.git
+
+pwd
+ROOTDIR
+
+cd Eco3M-MAR_MENOR/SYMPHONIE_368/
+mkdir MY_SPACE
+mkdir CDIR_IFORT
+mkdir CDIR_GFORTRAN
+
+cd RDIR/BGC_MAR_MENOR2/
+mkdir restart_input
+mkdir restart_outbis
+mkdir restart_output
+mkdir tmp
+
+## COMPILE
+conda activate belich-legos-r
+export LD_LIBRARY_PATH
+
+cd ROOTDIR
+cd UDIR/BGC_MAR_MENOR2/
+make clean
+make

@@ -1,0 +1,28 @@
+name: belich-legos-r-Intel2021
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # MPI and parallel libraries (I'll use Intel MPI at runtime, so avoid MPICH here)
+  - hdf5     # Non-MPI HDF5 (runtime compatibility, real MPI I/O handled via Intel)
+  - netcdf-fortran
+  - cmake
+  - libtool
+  - autoconf
+  - automake
+  - m4
+  - make
+
+  # Parallel I/O: Do NOT enforce MPI variant inside Conda to avoid MPICH dependency
+  # Optional if you later compile your own NetCDF/HDF5 with Intel MPI
+  # - hdf5=*=mpi_openmpi*   # avoid unless using OpenMPI
+  # - mpi4py  # Only needed for Python bindings with MPI
+
+  # PMIx and PMI2
+  - libpmix         # Adds libpmix.so to conda env
+  - libpmi          # Adds libpmi2.so to conda env (from conda-forge)
+
+#  # R-related
+#  - R=4.1
+#  - r-base
+#  - r-essentials
