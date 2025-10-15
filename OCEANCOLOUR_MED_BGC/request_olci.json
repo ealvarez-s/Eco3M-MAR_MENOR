@@ -1,0 +1,14 @@
+{
+    "dataset_id": "cmems_obs-oc_med_bgc-reflectance_my_l3-olci-300m_P1D",
+    "start_datetime": "2017-01-01T00:00:00",
+    "end_datetime": "2017-01-31T23:59:59",
+    "minimum_longitude": -1,
+    "maximum_longitude": 2,
+    "minimum_latitude": 36,
+    "maximum_latitude": 39,
+    "minimum_depth": 0,
+    "maximum_depth": 200,
+    "variables": ["RRS442_5", "RRS490", "RRS510", "RRS560"],
+    "output_filename": "cmems_obs-oc_med_bgc-reflectance_my_l3-olci-300m_P1D.nc",
+    "output_directory": "olci"
+}

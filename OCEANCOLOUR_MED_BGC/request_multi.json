@@ -1,0 +1,14 @@
+{
+    "dataset_id": "cmems_obs-oc_med_bgc-reflectance_my_l3-multi-1km_P1D",
+    "start_datetime": "1998-01-01T00:00:00",
+    "end_datetime": "2025-03-31T23:59:59",
+    "minimum_longitude": -1,
+    "maximum_longitude": 2,
+    "minimum_latitude": 36,
+    "maximum_latitude": 39,
+    "minimum_depth": 0,
+    "maximum_depth": 200,
+    "variables": ["RRS510","RRS555", "RRS670", "QI_RRS510", "QI_RRS555", "QI_RRS670"],
+    "output_filename": "cmems_obs-oc_med_bgc-reflectance_my_l3-multi-1km_P1D.nc",
+    "output_directory": "multi"
+}
