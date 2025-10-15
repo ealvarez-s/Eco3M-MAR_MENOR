@@ -1,0 +1,14 @@
+{
+    "dataset_id": "med-ogs-car-rean-d",
+    "start_datetime": "2011-01-01T00:00:00",
+    "end_datetime": "2011-12-31T23:59:59",
+    "minimum_longitude": -1.2,
+    "maximum_longitude": -0.2,
+    "minimum_latitude": 37.3,
+    "maximum_latitude": 38.2,
+    "minimum_depth": 0,
+    "maximum_depth": 1000,
+    "variables": ["dissic", "ph", "talk"],
+    "output_filename": "car_2011.nc",
+    "output_directory": "reanalysis"
+}

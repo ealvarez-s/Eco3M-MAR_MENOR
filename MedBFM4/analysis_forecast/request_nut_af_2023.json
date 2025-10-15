@@ -1,0 +1,14 @@
+{
+    "dataset_id": "cmems_mod_med_bgc-nut_anfc_4.2km_P1D-m",
+    "start_datetime": "2023-01-01T00:00:00",
+    "end_datetime": "2023-12-24T23:59:59",
+    "minimum_longitude": -1.2,
+    "maximum_longitude": -0.2,
+    "minimum_latitude": 37.3,
+    "maximum_latitude": 38.2,
+    "minimum_depth": 0,
+    "maximum_depth": 1000,
+    "variables": ["no3","nh4","po4","si"],
+    "output_filename": "nut_2023.nc",
+    "output_directory": "analysis_forecast"
+}
