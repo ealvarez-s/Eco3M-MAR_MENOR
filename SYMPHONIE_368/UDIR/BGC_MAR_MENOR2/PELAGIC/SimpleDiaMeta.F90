@@ -257,7 +257,7 @@
       NH4efflux2d(i,j)=NH4efflux2d(i,j)+(fluxbio_w(i,j,iAmmonium,1)) * SEC2DAY 
       Pefflux2d(i,j)=Pefflux2d(i,j)+fluxbio_w(i,j,iPhosphate,1)*SEC2DAY
       Siefflux2d(i,j)=Siefflux2d(i,j)+fluxbio_w(i,j,iSilice,1)*SEC2DAY
-      O2influx2d(i,j)=O2influx2d(i,j)+fluxbio_w(i,j,iSilice,1)*SEC2DAY
+      O2influx2d(i,j)=O2influx2d(i,j)+fluxbio_w(i,j,iOxygen,1)*SEC2DAY
       DICefflux2d(i,j)=DICefflux2d(i,j)+fluxbio_w(i,j,iDIC,1)*SEC2DAY
 
 ! Fin ajout variables 2D

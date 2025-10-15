@@ -276,7 +276,7 @@
       read(3,'(A)')obc_bio_filedepth
 !      print*,'obc_bio_filedepth',obc_bio_filedepth
       endif
-!      print*,'flag_nemoffline',flag_nemoffline
+      print*,'flag_nemoffline ',flag_nemoffline
       if(flag_nemoffline==1) then
       read(3,'(a)')filename_runoff
       endif

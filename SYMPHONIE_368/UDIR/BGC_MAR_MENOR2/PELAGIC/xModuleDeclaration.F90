@@ -25,9 +25,9 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!
  
 !! NUMBER OF WATER COLUMN BOXES                    
-      INTEGER, PARAMETER ::                                    NUMPELAGICBOXES =         20
+      INTEGER, PARAMETER ::                                    NUMPELAGICBOXES =         10
 !! NUMBER OF INTERFACES                            
-      INTEGER, PARAMETER ::                                  NUMPELAGICBOXESP1 =         21
+      INTEGER, PARAMETER ::                                  NUMPELAGICBOXESP1 =         11
 !! FIRST COMPARTMENT IN CONTACT WITH SURFACE       
       INTEGER, PARAMETER ::                                    FIRSTSURFACEBOX =          1
 !! LAST COMPARTMENT IN CONTACT WITH SURFACE        

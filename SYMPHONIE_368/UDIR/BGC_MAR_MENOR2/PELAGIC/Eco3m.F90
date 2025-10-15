@@ -1662,7 +1662,6 @@
          TempfacppbDia     = Exp(log(Q10_P)*(Temperature(I)-TREF_P)/10.)
 
 
-
 !        endif
 
          ! mmolC/mgChl/hr
@@ -1671,7 +1670,6 @@
          fppbNano   = f_pproduction(AbsChlNano,PhymaxNano,Sig_Ps2Nano,PARZ,kd,krep,Tau_renewNano,Gamma_M,TempfacppbNano) !
          fppbDia    = f_pproduction(AbsChlDia ,PhymaxDia ,Sig_Ps2Dia ,PARZ,kd,krep,Tau_renewDia,Gamma_M,TempfacppbDia) !     
       
-
 
          ! Internal quota limited photosynthesis
          PPBSyne   = SyneChl(I) * fppbSyne      ! mmolC/m3/hr
