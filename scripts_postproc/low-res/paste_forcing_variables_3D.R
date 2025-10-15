@@ -17,7 +17,7 @@ library(RNetCDF)
   hora<-substring(archivo,10,15)
   nombre<-unique(substring(archivo,1,15))
   tiempo<-rep(NA,length(archivo))
-  arrayEd<-array(data=NA, dim=c(27,45,20,length(archivo)),dimnames=NULL)
+  arrayEd<-array(data=NA, dim=c(27,45,10,length(archivo)),dimnames=NULL)
 
   for (k in 1:length(archivo)){
       archivoEd <-archivo[k]
