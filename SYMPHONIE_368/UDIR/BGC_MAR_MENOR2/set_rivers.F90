@@ -155,7 +155,10 @@
 ! lecture notebook_rivers
       flag_groundwater=0 ! si 1 indique la presence de sources sous marine. 0 sinon. !06-05-19
       flag_surfriver=0   ! si 1 indique la presence de riviere de surface.  0 sinon. !18-02-21
-      if(par%rank==0) write(6,'(a11,a60)')'lecture de ',nomfichier(4)
+      if(par%rank==0) then
+         write(6,'(a11,a60)')'lecture de ',nomfichier(4)
+         write(6,'(a,a20,a,i4)')'dans ',nomfichier(4),' nriver=',nriver
+      endif
       open(unit=3,file=nomfichier(4))
       read(3,*)nriver
 
