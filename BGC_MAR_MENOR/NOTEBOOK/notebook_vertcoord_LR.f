@@ -18,7 +18,7 @@ dz_vertical_incr_fact=1.08  ! Depth Resolution Increasing Factor
 !..............................................
 
 !.........  s-z hybrid grid section  .......................
-flag_merged_levels=1 ! merged levels if flag_merged_levels=1
+flag_merged_levels=0 ! merged levels if flag_merged_levels=1
 vqs_cst1=100.        ! (m) Bathymetry envelope when true bathymetry=0
 vqs_cst2=50.         ! (m) True bathymetry below which the grid is 100% sigma
 vqs_cst3=0.5         ! Curvature factor of the envelope bathymetry (avoid levels and bathymetry having opposite sign slopes)
@@ -28,8 +28,8 @@ nbvstepmin=5         ! Minimum number of levels
 
 ! Building the hybrid grid (VQS) from a file of "envelope bathymetry" characteristics:
 ! https://docs.google.com/document/d/1lCiiOzhpXSxY0fMnc9iKGCnMSZWYbfQBy1ypdYAXQG0/edit
-! vqs_file='none'
- vqs_file='../../../BGC_MAR_MENOR/BATHYMASK/vqs_file'
+ vqs_file='none'
+! vqs_file='../../../BGC_MAR_MENOR/BATHYMASK/vqs_file'
 !.........  s-z hybrid grid section  .......................
 
 dzsurfmin=2. ! if>0 dzsurfmin(m) preserves surface resolution: surface delta z = MIN (surface delta z, dzsurfmin )

@@ -31,12 +31,12 @@
 0.019 !0.0068	        mmolP/mmolC	maxPCSyne		Maximun internal P/C Ratio for Synechococcus       
 
 0.05 !0.072          	mmolN/mmolC     minNCNano               Minimun internal N/C quota for NanoPhytoplankton
-0.2  !0.126           mmolN/mmolC     maxNCNano               Maximum internal N/C quota for NanoPhytoplankton
-0.002          	mmolP/mmolC     minPCNano               Minimun internal P/C Ratio for NanoPhytoplankton
+0.2  !0.126             mmolN/mmolC     maxNCNano               Maximum internal N/C quota for NanoPhytoplankton
+0.002          	        mmolP/mmolC     minPCNano               Minimun internal P/C Ratio for NanoPhytoplankton
 0.019 !0.005          	mmolP/mmolC     maxPCNano               Maximun internal P/C Ratio for NanoPhytoplankton
 
-0.05          	mmolN/mmolC	minNCDia		Minimun internal N/C quota for Diatomees           
-0.2           	mmolN/mmolC	maxNCDia		Maximum internal N/C quota for Diatomees 
+0.05          	        mmolN/mmolC	minNCDia		Minimun internal N/C quota for Diatomees           
+0.2           	        mmolN/mmolC	maxNCDia		Maximum internal N/C quota for Diatomees 
 0.002 !0.005       	mmolP/mmolC	minPCDia		Minimun internal P/C Ratio for Diatomees           
 0.019 !0.02       	mmolP/mmolC	maxPCDia		Maximun internal P/C Ratio for Diatomees       
 0.05  !0.04         	mmolSi/mmolC	minSiCDia		Minimum internal Si/C Ratio for Diatomees

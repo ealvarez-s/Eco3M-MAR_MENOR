@@ -31,7 +31,7 @@ restartfileperiod=30.    ! XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXProduction periodicity
 ! Option 2: give the internal step (iteration2d_max_now will be adjusted)
 !  dti_fw=180.             ! internal time step in seconds
   dti_fw=10.                ! internal time step in seconds
-  modulo_biotimestep=10
+  modulo_biotimestep=20
 ! time stepping method for T,S, & baroclinic current:
 timestep_type=1            ! 0=Leap-Frog 1=Forward-Backward
 

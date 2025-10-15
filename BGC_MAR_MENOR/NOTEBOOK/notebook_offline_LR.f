@@ -16,8 +16,8 @@ flag_offline_binary=0  ! 0=netcdf 1=binary
 
 !---------------------------------------------------------------------------------
 !Files directory & name of the file containing the list of the offline file:
-directory_offline='../../../BGC_MAR_MENOR/OFFLINE_LR/LR_MM_T31/'
-   offlinefile(1)='../../../BGC_MAR_MENOR/OFFLINE_LR/LR_MM_T31/liste_offline.txt'
+directory_offline='../../../BGC_MAR_MENOR/OFFLINE_LR/LR_MM_T37_2016-2022/'      
+   offlinefile(1)='../../../BGC_MAR_MENOR/OFFLINE_LR/LR_MM_T37_2016-2022/liste_offline_complete1.txt'
    offlinefile(2)='none'
    offlinefile(3)='none'
    offlinefile(4)='none'
@@ -48,4 +48,6 @@ Note: 1- no outputs if periodicity <=0
       2- When the lastest date is passed, we continue with the latest periodicity
 DO NOT MODIFY THE NEXT LINE AS IT IS THE SIGNAL EXPECTED BY S TO START THE TIME LIST!!!!
 Periodicity (hours) ! until yyyy / mm / dd / hh / mm / ss ! Don't touch this line
-3.                          2016   12   10   04   00   00
+3.                          2017   12   31   14   29   45 ! liste_complete1.txt
+7.5                         2017   12   31   21   59   45 ! liste_complete1.txt
+24.                         2022   13   23   21   59   45 ! liste_complete1.txt

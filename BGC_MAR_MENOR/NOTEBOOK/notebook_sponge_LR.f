@@ -30,8 +30,8 @@ sponge_l=1000000000000
 !relax_int=1.    ! Nudging time scale (days) for baroclinic velocity. 
                 ! UNUSED IF relax_int=0.
 
-relax_ext=0.000001
-relax_int=0.000001
+relax_ext=0.0001 !0.000001
+relax_int=0.0001 !0.000001
       
 ! Temperature and Salinity:
 ! https://docs.google.com/document/d/1bt_mnhZCXMuNnw3JqymtFjInqG6nNHQT0vuXX0HtZps/edit
@@ -43,7 +43,7 @@ relaxtype_ts=5  ! 5= restoring force is based on relax_ts
 !relax_ts=60.    ! Case relaxtype_ts=2: relax_ts is a nudging time scale (days)
                 ! Case relaxtype_ts=1: the nudging time scale depends on velobc_u  velobc_v
                 ! Case relaxtype_ts=6: the nudging time scale depends on vel_u     vel_v
-relax_ts=0.000001 ! UNUSED IF relax_ts<0.
+relax_ts=0.0001 !0.000001 ! UNUSED IF relax_ts<0.
       
 relax_lwf=10.   ! Case relaxtype_ts=2: relax_lwf is a time scale (days) separating long scales from short ones.
 

@@ -1,8 +1,8 @@
 &notebook_time
 
 ! Enter the time for the start and the end of the simulation:
-datesim(1:6,1)= 2016 , 01 , 04 , 12  , 00  , 00  ! Start time (yyyy mm dd hh mm ss)
-datesim(1:6,2)= 2016 , 01 , 08 , 13  , 00  , 00  ! End time (yyyy mm dd hh mm ss)
+datesim(1:6,1)= 2014 , 01 , 01 , 12  , 00  , 00  ! Start time (yyyy mm dd hh mm ss)
+datesim(1:6,2)= 2022 , 12 , 22 , 12  , 00  , 00  ! End time (yyyy mm dd hh mm ss)
 
 !datesim(1:6,1)= 2016 , 01,  01 , 10  , 00  , 00  ! Start time (yyyy mm dd hh mmss)
 !datesim(1:6,2)= 2017 , 12 , 31 , 17  , 00  , 00  ! End   time (yyyy mm dd hhmmss)
@@ -39,8 +39,11 @@ simple_restart_biofile_txt='none' ! same but for passive tracers
 ! Option 1: give the ratio dt_internal/dt_external
    iteration2d_max_now=16  ! ratio dt_internal/dt_external   
 ! Option 2: give the internal step (iteration2d_max_now will be adjusted)
-  dti_fw=10.!!180.             ! internal time step in seconds
-
+  dti_fw=180.    !!180.             ! internal time step in seconds
+!  dti_fw=40.     ! original LEGOS?      
+!  dti_fw=10.     ! LF para generar offlines LR
+!  dti_fw=90.     ! dti_bio=1800, igual a notebook_bio
+      
 ! dti_fw variable with time using the following file (if not 'none')
  variable_time_step_txt='none'
 ! details in:
@@ -48,6 +51,7 @@ simple_restart_biofile_txt='none' ! same but for passive tracers
 
 ! ECO3M-S time step is dti_fw*modulo_biotimestep (ex: 1h if dti_fw=180s and modulo_biotimestep=20)
  modulo_biotimestep=20
+! modulo_biotimestep=180     
 
 !-----------------------------------------------------------------------------------
 ! SPINUP
