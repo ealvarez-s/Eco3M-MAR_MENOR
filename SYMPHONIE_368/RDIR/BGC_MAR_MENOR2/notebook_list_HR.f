@@ -4,16 +4,19 @@
 !https://docs.google.com/document/d/1TRF8uYjsVen8EiY0rERHw3YxiofZmpZ6cH_sEhWiMwA/edit?usp=sharing
 
 ! DIRECTORY
-directory='../../../BGC_MAR_MENOR/NOTEBOOK/'             ! Directory of the notebooks
+directory='../../../BGC_MAR_MENOR/NOTEBOOK'             ! Directory of the notebooks
 
 ! TIME
 nomfichier(1)='notebook_time.f'                   ! Departure/End time of the runs, time steps,...
 
 ! GRID
-nomfichier(2) ='notebook_grid_ieo24.f'            ! only active subdomains for 1 node
-!nomfichier(2) ='notebook_grid_ieo54.f'            ! full domain for 1 node
-!nomfichier(2) ='notebook_grid_ieo95.f'             ! only active subdomains for 2 nodes
-!nomfichier(2) ='notebook_grid_ieo112.f'           ! full domain for 2 nodes      
+!nomfichier(2) ='notebook_grid_ieo23.f'            ! 24 total, 23 active (4x6)     
+!nomfichier(2) ='notebook_grid_ieo48.f'            ! 54 total, 48 active (6x9)
+!nomfichier(2) ='notebook_grid_ieo62.f'            ! 72 total, 62 active (8x9)
+nomfichier(2) ='notebook_grid_ieo70.f'            ! 84 total, 70 active (7x12)
+!nomfichier(2) ='notebook_grid_ieo72.f'            ! 84 total, 72 active (12x7)     
+!nomfichier(2) ='notebook_grid_ieo92.f'            ! 108 total, 92 active (9x12)
+!nomfichier(2) ='notebook_grid_ieo94.f'            ! 112 total, 94 active (8x14)
       
 nomfichier(3) ='notebook_bathy.f'                 ! Land/Sea mask, bathymetry, wetdrying,...   
 nomfichier(13)='notebook_vertcoord.f'             ! Vertical coordinate, sigma stretching,...
@@ -29,7 +32,7 @@ nomfichier(22)='notebook_wave.f'                  ! WAVES
  nomfichier(11)='notebook_tide_fes2012_v211'
 
 ! I/O
-nomfichier(20)='notebook_offline.f'               ! Offline files
+nomfichier(20)='notebook_offline.f'              ! Offline files
 nomfichier(21)='notebook_graph'                  ! Outputs files for graph
 
 ! PHYSIC
@@ -61,7 +64,7 @@ nomfichier(31)='notebook_oxygen2'
 
 ! OTHERS
 nomfichier(18)='notebook_dateoutput'
-nomfichier(19)='notebook_atlas'
+nomfichier(19)='notebook_atlas_LEGOS'
 nomfichier(33)='notebook_sedim.f'
 
 ! OASIS COUPLER

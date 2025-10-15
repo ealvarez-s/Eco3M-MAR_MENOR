@@ -4,19 +4,19 @@
 !https://docs.google.com/document/d/1TRF8uYjsVen8EiY0rERHw3YxiofZmpZ6cH_sEhWiMwA/edit?usp=sharing
 
 ! DIRECTORY
-directory='../../../BGC_MAR_MENOR/NOTEBOOK/'      ! Directory of the notebooks
+directory='../../../BGC_MAR_MENOR/NOTEBOOK'      ! Directory of the notebooks
 
 ! TIME
 nomfichier(1)='notebook_time_LR_LF.f'         ! Departure/End time of the runs, time steps,...
 
 ! GRID
-nomfichier(2) ='notebook_grid_LR.f'               ! 1 node
+nomfichier(2) ='notebook_grid24_LR.f'             ! 1 node
       
 nomfichier(3) ='notebook_bathy_LR.f'              ! Land/Sea mask, bathymetry, wetdrying,...   
 nomfichier(13)='notebook_vertcoord_LR.f'          ! Vertical coordinate, sigma stretching,...
 
 ! FORCING
-nomfichier(4) ='notebook_rivers_LR'               ! RIVERS
+nomfichier(4) ='notebook_rivers_SWAT'             ! RIVERS
 nomfichier(7) ='notebook_airseaflux_ecmwf_s26.f'  ! METEO
 nomfichier(8) ='notebook_obcforcing_nemo.f'       ! OGCM
 !nomfichier(8) ='notebook_obcforcing_sympa_s26.f'  ! OGCM
@@ -27,7 +27,7 @@ nomfichier(22)='notebook_wave.f' ! WAVES
  nomfichier(11)='notebook_tide_fes2012_v211'
 
 ! I/O
-nomfichier(20)='notebook_offline_LR.f'            ! Offline files
+nomfichier(20)='notebook_offline_LR_ssh-mean.f'   ! Offline files
 nomfichier(21)='notebook_graph_LR'                ! Outputs files for graph
 
 ! PHYSIC
@@ -39,9 +39,18 @@ nomfichier(14)='notebook_sponge_LR.f'        ! OBC schemes, nudging layer
 nomfichier(34)='notebook_nh.f'                    ! m0v0m
 
 ! TRACERS
-nomfichier(10)='notebook_tracer.f'                ! Eulerian (passive)
-nomfichier(12)='notebook_bio_lowSed_highInput'    ! Eulerian (bio)
-nomfichier(16)='notebook_drifter'                 ! Lagrangian
+nomfichier(10)='notebook_tracer.f'                     ! Eulerian (passive)
+!nomfichier(12)='notebook_bio_lowSed_23realInput_chs' ! Eulerian (bio)
+!nomfichier(12)='notebook_bio_lowSed_23realInput_swat'   ! Eulerian (bio)
+!nomfichier(12)='notebook_bio_lowSed_23realInput_chla'   ! Eulerian (bio)
+!nomfichier(12)='notebook_bio_lowSed_23realInput_plus'   ! Eulerian (bio)
+!nomfichier(12)='notebook_bio_lowSed_23realInput_avSi'   ! Eulerian (bio)
+!nomfichier(12)='notebook_bio_lowSed_23cntInput_250' ! Eulerian (bio)
+!nomfichier(12)='notebook_bio_lowSed_23cntInput_500' ! Eulerian (bio)
+nomfichier(12)='notebook_bio_lowSed_23cntInput_40'   ! Eulerian (bio)
+!!nomfichier(12)='notebook_bio_lowSed_23highInput_noSi' ! Eulerian (bio)
+!!nomfichier(12)='notebook_bio_lowSed_23noRamblas'  ! Eulerian (bio)
+nomfichier(16)='notebook_drifter' ! Lagrangian
 
 ! BIO
 nomfichier(23)='notebook_light'
@@ -59,7 +68,7 @@ nomfichier(31)='notebook_oxygen2'
 
 ! OTHERS
 nomfichier(18)='notebook_dateoutput'
-nomfichier(19)='notebook_atlas'
+nomfichier(19)='notebook_atlas_SWAT'
 nomfichier(33)='notebook_sedim.f'
 
 ! OASIS COUPLER
