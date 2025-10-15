@@ -1,0 +1,249 @@
+ ...........................
+     0      1  ! subdomain rank and number of related lost areas
+     0     56  ! i start i end (par%gtimax(1:2)) of the lost area
+     0      8  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+     1      1  ! subdomain rank and number of related lost areas
+     0     56  ! i start i end (par%gtimax(1:2)) of the lost area
+     6     17  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+     2      1  ! subdomain rank and number of related lost areas
+     0     56  ! i start i end (par%gtimax(1:2)) of the lost area
+    15     26  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+     3      1  ! subdomain rank and number of related lost areas
+     0     56  ! i start i end (par%gtimax(1:2)) of the lost area
+    24     34  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+     4      1  ! subdomain rank and number of related lost areas
+     0     56  ! i start i end (par%gtimax(1:2)) of the lost area
+    32     43  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+     5      1  ! subdomain rank and number of related lost areas
+     0     56  ! i start i end (par%gtimax(1:2)) of the lost area
+    41     52  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+     6      1  ! subdomain rank and number of related lost areas
+     0     56  ! i start i end (par%gtimax(1:2)) of the lost area
+    50     61  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+     7      1  ! subdomain rank and number of related lost areas
+     0     56  ! i start i end (par%gtimax(1:2)) of the lost area
+    59     67  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+     8      1  ! subdomain rank and number of related lost areas
+     0     56  ! i start i end (par%gtimax(1:2)) of the lost area
+    65     76  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+     9      1  ! subdomain rank and number of related lost areas
+     0     56  ! i start i end (par%gtimax(1:2)) of the lost area
+    74     85  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    10      1  ! subdomain rank and number of related lost areas
+     0     56  ! i start i end (par%gtimax(1:2)) of the lost area
+    83     93  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    11      1  ! subdomain rank and number of related lost areas
+     0     56  ! i start i end (par%gtimax(1:2)) of the lost area
+    91    102  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    12      1  ! subdomain rank and number of related lost areas
+     0     56  ! i start i end (par%gtimax(1:2)) of the lost area
+   100    111  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    13      1  ! subdomain rank and number of related lost areas
+     0     56  ! i start i end (par%gtimax(1:2)) of the lost area
+   109    120  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    14      1  ! subdomain rank and number of related lost areas
+     0     56  ! i start i end (par%gtimax(1:2)) of the lost area
+   470    480  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    15      1  ! subdomain rank and number of related lost areas
+     0     56  ! i start i end (par%gtimax(1:2)) of the lost area
+   478    490  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    16      1  ! subdomain rank and number of related lost areas
+     0     56  ! i start i end (par%gtimax(1:2)) of the lost area
+   488    500  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    17      1  ! subdomain rank and number of related lost areas
+     0     56  ! i start i end (par%gtimax(1:2)) of the lost area
+   498    510  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    18      1  ! subdomain rank and number of related lost areas
+     0     56  ! i start i end (par%gtimax(1:2)) of the lost area
+   508    520  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    19      1  ! subdomain rank and number of related lost areas
+     0     56  ! i start i end (par%gtimax(1:2)) of the lost area
+   518    530  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    20      1  ! subdomain rank and number of related lost areas
+    54    110  ! i start i end (par%gtimax(1:2)) of the lost area
+     0     10  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    21      1  ! subdomain rank and number of related lost areas
+    54    110  ! i start i end (par%gtimax(1:2)) of the lost area
+     8     20  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    22      1  ! subdomain rank and number of related lost areas
+    54    110  ! i start i end (par%gtimax(1:2)) of the lost area
+    18     30  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    23      1  ! subdomain rank and number of related lost areas
+    54    110  ! i start i end (par%gtimax(1:2)) of the lost area
+    28     40  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    24      1  ! subdomain rank and number of related lost areas
+    54    110  ! i start i end (par%gtimax(1:2)) of the lost area
+    38     50  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    25      1  ! subdomain rank and number of related lost areas
+    54    110  ! i start i end (par%gtimax(1:2)) of the lost area
+    48     61  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    26      1  ! subdomain rank and number of related lost areas
+    54    110  ! i start i end (par%gtimax(1:2)) of the lost area
+   412    422  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    27      1  ! subdomain rank and number of related lost areas
+    54    110  ! i start i end (par%gtimax(1:2)) of the lost area
+   420    432  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    28      1  ! subdomain rank and number of related lost areas
+    54    110  ! i start i end (par%gtimax(1:2)) of the lost area
+   430    442  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    29      1  ! subdomain rank and number of related lost areas
+    54    110  ! i start i end (par%gtimax(1:2)) of the lost area
+   440    452  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    30      1  ! subdomain rank and number of related lost areas
+    54    110  ! i start i end (par%gtimax(1:2)) of the lost area
+   450    462  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    31      1  ! subdomain rank and number of related lost areas
+    54    110  ! i start i end (par%gtimax(1:2)) of the lost area
+   460    472  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    32      1  ! subdomain rank and number of related lost areas
+    54    110  ! i start i end (par%gtimax(1:2)) of the lost area
+   470    480  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    33      1  ! subdomain rank and number of related lost areas
+    54    110  ! i start i end (par%gtimax(1:2)) of the lost area
+   478    490  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    34      1  ! subdomain rank and number of related lost areas
+    54    110  ! i start i end (par%gtimax(1:2)) of the lost area
+   488    500  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    35      1  ! subdomain rank and number of related lost areas
+    54    110  ! i start i end (par%gtimax(1:2)) of the lost area
+   498    510  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    36      1  ! subdomain rank and number of related lost areas
+    54    110  ! i start i end (par%gtimax(1:2)) of the lost area
+   508    520  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    37      1  ! subdomain rank and number of related lost areas
+    54    110  ! i start i end (par%gtimax(1:2)) of the lost area
+   518    530  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    38      1  ! subdomain rank and number of related lost areas
+   108    164  ! i start i end (par%gtimax(1:2)) of the lost area
+   470    480  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    39      1  ! subdomain rank and number of related lost areas
+   108    164  ! i start i end (par%gtimax(1:2)) of the lost area
+   478    490  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    40      1  ! subdomain rank and number of related lost areas
+   108    164  ! i start i end (par%gtimax(1:2)) of the lost area
+   488    500  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    41      1  ! subdomain rank and number of related lost areas
+   108    164  ! i start i end (par%gtimax(1:2)) of the lost area
+   498    510  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    42      1  ! subdomain rank and number of related lost areas
+   108    164  ! i start i end (par%gtimax(1:2)) of the lost area
+   508    520  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    43      1  ! subdomain rank and number of related lost areas
+   108    164  ! i start i end (par%gtimax(1:2)) of the lost area
+   518    530  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    44      1  ! subdomain rank and number of related lost areas
+   322    377  ! i start i end (par%gtimax(1:2)) of the lost area
+     0     10  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    45      1  ! subdomain rank and number of related lost areas
+   322    377  ! i start i end (par%gtimax(1:2)) of the lost area
+     8     20  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    46      1  ! subdomain rank and number of related lost areas
+   322    377  ! i start i end (par%gtimax(1:2)) of the lost area
+    18     30  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    47      1  ! subdomain rank and number of related lost areas
+   322    377  ! i start i end (par%gtimax(1:2)) of the lost area
+    28     40  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    48      1  ! subdomain rank and number of related lost areas
+   322    377  ! i start i end (par%gtimax(1:2)) of the lost area
+    38     50  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    49      1  ! subdomain rank and number of related lost areas
+   322    377  ! i start i end (par%gtimax(1:2)) of the lost area
+    48     61  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    50      1  ! subdomain rank and number of related lost areas
+   375    430  ! i start i end (par%gtimax(1:2)) of the lost area
+     0     10  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    51      1  ! subdomain rank and number of related lost areas
+   375    430  ! i start i end (par%gtimax(1:2)) of the lost area
+     8     20  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    52      1  ! subdomain rank and number of related lost areas
+   375    430  ! i start i end (par%gtimax(1:2)) of the lost area
+    18     30  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    53      1  ! subdomain rank and number of related lost areas
+   375    430  ! i start i end (par%gtimax(1:2)) of the lost area
+    28     40  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    54      1  ! subdomain rank and number of related lost areas
+   375    430  ! i start i end (par%gtimax(1:2)) of the lost area
+    38     50  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    55      1  ! subdomain rank and number of related lost areas
+   375    430  ! i start i end (par%gtimax(1:2)) of the lost area
+    48     61  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    56      1  ! subdomain rank and number of related lost areas
+   375    430  ! i start i end (par%gtimax(1:2)) of the lost area
+   470    480  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    57      1  ! subdomain rank and number of related lost areas
+   375    430  ! i start i end (par%gtimax(1:2)) of the lost area
+   478    490  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    58      1  ! subdomain rank and number of related lost areas
+   375    430  ! i start i end (par%gtimax(1:2)) of the lost area
+   488    500  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    59      1  ! subdomain rank and number of related lost areas
+   375    430  ! i start i end (par%gtimax(1:2)) of the lost area
+   498    510  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    60      1  ! subdomain rank and number of related lost areas
+   375    430  ! i start i end (par%gtimax(1:2)) of the lost area
+   508    520  ! j start j end (par%gtjmax(1:2)) of the lost area
+ ...........................
+    61      1  ! subdomain rank and number of related lost areas
+   375    430  ! i start i end (par%gtimax(1:2)) of the lost area
+   518    530  ! j start j end (par%gtjmax(1:2)) of the lost area
+PERFORM
