@@ -1,15 +1,14 @@
 #!/bin/bash
 #SBATCH -J Eco3M_hr
-#SBATCH -N 1
-#SBATCH --nodelist=c01
+#SBATCH -N 2
+#SBATCH --nodelist=c01,c02
 #SBATCH --partition=hpc
-#SBATCH --time=24:00:00
+#SBATCH --time=3-12:00:00
 ####SBATCH --time=2-01:00:00
 ####SBATCH -t 1-00:00:00
-#SBATCH --ntasks=24
+#SBATCH --ntasks=70
 ####SBATCH --ntasks-per-node=48
 ####SBATCH --ntasks-per-core=1
-
 
 #### echo Bonjour du noeud `hostname`
 rm fort*
@@ -18,27 +17,27 @@ export SLURM_CONF=/home/alvarez/slurm.conf
 
 #### module purge
 #### module load intel/18.2 intelmpi/18.2 hdf5/1.10.2-intelmpi netcdf/4.6.1-intelmpi pnetcdf/1.9.0-intelmpi
-conda activate belich-legos-r
-export LD_LIBRARY_PATH=/home/alvarez/miniconda3/envs/belich-legos-r/lib:$LD_LIBRARY_PATH
-source /home/alvarez/intel/oneapi/mpi/2021.13/env/vars.sh --force
-#echo "LD_LIBRARY_PATH después de cargar Intel MPI: $LD_LIBRARY_PATH"
+export PATH=~/intel/oneapi/mpi/latest/bin:$PATH
+export LD_LIBRARY_PATH=~/intel/oneapi/mpi/latest/lib:$LD_LIBRARY_PATH
+source ~/intel/oneapi/setvars.sh --force
+export OMPI_FC=ifort
+export OMPI_CC=icx
+export OMP_CXX=icpx
 
-#export I_MPI_PMI_LIBRARY=/usr/lib/x86_64-linux-gnu/libpmi2.so
+export PNETCDF_DIR=$HOME/local/pnetcdf-1.12.3
+export HDF5_DIR=$HOME/local/hdf5-1.12.1
+export NETCDF_DIR=$HOME/local/netcdf-c-4.9.2
+export NETCDF_FORTRAN_DIR=$HOME/local/netcdf-fortran-4.6.1
+export PATH=$PNETCDF_DIR/bin:$HDF5_DIR/bin:$NETCDF_DIR/bin:$NETCDF_FORTRAN_DIR/bin:$PATH
+export LD_LIBRARY_PATH=$PNETCDF_DIR/lib:$HDF5_DIR/lib:$NETCDF_DIR/lib:$NETCDF_FORTRAN_DIR/lib:$LD_LIBRARY_PATH
+export CPATH=$PNETCDF_DIR/include:$HDF5_DIR/include:$NETCDF_DIR/include:$NETCDF_FORTRAN_DIR/include:$CPATH
+
+date
 #export I_MPI_DEBUG=0
-
-#export I_MPI_PIN=1
-#export I_MPI_PIN_DOMAIN=core
-#export I_MPI_PIN_ORDER=compact
-#export KMP_AFFINITY=granularity=fine,compact,1,0
-####export OMP_NUM_THREADS=1   # o el valor real si usás OpenMP
-
-mpiexec.hydra -n 24 ./S26.exe
-##mpirun -np 24 ./S26.exe
-##srun --mpi=pmi2 -n 24 ./S26.exe
-
-##export OMPI_FC=ifort
-##export OMPI_CC=icc
-##export OMP_CXX=icpc
+export I_MPI_DEBUG=5
+#mpiexec.hydra -n 70 ./S26.exe
+mpirun -np 70 ./S26.exe             ## linked to mpiexec.hydra
+date
 
 #### module list 2> currently_loaded_modulefile
 #export I_MPI_PIN=1
@@ -49,7 +48,6 @@ mpiexec.hydra -n 24 ./S26.exe
 #export OMP_NUM_THREADS=1
 
 #export I_MPI_FABRICS=shm:tcp                # forzar uso de TCP
-
 
 #export I_MPI_JOB_WAIT=1
 #export I_MPI_ADJUST_ALLREDUCE=2

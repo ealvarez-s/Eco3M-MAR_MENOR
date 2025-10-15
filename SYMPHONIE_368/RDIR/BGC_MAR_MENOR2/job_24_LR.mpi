@@ -1,14 +1,14 @@
 #!/bin/bash
-#SBATCH -J Eco3M_lr
+#SBATCH -J Eco3M_40
 #SBATCH -N 1
-#SBATCH --nodelist=c02
-######SBATCH -N 2
-######SBATCH --nodelist=c01,c02
+#SBATCH --nodelist=c01
+####SBATCH -N 2
+####SBATCH --nodelist=c01,c02
 #SBATCH --partition=hpc
 #SBATCH --time=24:00:00
 ####SBATCH --time=2-01:00:00
 ####SBATCH -t 1-00:00:00
-#SBATCH --ntasks=19
+#SBATCH --ntasks=23
 ####SBATCH --ntasks-per-node=48
 ####SBATCH --ntasks-per-core=1
 
@@ -28,12 +28,13 @@ export OMPI_FC=ifort
 export OMPI_CC=icc
 export OMP_CXX=icpc
 
+date
 ##export I_MPI_PMI_LIBRARY=/usr/lib/x86_64-linux-gnu/libpmi2.so
 export I_MPI_DEBUG=0
-mpiexec.hydra -n 19 ./S26.exe
+mpiexec.hydra -n 23 ./S26.exe
 #mpirun -np 19 ./S26.exe
 ###srun --mpi=pmi2 -n 16 ./S26.exe
-
+date
 
 #### module list 2> currently_loaded_modulefile
 #export I_MPI_PIN=1

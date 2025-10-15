@@ -1,0 +1,64 @@
+#!/bin/bash
+#SBATCH -J Eco3M_lr
+#SBATCH -N 1
+#SBATCH --nodelist=c02
+####SBATCH -N 2
+####SBATCH --nodelist=c01,c02
+#SBATCH --partition=hpc
+#SBATCH --time=24:00:00
+####SBATCH --time=2-01:00:00
+####SBATCH -t 1-00:00:00
+#SBATCH --ntasks=37
+####SBATCH --ntasks-per-node=48
+####SBATCH --ntasks-per-core=1
+
+#### echo Bonjour du noeud `hostname`
+rm fort*
+rm tmp/*
+export SLURM_CONF=/home/alvarez/slurm.conf
+
+#### module purge
+#### module load intel/18.2 intelmpi/18.2 hdf5/1.10.2-intelmpi netcdf/4.6.1-intelmpi pnetcdf/1.9.0-intelmpi
+conda activate belich-legos-r
+export LD_LIBRARY_PATH=/home/alvarez/miniconda3/envs/belich-legos-r/lib:$LD_LIBRARY_PATH
+source /home/alvarez/intel/oneapi/mpi/2021.13/env/vars.sh --force
+###echo "LD_LIBRARY_PATH after sourceing Intel MPI: $LD_LIBRARY_PATH"
+
+export OMPI_FC=ifort
+export OMPI_CC=icc
+export OMP_CXX=icpc
+
+date
+##export I_MPI_PMI_LIBRARY=/usr/lib/x86_64-linux-gnu/libpmi2.so
+export I_MPI_DEBUG=0
+mpiexec.hydra -n 37 ./S26.exe
+#mpirun -np 48 ./S26.exe
+###srun --mpi=pmi2 -n 48 ./S26.exe
+date
+
+#### module list 2> currently_loaded_modulefile
+#export I_MPI_PIN=1
+#export I_MPI_DEBUG=5
+#export FI_PROVIDER=tcp
+#export FI_PROVIDER=shm:ofi
+#export I_MPI_FABRICS=shm  # O prueba con shm si tcp es lento
+#export OMP_NUM_THREADS=1
+
+#export I_MPI_JOB_WAIT=1
+#export I_MPI_ADJUST_ALLREDUCE=2
+#export I_MPI_ADJUST_BCAST=2
+
+## mpiexec.hydra -n 46 ./S26.exe
+
+### echo "Ejecutando en $(hostname) con $SLURM_NTASKS tareas" >> slurm-$SLURM_JOB_ID.out
+
+## srun -n 46 ./S26.exe
+## mpirun -np 46 ./S26.exe
+
+#mpirun -np 64 hostname >> slurm-46MPI.out
+#mpirun -np 64 taskset -pc $$ >> slurm-46MPIbalance.out
+#iostat -xm 1 10 >> slurm-46IOstat.out
+
+#srun --mpi=pmi2 -n 16 ./S26.exe
+
+#ps aux | grep defunct >> slurm-MPI.out
