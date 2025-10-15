@@ -1,0 +1,151 @@
+**************************************************************************
+Rambla                                                                    
+   37.71815     -0.8604724
+    20    ! distance (grid indexes) from the mouth where upwind advection is applied 
+    1.    ! Default Value (if no river file) River discharge  m3/s      RIVERFLUX(:,1)
+    10.00 ! In case of an additionnal water way, give H, cross DX, along DX of the firt grid point
+    00.00 ! Incoming salinity                                           RIVER_S(:)
+    10.   ! Annual minimum value of the incoming temperature            RIVER_TMIN(:)
+    02    ! Month of the annual minimum value of the incoming temperature
+    30.   ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
+    0     ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+    1     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+    12.   ! Discharge data file periodicity (hours)                     RIVERINFO(:)
+../../../BGC_MAR_MENOR/LIST/TS_R1point_T6.txt
+2015  01    01     06     00      00  ! Year Month Day Hour Minute Second of the first data
+*************************************************************************
+Rambla                                                                   
+   37.71854     -0.8605562
+    20    ! distance (grid indexes) from the mouth where upwind advection is applied 
+    1.    ! Default Value (if no river file) River discharge  m3/s      RIVERFLUX(:,1)
+    10.00 ! In case of an additionnal water way, give H, cross DX, along DX of the firt grid point
+    00.00 ! Incoming salinity                                           RIVER_S(:)
+    10.   ! Annual minimum value of the incoming temperature            RIVER_TMIN(:)
+    02    ! Month of the annual minimum value of the incoming temperature
+    30.   ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
+    0     ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+    1     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+    12.   ! Discharge data file periodicity (hours)                     RIVERINFO(:)
+../../../BGC_MAR_MENOR/LIST/TS_R1point_T6.txt
+2015  01    01     06     00      00  ! Year Month Day Hour Minute Second of the first data
+**************************************************************************
+D1-4
+   37.70394     -0.8487597
+    20    ! distance (grid indexes) from the mouth where upwind advection is applied 
+    1.    ! Default Value (if no river file) River discharge  m3/s      RIVERFLUX(:,1)
+    10.00 ! In case of an additionnal water way, give H, cross DX, along DX of the firt grid point
+    00.00 ! Incoming salinity                                           RIVER_S(:)
+    10.   ! Annual minimum value of the incoming temperature            RIVER_TMIN(:)
+    02    ! Month of the annual minimum value of the incoming temperature
+    30.   ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
+    0     ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+    1     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+    12.   ! Discharge data file periodicity (hours)                     RIVERINFO(:)
+../../../BGC_MAR_MENOR/LIST/TS_point1-4_T6.txt
+2015  01    01     06     00      00  ! Year Month Day Hour Minute Second of the first data
+****************************************************************************
+D1-4
+    37.7487    -0.8452269
+    20    ! distance (grid indexes) from the mouth where upwind advection is applied 
+    1.    ! Default Value (if no river file) River discharge  m3/s      RIVERFLUX(:,1)
+    10.00 ! In case of an additionnal water way, give H, cross DX, along DX of the firt grid point
+    00.00 ! Incoming salinity                                           RIVER_S(:)
+    10.   ! Annual minimum value of the incoming temperature            RIVER_TMIN(:)
+    02    ! Month of the annual minimum value of the incoming temperature
+    30.   ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
+    0     ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+    1     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+    12.   ! Discharge data file periodicity (hours)                     RIVERINFO(:)
+../../../BGC_MAR_MENOR/LIST/TS_point1-4_T6.txt
+2015  01    01     06     00      00  ! Year Month Day Hour Minute Second of the first data
+*****************************************************************************
+D1-4
+   37.75297     -0.8395244
+    20    ! distance (grid indexes) from the mouth where upwind advection is applied 
+    1.    ! Default Value (if no river file) River discharge  m3/s      RIVERFLUX(:,1)
+    10.00 ! In case of an additionnal water way, give H, cross DX, along DX of the firt grid point
+    00.00 ! Incoming salinity                                           RIVER_S(:)
+    10.   ! Annual minimum value of the incoming temperature            RIVER_TMIN(:)
+    02    ! Month of the annual minimum value of the incoming temperature
+    30.   ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
+    0     ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+    1     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+    12.   ! Discharge data file periodicity (hours)                     RIVERINFO(:)
+../../../BGC_MAR_MENOR/LIST/TS_point1-4_T6.txt
+2015  01    01     06     00      00  ! Year Month Day Hour Minute Second of the first data
+******************************************************************************
+D1-4
+   37.75422     -0.8346482    
+    20    ! distance (grid indexes) from the mouth where upwind advection is applied 
+    1.    ! Default Value (if no river file) River discharge  m3/s      RIVERFLUX(:,1)
+    10.00 ! In case of an additionnal water way, give H, cross DX, along DX of the firt grid point
+    00.00 ! Incoming salinity                                           RIVER_S(:)
+    10.   ! Annual minimum value of the incoming temperature            RIVER_TMIN(:)
+    02    ! Month of the annual minimum value of the incoming temperature
+    30.   ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
+    0     ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+    1     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+    12.   ! Discharge data file periodicity (hours)                     RIVERINFO(:)
+../../../BGC_MAR_MENOR/LIST/TS_point1-4_T6.txt
+2015  01    01     06     00      00  ! Year Month Day Hour Minute Second of the first data
+*******************************************************************************
+D5-8
+   37.76668     -0.8158002
+    20    ! distance (grid indexes) from the mouth where upwind advection is applied 
+    1.    ! Default Value (if no river file) River discharge  m3/s      RIVERFLUX(:,1)
+    10.00 ! In case of an additionnal water way, give H, cross DX, along DX of the firt grid point
+    00.00 ! Incoming salinity                                           RIVER_S(:)
+    10.   ! Annual minimum value of the incoming temperature            RIVER_TMIN(:)
+    02    ! Month of the annual minimum value of the incoming temperature
+    30.   ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
+    0     ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+    1     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+    12.   ! Discharge data file periodicity (hours)                     RIVERINFO(:)
+../../../BGC_MAR_MENOR/LIST/TS_point5-8_T6.txt
+2015  01    01     06     00      00  ! Year Month Day Hour Minute Second of the first data
+********************************************************************************
+D5-8
+   37.78791    -0.8014956    
+    20    ! distance (grid indexes) from the mouth where upwind advection is applied 
+    1.    ! Default Value (if no river file) River discharge  m3/s      RIVERFLUX(:,1)
+    10.00 ! In case of an additionnal water way, give H, cross DX, along DX of the firt grid point
+    00.00 ! Incoming salinity                                           RIVER_S(:)
+    10.   ! Annual minimum value of the incoming temperature            RIVER_TMIN(:)
+    02    ! Month of the annual minimum value of the incoming temperature
+    30.   ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
+    0     ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+    1     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+    12.   ! Discharge data file periodicity (hours)                     RIVERINFO(:)
+../../../BGC_MAR_MENOR/LIST/TS_point5-8_T6.txt
+2015  01    01     06     00      00  ! Year Month Day Hour Minute Second of the first data
+*********************************************************************************
+D5-8
+   37.80291     -0.8007184
+    20    ! distance (grid indexes) from the mouth where upwind advection is applied 
+    1.    ! Default Value (if no river file) River discharge  m3/s      RIVERFLUX(:,1)
+    10.00 ! In case of an additionnal water way, give H, cross DX, along DX of the firt grid point
+    00.00 ! Incoming salinity                                           RIVER_S(:)
+    10.   ! Annual minimum value of the incoming temperature            RIVER_TMIN(:)
+    02    ! Month of the annual minimum value of the incoming temperature
+    30.   ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
+    0     ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+    1     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+    12.   ! Discharge data file periodicity (hours)                     RIVERINFO(:)
+../../../BGC_MAR_MENOR/LIST/TS_point5-8_T6.txt
+2015  01    01     06     00      00  ! Year Month Day Hour Minute Second of the first data
+**********************************************************************************
+D5-8
+   37.81081     -0.7975669
+    20    ! distance (grid indexes) from the mouth where upwind advection is applied 
+    1.    ! Default Value (if no river file) River discharge  m3/s      RIVERFLUX(:,1)
+    10.00 ! In case of an additionnal water way, give H, cross DX, along DX of the firt grid point
+    00.00 ! Incoming salinity                                           RIVER_S(:)
+    10.   ! Annual minimum value of the incoming temperature            RIVER_TMIN(:)
+    02    ! Month of the annual minimum value of the incoming temperature
+    30.   ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
+    0     ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
+    1     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+    12.   ! Discharge data file periodicity (hours)                     RIVERINFO(:)
+../../../BGC_MAR_MENOR/LIST/TS_point5-8_T6.txt
+2015  01    01     06     00      00  ! Year Month Day Hour Minute Second of the first data
+***********************************************************************************
