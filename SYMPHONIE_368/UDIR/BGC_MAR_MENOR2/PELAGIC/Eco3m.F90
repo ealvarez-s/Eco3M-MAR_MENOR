@@ -2102,12 +2102,12 @@
 
 
 ! a voir : consommation de nutriments 
-         PPBi(I)      = (PPBSyne + PPBNano + PPBDia)* 12. * 24. ! mgC/m3/d
-         PPBpi(I)     = (PPBSyne                   )* 12. * 24. ! mgC/m3/d
-         PPBni(I)     = (PPBNano                   )* 12. * 24. ! mgC/m3/d
-         PPBmi(I)     = (PPBDia                    )* 12. * 24. ! mgC/m3/d
+         PPBi(I)      = (PPBSyne + PPBNano + PPBDia)* 12. * 24. ! mgC/m3/d  oPPBi
+         PPBpi(I)     = (PPBSyne                   )* 12. * 24. ! mgC/m3/d  oPPBpi
+         PPBni(I)     = (PPBNano                   )* 12. * 24. ! mgC/m3/d  oPPBni
+         PPBmi(I)     = (PPBDia                    )* 12. * 24. ! mgC/m3/d  oPPBmi
          GrazCi(I)    = (ZooNanoGrazNetGrowthEffC + ZooMicroGrazNetGrowthEffC + ZooMesoGrazNetGrowthEffC)* Thickness(I) * 12. * 24.
-         RespCi(I)    = (RespBact &
+         RespCi(I)    = (RespBact &                                                       ! oRespi
                       + RespDiaC  + RespDiaNit  + RespDiaAmmo  + RespDiaP + RespDiaSi      &
                       + RespNanoC + RespNanoNit + RespNanoAmmo + RespNanoP &
                       + RespSyneC + RespSyneNit + RespSyneAmmo + RespSyneP &
@@ -2115,21 +2115,21 @@
                       + ZooNanoGrazNetGrowthEffC  / kcNetGrowthEff *(1- kcNetGrowthEff)    &
                       + ZooMicroGrazNetGrowthEffC / kcNetGrowthEff *(1- kcNetGrowthEff)    &
                       + ZooMesoGrazNetGrowthEffC  / kcNetGrowthEff *(1- kcNetGrowthEff))*  12. * 24.
-         RespCPi(I)   = (RespDiaC  + RespDiaNit  + RespDiaAmmo  + RespDiaP + RespDiaSi      &
+         RespCPi(I)   = (RespDiaC  + RespDiaNit  + RespDiaAmmo  + RespDiaP + RespDiaSi      & ! oRespPi
                        + RespNanoC + RespNanoNit + RespNanoAmmo + RespNanoP &
                        + RespSyneC + RespSyneNit + RespSyneAmmo + RespSyneP)* 12. * 24.
          RespCPpi(I)  = (RespSyneC + RespSyneNit + RespSyneAmmo + RespSyneP)* 12.* 24.
          RespCPni(I)  = (RespNanoC + RespNanoNit + RespNanoAmmo + RespNanoP)* 12.* 24.
          RespCPmi(I)  = (RespDiaC  + RespDiaNit  + RespDiaAmmo  + RespDiaP+RespDiaSi)* 12.*24.
-         RespCZi(I)   = (ZooNanoExcCO2 + ZooMicroExcCO2 + ZooMesoExcCO2 &
+         RespCZi(I)   = (ZooNanoExcCO2 + ZooMicroExcCO2 + ZooMesoExcCO2 &                    ! oRespZi
                         + ZooNanoGrazNetGrowthEffC  / kcNetGrowthEff *(1-kcNetGrowthEff)    &
                         + ZooMicroGrazNetGrowthEffC / kcNetGrowthEff *(1-kcNetGrowthEff)    &
                       + ZooMesoGrazNetGrowthEffC  / kcNetGrowthEff *(1-kcNetGrowthEff))*  12. * 24.
-         RespCBi(I)   = (RespBact) * 12. * 24.
-         ExuCi(I)     = (ExuC) * 12. * 24.
+         RespCBi(I)   = (RespBact) * 12. * 24.   ! mgC/m3/d      oRespBi    
+         ExuCi(I)     = (ExuC) * 12. * 24.      ! mgC/m3/d       oExuCi 
          MortCi(I)    = (MortSyneC + MortNanoC + MortDiaC) * 12. * 24. ! mgC/m2/d
-
-         Nitrifi(I)   = Nitrification * 24.
+         UptNiti(I)   = UptNit * 14. * 24.        ! mgN/m3/d     oUptNitG en Tendeco 
+         Nitrifi(I)   = Nitrification * 14. * 24. ! mgN/m3/d     oNitrifi en Tendeco
          GrazHerbii(I)= ZooGrazHerbiC * Thickness(I) * 12. * 24.
          Gbaci(I)     = GrowthBact    * Thickness(I) * 12. * 24. 
 
@@ -2211,7 +2211,7 @@
 
 
 
-         vUptNit(I)      = UptNit       * 24. ! mmolN/m3/d
+         vUptNit(I)      = UptNit       * 24. ! mmolN/m3/d   oUptNiti in Tendeco
          vUptSyneNit(I)  = UptSyneNit   * 24. ! mmolN/m3/d
          vUptDiaNit(I)   = UptDiaNit    * 24. ! mmolN/m3/d
          vUptNanoNit(I)  = UptNanoNit   * 24. ! mmolN/m3/d
@@ -2220,7 +2220,7 @@
          vUptNanoAmmo(I) = UptNanoAmmo  * 24. ! mmolN/m3/d
          vUptBactAmmo(I) = UptBactAmmo  * 24. ! mmolN/m3/d
          vUptAmmo(I)     = UptAmmo      * 24. ! mmolN/m3/d
-!         vNitrif(I)= Nitrification * 24.! mmolN/m3/d
+         vNitrif(I)      = Nitrification * 24.! mmolN/m3/d   no esta en Tendeco
          vZooExcNH4(I)   = ZooExcNH4    * 24. ! mmolN/m3/d
          vBactExcNH4(I)  = BactExcNH4   * 24. ! mmolN/m3/d
          vdAmmo(I) = ( ZooExcNH4  + BactExcNH4 - Nitrification - UptAmmo + ExcAmmo - UptBactAmmo)*24

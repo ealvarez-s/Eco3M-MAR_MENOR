@@ -43,15 +43,18 @@
        ,respPp3d   &
        ,respPn3d   &
        ,respPm3d   &
+       ,respP3d   &       
        ,respZn3d   &
        ,respZmi3d   &
        ,respZme3d   &
+       ,respZ3d   &
        ,uptnitp3d &
        ,uptnitn3d &
        ,uptnitm3d &
        ,uptammop3d &
        ,uptammon3d &
        ,uptammom3d &
+       ,respB3d   &
        ,grazn3d   &
        ,grazmi3d   &
        ,grazme3d   &
@@ -59,7 +62,9 @@
        ,exuc3d &
        ,gbac3d &
        ,mortbact3d &
-       ,remmopc3d
+       ,remmopc3d &
+       ,nitrifMol3d &                                                        
+       ,uptnitMol3d
 
 
       double precision,allocatable,dimension(:,:) ::                    &
@@ -180,7 +185,10 @@
       ,TOT_COL_N_t &
       ,TOT_COL_P_t &
       ,TOT_COL_Si_t &
-      ,EuphoticLayerDepth_t                                            
+      ,EuphoticLayerDepth_t &
+      ,rzoo2d &
+      ,rbac2d &
+      ,rphyto2d
                                                      
       double precision,allocatable,dimension(:,:) ::                    &
        CBDet,                                                           &
@@ -642,6 +650,7 @@
        sumrespzoototal,                                                 &
        moyrespzoototal,                                                 &
        respzoo,                                                         &
+       respbact,                                                        &
        rempoc,                                                          &
        rempon,                                                          &
        lostpoc,                                                         &
@@ -1065,14 +1074,14 @@ contains
       allocate(pCO2W(0:imax+1,0:jmax+1)) ; pCO2W=0.
 
 
-      allocate(nitrif3d(0:imax+1,0:jmax+1,kmax)) !                    &
+!      allocate(nitrif3d(0:imax+1,0:jmax+1,kmax)                &
 !              ,uptnit3d(0:imax+1,0:jmax+1,kmax))
-      nitrif3d=0
+!      nitrif3d=0
 !      uptnit3d=0   
 
       allocate(ppb3d(0:imax+1,0:jmax+1,kmax)                    &
               ,resp3d(0:imax+1,0:jmax+1,kmax)   &
-!      ,nitrif3d(0:imax+1,0:jmax+1,kmax) &
+       ,nitrif3d(0:imax+1,0:jmax+1,kmax) &
        ,uptnit3d(0:imax+1,0:jmax+1,kmax) &
        ,uptammo3d(0:imax+1,0:jmax+1,kmax) &
        ,ppbp3d(0:imax+1,0:jmax+1,kmax)    &
@@ -1081,15 +1090,18 @@ contains
        ,respPp3d(0:imax+1,0:jmax+1,kmax)   &
        ,respPn3d(0:imax+1,0:jmax+1,kmax)   &
        ,respPm3d(0:imax+1,0:jmax+1,kmax)   &
+       ,respP3d(0:imax+1,0:jmax+1,kmax)   &
        ,respZn3d(0:imax+1,0:jmax+1,kmax)   &
        ,respZmi3d(0:imax+1,0:jmax+1,kmax)   &
        ,respZme3d(0:imax+1,0:jmax+1,kmax)   &
+       ,respZ3d(0:imax+1,0:jmax+1,kmax)   &
        ,uptnitp3d(0:imax+1,0:jmax+1,kmax) &
        ,uptnitn3d(0:imax+1,0:jmax+1,kmax) &
        ,uptnitm3d(0:imax+1,0:jmax+1,kmax) &
        ,uptammop3d(0:imax+1,0:jmax+1,kmax) &
        ,uptammon3d(0:imax+1,0:jmax+1,kmax) &
        ,uptammom3d(0:imax+1,0:jmax+1,kmax) &
+       ,respB3d(0:imax+1,0:jmax+1,kmax)   &
        ,grazn3d(0:imax+1,0:jmax+1,kmax)   &
        ,grazmi3d(0:imax+1,0:jmax+1,kmax)   &
        ,grazme3d(0:imax+1,0:jmax+1,kmax)  &
@@ -1097,10 +1109,12 @@ contains
        ,exuc3d(0:imax+1,0:jmax+1,kmax) &
        ,gbac3d(0:imax+1,0:jmax+1,kmax) &
        ,mortbact3d(0:imax+1,0:jmax+1,kmax) &
-       ,remmopc3d(0:imax+1,0:jmax+1,kmax))
+       ,remmopc3d(0:imax+1,0:jmax+1,kmax)  &
+       ,nitrifMol3d(0:imax+1,0:jmax+1,kmax) &
+       ,uptnitMol3d(0:imax+1,0:jmax+1,kmax))
       ppb3d=0
       resp3d=0
-!     nitrif3d=0 
+      nitrif3d=0 
       uptnit3d=0 
       uptammo3d=0 
       ppbp3d=0    
@@ -1108,16 +1122,19 @@ contains
       ppbm3d=0    
       respPp3d=0
       respPn3d=0   
-      respPm3d=0   
+      respPm3d=0
+      respP3d=0      
       respZn3d=0   
       respZmi3d=0   
-      respZme3d=0   
+      respZme3d=0
+      respZ3d=0
       uptnitp3d=0 
       uptnitn3d=0 
       uptnitm3d=0 
       uptammop3d=0 
       uptammon3d=0 
       uptammom3d=0
+      respB3d=0
       grazn3d=0
       grazmi3d=0
       grazme3d=0
@@ -1126,6 +1143,9 @@ contains
       gbac3d=0.
       mortbact3d=0.
       remmopc3d=0.
+      nitrifMol3d=0 
+      uptnitMol3d=0 
+      
 
       allocate(nitrif2d(0:imax+1,0:jmax+1)                    &
 !      allocate(resp2d(0:imax+1,0:jmax+1)                      &
@@ -1245,8 +1265,11 @@ contains
       ,TOT_COL_N_t(0:imax+1,0:jmax+1) &
       ,TOT_COL_P_t(0:imax+1,0:jmax+1) &
       ,TOT_COL_Si_t(0:imax+1,0:jmax+1) &
-      ,EuphoticLayerDepth_t(0:imax+1,0:jmax+1) )                  
+      ,EuphoticLayerDepth_t(0:imax+1,0:jmax+1) &
 !      ,netppb2d(0:imax+1,0:jmax+1))
+      ,rzoo2d(0:imax+1,0:jmax+1) &
+      ,rbac2d(0:imax+1,0:jmax+1) &
+      ,rphyto2d(0:imax+1,0:jmax+1) )
 
       nitrif2d=0.
       resp2d=0.
@@ -1366,6 +1389,9 @@ contains
       TOT_COL_P_t=0.
       TOT_COL_Si_t=0.
       EuphoticLayerDepth_t=0.
+      rzoo2d=0.
+      rbac2d=0.
+      rphyto2d=0.
 
       allocate(CBDet(imax,jmax),                                        &
        CBFDet(imax,jmax),                                               &

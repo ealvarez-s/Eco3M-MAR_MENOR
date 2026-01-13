@@ -11,7 +11,7 @@
 !                      ,oUptBactDON,oExcHeteroN,oExcHeteroNtop,oExcbactNH4top               &
 !                      ,oExcBactNH4N,oExcZooAmmoN,oExczooNH4top,oNitrifCOLUMN               & 
                       ,oUptBactDON                                                         & !40
-                      ,oTotalGrazCPur,oTotalGrazCHerbi,oNitrifi                            & !oNitrifi,oUptNiti !42
+                      ,oTotalGrazCPur,oTotalGrazCHerbi,oNitrifG,oUptNitG                   & !oNitrifi,oUptNiti !42
                       ,oExcBactNH4NTOPLAYER,oExcBactNH4NINT,oExcBactNH4NDEEP               & !45
                       ,oExcZooAmmoNTOPLAYER,oExcZooAmmoNINT,oExcZooAmmoNDEEP               & !48
                       ,oExcZooPO4PTOPLAYER,oExcZooPO4PINT,oExcZooPO4PDEEP                  & !51
@@ -27,11 +27,14 @@
                       ,oUptBactPTOPLAYER,oUptBactPINT,oUptBactPDEEP                        &
                       ,oUptBactNTOPLAYER,oUptBactNINT,oUptBactNDEEP,oPH,oPCO2              &
                       ,oRespPi,oRespZi,oRespBi,oGbaci,oGrazHerbii,oGrazToti                &
-                      ,oPPBpi,oPPBni,oPPBmi,oRespPpi,oRespPni,oRespPmi,oUptNiti,oUptAmmoi  &
-                      ,oUptPi,oUptPBi                                                      &
+                      ,oPPBpi,oPPBni,oPPBmi,oRespPpi,oRespPni,oRespPmi,oUptNiti,oNitrifi   &
+                      ,oUptAmmoi                                                           &
+                      ,oUptPi,oUptPBi,oExuCi                                               &
                       ,oTotalN,oTotalP,oTotalSi                                            &
                       ,oEuphoticLayerDepth                                                 &
-                      ,oPAR)
+                      ,oPAR                                                                &
+                      ,oRespBact                                                           &
+                      ,oNitrification)
 
 
 !_____________________________________________________________________
@@ -105,7 +108,7 @@
       DOUBLE PRECISION :: oRecProdSyne
       DOUBLE PRECISION :: oRecProdNano
       DOUBLE PRECISION :: oRecProdBact
-     ! DOUBLE PRECISION :: oNitrif
+      DOUBLE PRECISION :: oNitrification
       DOUBLE PRECISION :: oRespTot
       DOUBLE PRECISION :: oExuCTot
       DOUBLE PRECISION :: oRespPhyto
@@ -122,6 +125,7 @@
       DOUBLE PRECISION :: oRespi(NumpelagicBoxes)
       DOUBLE PRECISION :: oNitSurf
       DOUBLE PRECISION :: oRespZoo
+      DOUBLE PRECISION :: oRespBact
       DOUBLE PRECISION :: oRemPOC
       DOUBLE PRECISION :: oRemPON
       DOUBLE PRECISION :: oLostPOC
@@ -136,8 +140,8 @@
      ! DOUBLE PRECISION :: oNitrifCOLUMN
       DOUBLE PRECISION :: oTotalGrazCPur
       DOUBLE PRECISION :: oTotalGrazCHerbi
-      DOUBLE PRECISION :: oNitrifi(NumpelagicBoxes)
-     ! DOUBLE PRECISION :: oUptNiti(NumpelagicBoxes)
+      DOUBLE PRECISION :: oNitrifG(NumpelagicBoxes)
+      DOUBLE PRECISION :: oUptNitG(NumpelagicBoxes)
       DOUBLE PRECISION :: oExcBactNH4NTOPLAYER
       DOUBLE PRECISION :: oExcBactNH4NINT
       DOUBLE PRECISION :: oExcBactNH4NDEEP
@@ -195,9 +199,11 @@
       DOUBLE PRECISION :: oPPBni(NumpelagicBoxes)
       DOUBLE PRECISION :: oPPBmi(NumpelagicBoxes)
       DOUBLE PRECISION :: oUptNiti(NumpelagicBoxes)
+      DOUBLE PRECISION :: oNitrifi(NumpelagicBoxes)
       DOUBLE PRECISION :: oUptAmmoi(NumpelagicBoxes)
       DOUBLE PRECISION :: oUptPi(NumpelagicBoxes)
       DOUBLE PRECISION :: oUptPBi(NumpelagicBoxes)
+      DOUBLE PRECISION :: oExuCi(NumpelagicBoxes)
 !      DOUBLE PRECISION :: oTotalC
       DOUBLE PRECISION :: oTotalN
       DOUBLE PRECISION :: oTotalP
@@ -428,22 +434,25 @@
 
 ! Flux from Eco3m to Diagnostics
          oPPBi(NumpelagicBoxes-I+1)       = PPBi(I)
+         oPPBpi(NumpelagicBoxes-I+1)      = PPBpi(I)
+         oPPBni(NumpelagicBoxes-I+1)      = PPBni(I)
+         oPPBmi(NumpelagicBoxes-I+1)      = PPBmi(I)
          oRespi(NumpelagicBoxes-I+1)      = RespCi(I)       
          oRespPi(NumpelagicBoxes-I+1)     = RespCPi(I)
          oRespZi(NumpelagicBoxes-I+1)     = RespCZi(I)
          oRespBi(NumpelagicBoxes-I+1)     = RespCBi(I)
-         oNitrifi(NumpelagicBoxes-I+1)    = Nitrifi(I)
+         oRespPpi(NumpelagicBoxes-I+1)    = RespCPpi(I)
+         oRespPni(NumpelagicBoxes-I+1)    = RespCPni(I)
+         oRespPmi(NumpelagicBoxes-I+1)    = RespCPmi(I)
          oGbaci(NumpelagicBoxes-I+1)      = Gbaci(I)
          oGrazHerbii(NumpelagicBoxes-I+1) = GrazHerbii(I)
-         oGrazToti(NumpelagicBoxes-I+1)   = GrazCi(I)
-         oUptNiti(NumpelagicBoxes-I+1)    = vUptNit(I)         
+         oGrazToti(NumpelagicBoxes-I+1)   = GrazCi(I)         
+         oExuCi(NumpelagicBoxes-I+1)      = ExuCi(I)
+         oNitrifG(NumpelagicBoxes-I+1)    = Nitrifi(I)
+         oUptNitG(NumpelagicBoxes-I+1)    = UptNiti(I)
+         oUptNiti(NumpelagicBoxes-I+1)    = vUptNit(I)
+         oNitrifi(NumpelagicBoxes-I+1)    = vNitrif(I)
          oUptAmmoi(NumpelagicBoxes-I+1)   = vUptAmmo(I)
-         oPPBpi(NumpelagicBoxes-I+1)      = PPBpi(I)
-         oRespPpi(NumpelagicBoxes-I+1)    = RespCPpi(I)
-         oPPBni(NumpelagicBoxes-I+1)      = PPBni(I)
-         oRespPni(NumpelagicBoxes-I+1)    = RespCPni(I)
-         oPPBmi(NumpelagicBoxes-I+1)      = PPBmi(I)
-         oRespPmi(NumpelagicBoxes-I+1)    = RespCPmi(I)
          oUptPi(NumpelagicBoxes-I+1)      = vUptPhytoP(I)
          oUptPBi(NumpelagicBoxes-I+1)     = vUptBactP(I)
 
@@ -518,7 +527,8 @@
        oTotalGrazCHerbi = TotalGrazCHerbi  
 
 ! nitrification COMMENTE ALEX 11/01/18
-!      oNitrif  = TotalNitrif
+! COMMENT EA 07/11/2025: Nitrif back to diagnostics       
+       oNitrification  = TotalNitrif
 !      oNitrifCOLUMN = TotalNitrifColumn
 
 ! respiration
@@ -528,6 +538,7 @@
        oRespNano  = TotalRespNano
        oRespDia   = TotalRespDia
        oRespZoo   = TotalRespZoo
+       oRespBact  = TotalRespBact
 
 ! exudation
        oExuCTot = TotalExuC

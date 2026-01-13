@@ -496,6 +496,54 @@
 ! variable ; units
       call netcdf_main('_t')
 
+! PH---------------------------------------------------
+! instantaneous, change to averaged over output period      
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=0,jmax+1 !30-07-14
+         do i=0,imax+1
+!          if (mask_t(i,j,kmax  ).ne.0) then
+!          anyvar3d(i,j,k)=spH(i,j,max0(k,kmin_w(i,j))) 
+          if (mask_t(i,j,k  ).ne.0) then
+          anyvar3d(i,j,k)=sPH(i,j,k)
+          else
+           anyvar3d(i,j,k)=-9999.
+          endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======>
+      texte80(1)='pH'     ; texte80(2)='unit'    ! variable;units
+      write(texte80(3),'(a)')'pH'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+
+!--------------------------------------------------------
+
+! PAR---------------------------------------------------
+! instantaneous, change to averaged over output period      
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=0,jmax+1
+         do i=0,imax+1
+          if (mask_t(i,j,k  ).ne.0) then
+          anyvar3d(i,j,k)=sPAR(i,j,k)
+          else
+           anyvar3d(i,j,k)=-9999.
+          endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======>
+      texte80(1)='PAR'     ; texte80(2)='w/m2'      ! variable;units
+      write(texte80(3),'(a)')'PAR'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+
+!--------------------------------------------------------
+      
 !      if(loop_netcdf==1) then !=======>
 !         do k=1,kmax
 !         do j=1,jmax !30-07-14
@@ -1047,40 +1095,40 @@
 ! remise a zero
 !        print*,'remise a zero des var 2D'
 
-      tps_ppb_3d=0
-        do j=nbio1,nbio2 ! debut boucle sur j
-        do i=mbio1,mbio2 ! debut boucle sur i
-        do k=1,kmax
-          ppb3d(i,j,k)=0.
-          resp3d(i,j,k)=0.
-          nitrif3d(i,j,k)=0.
-      uptnit3d(i,j,k)=0.
-      uptnitp3d(i,j,k)=0.
-      uptnitn3d(i,j,k)=0.
-      uptnitm3d(i,j,k)=0.
-      uptammo3d(i,j,k)=0.
-      uptammop3d(i,j,k)=0.
-      uptammon3d(i,j,k)=0.
-      uptammom3d(i,j,k)=0.
-      ppbp3d(i,j,k)=0.
-      ppbn3d(i,j,k)=0.
-      ppbm3d(i,j,k)=0.
-      respPp3d(i,j,k)=0.
-      respPn3d(i,j,k)=0.
-      respPm3d(i,j,k)=0.
-      respZn3d(i,j,k)=0.
-      respZmi3d(i,j,k)=0.
-      respZme3d(i,j,k)=0.
-      grazn3d(i,j,k)=0.
-      grazmi3d(i,j,k)=0.
-      grazme3d(i,j,k)=0.
-      messyfeed3d(i,j,k)=0.
-      exuc3d(i,j,k)=0.
-      gbac3d(i,j,k)=0.
-      mortbact3d(i,j,k)=0.
-      remmopc3d(i,j,k)=0.
-        enddo
-        enddo
-        enddo
+!      tps_ppb_3d=0
+!        do j=nbio1,nbio2 ! debut boucle sur j
+!        do i=mbio1,mbio2 ! debut boucle sur i
+!        do k=1,kmax
+!          ppb3d(i,j,k)=0.
+!          resp3d(i,j,k)=0.
+!          nitrif3d(i,j,k)=0.
+!      uptnit3d(i,j,k)=0.
+!      uptnitp3d(i,j,k)=0.
+!      uptnitn3d(i,j,k)=0.
+!      uptnitm3d(i,j,k)=0.
+!      uptammo3d(i,j,k)=0.
+!      uptammop3d(i,j,k)=0.
+!      uptammon3d(i,j,k)=0.
+!      uptammom3d(i,j,k)=0.
+!      ppbp3d(i,j,k)=0.
+!      ppbn3d(i,j,k)=0.
+!      ppbm3d(i,j,k)=0.
+!      respPp3d(i,j,k)=0.
+!      respPn3d(i,j,k)=0.
+!      respPm3d(i,j,k)=0.
+!      respZn3d(i,j,k)=0.
+!      respZmi3d(i,j,k)=0.
+!      respZme3d(i,j,k)=0.
+!      grazn3d(i,j,k)=0.
+!      grazmi3d(i,j,k)=0.
+!      grazme3d(i,j,k)=0.
+!      messyfeed3d(i,j,k)=0.
+!      exuc3d(i,j,k)=0.
+!      gbac3d(i,j,k)=0.
+!      mortbact3d(i,j,k)=0.
+!      remmopc3d(i,j,k)=0.
+!        enddo
+!        enddo
+!        enddo
 
       end  subroutine graph_out_bio_write_var

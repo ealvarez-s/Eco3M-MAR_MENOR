@@ -20,10 +20,10 @@
       INTEGER :: KEUPHO
       real sum_pt
       double precision :: FLUX_PPBi(kmax),FLUX_Respi(kmax),ppbint,nitrif_trans(kmax), &
-!                          uptnit_trans(kmax)
+                          uptnit_trans(kmax),                                         & 
                           ExcbactNH4NTOPLAYER,ExcbactNH4NINT,ExcbactNH4NDEEP,         &
-                          ExcZooAmmoNTOPLAYER,ExcZooAmmoNINT,ExcZooAmmoNDEEP,           &
-                          ExcZooPO4PTOPLAYER,ExcZooPO4PINT,ExcZooPO4PDEEP,           &
+                          ExcZooAmmoNTOPLAYER,ExcZooAmmoNINT,ExcZooAmmoNDEEP,         &
+                          ExcZooPO4PTOPLAYER,ExcZooPO4PINT,ExcZooPO4PDEEP,            &
                           ExcbactPO4PTOPLAYER,ExcbactPO4PINT,ExcbactPO4PDEEP,         &
                           ExuSiTOPLAYER,ExuSiINT,ExuSiDEEP,           &
                           UptNitTOPLAYER,UptNitINT,UptNitDEEP,         &
@@ -40,8 +40,9 @@
                           gbac_trans(kmax),grazherbi_trans(kmax),graztot_trans(kmax),  &
                           FLUX_RespPpi(kmax),FLUX_RespPni(kmax),FLUX_RespPmi(kmax),  &
                           FLUX_PPBpi(kmax),FLUX_PPBni(kmax),FLUX_PPBmi(kmax), &
-                          FLUX_UptNiti(kmax),FLUX_UptAmmoi(kmax),FLUX_UptPi(kmax),FLUX_UptPbi(kmax) , &
-                          TOT_COL_N, TOT_COL_P, TOT_COL_Si , &
+                          FLUX_UptNiti(kmax),FLUX_UptAmmoi(kmax),FLUX_UptPi(kmax),FLUX_UptPbi(kmax), &
+                          FLUX_Nitrifi(kmax),FLUX_ExuTotC(kmax),         &
+                          TOT_COL_N, TOT_COL_P, TOT_COL_Si, &
                           bEuphoticLayerDepth , &
                           bPAR(kmax)
 
@@ -126,14 +127,14 @@
                        ,mask_trans            & !10
                        ,i1+par%timax(1)       &
                        ,j1+par%tjmax(1)       &
-                       ,tdcbio_trans          &
-                       ,PPB(1)                &
-                       ,PPB(2)                &
-                       ,PPB(3)                &
-                       ,PPB(4)                &
-                       ,NPB(1)                &
-                       ,NPB(2)                &
-                       ,NPB(3)                &
+                       ,tdcbio_trans          & !13
+                       ,PPB(1)                & !1
+                       ,PPB(2)                & 
+                       ,PPB(3)                & 
+                       ,PPB(4)                & 
+                       ,NPB(1)                & !5 
+                       ,NPB(2)                & 
+                       ,NPB(3)                & 
                        ,NPB(4)                &
                        ,RPB(1)                &
                        ,RPB(2)                &
@@ -141,22 +142,22 @@
                        ,RPB(4)                &
                        ,RPB(5)                &
 !                      ,NITRIF                &
-                       ,RESPTOT               &
+                       ,RESPTOT               & !14
                        ,EXUCTOT               &
-                       ,RESPPHYTO(1)          &
+                       ,RESPPHYTO(1)          & !16
                        ,RESPPHYTO(2)          &
                        ,RESPPHYTO(3)          &
                        ,RESPPHYTO(4)          &
-                       ,NETPPB(1)             &
+                       ,NETPPB(1)             & !20
                        ,NETPPB(2)             &
                        ,NETPPB(3)             &
                        ,NETPPB(4)             &
                        ,GRAZZOOC              &
                        ,GBAC                  &
-                       ,FLUX_PPBi             &
-                       ,FLUX_Respi            &
+                       ,FLUX_PPBi             & !26
+                       ,FLUX_Respi            & !27
                        ,TOTALNITSURF          &
-                       ,RESPZOO               &           
+                       ,RESPZOO               & !29          
                        ,REMPOC                &            
                        ,REMPON                &          
                        ,LOSTPOC               &          
@@ -171,8 +172,8 @@
 !                      ,NitrifCOLUMN          &
                        ,GRAZZOOCPUR           &
                        ,GRAZZOOCHERBI         &
-                       ,Nitrif_trans          &
-!                      ,UptNit_trans          &
+                       ,Nitrif_trans          & !37
+                       ,UptNit_trans          & !38
                        ,ExcbactNH4NTOPLAYER   &
                        ,ExcbactNH4NINT        &
                        ,ExcbactNH4NDEEP       &
@@ -217,27 +218,31 @@
                        ,UptbactNDEEP          &
                        ,bpH                   &
                        ,bpCO2                 &
-                       ,FLUX_RespPi           &
-                       ,FLUX_RespZi           &
-                       ,FLUX_RespBi           &
+                       ,FLUX_RespPi           & !83
+                       ,FLUX_RespZi           & !84
+                       ,FLUX_RespBi           & !85
                        ,gbac_trans            &
                        ,grazherbi_trans       &
                        ,graztot_trans         &
-                       ,FLUX_PPBpi            &
-                       ,FLUX_PPBni            &
-                       ,FLUX_PPBmi            &
-                       ,FLUX_RespPpi          &
-                       ,FLUX_RespPni          &
-                       ,FLUX_RespPmi          &
-                       ,FLUX_UptNiti          &
-                       ,FLUX_UptAmmoi         &
+                       ,FLUX_PPBpi            & !89
+                       ,FLUX_PPBni            & !90
+                       ,FLUX_PPBmi            & !91
+                       ,FLUX_RespPpi          & !92
+                       ,FLUX_RespPni          & !93
+                       ,FLUX_RespPmi          & !94
+                       ,FLUX_UptNiti          & !95
+                       ,FLUX_Nitrifi          & !96
+                       ,FLUX_UptAmmoi         & 
                        ,FLUX_UptPi            &
                        ,FLUX_UptPbi           &
+                       ,FLUX_ExuTotC          & !100
                        ,TOT_COL_N             &
                        ,TOT_COL_P             &
                        ,TOT_COL_Si            &
-                       ,bEuphoticLayerDepth   &
-                       ,bPAR                  )
+                       ,bEuphoticLayerDepth   & 
+                       ,bPAR                  &
+                       ,RESPBACT              & !106
+                       ,NITRIF)                 !107
 
           do vb=1,vbmax
           do k=1,kmax
@@ -507,19 +512,40 @@
 ! Nitrification, Respiration, Exudation
 !      NITRIF2D(i1,j1) = NITRIF2D(i1,j1)  + NITRIF
 !      NITRIFCOLUMN2D(i1,j1) = NITRIFCOLUMN2D(i1,j1)  + NITRIFCOLUMN
-!
+! COMMENT EA 06/11/2025: added 3d variables for fluxes 
           do k=1,kmax
             ppb3d(i1,j1,k)=ppb3d(i1,j1,k)+FLUX_PPBi(k)
             resp3d(i1,j1,k)=resp3d(i1,j1,k)+FLUX_Respi(k)
-            nitrif3d(i1,j1,k)=nitrif3d(i1,j1,k)+nitrif_trans(k)/14 &
-                                               /(depth_w(i1,j1,k+1)-depth_w(i1,j1,k))
-!            uptnit3d(i1,j1,k)=uptnit3d(i1,j1,k)+uptnit_trans(k)
+!            nitrif3d(i1,j1,k)=nitrif3d(i1,j1,k)+nitrif_trans(k)    &
+!                                               /(depth_w(i1,j1,k+1)-depth_w(i1,j1,k))
+!!            uptnit3d(i1,j1,k)=uptnit3d(i1,j1,k)+uptnit_trans(k)
+            nitrif3d(i1,j1,k)=nitrif3d(i1,j1,k)+nitrif_trans(k)
+            uptnit3d(i1,j1,k)=uptnit3d(i1,j1,k)+uptnit_trans(k)
+
+            ppbp3d(i1,j1,k)=ppbp3d(i1,j1,k)+FLUX_PPBpi(k)
+            ppbn3d(i1,j1,k)=ppbn3d(i1,j1,k)+FLUX_PPBni(k)
+            ppbm3d(i1,j1,k)=ppbm3d(i1,j1,k)+FLUX_PPBmi(k)
+
+            respP3d(i1,j1,k)=respP3d(i1,j1,k)+FLUX_RespPi(k)
+            respZ3d(i1,j1,k)=respZ3d(i1,j1,k)+FLUX_RespZi(k)
+            respB3d(i1,j1,k)=respB3d(i1,j1,k)+FLUX_RespBi(k)
+
+            respPp3d(i1,j1,k)=respPp3d(i1,j1,k)+FLUX_RespPpi(k)
+            respPn3d(i1,j1,k)=respPn3d(i1,j1,k)+FLUX_RespPni(k)
+            respPm3d(i1,j1,k)=respPm3d(i1,j1,k)+FLUX_RespPmi(k)
+
+            exuc3d(i1,j1,k)=exuc3d(i1,j1,k)+FLUX_ExuTotC(k)
+            nitrifMol3d(i1,j1,k)=nitrifMol3d(i1,j1,k)+FLUX_Nitrifi(k)
+            uptnitMol3d(i1,j1,k)=uptnitMol3d(i1,j1,k)+FLUX_UptNiti(k)
+                        
           enddo      
 
-
-          RESP2D(i1,j1)   = RESP2D(i1,j1) + RESPTOT  
-
-
+! COMMENT EA 07/11/2025: added 2d (depth-int) variables
+          RESP2D(i1,j1)   = RESP2D(i1,j1) + RESPTOT
+          NITRIF2D(i1,j1) = NITRIF2D(i1,j1)  + NITRIF          
+          RZOO2D(i1,j1)   = RZOO2D(i1,j1) + RESPZOO
+          RBAC2D(i1,j1)   = RBAC2D(i1,j1) + RESPBACT
+          RPHYTO2D(i1,j1) = RPHYTO2D(i1,j1) + RESPPHYTO(1)
 
 !         EXCHETERON2D(i1,j1)   = EXCHETERON2D(i1,j1) + EXCHETERON
 !
@@ -741,13 +767,13 @@
                      ,ph_trans              &
                      ,mask_trans            &
                      ,tdcbio_trans          &
-                     ,PPB(1)                &
-                     ,PPB(2)                &
-                     ,PPB(3)                &
-                     ,PPB(4)                &
-                     ,NPB(1)                &
-                     ,NPB(2)                &
-                     ,NPB(3)                &
+                     ,PPB(1)                & !1
+                     ,PPB(2)                & 
+                     ,PPB(3)                & 
+                     ,PPB(4)                & 
+                     ,NPB(1)                & !5 
+                     ,NPB(2)                & 
+                     ,NPB(3)                & 
                      ,NPB(4)                &
                      ,RPB(1)                &
                      ,RPB(2)                &
@@ -755,22 +781,22 @@
                      ,RPB(4)                &
                      ,RPB(5)                &
 !                    ,NITRIF                &
-                     ,RESPTOT               &
+                     ,RESPTOT               & !14
                      ,EXUCTOT               &
-                     ,RESPPHYTO(1)          &
+                     ,RESPPHYTO(1)          & !16
                      ,RESPPHYTO(2)          &
                      ,RESPPHYTO(3)          &
                      ,RESPPHYTO(4)          &
-                     ,NETPPB(1)             &
+                     ,NETPPB(1)             & !20
                      ,NETPPB(2)             &
                      ,NETPPB(3)             &
                      ,NETPPB(4)             &
                      ,GRAZZOOC              &
                      ,GBAC                  &
-                     ,FLUX_PPBi             &
-                     ,FLUX_Respi            &
+                     ,FLUX_PPBi             & !26
+                     ,FLUX_Respi            & !27
                      ,TOTALNITSURF          &
-                     ,RESPZOO               &           
+                     ,RESPZOO               & !29          
                      ,REMPOC                &            
                      ,REMPON                &          
                      ,LOSTPOC               &          
@@ -785,8 +811,8 @@
 !                    ,NitrifCOLUMN          &
                      ,GRAZZOOCPUR           &
                      ,GRAZZOOCHERBI         &
-                     ,Nitrif_trans          &
-!                    ,UptNit_trans          &
+                     ,Nitrif_trans          & !37
+                     ,UptNit_trans          & !38
                      ,ExcbactNH4NTOPLAYER   &
                      ,ExcbactNH4NINT        &
                      ,ExcbactNH4NDEEP       &
@@ -830,29 +856,33 @@
                      ,UptbactNINT           &
                      ,UptbactNDEEP          &
                      ,bpH                   &
-                     ,bpCO2                 & 
-                     ,FLUX_RespPi           &
-                     ,FLUX_RespZi           &
-                     ,FLUX_RespBi           &
-                     ,gbac_trans            &  
-                     ,grazherbi_trans       &  
+                     ,bpCO2                 &
+                     ,FLUX_RespPi           & !83
+                     ,FLUX_RespZi           & !84
+                     ,FLUX_RespBi           & !85
+                     ,gbac_trans            &
+                     ,grazherbi_trans       &
                      ,graztot_trans         &
-                     ,FLUX_PPBpi            &
-                     ,FLUX_PPBni            &
-                     ,FLUX_PPBmi            &
-                     ,FLUX_RespPpi          &
-                     ,FLUX_RespPni          &
-                     ,FLUX_RespPmi          &
-                     ,FLUX_UptNiti          &
-                     ,FLUX_UptAmmoi         &
+                     ,FLUX_PPBpi            & !89
+                     ,FLUX_PPBni            & !90
+                     ,FLUX_PPBmi            & !91
+                     ,FLUX_RespPpi          & !92
+                     ,FLUX_RespPni          & !93
+                     ,FLUX_RespPmi          & !94
+                     ,FLUX_UptNiti          & !95
+                     ,FLUX_Nitrifi          & !96
+                     ,FLUX_UptAmmoi         & 
                      ,FLUX_UptPi            &
                      ,FLUX_UptPbi           &
+                     ,FLUX_ExuTotC          & !100
                      ,TOT_COL_N             &
                      ,TOT_COL_P             &
                      ,TOT_COL_Si            &
-                     ,bEuphoticLayerDepth   &
-                     ,bPAR        )
-
+                     ,bEuphoticLayerDepth   & 
+                     ,bPAR                  &
+                     ,RESPBACT              & !106
+                     ,NITRIF)                 !107
+        
 
         do vb=1,vbmax
         do k=1,kmax

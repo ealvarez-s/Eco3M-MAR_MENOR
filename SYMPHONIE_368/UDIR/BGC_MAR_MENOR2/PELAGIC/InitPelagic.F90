@@ -828,7 +828,7 @@
 
            bio_t(i,j,:,iNitrate)    = 2.5 !1.00
            bio_t(i,j,:,iAmmonium)   = 1.0 !25.00 
-           bio_t(i,j,:,iPhosphate)  = 0.3 !0.3
+           bio_t(i,j,:,iPhosphate)  = 0.03 !0.3
            bio_t(i,j,:,iSilice)     = 30  !45.00
            bio_t(i,j,:,ioxygen)     = 200 !210.0
 
@@ -1000,6 +1000,7 @@
       RespCi(I) = 0.
       ExuCi(I)  = 0.
       MortCi(I) = 0.
+      UptNiti(I)= 0.
 
       enddo
 

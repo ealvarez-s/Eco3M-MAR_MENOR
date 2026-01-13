@@ -302,6 +302,7 @@
   200 continue
 
 ! PH---------------------------------------------------
+! instantaneous, change to averaged over output period      
       if(loop_netcdf==1) then !=======>
          do k=1,kmax
          do j=0,jmax+1 !30-07-14
@@ -326,6 +327,7 @@
 !--------------------------------------------------------
 
 ! PAR---------------------------------------------------
+! instantaneous, change to averaged over output period      
       if(loop_netcdf==1) then !=======>
          do k=1,kmax
          do j=0,jmax+1
@@ -368,7 +370,7 @@
 
 !--------------------------------------------------------
 
-! sal---------------------------------------------------
+! temp---------------------------------------------------
 !      if(loop_netcdf==1) then !=======>
 !         do k=1,kmax
 !         do j=0,jmax+1 !30-07-14
@@ -389,7 +391,7 @@
 !
 !--------------------------------------------------------
 
-
+! State variable 3d, instantaneous
 !      if(loop_netcdf==1) then !=======>
 !         do k=1,kmax
 !         do j=1,jmax !30-07-14
@@ -410,116 +412,303 @@
 !      texte80(5)='TZYX' ; texte80(7)='real'
 !! variable ; units
 !      call netcdf_main('_t')
-
-
-
-
-!      if(loop_netcdf==1) then !=======>
-!         do k=1,kmax
-!         do j=1,jmax !30-07-14
-!         do i=1,imax
-!         if(tps_ppb_2d>0) then
-!          anyvar3d(i,j,k)= nitrif3d(i,j,k)/tps_ppb_2d
-!         endif
-!         enddo
-!         enddo
-!         enddo
-!      endif                  !=======> 
-!
-!      texte80(1)='nitrif3d'     ; texte80(2)='mmolN/m3/day'
-!      write(texte80(3),'(a)')'nitrif3d'
-!      texte80(4)=texte80(3)
-!      texte80(5)='TZYX' ; texte80(7)='real'
-!! variable ; units
-!      call netcdf_main('_t')
-!
-!      if(loop_netcdf==1) then !=======>
-!         do k=1,kmax
-!         do j=1,jmax !30-07-14
-!         do i=1,imax
-!         if(tps_ppb_2d>0) then
-!          anyvar3d(i,j,k)= uptnit3d(i,j,k)/tps_ppb_2d
-!         endif
-!         enddo
-!         enddo
-!         enddo
-!      endif                  !=======> 
-!           
-!      texte80(1)='uptnit3d'     ; texte80(2)='mmolN/m3/day'
-!      write(texte80(3),'(a)')'uptnit3d'
-!      texte80(4)=texte80(3)
-!      texte80(5)='TZYX' ; texte80(7)='real'
-!! variable ; units
-!      call netcdf_main('_t')
-
-
-! Alex ajout variables 2D d'apres graph_out_bon.F90 dans PELAGIC/  
-
-!      if(loop_netcdf==1) then !=======>
-!       k=kmax
-!           do j=-1,jmax+2
-!           do i=-11,imax+2
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!         do j=1,jmax !30-07-14
-!         do i=1,imax  
-!
-!          anyvar2d(i,j)= (bio_t(i,j,k,idiachl) &
-!                         +bio_t(i,j,k,isynechl) &
-!                         +bio_t(i,j,k,inanochl))*mask_t(i,j,k) &
-!                                    +(1-mask_t(i,j,k))*filval
-!         enddo
-!         enddo
-!      endif                  !=======> 
-!
-!      texte80(1)='chl_tot'     ; texte80(2)='mg/m3'
-!      write(texte80(3),'(a)')'chlo tot'
-!      texte80(4)=texte80(3)
-!      texte80(5)='TYX' ; texte80(7)='real'
-!! variable ; units
-!      call netcdf_main('_t')
-
-
-
-!*****************************************************************
-! production primaire
-! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
+!!      
+!! Fluxes 3d ----------------------------
+!! Production      
       if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
+         do k=1,kmax
+         do j=1,jmax !30-07-14
+         do i=1,imax
+         if(tps_ppb_3d>0) then
+          anyvar3d(i,j,k)= ppb3d(i,j,k)/tps_ppb_3d
+         endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======> 
 
-!             do j=nbio1,nbio2
-!             do i=mbio1,mbio2
-!!              anyvar2d(i,j)=-9999.
-!!             enddo
-!!             enddo
-!! reduction des sorties a la zone de calcul
-           do j=1,jmax
-           do i=1,imax
-
-!             do j=nbio1,nbio2
-!             do i=mbio1,mbio2
-              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-                anyvar2d(i,j)=ppb2d(i,j,1)/tps_ppb_2d
-              else
-                anyvar2d(i,j)=-9999.
-              endif
-             enddo
-            enddo
-        endif
-        texte80(1)='ppb' ; texte80(2)='mgC/m2'
-      write(texte80(3),'(a)')'gross primary production'
+      texte80(1)='gpp3d'     ; texte80(2)='mgC/m3/day' !'mmolC/m3/day'
+      write(texte80(3),'(a)')'gpp3d'
       texte80(4)=texte80(3)
-     texte80(5)='TYX' ; texte80(7)='real'
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+!!--------------------------------------
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=1,jmax !30-07-14
+         do i=1,imax
+         if(tps_ppb_3d>0) then
+          anyvar3d(i,j,k)= ppbp3d(i,j,k)/tps_ppb_3d
+         endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======> 
 
-        call netcdf_main('_t')
-!        print*,'ppb tracee'
+      texte80(1)='gpppico3d'     ; texte80(2)='mgC/m3/day' !'mmolC/m3/day'
+      write(texte80(3),'(a)')'gpppico3d'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+!!--------------------------------------
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=1,jmax !30-07-14
+         do i=1,imax
+         if(tps_ppb_3d>0) then
+          anyvar3d(i,j,k)= ppbn3d(i,j,k)/tps_ppb_3d
+         endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======> 
 
+      texte80(1)='gppnano3d'     ; texte80(2)='mgC/m3/day' !'mmolC/m3/day'
+      write(texte80(3),'(a)')'gppnano3d'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+!!--------------------------------------
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=1,jmax !30-07-14
+         do i=1,imax
+         if(tps_ppb_3d>0) then
+          anyvar3d(i,j,k)= ppbm3d(i,j,k)/tps_ppb_3d
+         endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======> 
 
+      texte80(1)='gppmicro3d'     ; texte80(2)='mgC/m3/day' !'mmolC/m3/day'
+      write(texte80(3),'(a)')'gppmicro3d'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+!!--------------------------------------
+!! Respiration
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=1,jmax !30-07-14
+         do i=1,imax
+         if(tps_ppb_3d>0) then
+          anyvar3d(i,j,k)= resp3d(i,j,k)/tps_ppb_3d
+         endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======> 
+
+      texte80(1)='resp3d'     ; texte80(2)='mgC/m3/day' !'mmolC/m3/day'
+      write(texte80(3),'(a)')'resp3d'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+!!--------------------------------------
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=1,jmax !30-07-14
+         do i=1,imax
+         if(tps_ppb_3d>0) then
+          anyvar3d(i,j,k)= respP3d(i,j,k)/tps_ppb_3d
+         endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======> 
+
+      texte80(1)='respP3d'     ; texte80(2)='mgC/m3/day' !'mmolC/m3/day'
+      write(texte80(3),'(a)')'respP3d'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+!!--------------------------------------
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=1,jmax !30-07-14
+         do i=1,imax
+         if(tps_ppb_3d>0) then
+          anyvar3d(i,j,k)= respZ3d(i,j,k)/tps_ppb_3d
+         endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======> 
+
+      texte80(1)='respZ3d'     ; texte80(2)='mgC/m3/day' !'mmolC/m3/day'
+      write(texte80(3),'(a)')'respZ3d'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+!!--------------------------------------
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=1,jmax !30-07-14
+         do i=1,imax
+         if(tps_ppb_3d>0) then
+          anyvar3d(i,j,k)= respB3d(i,j,k)/tps_ppb_3d
+         endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======> 
+
+      texte80(1)='respB3d'     ; texte80(2)='mgC/m3/day' !'mmolC/m3/day'
+      write(texte80(3),'(a)')'respB3d'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+!!--------------------------------------
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=1,jmax !30-07-14
+         do i=1,imax
+         if(tps_ppb_3d>0) then
+          anyvar3d(i,j,k)= respPp3d(i,j,k)/tps_ppb_3d
+         endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======> 
+
+      texte80(1)='respPpico3d'     ; texte80(2)='mgC/m3/day' !'mmolC/m3/day'
+      write(texte80(3),'(a)')'respPpico3d'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+!!--------------------------------------
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=1,jmax !30-07-14
+         do i=1,imax
+         if(tps_ppb_3d>0) then
+          anyvar3d(i,j,k)= respPn3d(i,j,k)/tps_ppb_3d
+         endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======> 
+
+      texte80(1)='respPnano3d'     ; texte80(2)='mgC/m3/day' !'mmolC/m3/day'
+      write(texte80(3),'(a)')'respPnano3d'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+!!--------------------------------------
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=1,jmax !30-07-14
+         do i=1,imax
+         if(tps_ppb_3d>0) then
+          anyvar3d(i,j,k)= respPm3d(i,j,k)/tps_ppb_3d
+         endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======> 
+
+      texte80(1)='respPmicro3d'     ; texte80(2)='mgC/m3/day' !'mmolC/m3/day'
+      write(texte80(3),'(a)')'respPmicro3d'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+!!--------------------------------------
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=1,jmax !30-07-14
+         do i=1,imax
+         if(tps_ppb_3d>0) then
+          anyvar3d(i,j,k)= exuc3d(i,j,k)/tps_ppb_3d
+         endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======> 
+
+      texte80(1)='exuc3d'     ; texte80(2)='mgC/m3/day' !'mmolC/m3/day'
+      write(texte80(3),'(a)')'exuc3d'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+!!--------------------------------------
+!! Nitrification      
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=1,jmax
+         do i=1,imax
+!         if(tps_ppb_2d>0) then
+         if (mask_t(i,j,k  ).ne.0.and.tps_ppb_3d>0) then      
+          anyvar3d(i,j,k)= nitrif3d(i,j,k)/tps_ppb_3d
+         endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======> 
+
+      texte80(1)='nitrif3d'     ; texte80(2)='mgN/m3/day'
+      write(texte80(3),'(a)')'nitrif3d'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+!----------------------------------------
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=1,jmax
+         do i=1,imax
+!!         if(tps_ppb_2d>0) then
+         if (mask_t(i,j,k  ).ne.0.and.tps_ppb_3d>0) then      
+          anyvar3d(i,j,k)= uptnit3d(i,j,k)/tps_ppb_3d
+         endif
+         enddo
+         enddo
+         enddo
+        endif                  !=======> 
+           
+      texte80(1)='uptnit3d'     ; texte80(2)='mgN/m3/day'
+      write(texte80(3),'(a)')'uptnit3d'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+!!--------------------------------------
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=1,jmax
+         do i=1,imax
+         if(tps_ppb_3d>0) then
+          anyvar3d(i,j,k)= uptnitMol3d(i,j,k)/tps_ppb_3d
+         endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======> 
+
+      texte80(1)='uptnitMol3d'     ; texte80(2)='mmolN/m3/day' !'mmolC/m3/day'
+      write(texte80(3),'(a)')'uptnitMol3d'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+!!--------------------------------------
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=1,jmax
+         do i=1,imax
+         if(tps_ppb_3d>0) then
+          anyvar3d(i,j,k)= nitrifMol3d(i,j,k)/tps_ppb_3d
+         endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======> 
+
+      texte80(1)='nitrifMol3d'     ; texte80(2)='mmolN/m3/day' !'mmolC/m3/day'
+      write(texte80(3),'(a)')'nitrifMol3d'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+!!--------------------------------------
+!!--------------------------------------
+!! Standing stocks integrated in the water column
       if(loop_netcdf==1) then !=====
 !! reduction des sorties a la zone de calcul
            do j=1,jmax
@@ -576,8 +765,8 @@
      texte80(5)='TYX' ; texte80(7)='real'
 
         call netcdf_main('_t')
-
-
+!!-------------------------------------------------------------
+!! Euphotic layer depth 
       if(loop_netcdf==1) then !=====
 ! reduction des sorties a la zone de calcul
            do j=1,jmax
@@ -596,7 +785,44 @@
      texte80(5)='TYX' ; texte80(7)='real'
 
         call netcdf_main('_t')
+      
+!*****************************************************************
+!! Fluxes 2D
+! production primaire
+! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
+      if(loop_netcdf==1) then !=======>
+!           do j=1,jmax
+!           do i=1,imax
+!            anyvar2d(i,j)=-9999.
+!           enddo
+!           enddo
 
+!             do j=nbio1,nbio2
+!             do i=mbio1,mbio2
+!!              anyvar2d(i,j)=-9999.
+!!             enddo
+!!             enddo
+!! reduction des sorties a la zone de calcul
+           do j=1,jmax
+           do i=1,imax
+
+!             do j=nbio1,nbio2
+!             do i=mbio1,mbio2
+              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
+                anyvar2d(i,j)=ppb2d(i,j,1)/tps_ppb_2d
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+            enddo
+        endif
+        texte80(1)='ppb' ; texte80(2)='mgC/m2/d'
+      write(texte80(3),'(a)')'gross primary production'
+      texte80(4)=texte80(3)
+     texte80(5)='TYX' ; texte80(7)='real'
+
+        call netcdf_main('_t')
+!        print*,'ppb tracee'
 !!*****************************************************************
 ! production primaire nette
 ! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
@@ -626,7 +852,7 @@
              enddo
              enddo
         endif
-        texte80(1)='netppb' ; texte80(2)='mgC/m2'
+        texte80(1)='netppb' ; texte80(2)='mgC/m2/d'
       write(texte80(3),'(a)')'net primary production'
       texte80(4)=texte80(3)
       texte80(5)='TYX' ; texte80(7)='real'
@@ -658,15 +884,14 @@
              enddo
              enddo
         endif
-        texte80(1)='npp' ; texte80(2)='mgC/m2'
-      write(texte80(3),'(a)')'production'
+        texte80(1)='npb' ; texte80(2)='mgC/m2/d'
+      write(texte80(3),'(a)')'production nouvelle'
       texte80(4)=texte80(3)
       texte80(5)='TYX' ; texte80(7)='real'
       call netcdf_main('_t')
 
 !*****************************************************************
 ! production regeneree
-
       if(loop_netcdf==1) then !=======>
            do j=1,jmax
            do i=1,imax
@@ -686,36 +911,14 @@
              enddo
          endif
 
-        texte80(1)='rpb' ; texte80(2)='mgC/m2'
+        texte80(1)='rpb' ; texte80(2)='mgC/m2/d'
+        write(texte80(3),'(a)')'production regeneree'
+        texte80(4)=texte80(3)
+        texte80(5)='TYX' ; texte80(7)='real'         
         call netcdf_main('_t')
 !!        print*,'rpb tracee'
-!!!***************************************************************
-!!!! nitrification
-!!
-!!      if(loop_netcdf==1) then !=======>
-!!           do j=1,jmax
-!!           do i=1,imax
-!!            anyvar2d(i,j)=-9999.
-!!           enddo
-!!           enddo
-!!
-!!           do j=1,jmax
-!!           do i=1,imax
-!!
-!!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!!                anyvar2d(i,j)=nitrif2d(i,j)/tps_ppb_2d
-!!              else
-!!                anyvar2d(i,j)=-9999.
-!!              endif
-!!             enddo
-!!             enddo
-!!          endif
-!!        texte80(1)='nitrif' ; texte80(2)='mmol/m2/d'
-!!        call netcdf_main('_t')
-!!!        print*,'nitrif tracee'
 !!!*****************************************************************
 ! respiration
-
       if(loop_netcdf==1) then !=======>
            do j=1,jmax
            do i=1,imax
@@ -738,56 +941,100 @@
         call netcdf_main('_t')
 !       print*,'resp tracee'
 !!!*****************************************************************
-! respiration
+! respiration phyto
+      if(loop_netcdf==1) then !=======>
+           do j=1,jmax
+           do i=1,imax
+            anyvar2d(i,j)=-9999.
+           enddo
+           enddo
 
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=respphyto2d(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!          endif
-!        texte80(1)='resppphyto' ; texte80(2)='mgC/m2/d'
-!        call netcdf_main('_t')
-!!       print*,'resp tracee'
-!!!*****************************************************************
-! respiration
+           do j=1,jmax
+           do i=1,imax
 
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=respzoo2d(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!          endif
-!        texte80(1)='respzoo' ; texte80(2)='mgC/m2/d'
-!        call netcdf_main('_t')
+              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
+                anyvar2d(i,j)=rphyto2d(i,j)/tps_ppb_2d
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+             enddo
+          endif
+        texte80(1)='respphyto' ; texte80(2)='mgC/m2/d'
+        call netcdf_main('_t')
 !       print*,'resp tracee'
 !!!*****************************************************************
-!!! CDepo  
+! respiration zoo
+      if(loop_netcdf==1) then !=======>
+           do j=1,jmax
+           do i=1,imax
+            anyvar2d(i,j)=-9999.
+           enddo
+           enddo
 
+           do j=1,jmax
+           do i=1,imax
+
+              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
+                anyvar2d(i,j)=rzoo2d(i,j)/tps_ppb_2d
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+             enddo
+          endif
+        texte80(1)='respzoo' ; texte80(2)='mgC/m2/d'
+        call netcdf_main('_t')
+!       print*,'resp tracee'
+!!!******************************************************************
+! respiration bact
+      if(loop_netcdf==1) then !=======>
+           do j=1,jmax
+           do i=1,imax
+            anyvar2d(i,j)=-9999.
+           enddo
+           enddo
+
+           do j=1,jmax
+           do i=1,imax
+
+              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
+                anyvar2d(i,j)=rbac2d(i,j)/tps_ppb_2d
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+             enddo
+          endif
+        texte80(1)='respbact' ; texte80(2)='mgC/m2/d'
+        call netcdf_main('_t')
+!       print*,'resp tracee' 
+!!!******************************************************************
+! nitrification
+      if(loop_netcdf==1) then !=======>
+           do j=1,jmax
+           do i=1,imax
+            anyvar2d(i,j)=-9999.
+           enddo
+           enddo
+
+           do j=1,jmax
+           do i=1,imax
+
+              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
+                anyvar2d(i,j)=nitrif2d(i,j)/tps_ppb_2d
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+             enddo
+          endif
+        texte80(1)='nitrif' ; texte80(2)='mgN/m2/d'
+        call netcdf_main('_t')
+!       print*,'resp tracee'        
+!!****************************************************************        
+!!! CDepo  
+!! TO DO make aggregated variaable to average over output period
       if(loop_netcdf==1) then !=======>
            do j=1,jmax
            do i=1,imax
@@ -811,7 +1058,7 @@
 !        print*,'nitrif tracee'
 !!!*****************************************************************
 !!! NDepo  
-
+!! TO DO make aggregated variaable to average over output period
       if(loop_netcdf==1) then !=======>
            do j=1,jmax
            do i=1,imax
@@ -835,540 +1082,56 @@
 !        print*,'nitrif tracee'
 !!!*****************************************************************
 !!! PDepo  
-!
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1) then
-!                anyvar2d(i,j)=PDepo(i,j)
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!          endif
-!        texte80(1)='PDepo' ; texte80(2)='mmol/m2/d'
-!        call netcdf_main('_t')
+!! TO DO make aggregated variaable to average over output period
+      if(loop_netcdf==1) then !=======>
+           do j=1,jmax
+           do i=1,imax
+            anyvar2d(i,j)=-9999.
+           enddo
+           enddo
+
+           do j=1,jmax
+           do i=1,imax
+
+              if (mask_t(i,j,kmax+1)==1) then
+                anyvar2d(i,j)=PDepo(i,j)
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+             enddo
+          endif
+        texte80(1)='PDepo' ; texte80(2)='mmol/m2/d'
+        call netcdf_main('_t')
 !!        print*,'nitrif tracee'
 !!!*****************************************************************
 !!! SiDepo  
-!
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1) then
-!                anyvar2d(i,j)=SiDepo(i,j)
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!          endif
-!        texte80(1)='SiDepo' ; texte80(2)='mmol/m2/d'
-!        call netcdf_main('_t')
+!! TO DO make aggregated variaable to average over output period
+      if(loop_netcdf==1) then !=======>
+           do j=1,jmax
+           do i=1,imax
+            anyvar2d(i,j)=-9999.
+           enddo
+           enddo
+
+           do j=1,jmax
+           do i=1,imax
+
+              if (mask_t(i,j,kmax+1)==1) then
+                anyvar2d(i,j)=SiDepo(i,j)
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+             enddo
+          endif
+        texte80(1)='SiDepo' ; texte80(2)='mmol/m2/d'
+        call netcdf_main('_t')
 !!        print*,'nitrif tracee'
 !!!!*****************************************************************
-! export (total) sous 200 m de poc 
-      if(loop_netcdf==1) then !=======>
-           do j=1,jmax
-           do i=1,imax
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-           do j=1,jmax
-           do i=1,imax
-
-              if (mask_t(i,j,kmax+1)==1.and.tps_strada_2d>0) then
-                anyvar2d(i,j)=exp2d(i,j,19)/tps_strada_2d
-              else
-                anyvar2d(i,j)=-9999.
-              endif
-             enddo
-             enddo
-         endif
-        texte80(1)='export_poc_sw' ; texte80(2)='mmolC/m2/d'
-        call netcdf_main('_t')
-!*****************************************************************
-! export (total) sous 200 m de doc 
-      if(loop_netcdf==1) then !=======>
-           do j=1,jmax
-           do i=1,imax
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-           
-           do j=1,jmax
-           do i=1,imax
-           
-              if (mask_t(i,j,kmax+1)==1.and.tps_strada_2d>0) then
-                anyvar2d(i,j)=exp2d(i,j,20)/tps_strada_2d
-              else
-                anyvar2d(i,j)=-9999.
-              endif
-             enddo
-             enddo
-         endif
-        texte80(1)='export_doc_sw' ; texte80(2)='mmolC/m2/d'
-        call netcdf_main('_t')
 !!!!*****************************************************************
-! export (total) sous 200 m de poc 
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!           
-!           do j=1,jmax
-!           do i=1,imax
-!           
-!              if (mask_t(i,j,kmax+1)==1.and.tps_strada_2d>0) then
-!                anyvar2d(i,j)=exp2d(i,j,21)/tps_strada_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='export_poc_iw' ; texte80(2)='mmolC/m2/d'
-!        call netcdf_main('_t')
-!*****************************************************************
-! export (total) sous 600 m de doc 
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!           
-!           do j=1,jmax
-!           do i=1,imax
-!           
-!              if (mask_t(i,j,kmax+1)==1.and.tps_strada_2d>0) then
-!                anyvar2d(i,j)=exp2d(i,j,22)/tps_strada_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='export_doc_iw' ; texte80(2)='mmolC/m2/d'
-!        call netcdf_main('_t')
-!!!!*****************************************************************
-!!!export (total) sous 200 m de nitrate 
-     if(loop_netcdf==1) then !=======>
-          do j=1,jmax
-          do i=1,imax
-           anyvar2d(i,j)=-9999.
-          enddo
-          enddo
-!
-          do j=1,jmax
-          do i=1,imax
-!
-             if (mask_t(i,j,kmax+1)==1.and.tps_strada_2d>0) then
-               anyvar2d(i,j)=exp2d(i,j,1)/tps_strada_2d
-             else
-               anyvar2d(i,j)=-9999.
-             endif
-            enddo
-            enddo
-        endif
-       texte80(1)='export_nit_sw' ; texte80(2)='mmolN/m2/d'
-       call netcdf_main('_t')
-!!!!!*****************************************************************
-!!!export (total) sous 200 m d'ammonium
-     if(loop_netcdf==1) then !=======>
-          do j=1,jmax
-          do i=1,imax
-           anyvar2d(i,j)=-9999.
-          enddo
-          enddo
-!
-          do j=1,jmax
-          do i=1,imax
-!
-             if (mask_t(i,j,kmax+1)==1.and.tps_strada_2d>0) then
-               anyvar2d(i,j)=exp2d(i,j,2)/tps_strada_2d
-             else
-               anyvar2d(i,j)=-9999.
-             endif
-            enddo
-            enddo
-        endif
-       texte80(1)='export_ammo_sw' ; texte80(2)='mmolN/m2/d'
-       call netcdf_main('_t')
-!!!!!*****************************************************************
-!!!! export (total) sous 200 m de DON
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_strada_2d>0) then
-!                anyvar2d(i,j)=exp2d(i,j,3)/tps_strada_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='export_don_sw' ; texte80(2)='mmolN/m2/d'
-!        call netcdf_main('_t')
-!!!!!*****************************************************************
-!!!! export (total) sous 200 m de PON
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_strada_2d>0) then
-!                anyvar2d(i,j)=exp2d(i,j,4)/tps_strada_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='export_pon_sw' ; texte80(2)='mmolN/m2/d'
-!        call netcdf_main('_t')
-!!!!!*****************************************************************
-!!!! export (total) sous 200 m de Phosphate
-     if(loop_netcdf==1) then !=======>
-          do j=1,jmax
-          do i=1,imax
-           anyvar2d(i,j)=-9999.
-          enddo
-          enddo
-!
-          do j=1,jmax
-          do i=1,imax
-!
-             if (mask_t(i,j,kmax+1)==1.and.tps_strada_2d>0) then
-               anyvar2d(i,j)=exp2d(i,j,5)/tps_strada_2d
-             else
-               anyvar2d(i,j)=-9999.
-             endif
-            enddo
-            enddo
-        endif
-       texte80(1)='export_pho_sw' ; texte80(2)='mmolP/m2/d'
-       call netcdf_main('_t')
-!!!!!*****************************************************************
-!!!! export (total) sous 200 m de DOP
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_strada_2d>0) then
-!                anyvar2d(i,j)=exp2d(i,j,6)/tps_strada_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='export_dop_sw' ; texte80(2)='mmolP/m2/d'
-!        call netcdf_main('_t')
-!!!!!*****************************************************************
-!!!! export (total) sous 200 m de POP
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_strada_2d>0) then
-!                anyvar2d(i,j)=exp2d(i,j,7)/tps_strada_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='export_pop_sw' ; texte80(2)='mmolP/m2/d'
-!        call netcdf_main('_t')
-!!!!!*****************************************************************
-!!!! export (total) sous 200 m de Silicate
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_strada_2d>0) then
-!                anyvar2d(i,j)=exp2d(i,j,8)/tps_strada_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='export_sil_sw' ; texte80(2)='mmolSi/m2/d'
-!        call netcdf_main('_t')
-!!!!!*****************************************************************
-!!!! export (total) sous 200 m de POSi
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_strada_2d>0) then
-!                anyvar2d(i,j)=exp2d(i,j,9)/tps_strada_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='export_posi_sw' ; texte80(2)='mmolSi/m2/d'
-!        call netcdf_main('_t')
-!
-!!!!*****************************************************************
-!!!! export (total) sous 600 m de nitrate 
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_strada_2d>0) then
-!                anyvar2d(i,j)=exp2d(i,j,10)/tps_strada_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='export_nit_iw' ; texte80(2)='mmolN/m2/d'
-!        call netcdf_main('_t')
-!!!!!*****************************************************************
-!!!! export (total) sous 600 m d'ammonium
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_strada_2d>0) then
-!                anyvar2d(i,j)=exp2d(i,j,11)/tps_strada_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='export_ammo_iw' ; texte80(2)='mmolN/m2/d'
-!        call netcdf_main('_t')
-!!!!!*****************************************************************
-!!!! export (total) sous 600 m de DON
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_strada_2d>0) then
-!                anyvar2d(i,j)=exp2d(i,j,12)/tps_strada_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='export_don_iw' ; texte80(2)='mmolN/m2/d'
-!        call netcdf_main('_t')
-!!!!!*****************************************************************
-!!!! export (total) sous 600 m de PON
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_strada_2d>0) then
-!                anyvar2d(i,j)=exp2d(i,j,13)/tps_strada_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='export_pon_iw' ; texte80(2)='mmolN/m2/d'
-!        call netcdf_main('_t')
-!!!!!*****************************************************************
-!!!! export (total) sous 600 m de Phosphate
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_strada_2d>0) then
-!                anyvar2d(i,j)=exp2d(i,j,14)/tps_strada_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='export_pho_iw' ; texte80(2)='mmolP/m2/d'
-!        call netcdf_main('_t')
-!!!!!*****************************************************************
-!!!! export (total) sous 600 m de DOP
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_strada_2d>0) then
-!                anyvar2d(i,j)=exp2d(i,j,15)/tps_strada_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='export_dop_iw' ; texte80(2)='mmolP/m2/d'
-!        call netcdf_main('_t')
-!!!!!*****************************************************************
-!!!! export (total) sous 600 m de POP
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_strada_2d>0) then
-!                anyvar2d(i,j)=exp2d(i,j,16)/tps_strada_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='export_pop_iw' ; texte80(2)='mmolP/m2/d'
-!        call netcdf_main('_t')
-!!!!!*****************************************************************
-!!!! export (total) sous 600 m de Silicate
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_strada_2d>0) then
-!                anyvar2d(i,j)=exp2d(i,j,17)/tps_strada_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='export_sil_iw' ; texte80(2)='mmolSi/m2/d'
-!        call netcdf_main('_t')
-!!!!!*****************************************************************
-!!!! export (total) sous 600 m de POSi
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_strada_2d>0) then
-!                anyvar2d(i,j)=exp2d(i,j,18)/tps_strada_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='export_posi_iw' ; texte80(2)='mmolSi/m2/d'
-!        call netcdf_main('_t')
-!
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
+!!!! Benthic fluxes
+!!!! NO3        
 !!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
       if(loop_netcdf==1) then !=======>
            do j=1,jmax
@@ -1376,11 +1139,10 @@
             anyvar2d(i,j)=-9999.
            enddo
            enddo
-
            do j=1,jmax
            do i=1,imax
-
-              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+              if (tps_benth_2d>0) then
+!              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
                 anyvar2d(i,j)=NO3efflux2d(i,j)/tps_benth_2d
               else
                 anyvar2d(i,j)=-9999.
@@ -1392,7 +1154,7 @@
         call netcdf_main('_t')
 !!        print*,'export_mopc tracee'
 !!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
+!!!! NH4
 !!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
       if(loop_netcdf==1) then !=======>
            do j=1,jmax
@@ -1400,11 +1162,10 @@
             anyvar2d(i,j)=-9999.
            enddo
            enddo
-
            do j=1,jmax
            do i=1,imax
-
-              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+              if (tps_benth_2d>0) then
+!              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
                 anyvar2d(i,j)=NH4efflux2d(i,j)/tps_benth_2d
               else
                 anyvar2d(i,j)=-9999.
@@ -1416,7 +1177,7 @@
         call netcdf_main('_t')
 !!        print*,'export_mopc tracee'
 !!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
+!!!! P
 !!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
       if(loop_netcdf==1) then !=======>
            do j=1,jmax
@@ -1424,10 +1185,9 @@
             anyvar2d(i,j)=-9999.
            enddo
            enddo
-
            do j=1,jmax
            do i=1,imax
-
+!              if (tps_benth_2d>0) then
               if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
                 anyvar2d(i,j)=Pefflux2d(i,j)/tps_benth_2d
               else
@@ -1440,7 +1200,7 @@
         call netcdf_main('_t')
 !!!        print*,'export_mopc tracee'
 !!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
+!!!! Si
 !!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
       if(loop_netcdf==1) then !=======>
            do j=1,jmax
@@ -1448,10 +1208,9 @@
             anyvar2d(i,j)=-9999.
            enddo
            enddo
-
            do j=1,jmax
            do i=1,imax
-           
+!              if (tps_benth_2d>0) then           
               if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
                 anyvar2d(i,j)=Siefflux2d(i,j)/tps_benth_2d
               else
@@ -1464,6 +1223,7 @@
         call netcdf_main('_t')
 !!!        print*,'export_mopc tracee'
 !!!!*****************************************************************
+!!!! DIC        
       if(loop_netcdf==1) then !=======>
            do j=1,jmax
            do i=1,imax
@@ -1473,7 +1233,7 @@
 
            do j=1,jmax
            do i=1,imax
-
+!              if (tps_benth_2d>0) then
               if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
                 anyvar2d(i,j)=DICefflux2d(i,j)/tps_benth_2d
               else
@@ -1485,16 +1245,16 @@
         texte80(1)='DICefflux2d' ; texte80(2)='mmolC/m2/d'
         call netcdf_main('_t')
 !!!*****************************************************************
+!!! O2        
       if(loop_netcdf==1) then !=======>
            do j=1,jmax
            do i=1,imax
             anyvar2d(i,j)=-9999.
            enddo
            enddo
-
            do j=1,jmax
            do i=1,imax
-
+!              if (tps_benth_2d>0) then
               if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
                 anyvar2d(i,j)=O2influx2d(i,j)/tps_benth_2d
               else
@@ -1506,1026 +1266,7 @@
         texte80(1)='02influx2d' ; texte80(2)='mmol/m2/d'
         call netcdf_main('_t')
 !!!*****************************************************************
-
-!
-!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!
-!
-!
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=ExcbactNH4NTOPLAYER2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='ExcbactNH4surf' ; texte80(2)='mmolN/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=ExcZooAmmoNTOPLAYER2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='ExcZooAmmosurf' ; texte80(2)='mmolN/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=ExcZooPO4PTOPLAYER2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='ExcZooPO4surf' ; texte80(2)='mgP/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=ExcbactPO4PTOPLAYER2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='ExcbactPO4surf' ; texte80(2)='mgP/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=ExuSiTOPLAYER2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='ExuSisurf' ; texte80(2)='mmolN/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=UptNitTOPLAYER2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='UptNitsurf' ; texte80(2)='mmolN/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=UptAmmoTOPLAYER2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='UptAmmoSurf' ; texte80(2)='mmolN/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=UptPTOPLAYER2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='UptPsurf' ; texte80(2)='mgP/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=UptBactPTOPLAYER2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='UptBactPsurf' ; texte80(2)='mgP/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=UptBactNTOPLAYER2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='UptBactNsurf' ; texte80(2)='mgP/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=UptSiTOPLAYER2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='UptSisurf' ; texte80(2)='mmolSi/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=NitrifTOPLAYER2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='Nitrifsurf' ; texte80(2)='mmolN/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=RemSMOPSiTOPLAYER2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='RemSMOPSisurf' ; texte80(2)='mmolSi/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=RemLMOPSiTOPLAYER2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='RemLMOPSisurf' ; texte80(2)='mmolSi/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!
-!
-!
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=ExcbactNH4NINT2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='ExcbactNH4int' ; texte80(2)='mgN/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=ExcZooAmmoNINT2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='ExcZooAmmoint' ; texte80(2)='mgN/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=ExcZooPO4PINT2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='ExcZooPO4int' ; texte80(2)='mgP/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=ExcbactPO4PINT2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='ExcbactPO4int' ; texte80(2)='mgP/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=ExuSiINT2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='ExuSiint' ; texte80(2)='mgSi/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=UptNitINT2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='UptNitint' ; texte80(2)='mgN/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=UptAmmoINT2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='UptAmmoint' ; texte80(2)='mgN/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=UptPINT2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='UptPint' ; texte80(2)='mgP/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=UptBactPINT2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='UptBactPint' ; texte80(2)='mgP/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=UptBactNINT2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='UptBactNint' ; texte80(2)='mgP/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=UptSiINT2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='UptSiint' ; texte80(2)='mgSi/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=NitrifINT2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='Nitrifint' ; texte80(2)='mgN/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=RemSMOPSiINT2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='RemSMOPSiint' ; texte80(2)='mgN/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=RemLMOPSiINT2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='RemLMOPSiint' ; texte80(2)='mgN/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!
-!
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=ExcbactNH4NDEEP2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='ExcbactNH4deep' ; texte80(2)='mgN/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=ExcZooAmmoNDEEP2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='ExcZooAmmodeep' ; texte80(2)='mgN/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=ExcZooPO4PDEEP2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='ExcZooPO4deep' ; texte80(2)='mgP/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=ExcbactPO4PDEEP2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='ExcbactPO4deep' ; texte80(2)='mgP/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=ExuSiDEEP2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='ExuSideep' ; texte80(2)='mgN/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=UptNitDEEP2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='UptNitdeep' ; texte80(2)='mgN/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=UptAmmoDEEP2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='UptAmmodeep' ; texte80(2)='mgN/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=UptPDEEP2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='UptPdeep' ; texte80(2)='mgN/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=UptBactPDEEP2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='UptBactPdeep' ; texte80(2)='mgP/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=UptBactNDEEP2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='UptBactNdeep' ; texte80(2)='mgP/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=UptSiDEEP2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='UptSideep' ; texte80(2)='mgN/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=NitrifDEEP2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='Nitrifdeep' ; texte80(2)='mgN/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=RemSMOPSiDEEP2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='RemSMOPSideep' ; texte80(2)='mgN/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!!! export sous 150 m de nitrate par adv
-!!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=RemLMOPSiDEEP2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='RemLMOPSideep' ; texte80(2)='mgN/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
+!!
 !!!!*****************************************************************
 !!------------------------------------------------------------------
 !! Atmospheric deposition
@@ -2535,7 +1276,7 @@
             anyvar2d(i,j)=-9999.
            enddo
            enddo
-
+!! instantaneous ???
 ! reduction des sorties a la zone de calcul
            do j=1,jmax
            do i=1,imax
@@ -2697,77 +1438,6 @@
 !        call netcdf_main('_t')
 
 !!!*****************************************************************
-!!! export sous 150 m de nitrate par adv
-!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-      if(loop_netcdf==1) then !=======>
-           do j=1,jmax
-           do i=1,imax
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-          do j=1,jmax
-           do i=1,imax
-
-              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-               anyvar2d(i,j)=UptNitTOPLAYER2D(i,j)/tps_ppb_2d
-              else
-                anyvar2d(i,j)=-9999.
-              endif
-             enddo
-             enddo
-         endif
-        texte80(1)='UptNitsurf' ; texte80(2)='mmolN/m2/d'
-        call netcdf_main('_t')
-!!        print*,'export_mopc tracee'
-!!!*****************************************************************
-!!! export sous 150 m de nitrate par adv
-!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!                anyvar2d(i,j)=UptAmmoTOPLAYER2D(i,j)/tps_ppb_2d
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!         endif
-!        texte80(1)='UptAmmoSurf' ; texte80(2)='mmolN/m2/d'
-!        call netcdf_main('_t')
-!!!        print*,'export_mopc tracee'
-!!!!*****************************************************************
-!!! export sous 150 m de nitrate par adv
-!!! mise ?zero pour masquer couronne peripherique qd MBIO1 NE 1 etc...
-      if(loop_netcdf==1) then !=======>
-           do j=1,jmax
-           do i=1,imax
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-           do j=1,jmax
-           do i=1,imax
-
-              if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-                anyvar2d(i,j)=UptPTOPLAYER2D(i,j)/tps_ppb_2d
-              else
-                anyvar2d(i,j)=-9999.
-              endif
-             enddo
-             enddo
-         endif
-        texte80(1)='UptPsurf' ; texte80(2)='mgP/m2/d'
-        call netcdf_main('_t')
-!!        print*,'export_mopc tracee'
 
 !!!!*****************************************************************
 ! O2_Flux
@@ -2897,379 +1567,38 @@
         call netcdf_main('_t')
 
 !------------------------------------------------------------------
-! Calcul des stocks 3 couches:
-
-!       np2=23
-!       np1=32
-!
-!     do i=1,imax
-!     do j=1,jmax
-!
-!       orga_phy_sw(i,j)=0.
-!       orga_phy_iw(i,j)=0.
-!       orga_phy_dw(i,j)=0.
-!       orga_hetero_sw(i,j)=0.
-!       orga_hetero_iw(i,j)=0.
-!       orga_hetero_dw(i,j)=0.
-!       orga_poc_sw(i,j)=0.
-!       orga_poc_iw(i,j)=0.
-!       orga_poc_dw(i,j)=0.
-!       orga_doc_sw(i,j)=0.
-!       orga_doc_iw(i,j)=0.
-!       orga_doc_dw(i,j)=0.
-!
-!! couche de fond
-!         do k=1,np2-1
-!          if(mask_t(i,j,k).eq.1) then
-!              orga_phy_dw(i,j)   =orga_phy_dw(i,j)   +(bio_t(i,j,k,idiac)+bio_t(i,j,k,inanoc)+bio_t(i,j,k,isynec))*dz_t(i,j,k,1) !mmol/m2
-!              orga_hetero_dw(i,j)=orga_hetero_dw(i,j)+(bio_t(i,j,k,izoomesoc)+bio_t(i,j,k,izoomicroc)+bio_t(i,j,k,izoonanoc)+bio_t(i,j,k,ibactc))*dz_t(i,j,k,1) !mmol/m2
-!              orga_poc_dw(i,j)   =orga_poc_dw(i,j)   +(bio_t(i,j,k,ismopc)+bio_t(i,j,k,ilmopc))*dz_t(i,j,k,1) !mmol/m2
-!              orga_doc_dw(i,j)   =orga_doc_dw(i,j)   +bio_t(i,j,k,imodc)*dz_t(i,j,k,1) !mmol/m2
-!          endif
-!         enddo !k
-!! couche intermediaire
-!         do k=np2,np1-1
-!          if(mask_t(i,j,k).eq.1) then
-!              orga_phy_iw(i,j)   =orga_phy_iw(i,j) +(bio_t(i,j,k,idiac)+bio_t(i,j,k,inanoc)+bio_t(i,j,k,isynec))*dz_t(i,j,k,1) !mmol/m2
-!              orga_hetero_iw(i,j)=orga_hetero_iw(i,j)+(bio_t(i,j,k,izoomesoc)+bio_t(i,j,k,izoomicroc)+bio_t(i,j,k,izoonanoc)+bio_t(i,j,k,ibactc))*dz_t(i,j,k,1) !mmol/m2
-!              orga_poc_iw(i,j)   =orga_poc_iw(i,j) +(bio_t(i,j,k,ismopc)+bio_t(i,j,k,ilmopc))*dz_t(i,j,k,1) !mmol/m2
-!              orga_doc_iw(i,j)   =orga_doc_iw(i,j) +bio_t(i,j,k,imodc)*dz_t(i,j,k,1) !mmol/m2
-!          endif
-!         enddo !k
-!! couche surface
-!         do k=np1,kmax
-!          if(mask_t(i,j,k).eq.1) then
-!              orga_phy_sw(i,j)   =orga_phy_sw(i,j)+(bio_t(i,j,k,idiac)+bio_t(i,j,k,inanoc)+bio_t(i,j,k,isynec))*dz_t(i,j,k,1) !mmol/m2
-!              orga_hetero_sw(i,j)=orga_hetero_sw(i,j)+(bio_t(i,j,k,izoomesoc)+bio_t(i,j,k,izoomicroc)+bio_t(i,j,k,izoonanoc)+bio_t(i,j,k,ibactc))*dz_t(i,j,k,1) !mmol/m2
-!              orga_poc_sw(i,j)   =orga_poc_sw(i,j)+(bio_t(i,j,k,ismopc)+bio_t(i,j,k,ilmopc))*dz_t(i,j,k,1) !mmol/m2
-!              orga_doc_sw(i,j)   =orga_doc_sw(i,j) +bio_t(i,j,k,imodc)*dz_t(i,j,k,1) !mmol/m2
-!          endif
-!         enddo !k
-!
-!      enddo !j
-!      enddo !i
-!
-!!------------------------------------------------------------------
-!! Stock OC phyto 0-150m
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!! reduction des sorties a la zone de calcul
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1) then
-!                anyvar2d(i,j)=orga_phy_sw(i,j)
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!        endif
-!        texte80(1)='StockPhyCSW' ; texte80(2)='mmol/m2'
-!        call netcdf_main('_t')
-!
-!!------------------------------------------------------------------
-!! Stock OC phyto 
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!! reduction des sorties a la zone de calcul
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1) then
-!                anyvar2d(i,j)=orga_phy_iw(i,j)
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!        endif
-!        texte80(1)='StockPhyCIW' ; texte80(2)='mmol/m2'
-!        call netcdf_main('_t')
-!
-!!------------------------------------------------------------------
-!! Stock OC phyto 
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!! reduction des sorties a la zone de calcul
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1) then
-!                anyvar2d(i,j)=orga_phy_dw(i,j)
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!        endif
-!        texte80(1)='StockPhyCDW' ; texte80(2)='mmol/m2'
-!        call netcdf_main('_t')
-!
-!!------------------------------------------------------------------
-!! Stock OC zoo 0-150m
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!! reduction des sorties a la zone de calcul
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1) then
-!                anyvar2d(i,j)=orga_hetero_sw(i,j)
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!        endif
-!        texte80(1)='StockHeteCSW' ; texte80(2)='mmol/m2'
-!        call netcdf_main('_t')
-!
-!!------------------------------------------------------------------
-!! Stock OC hetero
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!! reduction des sorties a la zone de calcul
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1) then
-!                anyvar2d(i,j)=orga_hetero_iw(i,j)
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!        endif
-!        texte80(1)='StockHeteCIW' ; texte80(2)='mmol/m2'
-!        call netcdf_main('_t')
-!
-!!------------------------------------------------------------------
-!! Stock OC hetero
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!! reduction des sorties a la zone de calcul
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1) then
-!                anyvar2d(i,j)=orga_hetero_dw(i,j)
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!        endif
-!        texte80(1)='StockHeteCDW' ; texte80(2)='mmol/m2'
-!        call netcdf_main('_t')
-!
-!!------------------------------------------------------------------
-!! Stock OC POC
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!! reduction des sorties a la zone de calcul
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1) then
-!                anyvar2d(i,j)=orga_poc_sw(i,j)
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!        endif
-!        texte80(1)='StockPOCSW' ; texte80(2)='mmol/m2'
-!        call netcdf_main('_t')
-!
-!!------------------------------------------------------------------
-!! Stock OC POC
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!! reduction des sorties a la zone de calcul
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1) then
-!                anyvar2d(i,j)=orga_poc_iw(i,j)
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!        endif
-!        texte80(1)='StockPOCIW' ; texte80(2)='mmol/m2'
-!        call netcdf_main('_t')
-!
-!!------------------------------------------------------------------
-!! Stock OC POC
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!! reduction des sorties a la zone de calcul
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1) then
-!                anyvar2d(i,j)=orga_phy_dw(i,j)
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!        endif
-!        texte80(1)='StockPOCDW' ; texte80(2)='mmol/m2'
-!        call netcdf_main('_t')
-!
-!!------------------------------------------------------------------
-!! Stock OC DOC
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!! reduction des sorties a la zone de calcul
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1) then
-!                anyvar2d(i,j)=orga_doc_sw(i,j)
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!        endif
-!        texte80(1)='StockDOCSW' ; texte80(2)='mmol/m2'
-!        call netcdf_main('_t')
-!
-!!------------------------------------------------------------------
-!! Stock OC DOC
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!! reduction des sorties a la zone de calcul
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1) then
-!                anyvar2d(i,j)=orga_doc_iw(i,j)
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!        endif
-!        texte80(1)='StockDOCIW' ; texte80(2)='mmol/m2'
-!        call netcdf_main('_t')
-!
-!!------------------------------------------------------------------
-!! Stock OC DOC
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!! reduction des sorties a la zone de calcul
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1) then
-!                anyvar2d(i,j)=orga_doc_dw(i,j)
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!        endif
-!        texte80(1)='StockDOCDW' ; texte80(2)='mmol/m2'
-!        call netcdf_main('_t')
-!
-!!-------------------------------------------------------------------
-!! Sorties LOV Salomé Ruiz/Jean-Olivier Irisson
-!
 !!*****************************************************************
-!! phyc surface
-!      if(loop_netcdf==1) then !=======>
-!
-!           do j=-1,jmax+2
-!           do i=-1,imax+2
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!     k= kmax
-!
-!         do j=1,jmax !30-07-14
-!         do i=1,imax
-!
-!          anyvar2d(i,j)= (bio_t(i,j,k,idiac) &
-!                         +bio_t(i,j,k,isynec) &
-!                         +bio_t(i,j,k,inanoc)   )*mask_t(i,j,k) &
-!                                    +(1-mask_t(i,j,k))*filval
-!
-!         enddo
-!         enddo
-!      endif                  !=======> 
-!
-!      texte80(1)='PHYC'     ; texte80(2)='mmolC/m3'
-!      write(texte80(3),'(a)')'PHYC'
-!      texte80(4)=texte80(3)
-!      texte80(5)='TYX' ; texte80(7)='real'
-!! variable ; units
-!      call netcdf_main('_t')
+!!*****************************************************************
+! oxygen surface
+      call equation_of_state_potzref_jmfwg('grp',1)
+
+      if(loop_netcdf==1) then !=======>
+
+           do j=-1,jmax+2
+           do i=-1,imax+2
+            anyvar2d(i,j)=-9999.
+           enddo
+           enddo
+
+     k= kmax
+
+         do j=1,jmax !30-07-14
+         do i=1,imax
+
+          anyvar2d(i,j)= (bio_t(i,j,k,ioxygen) *mask_t(i,j,k) &
+                        /(rhp_t(i,j,k)+rho)*1000.)   &  !pour avoir des umol/kg
+                                    +(1-mask_t(i,j,k))*filval
+
+         enddo
+         enddo
+      endif                  !=======> 
+
+      texte80(1)='O2kg'     ; texte80(2)='µmol/kg'
+      write(texte80(3),'(a)')'O2kg'
+      texte80(4)=texte80(3)
+      texte80(5)='TYX' ; texte80(7)='real'
+! variable ; units
+      call netcdf_main('_t')
 !
 !!*****************************************************************
 ! phychl surface
@@ -3307,1689 +1636,9 @@
       call netcdf_main('_t')
 !
 !!*****************************************************************
-! phychl surface
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-     k= kmax
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-! moyennée sur la période de sorties
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= chlpsurf(i,j) / tps_ppb_2d
-         endif
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='CHLpico'     ; texte80(2)='mgChl/m3'
-      write(texte80(3),'(a)')'CHLpico'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
+!!            
 !!*****************************************************************
-! phychl surface
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-     k= kmax
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-! moyennée sur la période de sorties
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= chlnsurf(i,j) / tps_ppb_2d
-         endif
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='CHLnano'     ; texte80(2)='mgChl/m3'
-      write(texte80(3),'(a)')'CHLnano'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!!*****************************************************************
-! phychl surface
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-     k= kmax
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-! moyennée sur la période de sorties
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= chlmsurf(i,j) / tps_ppb_2d
-         endif
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='CHLmicro'     ; texte80(2)='mgChl/m3'
-      write(texte80(3),'(a)')'CHLmicro'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!!*****************************************************************
-!! nitrate surface
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-     k= kmax
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-! moyennée sur la période de sorties
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= nitsurf(i,j) / tps_ppb_2d
-         endif
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='surfnit'     ; texte80(2)='mmol/m3'
-      write(texte80(3),'(a)')'surfnit'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!!*****************************************************************
-!! phosphate surface
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-     k= kmax
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-! moyennée sur la période de sorties
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= phosurf(i,j) / tps_ppb_2d
-         endif
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='surfpho'     ; texte80(2)='mmol/m3'
-      write(texte80(3),'(a)')'surfpho'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-
-!      if(loop_netcdf==1) then !=======>
-!
-!           do j=-1,jmax+2
-!           do i=-1,imax+2
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!     k= kmax
-!
-!         do j=1,jmax !30-07-14
-!         do i=1,imax
-!
-!          anyvar2d(i,j)= bio_t(i,j,k,initrate) *mask_t(i,j,k) &
-!                                    +(1-mask_t(i,j,k))*filval
-!
-!         enddo
-!         enddo
-!      endif                  !=======> 
-!
-!      texte80(1)='NO3'     ; texte80(2)='mmolN/m3'
-!      write(texte80(3),'(a)')'NO3'
-!      texte80(4)=texte80(3)
-!      texte80(5)='TYX' ; texte80(7)='real'
-!! variable ; units
-!      call netcdf_main('_t')
-!
-!!*****************************************************************
-!! phosphate surface
-!      if(loop_netcdf==1) then !=======>
-!
-!           do j=-1,jmax+2
-!           do i=-1,imax+2
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!     k= kmax
-!
-!         do j=1,jmax !30-07-14
-!         do i=1,imax
-!
-!          anyvar2d(i,j)= bio_t(i,j,k,iphosphate) *mask_t(i,j,k) &
-!                                    +(1-mask_t(i,j,k))*filval
-!
-!         enddo
-!         enddo
-!      endif                  !=======> 
-!
-!      texte80(1)='PO4'     ; texte80(2)='mmolP/m3'
-!      write(texte80(3),'(a)')'PO4'
-!      texte80(4)=texte80(3)
-!      texte80(5)='TYX' ; texte80(7)='real'
-!! variable ; units
-!      call netcdf_main('_t')
-!
-!
-!!*****************************************************************
-!! phosphate surface
-!      if(loop_netcdf==1) then !=======>
-!
-!           do j=-1,jmax+2
-!           do i=-1,imax+2
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!     k= kmax
-!
-!         do j=1,jmax !30-07-14
-!         do i=1,imax
-!
-!          anyvar2d(i,j)= bio_t(i,j,k,ioxygen) *mask_t(i,j,k) &
-!                                    +(1-mask_t(i,j,k))*filval
-!
-!         enddo
-!         enddo
-!      endif                  !=======> 
-!
-!      texte80(1)='O2'     ; texte80(2)='mmol/m3'
-!      write(texte80(3),'(a)')'O2'
-!      texte80(4)=texte80(3)
-!      texte80(5)='TYX' ; texte80(7)='real'
-!! variable ; units
-!      call netcdf_main('_t')
-!
-!!*****************************************************************
-! oxygen surface
-      call equation_of_state_potzref_jmfwg('grp',1)
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-     k= kmax
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-          anyvar2d(i,j)= (bio_t(i,j,k,ioxygen) *mask_t(i,j,k) &
-                        /(rhp_t(i,j,k)+rho)*1000.)   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,k))*filval
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='O2kg'     ; texte80(2)='µmol/kg'
-      write(texte80(3),'(a)')'O2kg'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!*****************************************************************
-! PP net surface
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-     k= kmax
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-!        if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!          anyvar2d(i,j)= SurfNetPP2D(i,j) * mask_t(i,j,k) &
-!                         +(1-mask_t(i,j,k))*filval
-
-!         if (mask_t(i,j,kmax+1)==1) then
-#ifdef bilanbio
-          anyvar2d(i,j)= zone1_mask(i,j) 
-#endif
-
-!         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-!     texte80(1)='PP'     ; texte80(2)='mgC/m3'
-      texte80(1)='zone1_mask_bilan'     ; texte80(2)='-'
-!     write(texte80(3),'(a)')'PP'
-      write(texte80(3),'(a)')'zone1_mask_bilan'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-
-! PP net surface
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-     k= kmax
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-!        if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!          anyvar2d(i,j)= SurfNetPP2D(i,j) * mask_t(i,j,k) &
-!                         +(1-mask_t(i,j,k))*filval
-
-!         if (mask_t(i,j,kmax+1)==1) then
-#ifdef bilanbio
-          anyvar2d(i,j)= zone2_mask(i,j)
-#endif
-
-!         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-!     texte80(1)='PP'     ; texte80(2)='mgC/m3'
-      texte80(1)='zone2_mask_bilan'     ; texte80(2)='-'
-!     write(texte80(3),'(a)')'PP'
-      write(texte80(3),'(a)')'zone2_mask_bilan'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-
-! PP net surface
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-     k= kmax
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-!        if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!          anyvar2d(i,j)= SurfNetPP2D(i,j) * mask_t(i,j,k) &
-!                         +(1-mask_t(i,j,k))*filval
-
-!         if (mask_t(i,j,kmax+1)==1) then
-#ifdef bilanbio
-          anyvar2d(i,j)= zone3_mask(i,j)
-#endif
-
-!         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-!     texte80(1)='PP'     ; texte80(2)='mgC/m3'
-      texte80(1)='zone3_mask_bilan'     ; texte80(2)='-'
-!     write(texte80(3),'(a)')'PP'
-      write(texte80(3),'(a)')'zone3_mask_bilan'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-! PP net surface
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-     k= kmax
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-!        if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-!          anyvar2d(i,j)= SurfNetPP2D(i,j) * mask_t(i,j,k) &
-!                         +(1-mask_t(i,j,k))*filval
-
-!         if (mask_t(i,j,kmax+1)==1) then
-#ifdef bilanbio
-          anyvar2d(i,j)= zone4_mask(i,j)
-#endif
-
-!         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-!     texte80(1)='PP'     ; texte80(2)='mgC/m3'
-      texte80(1)='zone4_mask_bilan'     ; texte80(2)='-'
-!     write(texte80(3),'(a)')'PP'
-      write(texte80(3),'(a)')'zone4_mask_bilan'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-
-!!*****************************************************************
-! chl integree sur la couche de surface
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= chlsw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= chlsw(i,j) / tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='CHLSW'     ; texte80(2)='mgChl/m2'
-      write(texte80(3),'(a)')'CHLSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!!*****************************************************************
-! chl integree sur la couche de surface
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= chlpsw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= chlsw(i,j) / tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='CHLpicoSW'     ; texte80(2)='mgChl/m2'
-      write(texte80(3),'(a)')'CHLpicoSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!!*****************************************************************
-!!*****************************************************************
-! chl integree sur la couche de surface
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= chlnsw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= chlsw(i,j) / tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='CHLnanoSW'     ; texte80(2)='mgChl/m2'
-      write(texte80(3),'(a)')'CHLnanoSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!!*****************************************************************
-! chl integree sur la couche de surface
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= chlmsw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= chlsw(i,j) / tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='CHLmicroSW'     ; texte80(2)='mgChl/m2'
-      write(texte80(3),'(a)')'CHLmicroSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!*****************************************************************
-! nit integree sur la couche de surface
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= nitsw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= chlsw(i,j) / tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='NITSW'     ; texte80(2)='mmolN/m2'
-      write(texte80(3),'(a)')'NITSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!!*****************************************************************
-! pho integree sur la couche de surface
-
-      if(loop_netcdf==1) then !=======>
-      
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= phosw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= chlsw(i,j) / tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='PHOSW'     ; texte80(2)='mmolP/m2'
-      write(texte80(3),'(a)')'PHOSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!*****************************************************************
-! gpp integree sur la couche de surface
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= gppsw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= gppsw(i,j) /tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='GPPSW'     ; texte80(2)='mgC/m2'
-      write(texte80(3),'(a)')'GPPSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!*****************************************************************
-! gpp integree sur la couche de surface
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= gpppsw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= gppsw(i,j) /tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='GPPpicoSW'     ; texte80(2)='mgC/m2'
-      write(texte80(3),'(a)')'GPPpicoSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!*****************************************************************
-! gpp integree sur la couche de surface
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= gppnsw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= gppsw(i,j) /tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='GPPnanoSW'     ; texte80(2)='mgC/m2'
-      write(texte80(3),'(a)')'GPPnanoSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!*****************************************************************
-! gpp integree sur la couche de surface
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= gppmsw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= gppsw(i,j) /tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='GPPmicroSW'     ; texte80(2)='mgC/m2'
-      write(texte80(3),'(a)')'GPPmicroSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!*****************************************************************
-! gpp integree sur la couche intermediaire
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= gppiw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= gppiw(i,j) /tps_ppb_2d
-         endif
- 
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='GPPIW'     ; texte80(2)='mgC/m2'
-      write(texte80(3),'(a)')'GPPIW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!*****************************************************************
-! respiration du phytopk integree sur la couche de surface
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= crpsw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= crpsw(i,j) /tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='PRSW'     ; texte80(2)='mgC/m2'
-      write(texte80(3),'(a)')'PRSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!*****************************************************************
-! respiration du phytopk integree sur la couche de surface
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= crppsw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= crpsw(i,j) /tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='PpicoRSW'     ; texte80(2)='mgC/m2'
-      write(texte80(3),'(a)')'PpicoRSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!*****************************************************************
-! respiration du phytopk integree sur la couche de surface
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= crpnsw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= crpsw(i,j) /tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='PnanoRSW'     ; texte80(2)='mgC/m2'
-      write(texte80(3),'(a)')'PnanoRSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!*****************************************************************
-! respiration du phytopk integree sur la couche de surface
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= crpmsw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= crpsw(i,j) /tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='PmicroRSW'     ; texte80(2)='mgC/m2'
-      write(texte80(3),'(a)')'PmicroRSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!*****************************************************************
-! respiration du phytopk integree sur la couche intermediaire
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= crpiw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= crpiw(i,j) /tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='PRIW'     ; texte80(2)='mgC/m2'
-      write(texte80(3),'(a)')'PRIW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!
-!*****************************************************************
-! respiration du zoopk integree sur la couche de surface
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= crzsw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= crzsw(i,j) /tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='ZRSW'     ; texte80(2)='mgC/m2'
-      write(texte80(3),'(a)')'ZRSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!*****************************************************************
-! respiration du zoopk integree sur la couche intermediaire
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= crziw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= crziw(i,j) /tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='ZRIW'     ; texte80(2)='mgC/m2'
-      write(texte80(3),'(a)')'ZRIW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-
-!*****************************************************************
-! respiration des bacteries  integree sur la couche de surface
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= crbsw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= crbsw(i,j) /tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='BRSW'     ; texte80(2)='mgC/m2'
-      write(texte80(3),'(a)')'BRSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!*****************************************************************
-! respiration des bact integree sur la couche intermediaire
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= crbiw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= crbiw(i,j) /tps_ppb_2d 
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='BRIW'     ; texte80(2)='mgC/m2'
-      write(texte80(3),'(a)')'BRIW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!
-!*****************************************************************
-! croissance bact integree sur la couche de surface
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= gbsw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= gbsw(i,j) /tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='GBACSW'     ; texte80(2)='mgC/m2'
-      write(texte80(3),'(a)')'GBACSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!*****************************************************************
-! croissance bact integree sur la couche intermediaire
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= gbiw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= gbiw(i,j) /tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='GBACIW'     ; texte80(2)='mgC/m2'
-      write(texte80(3),'(a)')'GBACIW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!
-!*****************************************************************
-! grazing total integree sur la couche de surface
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= graztotsw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= graztotsw(i,j) /tps_ppb_2d
-         endif
- 
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='GrazTotSW'     ; texte80(2)='mgC/m2'
-      write(texte80(3),'(a)')'GrazTotSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!*****************************************************************
-! respiration du phytopk integree sur la couche intermediaire
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= graztotiw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= graztotiw(i,j) /tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='GrazTotIW'     ; texte80(2)='mgC/m2'
-      write(texte80(3),'(a)')'GrazTotIW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!
-!*****************************************************************
-! grazing du phyto integree sur la couche de surface
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= GrazHerbisw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= GrazHerbisw(i,j) /tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='GrazHerbiSW'     ; texte80(2)='mgC/m2'
-      write(texte80(3),'(a)')'GrazHerbiSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!*****************************************************************
-! grazing du phytopk integree sur la couche intermediaire
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= GrazHerbiiw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= GrazHerbiiw(i,j) /tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='GrazHerbiIW'     ; texte80(2)='mgC/m2'
-      write(texte80(3),'(a)')'GrazHerbiIW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!
-!*****************************************************************
-!  hauteur integree sur la couche de surface
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= dzsw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= dzsw(i,j) /tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='DZSW'     ; texte80(2)='m'
-      write(texte80(3),'(a)')'DZSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!*****************************************************************
-! hauteur integree sur la couche intermediaire
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= dziw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= dziw(i,j) /tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='DZIW'     ; texte80(2)='m'
-      write(texte80(3),'(a)')'DZIW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!
-!*****************************************************************
-! nitrification integree sur la couche de surface
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= nitrifsw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= nitsw(i,j) /tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='NITRIFSW'     ; texte80(2)='mmolN/m2/day' !'mgN/m2'change le 28/10/22
-      write(texte80(3),'(a)')'NITRIFSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!*****************************************************************
-! nitrification integree sur la couche intermediaire
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= nitrifiw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= nitiw(i,j)/tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='NITRIFIW'     ; texte80(2)='mgN/m2'
-      write(texte80(3),'(a)')'NITRIFIW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!*****************************************************************
-! nitrification integree sur la couche intermediaire
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= uptammosw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= nitiw(i,j)/tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='UPTAMMOSW'     ; texte80(2)='mmolN/m2'
-      write(texte80(3),'(a)')'UPTAMMOSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-
-!*****************************************************************
-! uptake de nitrate sur la couche de surface
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= uptnitsw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= nitiw(i,j)/tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='UPTNITSW'     ; texte80(2)='mmolN/m2'
-      write(texte80(3),'(a)')'UPTNITSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!*****************************************************************
-! uptake de nitrate sur la couche de surface
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= uptpsw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= nitiw(i,j)/tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='UPTPSW'     ; texte80(2)='mmolP/m2'
-      write(texte80(3),'(a)')'UPTPSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!*****************************************************************
-! uptake de nitrate sur la couche de surface
-
-      if(loop_netcdf==1) then !=======>
-
-           do j=-1,jmax+2
-           do i=-1,imax+2
-            anyvar2d(i,j)=-9999.
-           enddo
-           enddo
-
-         do j=1,jmax !30-07-14
-         do i=1,imax
-
-         if (mask_t(i,j,kmax+1)==1.and.tps_ppb_2d>0) then
-          anyvar2d(i,j)= uptpbsw(i,j) *mask_t(i,j,kmax) &
-                        /tps_ppb_2d   &  !pour avoir des umol/kg
-                                    +(1-mask_t(i,j,kmax))*filval
-!          anyvar2d(i,j)= nitiw(i,j)/tps_ppb_2d
-         endif
-
-         enddo
-         enddo
-      endif                  !=======> 
-
-      texte80(1)='UPTPBSW'     ; texte80(2)='mmolP/m2'
-      write(texte80(3),'(a)')'UPTPBSW'
-      texte80(4)=texte80(3)
-      texte80(5)='TYX' ; texte80(7)='real'
-! variable ; units
-      call netcdf_main('_t')
-!
-!
-!-------------------------------------------------------------------
-! Calcul des stocks pour Fabien Moullec OSMOSE-MED Dec 2018:
-!
-!       np1=26 ! k=26=> prof=-400m
-!
-!     do i=1,imax
-!     do j=1,jmax
-!
-!       orga_picop_400(i,j)=0.
-!       orga_nanop_400(i,j)=0.
-!       orga_microp_400(i,j)=0.
-!       orga_nanoz_400(i,j)=0.
-!       orga_microz_400(i,j)=0.
-!       orga_mesoz_400(i,j)=0.
-!
-!! couche surface
-!         do k=np1,kmax
-!          if(mask_t(i,j,k).eq.1) then
-!              orga_picop_400(i,j) =orga_picop_400(i,j) +(bio_t(i,j,k,isynec))    *dz_t(i,j,k,1) !mmol/m2
-!              orga_nanop_400(i,j) =orga_nanop_400(i,j) +(bio_t(i,j,k,inanoc))    *dz_t(i,j,k,1) !mmol/m2
-!              orga_microp_400(i,j)=orga_microp_400(i,j)+(bio_t(i,j,k,idiac))     *dz_t(i,j,k,1)!mmol/m2
-!              orga_nanoz_400(i,j) =orga_nanoz_400(i,j) +(bio_t(i,j,k,izoonanoc)) *dz_t(i,j,k,1) !mmol/m2
-!              orga_microz_400(i,j)=orga_microz_400(i,j)+(bio_t(i,j,k,izoomicroc))*dz_t(i,j,k,1) !mmol/m2
-!              orga_mesoz_400(i,j) =orga_mesoz_400(i,j) +(bio_t(i,j,k,izoomesoc)) *dz_t(i,j,k,1) !mmol/m2
-!          endif
-!         enddo !k
-!
-!      enddo !j
-!      enddo !i
-!
-!!------------------------------------------------------------------
-!! Stock OC phyto 0-150m
-!      if(loop_netcdf==1) then !=======>
-!           do j=-1,jmax+2
-!           do i=-1,imax+2
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!! reduction des sorties a la zone de calcul
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1) then
-!                anyvar2d(i,j)=orga_picop_400(i,j)
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!        endif
-!        texte80(1)='StockPicoP400' ; texte80(2)='mmol/m2'
-!        call netcdf_main('_t')
-!
-!!------------------------------------------------------------------
-!! Stock OC phyto 
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!! reduction des sorties a la zone de calcul
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1) then
-!                anyvar2d(i,j)=orga_nanop_400(i,j)
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!        endif
-!        texte80(1)='StockNanoP400' ; texte80(2)='mmol/m2'
-!        call netcdf_main('_t')
-!
-!!------------------------------------------------------------------
-!! Stock OC phyto 
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!! reduction des sorties a la zone de calcul
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1) then
-!                anyvar2d(i,j)=orga_microp_400(i,j)
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!        endif
-!        texte80(1)='StockMicroP400' ; texte80(2)='mmol/m2'
-!        call netcdf_main('_t')
-!
-!!------------------------------------------------------------------
-!! Stock OC zoo 0-150m
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!! reduction des sorties a la zone de calcul
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1) then
-!                anyvar2d(i,j)=orga_nanoz_400(i,j)
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!        endif
-!        texte80(1)='StockNanoZ400' ; texte80(2)='mmol/m2'
-!        call netcdf_main('_t')
-!
-!!------------------------------------------------------------------
-!! Stock OC hetero
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!! reduction des sorties a la zone de calcul
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1) then
-!                anyvar2d(i,j)=orga_microz_400(i,j)
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!        endif
-!        texte80(1)='StockMicroZ400' ; texte80(2)='mmol/m2'
-!        call netcdf_main('_t')
-!
-!!------------------------------------------------------------------
-!! Stock OC hetero
-!      if(loop_netcdf==1) then !=======>
-!           do j=1,jmax
-!           do i=1,imax
-!            anyvar2d(i,j)=-9999.
-!           enddo
-!           enddo
-!
-!! reduction des sorties a la zone de calcul
-!           do j=1,jmax
-!           do i=1,imax
-!
-!              if (mask_t(i,j,kmax+1)==1) then
-!                anyvar2d(i,j)=orga_mesoz_400(i,j)
-!              else
-!                anyvar2d(i,j)=-9999.
-!              endif
-!             enddo
-!             enddo
-!        endif
-!        texte80(1)='StockMesoZ400' ; texte80(2)='mmol/m2'
-!        call netcdf_main('_t')
-
-!------------------------------------------------------------------
-
-
-!!!!*****************************************************************
+!!!!***************************************************************
 !!*****************************************************************
 
       if(loop_netcdf==0) then !>>>>>>>>>>>>>>>>>>>>
@@ -5031,10 +1680,11 @@
         do k=1,22
           exp2d(i,j,k)=0.
         enddo
-!          nitrif2d(i,j)=0.
+          nitrif2d(i,j)=0.
           resp2d(i,j)=0.
-!          respzoo2d(i,j)=0.
-!          respphyto2d(i,j)=0.
+          rphyto2d(i,j)=0.
+          rzoo2d(i,j)=0.
+          rbac2d(i,j)=0.
 !          exuctot2d(i,j)=0.
           rpb2d(i,j,5)=0.
           CDepo(i,j)=0.
@@ -5092,59 +1742,101 @@
           UptBactNDEEP2D(i,j)=0.
           O2flux2d(i,j)=0.
           asf2d(i,j)=0
-      chlsurf(i,j)=0.
-      dzsw(i,j)=0.
-      dziw(i,j)=0.
-      chlsw(i,j)=0.
-      gppsw(i,j)=0.
-      gppiw(i,j)=0.
-      crpsw(i,j)=0.
-      crpiw(i,j)=0.
-      crzsw(i,j)=0.
-      crziw(i,j)=0.
-      crbsw(i,j)=0.
-      crbiw(i,j)=0.
-      gbsw(i,j)=0.
-      gbiw(i,j)=0.
-      nitrifsw(i,j)=0.
-      nitrifiw(i,j)=0.
-      graztotsw(i,j)=0.
-      graztotsw(i,j)=0.
-      grazherbisw(i,j)=0.
-      grazherbisw(i,j)=0.
-      nitsurf(i,j)=0.
-      phosurf(i,j)=0.
-      nitsw(i,j)=0.
-      phosw(i,j)=0.
-      gpppsw(i,j)=0.
-      gppnsw(i,j)=0.
-      gppmsw(i,j)=0.
-      crppsw(i,j)=0.
-      crpnsw(i,j)=0.
-      crpmsw(i,j)=0.
-      chlpsurf(i,j)=0.
-      chlnsurf(i,j)=0.
-      chlmsurf(i,j)=0.
-      chlpsw(i,j)=0.
-      chlnsw(i,j)=0.
-      chlmsw(i,j)=0.
-      uptnitsw(i,j)=0.
-      uptammosw(i,j)=0.
-      uptpsw(i,j)=0.
-      uptpbsw(i,j)=0.
-      TOT_COL_N_t(i,j)=0.
-      TOT_COL_P_t(i,j)=0.
-      TOT_COL_Si_t(i,j)=0.
-      EuphoticLayerDepth_t(i,j)=0.
+          chlsurf(i,j)=0.
+          dzsw(i,j)=0.
+          dziw(i,j)=0.
+          chlsw(i,j)=0.
+          gppsw(i,j)=0.
+          gppiw(i,j)=0.
+          crpsw(i,j)=0.
+          crpiw(i,j)=0.
+          crzsw(i,j)=0.
+          crziw(i,j)=0.
+          crbsw(i,j)=0.
+          crbiw(i,j)=0.
+          gbsw(i,j)=0.
+          gbiw(i,j)=0.
+          nitrifsw(i,j)=0.
+          nitrifiw(i,j)=0.
+          graztotsw(i,j)=0.
+          graztotsw(i,j)=0.
+          grazherbisw(i,j)=0.
+          grazherbisw(i,j)=0.
+          nitsurf(i,j)=0.
+          phosurf(i,j)=0.
+          nitsw(i,j)=0.
+          phosw(i,j)=0.
+          gpppsw(i,j)=0.
+          gppnsw(i,j)=0.
+          gppmsw(i,j)=0.
+          crppsw(i,j)=0.
+          crpnsw(i,j)=0.
+          crpmsw(i,j)=0.
+          chlpsurf(i,j)=0.
+          chlnsurf(i,j)=0.
+          chlmsurf(i,j)=0.
+          chlpsw(i,j)=0.
+          chlnsw(i,j)=0.
+          chlmsw(i,j)=0.
+          uptnitsw(i,j)=0.
+          uptammosw(i,j)=0.
+          uptpsw(i,j)=0.
+          uptpbsw(i,j)=0.
+          TOT_COL_N_t(i,j)=0.
+          TOT_COL_P_t(i,j)=0.
+          TOT_COL_Si_t(i,j)=0.
+          EuphoticLayerDepth_t(i,j)=0.
 !          SurfNetPP2D(i,j)=0.
-        do k=1,kmax
-!!        nitrif3d(i,j,k)=0.
-!!        uptnit3d(i,j,k)=0.
-         sPH(i,j,k)=0.
-         sPAR(i,j,k)=0.
-        enddo
         enddo    ! fin de boucle i1
         enddo    ! fin de boucle j1
+
+
+! remise a zero variables 3D
+!        print*,'remise a zero des var 3D'
+
+      tps_ppb_3d=0
+        do j=nbio1,nbio2 ! debut boucle sur j
+        do i=mbio1,mbio2 ! debut boucle sur i
+        do k=1,kmax
+         nitrif3d(i,j,k)=0.
+         uptnit3d(i,j,k)=0.
+         sPH(i,j,k)=0.
+         sPAR(i,j,k)=0.
+         nitrifMol3d(i,j,k)=0.
+         uptnitMol3d(i,j,k)=0.
+         ppb3d(i,j,k)=0.
+         resp3d(i,j,k)=0.
+         ppbp3d(i,j,k)=0.
+         ppbn3d(i,j,k)=0.
+         ppbm3d(i,j,k)=0.
+         respPp3d(i,j,k)=0.
+         respPn3d(i,j,k)=0.
+         respPm3d(i,j,k)=0.
+         respP3d(i,j,k)=0.
+         respZ3d(i,j,k)=0.
+         respB3d(i,j,k)=0.
+         exuc3d(i,j,k)=0.
+          uptnitp3d(i,j,k)=0.
+          uptnitn3d(i,j,k)=0.
+          uptnitm3d(i,j,k)=0.
+          uptammo3d(i,j,k)=0.
+          uptammop3d(i,j,k)=0.
+          uptammon3d(i,j,k)=0.
+          uptammom3d(i,j,k)=0.
+          respZn3d(i,j,k)=0.
+          respZmi3d(i,j,k)=0.
+          respZme3d(i,j,k)=0.
+          grazn3d(i,j,k)=0.
+          grazmi3d(i,j,k)=0.
+          grazme3d(i,j,k)=0.
+          messyfeed3d(i,j,k)=0.
+          gbac3d(i,j,k)=0.
+          mortbact3d(i,j,k)=0.
+          remmopc3d(i,j,k)=0.
+        enddo
+        enddo
+        enddo
+
 ! fin remise a zero
 !******************************************************************************
 
