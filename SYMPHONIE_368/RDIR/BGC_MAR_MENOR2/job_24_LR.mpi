@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -J Eco3M_40
+#SBATCH -J Eco3M_ro
 #SBATCH -N 1
 #SBATCH --nodelist=c01
 ####SBATCH -N 2

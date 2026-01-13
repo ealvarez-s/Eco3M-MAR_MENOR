@@ -24,11 +24,15 @@ nomfichier(22)='notebook_wave.f' ! WAVES
 !nomfichier(11)='notebook_tide'                   ! TIDES
 !nomfichier(11)='notebook_tide_fes2014'     
 !nomfichier(11)='notebook_tide_s26_fes2012        
- nomfichier(11)='notebook_tide_fes2012_v211'
+nomfichier(11)='notebook_tide_fes2012_v211'
 
-! I/O
-nomfichier(20)='notebook_offline_LR_ssh-mean.f'   ! Offline files
-nomfichier(21)='notebook_graph_LR'                ! Outputs files for graph
+!I/O
+!nomfichier(20)='notebook_offline_LR_T35.f'              ! Offline files T35
+!nomfichier(20)='notebook_offline_LR.f'                  ! Offline files T37      
+!nomfichier(20)='notebook_offline_LR_ssh-mean.f'          ! Offline files T37 with ssh mean
+nomfichier(20)='notebook_offline_LR_ssh-mean_runoffCNT.f'  ! Offline files T37 with runoff cnt and ssh mean
+!nomfichier(20)='notebook_offline_LR_danaOct25.f'          ! Offline files danaOct2025 + T35
+nomfichier(21)='notebook_graph_LR'                       ! Outputs files for graph
 
 ! PHYSIC
 nomfichier(5)='notebook_advection.f'              ! Advection schemes
@@ -39,17 +43,19 @@ nomfichier(14)='notebook_sponge_LR.f'        ! OBC schemes, nudging layer
 nomfichier(34)='notebook_nh.f'                    ! m0v0m
 
 ! TRACERS
-nomfichier(10)='notebook_tracer.f'                     ! Eulerian (passive)
-!nomfichier(12)='notebook_bio_lowSed_23realInput_chs' ! Eulerian (bio)
-!nomfichier(12)='notebook_bio_lowSed_23realInput_swat'   ! Eulerian (bio)
-!nomfichier(12)='notebook_bio_lowSed_23realInput_chla'   ! Eulerian (bio)
-!nomfichier(12)='notebook_bio_lowSed_23realInput_plus'   ! Eulerian (bio)
-!nomfichier(12)='notebook_bio_lowSed_23realInput_avSi'   ! Eulerian (bio)
-!nomfichier(12)='notebook_bio_lowSed_23cntInput_250' ! Eulerian (bio)
-!nomfichier(12)='notebook_bio_lowSed_23cntInput_500' ! Eulerian (bio)
-nomfichier(12)='notebook_bio_lowSed_23cntInput_40'   ! Eulerian (bio)
-!!nomfichier(12)='notebook_bio_lowSed_23highInput_noSi' ! Eulerian (bio)
-!!nomfichier(12)='notebook_bio_lowSed_23noRamblas'  ! Eulerian (bio)
+nomfichier(10)='notebook_tracer.f'                       ! Eulerian (passive)
+!nomfichier(12)='notebook_bio_lowSed_23realInput_chs'    ! real-date concentrations CHS
+!nomfichier(12)='notebook_bio_lowSed_23realInput_swat'   ! real-date concentrations SWAT
+!nomfichier(12)='notebook_bio_lowSed_23realInput_chla'   ! 
+!nomfichier(12)='notebook_bio_lowSed_23realInput_plus'   ! 
+!nomfichier(12)='notebook_bio_lowSed_23realInput_avSi'   ! 
+!nomfichier(12)='notebook_bio_lowSed_23cntInput_250'   ! constant concentrations
+!nomfichier(12)='notebook_bio_lowSed_23cntInput_500'   ! constant concentrations
+!nomfichier(12)='notebook_bio_lowSed_23cntInput_5R'    ! constant concentrations
+!nomfichier(12)='notebook_bio_lowSed_23zeroInput'         ! all input to zero
+nomfichier(12)='notebook_bio_lowSed_23zeroInput_CAMSco2' ! co2 file (ppm) from CAMS monthly
+!!nomfichier(12)='notebook_bio_lowSed_23highInput_noSi'  ! constant input but Si 
+!!nomfichier(12)='notebook_bio_lowSed_23noRamblas'       ! zero input
 nomfichier(16)='notebook_drifter' ! Lagrangian
 
 ! BIO

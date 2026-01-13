@@ -11,9 +11,9 @@ nomfichier(1)='notebook_time.f'                   ! Departure/End time of the ru
 
 ! GRID
 !nomfichier(2) ='notebook_grid_ieo23.f'            ! 24 total, 23 active (4x6)     
-!nomfichier(2) ='notebook_grid_ieo48.f'            ! 54 total, 48 active (6x9)
+nomfichier(2) ='notebook_grid_ieo48.f'            ! 54 total, 48 active (6x9)
 !nomfichier(2) ='notebook_grid_ieo62.f'            ! 72 total, 62 active (8x9)
-nomfichier(2) ='notebook_grid_ieo70.f'            ! 84 total, 70 active (7x12)
+!nomfichier(2) ='notebook_grid_ieo70.f'            ! 84 total, 70 active (7x12)
 !nomfichier(2) ='notebook_grid_ieo72.f'            ! 84 total, 72 active (12x7)     
 !nomfichier(2) ='notebook_grid_ieo92.f'            ! 108 total, 92 active (9x12)
 !nomfichier(2) ='notebook_grid_ieo94.f'            ! 112 total, 94 active (8x14)
@@ -45,7 +45,7 @@ nomfichier(34)='notebook_nh.f'                    ! m0v0m
 
 ! TRACERS
 nomfichier(10)='notebook_tracer.f'                ! Eulerian (passive)
-nomfichier(12)='notebook_bio_lowSed_highInput'    ! Eulerian (bio)
+nomfichier(12)='notebook_bio_lowSed_10highInput'  ! Eulerian (bio)
 nomfichier(16)='notebook_drifter'                 ! Lagrangian
 
 ! BIO
