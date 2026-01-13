@@ -11,10 +11,10 @@
 ! Benthic model : 0=none ; 1=reflection ; 2=simple dia meta ; 3=dia meta
 1			   IBenthic	
 
-! Initialisation using Sedimentation files
-BENTHIC_REC/      ! Directory containing files
-000008                          ! NRECBENTHstart (record number)
-012015                          ! NRECBENTHend
+!! Initialisation using Sedimentation files
+BENTHIC_REC/                    ! Directory containing files
+000001                          ! NRECBENTHstart (record number)
+004001                          ! NRECBENTHend
 
 ! Decay rates
 2                          NumBDET     Number of detritus class

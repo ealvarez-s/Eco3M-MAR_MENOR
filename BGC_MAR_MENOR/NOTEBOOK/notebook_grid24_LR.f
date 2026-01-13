@@ -35,8 +35,8 @@ southpole_lat=9999.       ! latitude  (° decimal) of the grid south pole (antip
 
 ! lonlatfile='../../../LR_MM/BATHYMASK/lonlat_4col.txt'   ! format ascii i,j,lon,lat
 ! lonlatfile='../../../BGC_MAR_MENOR/BATHYMASK/bathycote_in.nc'
-! lonlatfile='../../../BGC_MAR_MENOR/OFFLINE_LR/LR_MM_T35_2y/grid.nc' ! OFFLINE MODE
- lonlatfile='../../../BGC_MAR_MENOR/OFFLINE_LR/LR_MM_T37_2016-2022/grid.nc' ! OFFLINE MODE      
+ lonlatfile='../../../BGC_MAR_MENOR/OFFLINE_LR/LR_MM_T35_2y/grid.nc' ! OFFLINE MODE
+! lonlatfile='../../../BGC_MAR_MENOR/OFFLINE_LR/LR_MM_T37_2016-2022/grid.nc' ! OFFLINE MODE      
 ! lonlatfile='../../../BGC_MAR_MENOR/OFFLINE_LR/grid_LR_MM.nc'
 ! lonlatfile='../../../BGC_MAR_MENOR/OFFLINE_LR/grid_LR_MM_depth.nc'      
       

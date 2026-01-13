@@ -1,10 +1,10 @@
 ********************************************************************************
 Output fields for graphics:
-../../../BGC_MAR_MENOR/GRAPHIQUES/long_oneAPI_70                     DIRGRAPH
+../../../BGC_MAR_MENOR/GRAPHIQUES/RUN_test_T35_lessP_HR                  DIRGRAPH
 120 ! dim_varid
 1   ! 1> regular in time  2> dates defined in notebook_dateoutput    IDATE_OUTPUT
-10.0 ! gives the periodicity (in days) if the previous line = 1
-10.0 ! gives the periodicity (in days) for the supp outputs
+1.0 ! gives the periodicity (in days) if the previous line = 1
+30.0 ! gives the periodicity (in days) for the supp outputs
 Note: the related subroutines are graph_out.F90 and netcdf.F90
 ********************************************************************************
 30 2D horizontal scalar variables                        GRH_NB
