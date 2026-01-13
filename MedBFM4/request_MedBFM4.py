@@ -71,20 +71,25 @@ import copernicusmarine
 
 
 ## MEDSEA_ANALYSISFORECAST_BGC_006_014
-copernicusmarine.subset(request_file="analysis_forecast/request_car_af_2023.json")
-copernicusmarine.subset(request_file="analysis_forecast/request_car_af_2024.json")
+#copernicusmarine.subset(request_file="analysis_forecast/request_car_af_2023.json")
+#copernicusmarine.subset(request_file="analysis_forecast/request_car_af_2024.json")
+copernicusmarine.subset(request_file="analysis_forecast/request_car_af_2025.json")
 
-copernicusmarine.subset(request_file="analysis_forecast/request_co2_af_2023.json")
-copernicusmarine.subset(request_file="analysis_forecast/request_co2_af_2024.json")
+#copernicusmarine.subset(request_file="analysis_forecast/request_co2_af_2023.json")
+#copernicusmarine.subset(request_file="analysis_forecast/request_co2_af_2024.json")
+copernicusmarine.subset(request_file="analysis_forecast/request_co2_af_2025.json")
 
-copernicusmarine.subset(request_file="analysis_forecast/request_nut_af_2023.json")
-copernicusmarine.subset(request_file="analysis_forecast/request_nut_af_2024.json")
+#copernicusmarine.subset(request_file="analysis_forecast/request_nut_af_2023.json")
+#copernicusmarine.subset(request_file="analysis_forecast/request_nut_af_2024.json")
+copernicusmarine.subset(request_file="analysis_forecast/request_nut_af_2025.json")
 
-copernicusmarine.subset(request_file="analysis_forecast/request_pft_af_2023.json")
-copernicusmarine.subset(request_file="analysis_forecast/request_pft_af_2024.json")
+#copernicusmarine.subset(request_file="analysis_forecast/request_pft_af_2023.json")
+#copernicusmarine.subset(request_file="analysis_forecast/request_pft_af_2024.json")
+copernicusmarine.subset(request_file="analysis_forecast/request_pft_af_2025.json")
 
-copernicusmarine.subset(request_file="analysis_forecast/request_bio_af_2023.json")
-copernicusmarine.subset(request_file="analysis_forecast/request_bio_af_2024.json")
+#copernicusmarine.subset(request_file="analysis_forecast/request_bio_af_2023.json")
+#copernicusmarine.subset(request_file="analysis_forecast/request_bio_af_2024.json")
+copernicusmarine.subset(request_file="analysis_forecast/request_bio_af_2025.json")
 
 ##copernicusmarine.subset(request_file="request_bathy_af.json")
 ##copernicusmarine.subset(request_file="request_coord_af.json")
