@@ -16,7 +16,7 @@ nomfichier(3) ='notebook_bathy_LR.f'              ! Land/Sea mask, bathymetry, w
 nomfichier(13)='notebook_vertcoord_LR.f'          ! Vertical coordinate, sigma stretching,...
 
 ! FORCING
-nomfichier(4) ='notebook_rivers_SWAT'             ! RIVERS
+nomfichier(4) ='notebook_rivers_LR'               ! RIVERS
 nomfichier(7) ='notebook_airseaflux_ecmwf_s26.f'  ! METEO
 nomfichier(8) ='notebook_obcforcing_nemo.f'       ! OGCM
 !nomfichier(8) ='notebook_obcforcing_sympa_s26.f'  ! OGCM
@@ -30,8 +30,8 @@ nomfichier(11)='notebook_tide_fes2012_v211'
 !nomfichier(20)='notebook_offline_LR_T35.f'              ! Offline files T35
 !nomfichier(20)='notebook_offline_LR.f'                  ! Offline files T37      
 !nomfichier(20)='notebook_offline_LR_ssh-mean.f'          ! Offline files T37 with ssh mean
-nomfichier(20)='notebook_offline_LR_ssh-mean_runoffCNT.f'  ! Offline files T37 with runoff cnt and ssh mean
-!nomfichier(20)='notebook_offline_LR_danaOct25.f'          ! Offline files danaOct2025 + T35
+!nomfichier(20)='notebook_offline_LR_ssh-mean_runoffCNT.f'  ! Offline files T37 with runoff cnt and ssh mean
+nomfichier(20)='notebook_offline_LR_danaOct25.f'          ! Offline files danaOct2025 + T35
 nomfichier(21)='notebook_graph_LR'                       ! Outputs files for graph
 
 ! PHYSIC
@@ -44,7 +44,8 @@ nomfichier(34)='notebook_nh.f'                    ! m0v0m
 
 ! TRACERS
 nomfichier(10)='notebook_tracer.f'                       ! Eulerian (passive)
-!nomfichier(12)='notebook_bio_lowSed_23realInput_chs'    ! real-date concentrations CHS
+nomfichier(12)='notebook_bio_lowSed_10highInput_CAMSco2' ! co2 file (ppm) from CAMS monthly
+!nomfichier(12)='notebook_bio_lowSed_23realInput_chs' ! real-date concentrations CHS
 !nomfichier(12)='notebook_bio_lowSed_23realInput_swat'   ! real-date concentrations SWAT
 !nomfichier(12)='notebook_bio_lowSed_23realInput_chla'   ! 
 !nomfichier(12)='notebook_bio_lowSed_23realInput_plus'   ! 
@@ -53,7 +54,7 @@ nomfichier(10)='notebook_tracer.f'                       ! Eulerian (passive)
 !nomfichier(12)='notebook_bio_lowSed_23cntInput_500'   ! constant concentrations
 !nomfichier(12)='notebook_bio_lowSed_23cntInput_5R'    ! constant concentrations
 !nomfichier(12)='notebook_bio_lowSed_23zeroInput'         ! all input to zero
-nomfichier(12)='notebook_bio_lowSed_23zeroInput_CAMSco2' ! co2 file (ppm) from CAMS monthly
+!nomfichier(12)='notebook_bio_lowSed_23zeroInput_CAMSco2' ! co2 file (ppm) from CAMS monthly
 !!nomfichier(12)='notebook_bio_lowSed_23highInput_noSi'  ! constant input but Si 
 !!nomfichier(12)='notebook_bio_lowSed_23noRamblas'       ! zero input
 nomfichier(16)='notebook_drifter' ! Lagrangian
