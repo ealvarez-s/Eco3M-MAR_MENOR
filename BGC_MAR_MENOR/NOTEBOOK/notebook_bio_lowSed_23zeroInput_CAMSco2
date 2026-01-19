@@ -1054,9 +1054,9 @@ Condition aux limites ouvertes                                        BIOBC_TYPE
 2 ! variable 36 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe, 4 1D sur 5 pts ob, 5 en fn d
 2 ! variable 37 ! 0 OBC=etat initial, 1 Gradient nul, 2 modele externe                              
 ************************************************                                                    
-720. !resolution temporelle (en heures) du fichier concentration                                    
-../../../BGC_MAR_MENOR/ATM/CO2_CAMS_monthly_2003-2025.dat                            
-2003 02 15 12 00 00 ! an mois jour h m s pour NC=1                                                   
+730. !resolution temporelle (en heures) du fichier concentration                                    
+../../../BGC_MAR_MENOR/ATM/CO2_CAMS_monthly_2003-2025.dat
+2003 02 14 22 00 00 ! an mois jour h m s pour NC=1
 0 ! Deposition of dust                                                                              
 3 !1:aladin2015, 2:regcm2015, 3:aladin2018                                                          
 ../../../GLOBMED2/NOTEBOOK/list_dust_dd                                                             
