@@ -54,4 +54,4 @@ Periodicity (hours) ! until yyyy / mm / dd / hh / mm / ss ! Don't touch this lin
 21.                         2016   01   01   11   29   56
 3.                          2016   01   01   14   29   56      
 7.5                         2016   01   01   21   59   45 ! inicial T37 ssh-mean
-24.                         2022   13   23   21   59   45 ! final T37 ssh-mean
+24.                         2022   12   23   21   59   45 ! final T37 ssh-mean

@@ -9,9 +9,9 @@
 ###################################################################
 
 ! Primary production
-2.2e-4		mmolC/J		PhyMaxSyne		Rendement quantique maximal for Synechococcus      !1.95e-4     2.2  
-2.6e-4      	mmolC/J         PhyMaxNano              Rendement quantique maximal for NanoPhytoplankton  !2.2e-4      2.6  
-3.6e-4    	mmolC/J		PhyMaxDia		Rendement quantique maximal for Diatomees          !3.3e-4      3.6  
+2.2e-4		mmolC/J		PhyMaxSyne		Rendement quantique maximal for Synechococcus      !1.95e-4     2.2e-4  
+2.6e-4		mmolC/J         PhyMaxNano              Rendement quantique maximal for NanoPhytoplankton  !2.2e-4      2.6e-4  
+3.6e-4		mmolC/J		PhyMaxDia		Rendement quantique maximal for Diatomees          !3.3e-4      3.6e-4  
 0.032          	m2/mgChl	AbsChlSyne		Specific absorption coefficient of Chlorophylle for Synechococcus     
 0.016           m2/mgChl        AbsChlNano              Specific absorption coefficient of Chlorophylle for NanoPhytoplankton
 0.013          	m2/mgChl	AbsChlDia		Specific absorption coefficient of Chlorophylle for Diatomees

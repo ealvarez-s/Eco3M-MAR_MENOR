@@ -13,7 +13,7 @@ Rambla
 02    ! Month of the annual minimum value of the incoming temperature
 30.   ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
 0     ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
-1     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+0     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
 12.   ! Discharge data file periodicity (hours)                     RIVERINFO(:)
 ../../../BGC_MAR_MENOR/LIST/TS_R1point_T6B.txt
 2013  01    01     06     00      00  ! Year Month Day Hour Minute Second of the first data
@@ -31,7 +31,7 @@ Rambla
 02    ! Month of the annual minimum value of the incoming temperature
 30.   ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
 0     ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
-1     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+0     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
 12.   ! Discharge data file periodicity (hours)                     RIVERINFO(:)
 ../../../BGC_MAR_MENOR/LIST/TS_R1point_T6B.txt
 2013  01    01     06     00      00  ! Year Month Day Hour Minute Second of the first data
@@ -49,7 +49,7 @@ D1-4
 02    ! Month of the annual minimum value of the incoming temperature
 30.   ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
 0     ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
-1     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+0     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
 12.   ! Discharge data file periodicity (hours)                     RIVERINFO(:)
 ../../../BGC_MAR_MENOR/LIST/TS_point1-4_T6B.txt
 2013  01    01     06     00      00  ! Year Month Day Hour Minute Second of the first data
@@ -67,7 +67,7 @@ D1-4
 02    ! Month of the annual minimum value of the incoming temperature
 30.   ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
 0     ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
-1     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+0     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
 12.   ! Discharge data file periodicity (hours)                     RIVERINFO(:)
 ../../../BGC_MAR_MENOR/LIST/TS_point1-4_T6B.txt
 2013  01    01     06     00      00  ! Year Month Day Hour Minute Second of the first data
@@ -85,7 +85,7 @@ D1-4
 02    ! Month of the annual minimum value of the incoming temperature
 30.   ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
 0     ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
-1     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+0     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
 12.   ! Discharge data file periodicity (hours)                     RIVERINFO(:)
 ../../../BGC_MAR_MENOR/LIST/TS_point1-4_T6B.txt
 2013  01    01     06     00      00  ! Year Month Day Hour Minute Second of the first data
@@ -103,7 +103,7 @@ D1-4
 02    ! Month of the annual minimum value of the incoming temperature
 30.   ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
 0     ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
-1     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+0     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
 12.   ! Discharge data file periodicity (hours)                     RIVERINFO(:)
 ../../../BGC_MAR_MENOR/LIST/TS_point1-4_T6B.txt
 2013  01    01     06     00      00  ! Year Month Day Hour Minute Second of the first data
@@ -121,7 +121,7 @@ D5-8
 02    ! Month of the annual minimum value of the incoming temperature
 30.   ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
 0     ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
-1     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+0     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
 12.   ! Discharge data file periodicity (hours)                     RIVERINFO(:)
 ../../../BGC_MAR_MENOR/LIST/TS_point5-8_T6B.txt
 2013  01    01     06     00      00  ! Year Month Day Hour Minute Second of the first data
@@ -139,7 +139,7 @@ D5-8
 02    ! Month of the annual minimum value of the incoming temperature
 30.   ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
 0     ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
-1     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+0     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
 12.   ! Discharge data file periodicity (hours)                     RIVERINFO(:)
 ../../../BGC_MAR_MENOR/LIST/TS_point5-8_T6B.txt
 2013  01    01     06     00      00  ! Year Month Day Hour Minute Second of the first data
@@ -157,7 +157,7 @@ D5-8
 02    ! Month of the annual minimum value of the incoming temperature
 30.   ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
 0     ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
-1     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+0     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
 12.   ! Discharge data file periodicity (hours)                     RIVERINFO(:)
 ../../../BGC_MAR_MENOR/LIST/TS_point5-8_T6B.txt
 2013  01    01     06     00      00  ! Year Month Day Hour Minute Second of the first data
@@ -175,7 +175,7 @@ D5-8
 02    ! Month of the annual minimum value of the incoming temperature
 30.   ! Annual maximim value of the incoming temperature            RIVER_TMAX(:)
 0     ! Boundary condition scheme at river grid input cell          RIVER_OBCTYPE(:)
-1     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
+0     ! 1 if a data discharge file is available, 0 otherwise        REALRIVER(:)
 12.   ! Discharge data file periodicity (hours)                     RIVERINFO(:)
 ../../../BGC_MAR_MENOR/LIST/TS_point5-8_T6B.txt
 2013  01    01     06     00      00  ! Year Month Day Hour Minute Second of the first data

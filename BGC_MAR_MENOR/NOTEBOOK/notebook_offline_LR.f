@@ -50,4 +50,4 @@ DO NOT MODIFY THE NEXT LINE AS IT IS THE SIGNAL EXPECTED BY S TO START THE TIME 
 Periodicity (hours) ! until yyyy / mm / dd / hh / mm / ss ! Don't touch this line
 3.                          2017   12   31   14   29   45 ! liste_complete1.txt
 7.5                         2017   12   31   21   59   45 ! liste_complete1.txt
-24.                         2022   13   23   21   59   45 ! liste_complete1.txt
+24.                         2022   12   23   21   59   45 ! liste_complete1.txt
