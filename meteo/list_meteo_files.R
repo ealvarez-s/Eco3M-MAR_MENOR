@@ -1,7 +1,8 @@
 #!/usr/bin/env Rscript
 
 rdir <-getwd()
-archivo<-list.files(rdir,pattern="previ-Med",full.names = T, recursive = T)
+##archivo<-list.files(rdir,pattern="previ-Med",full.names = T, recursive = T)
+archivo<-list.files(rdir,pattern=".nc",full.names = T, recursive = T)
 eliminar<-list.files(rdir,pattern=".zip",full.names = T, recursive = T)
 archivos<-setdiff(archivo, eliminar)
 
