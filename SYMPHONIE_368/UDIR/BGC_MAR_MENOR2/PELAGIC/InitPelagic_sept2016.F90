@@ -846,7 +846,7 @@
 
            bio_t(i,j,:,imOdC)       = 218.63 !100.00
            bio_t(i,j,:,imOdN)       = bio_t(i,j,:,imOdC)*RedfieldNC
-           bio_t(i,j,:,imOdP)       = 0.736    !bio_t(i,j,:,imOdC)*RedfieldPC
+           bio_t(i,j,:,imOdP)       = bio_t(i,j,:,imOdC)*RedfieldPC
 
 !          bio_t(i,j,k,iBactC)      = bio_t(i,j,k,imOdC)   / 200. * 3.
            bio_t(i,j,:,ibactc)      = 4.00
