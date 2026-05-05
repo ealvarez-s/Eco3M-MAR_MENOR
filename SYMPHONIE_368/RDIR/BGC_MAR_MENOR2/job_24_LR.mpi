@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -J MMl_dana
+#SBATCH -J LongIni4
 #SBATCH -N 1
 #SBATCH --nodelist=c01
 ####SBATCH -N 2
