@@ -44,7 +44,10 @@
                           FLUX_Nitrifi(kmax),FLUX_ExuTotC(kmax),         &
                           TOT_COL_N, TOT_COL_P, TOT_COL_Si, &
                           bEuphoticLayerDepth , &
-                          bPAR(kmax)
+                          bPAR(kmax) , &
+                          bpHT(kmax),bCO2(kmax),bHCO3(kmax), &
+                          bCO3(kmax),bOmegaCa(kmax),bpCO2v(kmax)
+                          
 
 
       double precision :: mask_trans(kmax),bpH(kmax)
@@ -242,7 +245,13 @@
                        ,bEuphoticLayerDepth   & 
                        ,bPAR                  &
                        ,RESPBACT              & !106
-                       ,NITRIF)                 !107
+                       ,NITRIF                & !107
+                       ,bpHT                  & !108
+                       ,bCO2                  & !109
+                       ,bHCO3                 & !110
+                       ,bCO3                  & !111
+                       ,bOmegaCa              & !112
+                       ,bpCO2v)               !113
 
           do vb=1,vbmax
           do k=1,kmax
@@ -512,7 +521,7 @@
 ! Nitrification, Respiration, Exudation
 !      NITRIF2D(i1,j1) = NITRIF2D(i1,j1)  + NITRIF
 !      NITRIFCOLUMN2D(i1,j1) = NITRIFCOLUMN2D(i1,j1)  + NITRIFCOLUMN
-! COMMENT EA 06/11/2025: added 3d variables for fluxes 
+! COMMENT EÁ 06/11/2025: added 3d variables for fluxes 
           do k=1,kmax
             ppb3d(i1,j1,k)=ppb3d(i1,j1,k)+FLUX_PPBi(k)
             resp3d(i1,j1,k)=resp3d(i1,j1,k)+FLUX_Respi(k)
@@ -537,7 +546,17 @@
             exuc3d(i1,j1,k)=exuc3d(i1,j1,k)+FLUX_ExuTotC(k)
             nitrifMol3d(i1,j1,k)=nitrifMol3d(i1,j1,k)+FLUX_Nitrifi(k)
             uptnitMol3d(i1,j1,k)=uptnitMol3d(i1,j1,k)+FLUX_UptNiti(k)
-                        
+
+! COMMENT EÁ 28/04/2026: added CSYS variables (aggregated)
+
+            aPH(i1,j1,k)=aPH(i1,j1,k)+bpH(k)
+            aPHT(i1,j1,k)=aPHT(i1,j1,k)+bpHT(k)
+            aCO2(i1,j1,k)=aCO2(i1,j1,k)+bCO2(k)
+            aHCO3(i1,j1,k)=aHCO3(i1,j1,k)+bHCO3(k)
+            aCO3(i1,j1,k)=aCO3(i1,j1,k)+bCO3(k) 
+            aPCO2v(i1,j1,k)=aPCO2v(i1,j1,k)+bpCO2v(k)
+            aOMEGACA(i1,j1,k)=aOMEGACA(i1,j1,k)+bOmegaCa(k)
+            
           enddo      
 
 ! COMMENT EA 07/11/2025: added 2d (depth-int) variables
@@ -881,7 +900,13 @@
                      ,bEuphoticLayerDepth   & 
                      ,bPAR                  &
                      ,RESPBACT              & !106
-                     ,NITRIF)                 !107
+                     ,NITRIF                & !107
+                     ,bpHT                  & !108
+                     ,bCO2                  & !109
+                     ,bHCO3                 & !110
+                     ,bCO3                  & !111
+                     ,bOmegaCa              & !112
+                     ,bpCO2v)               !113
         
 
         do vb=1,vbmax

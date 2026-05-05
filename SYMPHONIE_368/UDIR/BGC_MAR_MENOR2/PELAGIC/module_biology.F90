@@ -91,12 +91,6 @@
       ,GRAZHERBI2D                                                      &
       ,GRAZPUR2D                                                        &
 !      ,netppb2d                                                         &
-      ,NO3efflux2d                                                      &
-      ,NH4efflux2d                                                      &
-      ,Pefflux2d                                                        &
-      ,Siefflux2d                                                       &
-      ,DICefflux2d                                                       &
-      ,O2influx2d                                                       &
       ,ExcbactNH4NTOPLAYER2D                                            &
       ,ExcZooAmmoNTOPLAYER2D                                            & 
       ,ExcZooPO4PTOPLAYER2D                                             &
@@ -209,6 +203,12 @@
        SiDepo,                                                          &
        NitrificationB,                                                  &
        DenitrificationB,                                                &
+       NO3efflux2d,                                                     &
+       NH4efflux2d,                                                     &
+       Pefflux2d,                                                       &
+       Siefflux2d,                                                      &
+       DICefflux2d,                                                     &
+       O2influx2d,                                                      &       
        O2Min,                                                           &
        AnoxMin,                                                         &
        O2ODU,                                                           &
@@ -228,12 +228,24 @@
        SUMT_CMin,                                                       &
        SUMT_NDepo,                                                      &
        SUMT_CDepo,                                                      &
-       CMin_out,                                                        &
-       NMin_out,                                                        &
        SUMT_O2Min,                                                      &
        SUMT_AnoxMin,                                                    &
-       SUMT_AnoxMin_est
-
+       SUMT_AnoxMin_est,                                                &
+       CMin_out,                                                        &
+       NMin_out,                                                        &
+       PMin_out,                                                        &
+       SiMin_out,                                                       &
+       CDepo_out,                                                       &
+       NDepo_out,                                                       &
+       PDepo_out,                                                       &
+       SiDepo_out,                                                      &
+       CBFDet_out,                                                      &
+       CBSDet_out,                                                      &
+       NBDet_out,                                                       &
+       PBDet_out,                                                       &
+       SiBDet_out,                                                      &
+       NitrificationB_out,                                              &
+       DenitrificationB_out
 
       double precision,allocatable,dimension(:,:,:) ::                  &
        ppb2d,                                                           &
@@ -268,7 +280,14 @@
        CO2_AirSeaExchange
 
       double precision,allocatable,dimension(:,:,:) ::                  &
-       sPH
+       sPH,                                                             &
+       aPH,                                                             &
+       aPHT,                                                            &
+       aCO2,                                                            &
+       aHCO3,                                                           &
+       aCO3,                                                            & 
+       aPCO2v,                                                          &
+       aOMEGACA        
 
       double precision,allocatable,dimension(:,:,:) ::                  &
        sPAR
@@ -1068,6 +1087,13 @@ contains
       allocate(biobc_j_t(0:jmax+1,kmax,vbmax,2,2)) ; biobc_j_t=0.
 
       allocate(sPH(0:imax+1,0:jmax+1,kmax)); sPH=0.
+      allocate(aPH(0:imax+1,0:jmax+1,kmax)); aPH=0.
+      allocate(aPHT(0:imax+1,0:jmax+1,kmax)); aPHT=0.
+      allocate(aCO2(0:imax+1,0:jmax+1,kmax)); aCO2=0.
+      allocate(aHCO3(0:imax+1,0:jmax+1,kmax)); aHCO3=0.
+      allocate(aCO3(0:imax+1,0:jmax+1,kmax)); aCO3=0.
+      allocate(aPCO2v(0:imax+1,0:jmax+1,kmax)); aPCO2v=0.
+      allocate(aOMEGACA(0:imax+1,0:jmax+1,kmax)); aOMEGACA=0.
 
       allocate(sPAR(0:imax+1,0:jmax+1,kmax)); sPAR=0.
 
@@ -1170,12 +1196,6 @@ contains
       ,sum_exportn_bot_2d(0:imax+1,0:jmax+1)                  &
       ,sum_exportp_bot_2d(0:imax+1,0:jmax+1)                  &
       ,sum_exportsi_bot_2d(0:imax+1,0:jmax+1)                 &
-      ,NO3efflux2d(0:imax+1,0:jmax+1)                           &
-      ,NH4efflux2d(0:imax+1,0:jmax+1)                           &
-      ,Pefflux2d(0:imax+1,0:jmax+1)                           &
-      ,Siefflux2d(0:imax+1,0:jmax+1)                          &
-      ,DICefflux2d(0:imax+1,0:jmax+1)                          &
-      ,O2influx2d(0:imax+1,0:jmax+1)                          &
       ,ExcbactNH4NTOPLAYER2D(0:imax+1,0:jmax+1)                                             &
       ,ExcZooAmmoNTOPLAYER2D(0:imax+1,0:jmax+1)                                             &
       ,ExcZooPO4PTOPLAYER2D(0:imax+1,0:jmax+1)                                              &
@@ -1293,12 +1313,6 @@ contains
       sum_exportn_bot_2d=0.
       sum_exportp_bot_2d=0.
       sum_exportsi_bot_2d=0.
-      NO3efflux2d=0.
-      NH4efflux2d=0.
-      Pefflux2d=0.
-      Siefflux2d=0.
-      DICefflux2d=0.
-      O2influx2d=0.
 !      netppb2d=0.
       ExcbactNH4NTOPLAYER2D=0.  
       ExcZooAmmoNTOPLAYER2D=0.
@@ -1411,6 +1425,12 @@ contains
        SiDepo(imax,jmax),                                               &
        NitrificationB(imax,jmax),                                       &
        DenitrificationB(imax,jmax),                                     &
+       NO3efflux2d(imax,jmax),                                  &
+       NH4efflux2d(imax,jmax),                                  &
+       Pefflux2d(imax,jmax),                                    &
+       Siefflux2d(imax,jmax),                                   &
+       DICefflux2d(imax,jmax),                                  &
+       O2influx2d(imax,jmax),                                   &
        O2Min(imax,jmax),                                                &
        AnoxMin(imax,jmax),                                              &
        O2ODU(imax,jmax),                                                &
@@ -1432,8 +1452,21 @@ contains
        SUMT_CDepo(imax,jmax),                                           &
        CMin_out(imax,jmax),                                             &
        NMin_out(imax,jmax),                                             &
+       PMin_out(imax,jmax),                                             &
+       SiMin_out(imax,jmax),                                            &
+       CDepo_out(imax,jmax),                                            &
+       NDepo_out(imax,jmax),                                            &
+       PDepo_out(imax,jmax),                                            &
+       SiDepo_out(imax,jmax),                                           &
+       CBFDet_out(imax,jmax),                                           &
+       CBSDet_out(imax,jmax),                                           &
+       NBDet_out(imax,jmax),                                            &
+       PBDet_out(imax,jmax),                                            &
+       SiBDet_out(imax,jmax),                                           &
+       NitrificationB_out(imax,jmax),                                   &
+       DenitrificationB_out(imax,jmax),                                 &
        SUMT_O2Min(imax,jmax),                                           &
-       SUMT_AnoxMin(imax,jmax),                                          &
+       SUMT_AnoxMin(imax,jmax),                                         &
        SUMT_AnoxMin_est(imax,jmax))
        CBDet=0.
        CBFDet=0.
@@ -1453,6 +1486,12 @@ contains
        SiDepo=0.
        NitrificationB=0.
        DenitrificationB=0.
+       NO3efflux2d=0.
+       NH4efflux2d=0.
+       Pefflux2d=0.
+       Siefflux2d=0.
+       DICefflux2d=0.
+       O2influx2d=0.
        O2Min=0.
        AnoxMin=0.
        O2ODU=0.
@@ -1474,6 +1513,19 @@ contains
        SUMT_CDepo=0.
        CMin_out=0.
        NMin_out=0.
+       PMin_out=0.
+       SiMin_out=0.
+       CDepo_out=0.
+       NDepo_out=0.
+       PDepo_out=0.
+       SiDepo_out=0.
+       CBFDet_out=0.
+       CBSDet_out=0.
+       NBDet_out=0.
+       PBDet_out=0.
+       SiBDet_out=0.
+       NitrificationB_out=0.
+       DenitrificationB_out=0.
        SUMT_O2Min=0.
        SUMT_AnoxMin=0.
        SUMT_AnoxMin_est=0.

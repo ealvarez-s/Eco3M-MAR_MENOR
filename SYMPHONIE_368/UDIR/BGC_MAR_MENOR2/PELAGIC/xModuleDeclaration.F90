@@ -915,9 +915,10 @@
          CO2(NUMPELAGICBOXES)                   , & ! MMOLC/M3                                                            
          HCO3(NUMPELAGICBOXES)                  , & ! MMOLC/M3                                                            
          CO3(NUMPELAGICBOXES)                   , & ! MMOLC/M3                                                            
-         K0_CO2(NUMPELAGICBOXES)                   , &
-         PH(NUMPELAGICBOXES)              , & 
+         K0_CO2(NUMPELAGICBOXES)                 , &
+         PH(NUMPELAGICBOXES)                     , & 
          PHT(NUMPELAGICBOXES)                    , &    ! Total scale
+         OMEGACA(NUMPELAGICBOXES)                , &
          MEANITERATIONS                       , & ! #
          MEANRESOLUTION                        ! -
  
@@ -1025,7 +1026,7 @@
          MEANRESOLUTION
         COMMON /XCBVAR/     &  
       VUPTBACTP,VUPTPHYTOP,TOTALNITRATESURF,MASKBIO, &
-           K1CO2,K2CO2,K0_CO2,PHT                                              
+           K1CO2,K2CO2,K0_CO2,PHT,OMEGACA                                              
  
  
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

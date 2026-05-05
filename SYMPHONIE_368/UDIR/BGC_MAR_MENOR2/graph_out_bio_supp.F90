@@ -302,15 +302,15 @@
   200 continue
 
 ! PH---------------------------------------------------
-! instantaneous, change to averaged over output period      
+! averaged over output period      
       if(loop_netcdf==1) then !=======>
          do k=1,kmax
          do j=0,jmax+1 !30-07-14
          do i=0,imax+1
 !          if (mask_t(i,j,kmax  ).ne.0) then
 !          anyvar3d(i,j,k)=spH(i,j,max0(k,kmin_w(i,j))) 
-          if (mask_t(i,j,k  ).ne.0) then
-          anyvar3d(i,j,k)=sPH(i,j,k)
+          if (mask_t(i,j,k  ).ne.0.and.tps_ppb_3d>0) then
+          anyvar3d(i,j,k)=aPH(i,j,k)/tps_ppb_3d
           else
            anyvar3d(i,j,k)=-9999.
           endif
@@ -318,7 +318,7 @@
          enddo
          enddo
       endif                  !=======>
-      texte80(1)='pH'     ; texte80(2)='unit'    ! variable;units
+      texte80(1)='pH'     ; texte80(2)='seawater scale'    ! variable;units
       write(texte80(3),'(a)')'pH'
       texte80(4)=texte80(3)
       texte80(5)='TZYX' ; texte80(7)='real'
@@ -326,6 +326,123 @@
 
 !--------------------------------------------------------
 
+! PH total scale---------------------------------------------------
+! averaged over output period      
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=0,jmax+1 !30-07-14
+         do i=0,imax+1 
+          if (mask_t(i,j,k  ).ne.0.and.tps_ppb_3d>0) then
+          anyvar3d(i,j,k)=aPHT(i,j,k)/tps_ppb_3d
+          else
+           anyvar3d(i,j,k)=-9999.
+          endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======>
+      texte80(1)='pHT'     ; texte80(2)='total'    ! variable;units
+      write(texte80(3),'(a)')'pHT'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+! ion CO2
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=0,jmax+1 !30-07-14
+         do i=0,imax+1
+          if (mask_t(i,j,k  ).ne.0.and.tps_ppb_3d>0) then
+          anyvar3d(i,j,k)=aCO2(i,j,k)/tps_ppb_3d
+          else
+           anyvar3d(i,j,k)=-9999.
+          endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======>
+      texte80(1)='iCO2'     ; texte80(2)='mmol/m3'    ! variable;units
+      write(texte80(3),'(a)')'CO2'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+! ion HCO3
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=0,jmax+1 !30-07-14
+         do i=0,imax+1
+          if (mask_t(i,j,k  ).ne.0.and.tps_ppb_3d>0) then
+          anyvar3d(i,j,k)=aHCO3(i,j,k)/tps_ppb_3d
+          else
+           anyvar3d(i,j,k)=-9999.
+          endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======>
+      texte80(1)='iHCO3'     ; texte80(2)='mmol/m3'    ! variable;units
+      write(texte80(3),'(a)')'HCO3'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+! ion CO3
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=0,jmax+1 !30-07-14
+         do i=0,imax+1
+          if (mask_t(i,j,k  ).ne.0.and.tps_ppb_3d>0) then
+          anyvar3d(i,j,k)=aCO3(i,j,k)/tps_ppb_3d
+          else
+           anyvar3d(i,j,k)=-9999.
+          endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======>
+      texte80(1)='iCO3'     ; texte80(2)='mmol/m3'    ! variable;units
+      write(texte80(3),'(a)')'CO3'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+! pCO2aq
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=0,jmax+1 !30-07-14
+         do i=0,imax+1
+          if (mask_t(i,j,k  ).ne.0.and.tps_ppb_3d>0) then
+          anyvar3d(i,j,k)=aPCO2v(i,j,k)/tps_ppb_3d
+          else
+           anyvar3d(i,j,k)=-9999.
+          endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======>
+      texte80(1)='pCO2aq'     ; texte80(2)='unit'    ! variable;units
+      write(texte80(3),'(a)')'pCO2aq'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+! Omega calcita
+      if(loop_netcdf==1) then !=======>
+         do k=1,kmax
+         do j=0,jmax+1 !30-07-14
+         do i=0,imax+1
+          if (mask_t(i,j,k  ).ne.0.and.tps_ppb_3d>0) then
+          anyvar3d(i,j,k)=aOMEGACA(i,j,k)/tps_ppb_3d
+          else
+           anyvar3d(i,j,k)=-9999.
+          endif
+         enddo
+         enddo
+         enddo
+      endif                  !=======>
+      texte80(1)='omegaCa'     ; texte80(2)='-'    ! variable;units
+      write(texte80(3),'(a)')'omegaCa'
+      texte80(4)=texte80(3)
+      texte80(5)='TZYX' ; texte80(7)='real'
+      call netcdf_main('_t')
+! ------------------------------------------------------
+      
 ! PAR---------------------------------------------------
 ! instantaneous, change to averaged over output period      
       if(loop_netcdf==1) then !=======>
@@ -1034,19 +1151,19 @@
 !       print*,'resp tracee'        
 !!****************************************************************        
 !!! CDepo  
-!! TO DO make aggregated variaable to average over output period
+!! TO DO make aggregated variable to average over output period
+!! DONE (tps_benth_2d)        
       if(loop_netcdf==1) then !=======>
            do j=1,jmax
            do i=1,imax
             anyvar2d(i,j)=-9999.
            enddo
            enddo
-
            do j=1,jmax
            do i=1,imax
-
-              if (mask_t(i,j,kmax+1)==1) then
-                anyvar2d(i,j)=CDepo(i,j)
+              ! if (tps_benth_2d>0) then
+              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+                anyvar2d(i,j)=CDepo_out(i,j)/tps_benth_2d
               else
                 anyvar2d(i,j)=-9999.
               endif
@@ -1054,11 +1171,13 @@
              enddo
           endif
         texte80(1)='CDepo' ; texte80(2)='mmol/m2/d'
+        texte80(5)='TYX' ; texte80(7)='real'  
         call netcdf_main('_t')
 !        print*,'nitrif tracee'
 !!!*****************************************************************
 !!! NDepo  
 !! TO DO make aggregated variaable to average over output period
+!! DONE (tps_benth_2d)        
       if(loop_netcdf==1) then !=======>
            do j=1,jmax
            do i=1,imax
@@ -1068,9 +1187,9 @@
 
            do j=1,jmax
            do i=1,imax
-
-              if (mask_t(i,j,kmax+1)==1) then
-                anyvar2d(i,j)=NDepo(i,j)
+              ! if (tps_benth_2d>0) then
+              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+                anyvar2d(i,j)=NDepo_out(i,j)/tps_benth_2d
               else
                 anyvar2d(i,j)=-9999.
               endif
@@ -1078,23 +1197,24 @@
              enddo
           endif
         texte80(1)='NDepo' ; texte80(2)='mmol/m2/d'
+        texte80(5)='TYX' ; texte80(7)='real'
         call netcdf_main('_t')
 !        print*,'nitrif tracee'
 !!!*****************************************************************
 !!! PDepo  
-!! TO DO make aggregated variaable to average over output period
+!! TO DO make aggregated variable to average over output period
+!! DONE (tps_benth_2d)        
       if(loop_netcdf==1) then !=======>
            do j=1,jmax
            do i=1,imax
             anyvar2d(i,j)=-9999.
            enddo
            enddo
-
            do j=1,jmax
            do i=1,imax
-
-              if (mask_t(i,j,kmax+1)==1) then
-                anyvar2d(i,j)=PDepo(i,j)
+              ! if (tps_benth_2d>0) then
+              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+                anyvar2d(i,j)=PDepo_out(i,j)/tps_benth_2d
               else
                 anyvar2d(i,j)=-9999.
               endif
@@ -1102,23 +1222,24 @@
              enddo
           endif
         texte80(1)='PDepo' ; texte80(2)='mmol/m2/d'
+        texte80(5)='TYX' ; texte80(7)='real'
         call netcdf_main('_t')
 !!        print*,'nitrif tracee'
 !!!*****************************************************************
 !!! SiDepo  
-!! TO DO make aggregated variaable to average over output period
+!! TO DO make aggregated variable to average over output period
+!! DONE (tps_benth_2d)        
       if(loop_netcdf==1) then !=======>
            do j=1,jmax
            do i=1,imax
             anyvar2d(i,j)=-9999.
            enddo
            enddo
-
            do j=1,jmax
            do i=1,imax
-
-              if (mask_t(i,j,kmax+1)==1) then
-                anyvar2d(i,j)=SiDepo(i,j)
+              ! if (tps_benth_2d>0) then
+              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+                anyvar2d(i,j)=SiDepo_out(i,j)/tps_benth_2d
               else
                 anyvar2d(i,j)=-9999.
               endif
@@ -1126,6 +1247,7 @@
              enddo
           endif
         texte80(1)='SiDepo' ; texte80(2)='mmol/m2/d'
+        texte80(5)='TYX' ; texte80(7)='real'  
         call netcdf_main('_t')
 !!        print*,'nitrif tracee'
 !!!!*****************************************************************
@@ -1141,16 +1263,17 @@
            enddo
            do j=1,jmax
            do i=1,imax
-              if (tps_benth_2d>0) then
-!              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+!             if (tps_benth_2d>0) then
+              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
                 anyvar2d(i,j)=NO3efflux2d(i,j)/tps_benth_2d
               else
                 anyvar2d(i,j)=-9999.
               endif
              enddo
              enddo
-         endif
+        endif
         texte80(1)='NO3efflux2d' ; texte80(2)='mmolN/m2/d'
+        texte80(5)='TYX' ; texte80(7)='real'
         call netcdf_main('_t')
 !!        print*,'export_mopc tracee'
 !!!!*****************************************************************
@@ -1164,16 +1287,17 @@
            enddo
            do j=1,jmax
            do i=1,imax
-              if (tps_benth_2d>0) then
-!              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+!              if (tps_benth_2d>0) then
+              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
                 anyvar2d(i,j)=NH4efflux2d(i,j)/tps_benth_2d
               else
                 anyvar2d(i,j)=-9999.
               endif
              enddo
              enddo
-         endif
+        endif
         texte80(1)='NH4efflux2d' ; texte80(2)='mmolN/m2/d'
+        texte80(5)='TYX' ; texte80(7)='real'
         call netcdf_main('_t')
 !!        print*,'export_mopc tracee'
 !!!*****************************************************************
@@ -1195,8 +1319,9 @@
               endif
              enddo
              enddo
-         endif
+        endif
         texte80(1)='Pefflux2d' ; texte80(2)='mmolP/m2/d'
+        texte80(5)='TYX' ; texte80(7)='real'
         call netcdf_main('_t')
 !!!        print*,'export_mopc tracee'
 !!!!*****************************************************************
@@ -1218,8 +1343,9 @@
               endif
              enddo
              enddo
-         endif
+        endif
         texte80(1)='Siefflux2d' ; texte80(2)='mmolSi/m2/d'
+        texte80(5)='TYX' ; texte80(7)='real'
         call netcdf_main('_t')
 !!!        print*,'export_mopc tracee'
 !!!!*****************************************************************
@@ -1241,8 +1367,9 @@
               endif
              enddo
              enddo
-         endif
+        endif
         texte80(1)='DICefflux2d' ; texte80(2)='mmolC/m2/d'
+        texte80(5)='TYX' ; texte80(7)='real'
         call netcdf_main('_t')
 !!!*****************************************************************
 !!! O2        
@@ -1262,13 +1389,255 @@
               endif
              enddo
              enddo
-         endif
+        endif
         texte80(1)='02influx2d' ; texte80(2)='mmol/m2/d'
+        texte80(5)='TYX' ; texte80(7)='real'
         call netcdf_main('_t')
+
 !!!*****************************************************************
-!!
+!!! Benthic remineralization
+!!  agregated over (tps_benth_2d)
+!!  CMin        
+      if(loop_netcdf==1) then !=======>
+           do j=1,jmax
+           do i=1,imax
+            anyvar2d(i,j)=-9999.
+           enddo
+           enddo
+           do j=1,jmax
+           do i=1,imax
+              ! if (tps_benth_2d>0) then
+              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+                anyvar2d(i,j)=CMin_out(i,j)/tps_benth_2d
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+             enddo
+        endif
+        texte80(1)='CMinB' ; texte80(2)='mmol/m2/d'
+        texte80(5)='TYX' ; texte80(7)='real'
+        call netcdf_main('_t')
+        print*,'CMin written'
+!!  NMin        
+      if(loop_netcdf==1) then !=======>
+           do j=1,jmax
+           do i=1,imax
+            anyvar2d(i,j)=-9999.
+           enddo
+           enddo
+           do j=1,jmax
+           do i=1,imax
+              ! if (tps_benth_2d>0) then
+              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+                anyvar2d(i,j)=NMin_out(i,j)/tps_benth_2d
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+             enddo
+        endif
+        texte80(1)='NMinB' ; texte80(2)='mmol/m2/d'
+        texte80(5)='TYX' ; texte80(7)='real'
+        call netcdf_main('_t')
+        print*,'NMin written'
+!!  PMin        
+      if(loop_netcdf==1) then !=======>
+           do j=1,jmax
+           do i=1,imax
+            anyvar2d(i,j)=-9999.
+           enddo
+           enddo
+           do j=1,jmax
+           do i=1,imax
+              ! if (tps_benth_2d>0) then
+              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+                anyvar2d(i,j)=PMin_out(i,j)/tps_benth_2d
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+             enddo
+        endif
+        texte80(1)='PMinB' ; texte80(2)='mmol/m2/d'
+        texte80(5)='TYX' ; texte80(7)='real'
+        call netcdf_main('_t')
+        print*,'PMin written'
+!!  SiMin        
+      if(loop_netcdf==1) then !=======>
+           do j=1,jmax
+           do i=1,imax
+            anyvar2d(i,j)=-9999.
+           enddo
+           enddo
+           do j=1,jmax
+           do i=1,imax
+              ! if (tps_benth_2d>0) then
+              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+                anyvar2d(i,j)=SiMin_out(i,j)/tps_benth_2d
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+             enddo
+        endif
+        texte80(1)='SiMinB' ; texte80(2)='mmol/m2/d'
+        texte80(5)='TYX' ; texte80(7)='real'
+        call netcdf_main('_t')
+        print*,'SiMin written'
+!!*****************************
+!!!! Nitrif/Denitrif in benthos
+!!  Nitrification        
+      if(loop_netcdf==1) then !=======>
+           do j=1,jmax
+           do i=1,imax
+            anyvar2d(i,j)=-9999.
+           enddo
+           enddo
+           do j=1,jmax
+           do i=1,imax
+              ! if (tps_benth_2d>0) then
+              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+                anyvar2d(i,j)=NitrificationB_out(i,j)/tps_benth_2d
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+             enddo
+        endif
+        texte80(1)='NitrificationB' ; texte80(2)='mmolN/m2/d'
+        texte80(5)='TYX' ; texte80(7)='real'
+        call netcdf_main('_t')
+!!  Denitrification        
+      if(loop_netcdf==1) then !=======>
+           do j=1,jmax
+           do i=1,imax
+            anyvar2d(i,j)=-9999.
+           enddo
+           enddo
+           do j=1,jmax
+           do i=1,imax
+              ! if (tps_benth_2d>0) then
+              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+                anyvar2d(i,j)=DenitrificationB_out(i,j)/tps_benth_2d
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+             enddo
+        endif
+        texte80(1)='DenitrificationB' ; texte80(2)='mmolN/m2/d'
+        texte80(5)='TYX' ; texte80(7)='real'
+        call netcdf_main('_t')
+!!!! -------------------------------------------------
+!!!! Benthic pools
+!!  CBFDet        
+      if(loop_netcdf==1) then !=======>
+           do j=1,jmax
+           do i=1,imax
+            anyvar2d(i,j)=-9999.
+           enddo
+           enddo
+           do j=1,jmax
+           do i=1,imax
+              ! if (tps_benth_2d>0) then
+              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+                anyvar2d(i,j)=CBFDet_out(i,j)/tps_benth_2d
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+             enddo
+        endif
+        texte80(1)='CBFDetB' ; texte80(2)='mmol/m2'
+        texte80(5)='TYX' ; texte80(7)='real'
+        call netcdf_main('_t')
+!!  CBSDet        
+      if(loop_netcdf==1) then !=======>
+           do j=1,jmax
+           do i=1,imax
+            anyvar2d(i,j)=-9999.
+           enddo
+           enddo
+           do j=1,jmax
+           do i=1,imax
+              ! if (tps_benth_2d>0) then
+              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+                anyvar2d(i,j)=CBSDet_out(i,j)/tps_benth_2d
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+             enddo
+        endif
+        texte80(1)='CBSDetB' ; texte80(2)='mmol/m2'
+        texte80(5)='TYX' ; texte80(7)='real'
+        call netcdf_main('_t')
+!!  NBDet        
+      if(loop_netcdf==1) then !=======>
+           do j=1,jmax
+           do i=1,imax
+            anyvar2d(i,j)=-9999.
+           enddo
+           enddo
+           do j=1,jmax
+           do i=1,imax
+              ! if (tps_benth_2d>0) then
+              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+                anyvar2d(i,j)=NBDet_out(i,j)/tps_benth_2d
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+             enddo
+        endif
+        texte80(1)='NBDetB' ; texte80(2)='mmol/m2'
+        texte80(5)='TYX' ; texte80(7)='real'
+        call netcdf_main('_t')
+!!  PBDet        
+      if(loop_netcdf==1) then !=======>
+           do j=1,jmax
+           do i=1,imax
+            anyvar2d(i,j)=-9999.
+           enddo
+           enddo
+           do j=1,jmax
+           do i=1,imax
+              ! if (tps_benth_2d>0) then
+              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+                anyvar2d(i,j)=PBDet_out(i,j)/tps_benth_2d
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+             enddo
+        endif
+        texte80(1)='PBDet' ; texte80(2)='mmol/m2'
+        texte80(5)='TYX' ; texte80(7)='real'
+        call netcdf_main('_t')
+!!  SiBDet        
+      if(loop_netcdf==1) then !=======>
+           do j=1,jmax
+           do i=1,imax
+            anyvar2d(i,j)=-9999.
+           enddo
+           enddo
+           do j=1,jmax
+           do i=1,imax
+              ! if (tps_benth_2d>0) then
+              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+                anyvar2d(i,j)=SiBDet_out(i,j)/tps_benth_2d
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+             enddo
+        endif
+        texte80(1)='SiBDetB' ; texte80(2)='mmol/m2'
+        texte80(5)='TYX' ; texte80(7)='real'
+        call netcdf_main('_t')
+        
 !!!!*****************************************************************
-!!------------------------------------------------------------------
 !! Atmospheric deposition
       if(loop_netcdf==1) then !=======>
            do j=1,jmax
@@ -1687,16 +2056,27 @@
           rbac2d(i,j)=0.
 !          exuctot2d(i,j)=0.
           rpb2d(i,j,5)=0.
-          CDepo(i,j)=0.
-          NDepo(i,j)=0.
-          PDepo(i,j)=0.
-          SiDepo(i,j)=0.
+          CDepo_out(i,j)=0.
+          NDepo_out(i,j)=0.
+          PDepo_out(i,j)=0.
+          SiDepo_out(i,j)=0.
           NO3efflux2d(i,j)=0.
           NH4efflux2d(i,j)=0.
           Pefflux2d(i,j)=0.
           Siefflux2d(i,j)=0.
           DICefflux2d(i,j)=0.
           O2influx2d(i,j)=0.
+          CMin_out(i,j)=0.
+          NMin_out(i,j)=0.
+          PMin_out(i,j)=0.
+          SiMin_out(i,j)=0.
+          CBFDet_out(i,j)=0.
+          CBSDet_out(i,j)=0.
+          NBDet_out(i,j)=0.
+          PBDet_out(i,j)=0.
+          SiBDet_out(i,j)=0.
+          NitrificationB_out(i,j)=0.
+          DenitrificationB_out(i,j)=0.
           graz2d(i,j)=0.
           ExcbactNH4NTOPLAYER2D(i,j)=0.
           ExcZooAmmoNTOPLAYER2D(i,j)=0.
@@ -1833,6 +2213,13 @@
           gbac3d(i,j,k)=0.
           mortbact3d(i,j,k)=0.
           remmopc3d(i,j,k)=0.
+         aPH(i,j,k)=0.
+         aPHT(i,j,k)=0.
+         aCO2(i,j,k)=0.
+         aHCO3(i,j,k)=0.
+         aCO3(i,j,k)=0.
+         aPCO2v(i,j,k)=0.
+         aOMEGACA(i,j,k)=0.
         enddo
         enddo
         enddo

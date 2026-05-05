@@ -35,6 +35,7 @@
 ! Ammonia:                                                       !
 ! NH4+   <-> H+ + NH3                    ct K_NH4                !
 ! NH3     =  K_NH4 / (H+ + K_NH4) * SUMNHx                       !   
+
 ! phosphoric acid:                                               !
 ! H3PO4- <-> H+ + H2PO4-                 ct K1_H3PO4             !
 ! H2PO4- <-> H+ + HPO4--                 ct K2_H3PO4             !
@@ -114,7 +115,7 @@
                        K_Calcite  ,& !  mol/l           
                        K_Si       ,& !  mol/l           Dissociation ct of silicic acid
                        IonicStrength, & ! mol/kgLiq
-                       KS,KF,TS,TF,pKS,lnKF,HF ! mol/kg 
+                       KS,KF,TS,TF,pKS,lnKF,HF,Ca2 ! mol/kg 
 
     double precision   :: SumCO2, SumP, SumSi, &
                          SumNHx, SumNit, SumBorate,HSO4
@@ -144,6 +145,8 @@
                           Phostop,PhosBot,Hfree,Slope, &
                           b,Delta,P1atm,FugFac,factor,FREEtoTOT  
 
+    double precision   :: invtk, pr, pr2, a0, a1, a2, b0, b1, lnkpok0
+    
     DOUBLE PRECISION, EXTERNAL    :: SolvePH
 
       meanIterations  = 0
@@ -632,6 +635,7 @@ enddo
       pHT(I)          =  pH(I)    - factor ! total scale => directement dans
 !     TA(I) =    (TotalAlkalinity - SumNit + SumNHx - SumP )*1.e6 ! µmol/kg 
 
+      
 ! Vérif termes supplémentaires ou non compris dans TACO2SYS
 !      if(iipoint.eq.557.and.jjpoint.eq.486) then
 !      print*,'CO2_Pressure_PH Alk',TotalAlkalinity*1.e6, &
@@ -640,8 +644,37 @@ enddo
 !    print*,'CO2_Pressure_PH pH',pH(I),pHT(I),I,Depth(I)
 !    endif
  
-
-
+!EA -- calcular omega calcita --!!
+      ! T is temperature in Celsius
+      ! temp is temperature in Kelvin
+      ! S is salinity
+      ! P is pressure in bars
+      ! R is gas constant
+      invtk=1.0/temp
+      pr=P/R
+      pr2=P*P/R
+! Ksp for calcite from: Mucci, Alphonso, Amer. J. of Science 283:781-799, 1983
+! this is in (mol/kg-SW)^2
+      K_Calcite=10**(-171.9065 - 0.077993*temp + 2839.319*invtk + 71.595*LOG10(temp) &
+           + (-0.77712+0.0028426*temp+178.34*invtk)*(S**(0.5)) -0.07711*S +0.0041249*(S**(1.5)) )
+!! Pressure correction on K_Calcite (Millero 1995)
+      a0=48.76
+      a1=0.5304
+      a2=0.0
+      b0=11.76
+      b1=0.3692
+        DeltaV  =  -a0 + a1*T + a2*T*T*1.0e-3
+        DeltaK  = (-b0 + b1*T)*1.0e-3
+        lnkpok0 = -DeltaV*invtk*pr + 0.5*DeltaK*invtk*pr2
+        K_Calcite = K_Calcite * EXP(lnkpok0)
+      
+! Ca2+ concentration in mol/kg from: Riley, J. P. and Tongudai, M., Chemical Geology 2:263-269, 1967:
+! this is .010285.*Sali./35 ==> in mol/kg-SW
+      Ca2=0.02128/40.087*(S/1.80655)
+                !mol/kg-SW     !mmol/kg-SW                   !(mol/kg-SW)^2
+      OmegaCa(I) = Ca2*(K2_CO2*K1_CO2/denominator*SumCO2)*1.d-6/K_Calcite  
+!--- fin EA
+      
      ! partial CO2 pressure is calculated based on the solubility equation
      ! Convert from atm to µatm and from mmol/m3 to mol/kg
      ! K0, moles l/atm or µmoles/l/µatm

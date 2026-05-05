@@ -34,7 +34,8 @@
                       ,oEuphoticLayerDepth                                                 &
                       ,oPAR                                                                &
                       ,oRespBact                                                           &
-                      ,oNitrification)
+                      ,oNitrification                                                      &
+                      ,oPHT,oCO2,oHCO3,oCO3,oOmegaCa,oPCO2v)
 
 
 !_____________________________________________________________________
@@ -210,6 +211,12 @@
       DOUBLE PRECISION :: oTotalSi
       DOUBLE PRECISION :: oEuphoticLayerDepth
       DOUBLE PRECISION :: oPAR(NumpelagicBoxes)
+      DOUBLE PRECISION :: oPHT(NumpelagicBoxes)
+      DOUBLE PRECISION :: oCO2(NumpelagicBoxes)
+      DOUBLE PRECISION :: oHCO3(NumpelagicBoxes)
+      DOUBLE PRECISION :: oCO3(NumpelagicBoxes)
+      DOUBLE PRECISION :: oOmegaCa(NumpelagicBoxes)
+      DOUBLE PRECISION :: oPCO2v(NumpelagicBoxes)
 !---------------------------------------------------------------------*
 
 !---------------------------------------------------------------------*
@@ -429,9 +436,15 @@
          oTENDANCEBIO(NumpelagicBoxes-I+1,iDIC)       = dDIC(I)
          oTENDANCEBIO(NumpelagicBoxes-I+1,iAlkalinity)= dAlkalinity(I)
          oPH(NumpelagicBoxes-I+1)=PH(I)
-!        oPCO2(NumpelagicBoxes-I+1)=pCO2(I)
+         oPCO2v(NumpelagicBoxes-I+1)=pCO2(I)
          oPAR(NumpelagicBoxes-I+1)=PAR_Z(I)
-
+         
+         oPHT(NumpelagicBoxes-I+1)=PHT(I)
+         oCO2(NumpelagicBoxes-I+1)=CO2(I)
+         oHCO3(NumpelagicBoxes-I+1)=HCO3(I)
+         oCO3(NumpelagicBoxes-I+1)=CO3(I)
+         oOmegaCa(NumpelagicBoxes-I+1)=OmegaCa(I)
+         
 ! Flux from Eco3m to Diagnostics
          oPPBi(NumpelagicBoxes-I+1)       = PPBi(I)
          oPPBpi(NumpelagicBoxes-I+1)      = PPBpi(I)

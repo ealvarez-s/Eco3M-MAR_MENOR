@@ -121,7 +121,14 @@
       CMinSlow = kSlow * CBSDet(I,J)
       CMin     = ( CMinFast + CMinSlow )
       NMin     = (CMinFast*NCrFD + CMinSlow*NCrSD)
-      
+
+!----
+! Eva: added T dependency to remineralization of P and Si in Det
+       IF(BTfunc.EQ.1) THEN
+        DecayRate = cSdet20SED * exp((tem_t(i,j,kmin_w(i,j),1)-20.)  &
+                              * LOG(BQ10)/10.)
+       ENDIF 
+!----
         PMin    = DecayRate *  PBDet(I,J)
        SiMin    = DecayRate * SiBDet(I,J)
 
@@ -251,10 +258,11 @@
 
 
 ! 23/03/2017 Ajout variables 2D depots benthiques Alex 
-! 05/04/2017 Passage en mmol/m2/d => SEC2DAY Alex  
-
-      NO3efflux2d(i,j)=NO3efflux2d(i,j)+(fluxbio_w(i,j,iNitrate,1)) * SEC2DAY 
-      NH4efflux2d(i,j)=NH4efflux2d(i,j)+(fluxbio_w(i,j,iAmmonium,1)) * SEC2DAY 
+! 05/04/2017 Passage en mmol/m2/d => SEC2DAY Alex
+      
+      ! Benthic fluxes (mmol/m2/d)
+      NO3efflux2d(i,j)=NO3efflux2d(i,j)+(fluxbio_w(i,j,iNitrate,1))*SEC2DAY 
+      NH4efflux2d(i,j)=NH4efflux2d(i,j)+(fluxbio_w(i,j,iAmmonium,1))*SEC2DAY 
       Pefflux2d(i,j)=Pefflux2d(i,j)+fluxbio_w(i,j,iPhosphate,1)*SEC2DAY
       Siefflux2d(i,j)=Siefflux2d(i,j)+fluxbio_w(i,j,iSilice,1)*SEC2DAY
       O2influx2d(i,j)=O2influx2d(i,j)+fluxbio_w(i,j,iOxygen,1)*SEC2DAY
@@ -274,9 +282,29 @@
 !       STOP'dans SimpleDiaMeta'
 !       ENDIF
 
-      CMin_out(I,J) = CMin
-      NMin_out(I,J) = NMin
+      ! Mineralization rates (mmol/m2/d)
+      CMin_out(I,J) = CMin_out(I,J) + CMin
+      NMin_out(I,J) = NMin_out(I,J) + NMin
+      PMin_out(I,J) = PMin_out(I,J) + PMin
+      SiMin_out(I,J) = SiMin_out(I,J) + SiMin
 
+      ! Nitrif/Denitrif rates (mmol/m2/d)
+      DenitrificationB_out(I,J) = DenitrificationB_out(I,J) + DenitrificationB(I,J)
+      NitrificationB_out(I,J) = DenitrificationB_out(I,J) + DenitrificationB(I,J)
+
+      ! Deposition rates (mmol/m2/d)
+      CDepo_out(I,J) = CDepo_out(I,J) + CDepo(I,J)* SEC2DAY
+      NDepo_out(I,J) = NDepo_out(I,J) + NDepo(I,J)* SEC2DAY
+      PDepo_out(I,J) = PDepo_out(I,J) + PDepo(I,J)* SEC2DAY
+      SiDepo_out(I,J) = SiDepo_out(I,J) + SiDepo(I,J)* SEC2DAY
+ 
+      ! Benthic pools (mmol/m2)                                                                 
+      CBFDet_out(I,J) = CBFDet_out(I,J) +  CBFDet(I,J)                                            
+      CBSDet_out(I,J) = CBSDet_out(I,J) +  CBSDet(I,J)                                             
+      NBDet_out(I,J) =  NBDet_out(I,J) +  NBDet(I,J)                                                
+      PBDet_out(I,J) =  PBDet_out(I,J) +  PBDet(I,J)                                                
+      SiBDet_out(I,J) = SiBDet_out(I,J) + SiBDet(I,J)
+      
       ENDIF
       ENDDO
       ENDDO 

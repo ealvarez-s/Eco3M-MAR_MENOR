@@ -66,6 +66,7 @@
 ! 2024/12/16 EVA Paste from SimpleDiaMeta 23/03/2017 Ajout variables 2D depots benthiques Alex
 ! 2024/12/16 EVA Paste from SimpleDiaMeta 05/04/2017 Passage en mmol/m2/d => SEC2DAY Alex
 
+       ! Benthic fluxes (mmol/m2/d)
        NO3efflux2d(i,j)=NO3efflux2d(i,j)+(fluxbio_w(i,j,iNitrate,1))*SEC2DAY
        NH4efflux2d(i,j)=NH4efflux2d(i,j)+(fluxbio_w(i,j,iAmmonium,1))*SEC2DAY
        Pefflux2d(i,j)=Pefflux2d(i,j)+fluxbio_w(i,j,iPhosphate,1)*SEC2DAY
@@ -73,6 +74,12 @@
        O2influx2d(i,j)=O2influx2d(i,j)+fluxbio_w(i,j,iOxygen,1)*SEC2DAY
        DICefflux2d(i,j)=DICefflux2d(i,j)+fluxbio_w(i,j,iDIC,1)*SEC2DAY
 
+       ! Deposition rates (mmol/m2/d)
+       CDepo_out(I,J) = CDepo_out(I,J) + CDepo(I,J)*SEC2DAY
+       NDepo_out(I,J) = NDepo_out(I,J) + NDepo(I,J)*SEC2DAY
+       PDepo_out(I,J) = PDepo_out(I,J) + PDepo(I,J)*SEC2DAY
+       SiDepo_out(I,J) = SiDepo_out(I,J) + SiDepo(I,J)*SEC2DAY
+       
        ENDDO
        ENDDO
 

@@ -497,7 +497,7 @@
       call netcdf_main('_t')
 
 ! PH---------------------------------------------------
-! instantaneous, change to averaged over output period      
+! instantaneous      
       if(loop_netcdf==1) then !=======>
          do k=1,kmax
          do j=0,jmax+1 !30-07-14
@@ -522,7 +522,7 @@
 !--------------------------------------------------------
 
 ! PAR---------------------------------------------------
-! instantaneous, change to averaged over output period      
+! instantaneous      
       if(loop_netcdf==1) then !=======>
          do k=1,kmax
          do j=0,jmax+1
