@@ -1,0 +1,20 @@
+###  TO DO pCO2  ###
+
+#CAMS global greenhouse gas reanalysis (EGG4)
+#https://doi.org/10.24381/cda4ed31
+conda activate to_download_ERA5
+python API_request_CAMS_reanalysis.py
+
+#CAMS global greenhouse gas forecasts
+#https://doi.org/10.24381/93910310
+python API_request_CAMS_forecast.py
+
+#CAMS global inversion-optimised greenhouse gas fluxes and concentrations
+#https://doi.org/10.24381/ed2851d2
+python API_request_CAMS_inversion.py
+
+#Compose time-series at MM
+conda activate seamless_bb-r
+Rscript 01_compose_timeseries_CAMS.R  # DONE locally, move to cluster
+
+#file: CO2_CAMS_monthly_2003-2025.dat 
