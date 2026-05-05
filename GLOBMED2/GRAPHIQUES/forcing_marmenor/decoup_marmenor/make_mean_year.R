@@ -1,6 +1,7 @@
 #!/usr/bin/env Rscript
 ##########################################################
 ## Crear año promedio GLOBMED2 con 2014, 2015, 2017 y 2018
+## hay que copiar GLOBMED2_2014 a sdir con nombre /year/
 ##########################################################
 args <- commandArgs(trailingOnly = TRUE)
 

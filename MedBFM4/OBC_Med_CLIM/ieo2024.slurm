@@ -15,5 +15,5 @@ export LD_LIBRARY_PATH=/home/alvarez/miniconda3/envs/seamless-bb-r/lib:$LD_LIBRA
 export SLURM_CONF=/home/alvarez/slurm.conf
 
 date
-Rscript interpolate_MedBFM_AF_meanEco3M.R 2024 355
+Rscript interpolate_MedBFM_AF_meanEco3M.R 2024 350
 date
