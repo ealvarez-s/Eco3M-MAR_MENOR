@@ -51,3 +51,11 @@ Thumbs.db
 *_caroline
 *_culses
 ####*.nc
+*OCEANCOLOUR_MED_BGC/*
+*GLOBMED2/*
+*MedBFM4/*
+*meteo/*
+*intel-*
+*test_*
+*BGC_MAR_MENOR/OFFLINE_LR/*
+*BGC_MAR_MENOR/OFFLINE/*
