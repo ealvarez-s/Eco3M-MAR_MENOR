@@ -851,8 +851,8 @@
 !          bio_t(i,j,k,iBactC)      = bio_t(i,j,k,imOdC)   / 200. * 3.
            bio_t(i,j,:,ibactc)      = 4.00
 
-           bio_t(i,j,:,iDIC)        = 1890 !1850.0
-           bio_t(i,j,:,iALKALINITY) = 2150 !2300.0
+           bio_t(i,j,:,iDIC)        = 2140 != feb 2017 !2420 = nov 2016 !1890 = sept 2016 !1850.0 = orig LEGOS
+           bio_t(i,j,:,iALKALINITY) = 2340 != feb 2017 !2680 = nov 2026 !2150 = sept 2026 !2300.0 = orig LEGOS
            bio_t(i,j,:,ismopc)      = 10.0
            bio_t(i,j,:,ismopn)      = bio_t(i,j,:,ismopc)*RedfieldNC
            bio_t(i,j,:,ismopp)      = bio_t(i,j,:,ismopc)*RedfieldPC

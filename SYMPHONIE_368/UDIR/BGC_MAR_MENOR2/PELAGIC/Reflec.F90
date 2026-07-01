@@ -73,8 +73,9 @@
        Siefflux2d(i,j)=Siefflux2d(i,j)+fluxbio_w(i,j,iSilice,1)*SEC2DAY
        O2influx2d(i,j)=O2influx2d(i,j)+fluxbio_w(i,j,iOxygen,1)*SEC2DAY
        DICefflux2d(i,j)=DICefflux2d(i,j)+fluxbio_w(i,j,iDIC,1)*SEC2DAY
-
-       ! Deposition rates (mmol/m2/d)
+       TAefflux2d(i,j)=TAefflux2d(i,j)+fluxbio_w(i,j,iAlkalinity,1)*SEC2DAY !EA !2026-05-26
+       
+!       ! Deposition rates (mmol/m2/d)
        CDepo_out(I,J) = CDepo_out(I,J) + CDepo(I,J)*SEC2DAY
        NDepo_out(I,J) = NDepo_out(I,J) + NDepo(I,J)*SEC2DAY
        PDepo_out(I,J) = PDepo_out(I,J) + PDepo(I,J)*SEC2DAY

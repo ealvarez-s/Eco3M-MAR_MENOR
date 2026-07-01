@@ -54,11 +54,15 @@
 
 ! Local variables
       DOUBLE PRECISION :: SEC2DAY,FDetFlux,SDetFlux,NCDepo,AmmAdjust,  &
-         NO3Flux,NH3Flux,PFlux,SiFlux,O2Flux  
+         NO3Flux,NH3Flux,PFlux,SiFlux,O2Flux,TAFlux  
 
       DOUBLE PRECISION :: CMinFast,CMinSlow,CMin,NMin,PMin,SiMin       &
                          ,Nitcons,O2cons
 
+      DOUBLE PRECISION :: DecayRateP, DecayRateSi
+      
+!!      DOUBLE PRECISION :: O2B, limO2B
+      
 ! Conversion /d into /s
       SEC2DAY = 86400.
 
@@ -87,7 +91,8 @@
       SDetFlux = 0.
       AmmAdjust= 0.
       NCDepo   = 0.
-
+      TAFlux = 0.
+      
       IF (CDepo(I,J) .GT. 0.) THEN                
         NCDepo = NDepo(I,J) / CDepo(I,J)  ! N/C ratio of deposited detritus
       ENDIF
@@ -125,26 +130,28 @@
 !----
 ! Eva: added T dependency to remineralization of P and Si in Det
        IF(BTfunc.EQ.1) THEN
-        DecayRate = cSdet20SED * exp((tem_t(i,j,kmin_w(i,j),1)-20.)  &
+        DecayRateP = cSdet20SED * exp((tem_t(i,j,kmin_w(i,j),1)-20.)  &
+                              * LOG(BQ10)/10.) 
+        DecayRateSi = cDet20SED * exp((tem_t(i,j,kmin_w(i,j),1)-20.)  &
                               * LOG(BQ10)/10.)
        ENDIF 
 !----
-        PMin    = DecayRate *  PBDet(I,J)
-       SiMin    = DecayRate * SiBDet(I,J)
+        PMin    = DecayRateP *  PBDet(I,J)
+       SiMin    = DecayRateSi * SiBDet(I,J)
 
        ELSEIF(NumBDet.EQ.1) THEN
-
 
        IF(BTfunc.EQ.1)                                             &
        DecayRate = cDet20SED *exp((tem_t(i,j,kmin_w(i,j),1)-20.)  &
                              *LOG(BQ10)/10.)
-
 
         CMin    = DecayRate *  CBDet(I,J)
         NMin    = DecayRate *  NBDet(I,J)
         PMin    = DecayRate *  PBDet(I,J)
        SiMin    = DecayRate * SiBDet(I,J)
 
+       TAFlux = 0.
+       
        ENDIF
 
        if (CMin.LE.0.OR.NMin.LE.0.) then
@@ -155,6 +162,13 @@
 
 ! Nitrogen fluxes in mmol/m2/d
       IF(NBDet(I,J).GT.0) THEN
+!! EA: test to decouple NO3Flux from temperature
+!      O2B=bio_t(i,j,kmin_w(i,j),34)         
+!      limO2B = O2B/(O2bw-O2B)  ! O2bw is a parameter in the meta-model
+!      Nitcons = pdeNit * CMin * 0.8 * (1-limO2B)
+!      DenitrificationB(I,J) = CMin * pdeNit * (1-limO2B)
+!      NitrificationB(I,J) = NMin * pNit * limO2B
+!!----------------------------------------------
       Nitcons = pdeNit * CMin * 0.8
       DenitrificationB(I,J) = CMin * pdeNit 
       NitrificationB(I,J) = NMin * pNit
@@ -172,38 +186,26 @@
                + NitrificationB(I,J) * 2.  !(O2Nratio=2)      !12/06/13
 
       O2Flux = - O2cons                                        !12/06/13
- 
+
+! Phosphorus and silicium fluxes in mmol/m2/d       
+!! EA: they get pPMin and pSiMin (benthic retention) from notebook_benthic
+      !PFlux =  PBDet(I,J) * DecayRate *  pPMin
+      !SiFlux = SiBDet(I,J) * DecayRate * pSiMin
+      PFlux =  PMin *  pPMin
+      SiFlux = SiMin * pSiMin
+      
+!! EA: test to modify TA with internal BGC processes: here only benthic-TA
+      TAFlux = + Nitcons + (NH3Flux *1.5) - (NitrificationB(I,J) *2.0)
+      
       ELSE
 
       NO3Flux = 0.
       NH3Flux = 0.
-
+      TAFlux = 0.
+      
       ENDIF
 
   100 CONTINUE
-
-! Phosphorus and silicium fluxes in mmol/m2/d
-
-! Test modif Alex 22/03/2017 forcing P sed => water col according to N:P ratio
-! EVA commented this part, PFlux gets pPMin from notebook_benthic
-!! Bassin W 
-!      IF(mask_t(i,j,kmax+1).EQ.1.and.lon_t(i,j)*rad2deg>-5.6)then !debut test
-!
-!      if ((lon_t(i,j)*rad2deg<10).or.    &
-!        (lon_t(i,j)*rad2deg>10.and.lon_t(i,j)*rad2deg<15.and.lat_t(i,j)*rad2deg>37.and.lat_t(i,j)*rad2deg<42).or. &
-!        (lon_t(i,j)*rad2deg>10.and.lon_t(i,j)*rad2deg<12.25.and.lat_t(i,j)*rad2deg>42.and.lat_t(i,j)*rad2deg<44.25).or. &
-!        (lon_t(i,j)*rad2deg>15.and.lon_t(i,j)*rad2deg<16.25.and.lat_t(i,j)*rad2deg>38.and.lat_t(i,j)*rad2deg<40.25))then
-!           PFlux =  (NO3Flux + NH3Flux)/22 
-!! Bassin E
-!       else 
-!           PFlux =  (NO3Flux + NH3Flux)/27
-!       endif
-!
-!       ENDIF 
-
-!! EVA: PFlux gets pPMin from notebook_benthic 
-      PFlux =  PBDet(I,J) * DecayRate *  pPMin
-      SiFlux = SiBDet(I,J) * DecayRate * pSiMin
 
 
 !      IF(I.EQ.142.AND.J.EQ.209) THEN
@@ -233,8 +235,8 @@
        CBDet(I,J) =  CBDet(I,J) +  dCBDet(I,J) * dti_fw
 
       IF(NumBDet.EQ.2) THEN
-      CBFDet(I,J) =  CBFDet(I,J) +  dCBFDet(I,J) * dti_fw
-      CBSDet(I,J) =  CBSDet(I,J) +  dCBSDet(I,J) * dti_fw
+       CBFDet(I,J) =  CBFDet(I,J) +  dCBFDet(I,J) * dti_fw
+       CBSDet(I,J) =  CBSDet(I,J) +  dCBSDet(I,J) * dti_fw
       ENDIF
 
 !       IF(I.EQ.142.AND.J.EQ.209) THEN
@@ -255,7 +257,7 @@
       fluxbio_w(i,j,iSilice   ,1) =  SiFlux / SEC2DAY
       fluxbio_w(i,j,iOxygen   ,1) =  O2Flux / SEC2DAY             !12/06/13
       fluxbio_w(i,j,iDIC      ,1) =  CMin / SEC2DAY 
-
+      fluxbio_w(i,j,iAlkalinity,1) = TAFlux / SEC2DAY 
 
 ! 23/03/2017 Ajout variables 2D depots benthiques Alex 
 ! 05/04/2017 Passage en mmol/m2/d => SEC2DAY Alex
@@ -267,6 +269,7 @@
       Siefflux2d(i,j)=Siefflux2d(i,j)+fluxbio_w(i,j,iSilice,1)*SEC2DAY
       O2influx2d(i,j)=O2influx2d(i,j)+fluxbio_w(i,j,iOxygen,1)*SEC2DAY
       DICefflux2d(i,j)=DICefflux2d(i,j)+fluxbio_w(i,j,iDIC,1)*SEC2DAY
+      TAefflux2d(i,j)=TAefflux2d(i,j)+fluxbio_w(i,j,iAlkalinity,1)*SEC2DAY !EA !2026-05-26
 
 ! Fin ajout variables 2D
 
@@ -290,17 +293,21 @@
 
       ! Nitrif/Denitrif rates (mmol/m2/d)
       DenitrificationB_out(I,J) = DenitrificationB_out(I,J) + DenitrificationB(I,J)
-      NitrificationB_out(I,J) = DenitrificationB_out(I,J) + DenitrificationB(I,J)
+      NitrificationB_out(I,J) = NitrificationB_out(I,J) + NitrificationB(I,J)
 
       ! Deposition rates (mmol/m2/d)
-      CDepo_out(I,J) = CDepo_out(I,J) + CDepo(I,J)* SEC2DAY
-      NDepo_out(I,J) = NDepo_out(I,J) + NDepo(I,J)* SEC2DAY
-      PDepo_out(I,J) = PDepo_out(I,J) + PDepo(I,J)* SEC2DAY
-      SiDepo_out(I,J) = SiDepo_out(I,J) + SiDepo(I,J)* SEC2DAY
+      CDepo_out(I,J) = CDepo_out(I,J) + CDepo(I,J) * SEC2DAY
+      NDepo_out(I,J) = NDepo_out(I,J) + NDepo(I,J) * SEC2DAY
+      PDepo_out(I,J) = PDepo_out(I,J) + PDepo(I,J) * SEC2DAY
+      SiDepo_out(I,J) = SiDepo_out(I,J) + SiDepo(I,J) * SEC2DAY
  
-      ! Benthic pools (mmol/m2)                                                                 
-      CBFDet_out(I,J) = CBFDet_out(I,J) +  CBFDet(I,J)                                            
-      CBSDet_out(I,J) = CBSDet_out(I,J) +  CBSDet(I,J)                                             
+      ! Benthic pools (mmol/m2)
+      IF(NumBDet.EQ.1)  &
+       CBDet_out(I,J) = CBDet_out(I,J) +  CBDet(I,J)
+      IF(NumBDet.EQ.2) THEN
+       CBFDet_out(I,J) = CBFDet_out(I,J) +  CBFDet(I,J)                                            
+       CBSDet_out(I,J) = CBSDet_out(I,J) +  CBSDet(I,J)                                             
+      ENDIF
       NBDet_out(I,J) =  NBDet_out(I,J) +  NBDet(I,J)                                                
       PBDet_out(I,J) =  PBDet_out(I,J) +  PBDet(I,J)                                                
       SiBDet_out(I,J) = SiBDet_out(I,J) + SiBDet(I,J)

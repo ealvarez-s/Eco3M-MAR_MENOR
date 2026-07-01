@@ -612,7 +612,7 @@ enddo
 ! Solubility constant
       ! Temperature in dg Kelvin
       T = Temperature(I) + 273.15
-      S = Salinity (I)
+      S = Salinity(I)
 
       HenryCst = exp( -60.2409 + 9345.17/T                 &
             +23.3585* DLOG(T/100.) +                     &
@@ -644,36 +644,44 @@ enddo
 !    print*,'CO2_Pressure_PH pH',pH(I),pHT(I),I,Depth(I)
 !    endif
  
-!EA -- calcular omega calcita --!!
-      ! T is temperature in Celsius
-      ! temp is temperature in Kelvin
-      ! S is salinity
+!EA -- calcular omega calcita --!! 2026-05-26
+      ! T is temperature in Kelvin
+      ! temp is temperature in Celsius
+      ! S is salinity in psu
       ! P is pressure in bars
-      ! R is gas constant
-      invtk=1.0/temp
+      ! R is gas constant, 83.145 ml bar-1 k-1 mol-1
+      invtk=1.0/T 
       pr=P/R
       pr2=P*P/R
 ! Ksp for calcite from: Mucci, Alphonso, Amer. J. of Science 283:781-799, 1983
 ! this is in (mol/kg-SW)^2
-      K_Calcite=10**(-171.9065 - 0.077993*temp + 2839.319*invtk + 71.595*LOG10(temp) &
-           + (-0.77712+0.0028426*temp+178.34*invtk)*(S**(0.5)) -0.07711*S +0.0041249*(S**(1.5)) )
+      K_Calcite = 10**(-171.9065-0.077993*T+2839.319*invtk+71.595*LOG10(T) &
+           +(S**(0.5))*(-0.77712+0.0028426*T+178.34*invtk) &
+           -0.07711*S+0.0041249*(S**(1.5)))
+
+  !------------------------------------------------------------------------
+  ! Kspc = [Ca2+] [CO32-] - apparent solubility product of Calcite
+  ! Mucci (1983)  [mol/kg-soln]  PelagicCSYS.F90 in BFM
+  !------------------------------------------------------------------------
+  !kspc = 10.0** (ONE* ( -171.9065 -0.077993*tk + 2839.319*invtk + 71.595*log10(tk) + sqrts*(-0.77712 +  0.0028426*tk + 178.34*invtk) -0.07711*s +0.0041249*s15 ) )
+      
 !! Pressure correction on K_Calcite (Millero 1995)
       a0=48.76
       a1=0.5304
       a2=0.0
       b0=11.76
       b1=0.3692
-        DeltaV  =  -a0 + a1*T + a2*T*T*1.0e-3
-        DeltaK  = (-b0 + b1*T)*1.0e-3
+        DeltaV  =  -a0 + a1*temp + a2*temp*temp*1.0e-3
+        DeltaK  = (-b0 + b1*temp)*1.0e-3
         lnkpok0 = -DeltaV*invtk*pr + 0.5*DeltaK*invtk*pr2
         K_Calcite = K_Calcite * EXP(lnkpok0)
       
 ! Ca2+ concentration in mol/kg from: Riley, J. P. and Tongudai, M., Chemical Geology 2:263-269, 1967:
 ! this is .010285.*Sali./35 ==> in mol/kg-SW
       Ca2=0.02128/40.087*(S/1.80655)
-                !mol/kg-SW     !mmol/kg-SW                   !(mol/kg-SW)^2
-      OmegaCa(I) = Ca2*(K2_CO2*K1_CO2/denominator*SumCO2)*1.d-6/K_Calcite  
-!--- fin EA
+                   !mol/kg-SW  !mol/kg-SW        !(mol/kg-SW)^2
+      OmegaCa(I) = Ca2*(CO3(I)/(DensEco(I)*1.e6))/K_Calcite  
+!--- fin EA 2026-05-26
       
      ! partial CO2 pressure is calculated based on the solubility equation
      ! Convert from atm to µatm and from mmol/m3 to mol/kg

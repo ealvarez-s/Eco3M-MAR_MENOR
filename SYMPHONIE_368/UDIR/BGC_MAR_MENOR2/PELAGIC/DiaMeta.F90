@@ -332,7 +332,8 @@
       Siefflux2d(i,j)=Siefflux2d(i,j)+fluxbio_w(i,j,iSilice,1)*SEC2DAY
       O2influx2d(i,j)=O2influx2d(i,j)+fluxbio_w(i,j,iOxygen,1)*SEC2DAY
       DICefflux2d(i,j)=DICefflux2d(i,j)+fluxbio_w(i,j,iDIC,1)*SEC2DAY
-
+      TAefflux2d(i,j)=TAefflux2d(i,j)+fluxbio_w(i,j,iAlkalinity,1)*SEC2DAY !EA !2026-05-26
+      
       ! Mineralization rates (mmol/m2/d)
       CMin_out(I,J) = CMin_out(I,J) + CMin
       NMin_out(I,J) = NMin_out(I,J) + NMin
@@ -343,15 +344,19 @@
       DenitrificationB_out(I,J) = DenitrificationB_out(I,J) + DenitrificationB(I,J)
       NitrificationB_out(I,J) = DenitrificationB_out(I,J) + DenitrificationB(I,J)
 
-      ! Deposition rates (mmol/m2/d)
+!      ! Deposition rates (mmol/m2/d)
       CDepo_out(I,J) = CDepo_out(I,J) + CDepo(I,J)* SEC2DAY
       NDepo_out(I,J) = NDepo_out(I,J) + NDepo(I,J)* SEC2DAY
       PDepo_out(I,J) = PDepo_out(I,J) + PDepo(I,J)* SEC2DAY
       SiDepo_out(I,J) = SiDepo_out(I,J) + SiDepo(I,J)* SEC2DAY
  
-      ! Benthic pools (mmol/m2)                                                                 
-      CBFDet_out(I,J) = CBFDet_out(I,J) +  CBFDet(I,J)                                            
-      CBSDet_out(I,J) = CBSDet_out(I,J) +  CBSDet(I,J)                                             
+      ! Benthic pools (mmol/m2)
+      IF(NumBDet.EQ.1)  &
+       CBDet_out(I,J) = CBDet_out(I,J) +  CBDet(I,J)
+      IF(NumBDet.EQ.2) THEN
+       CBFDet_out(I,J) = CBFDet_out(I,J) +  CBFDet(I,J)                                            
+       CBSDet_out(I,J) = CBSDet_out(I,J) +  CBSDet(I,J)                                             
+      ENDIF
       NBDet_out(I,J) =  NBDet_out(I,J) +  NBDet(I,J)                                                
       PBDet_out(I,J) =  PBDet_out(I,J) +  PBDet(I,J)                                                
       SiBDet_out(I,J) = SiBDet_out(I,J) + SiBDet(I,J)

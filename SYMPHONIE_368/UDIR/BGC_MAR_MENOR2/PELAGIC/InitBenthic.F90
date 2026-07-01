@@ -171,21 +171,29 @@
       CBDet(I,J)  = (SedEnd(i,j)-SedStart(i,j))  &
             /((nrecBenthEnd-nrecBenthStart)*nint(86400/dti_fw)*dti_fw/86400) &
             /DecayRate   ! en mmolC/m2 !11/7/13
-
+      !    /cSDet20SED  ! decay rate of slow detritus       
+      !CBDet(I,J)  = SedEnd(i,j) ! mmolC/m2 ! Eva 2026/05/27
+      
       if(k2==2)  &
       NBDet(I,J)  = (SedEnd(i,j)-SedStart(i,j))  &
             /((nrecBenthEnd-nrecBenthStart)*nint(86400/dti_fw)*dti_fw/86400) &
             /DecayRate   ! en mmolN/m2 !11/7/13
+      !     /cSDet20SED  ! decay rate of slow detritus
+      !NBDet(I,J)  = SedEnd(i,j) ! mmolN/m2 ! Eva 2026/05/27
 
       if(k2==3)  &
       PBDet(I,J)  = (SedEnd(i,j)-SedStart(i,j))  &
             /((nrecBenthEnd-nrecBenthStart)*nint(86400/dti_fw)*dti_fw/86400) &
             /DecayRate ! en mmolP/m2 !11/7/13
+      !    /cSDet20SED  ! decay rate of benthic P
+      !PBDet(I,J)  = SedEnd(i,j) ! mmolP/m2 ! Eva 2026/05/27
 
       if(k2==4)  &
       SiBDet(I,J) = (SedEnd(i,j)-SedStart(i,j))  &
             /((nrecBenthEnd-nrecBenthStart)*nint(86400/dti_fw)*dti_fw/86400) &
             /DecayRate ! en mmolSi/m2 !11/7/13
+      !    /cDet20SED  ! decay rate of benthic Si
+      !SiBDet(I,J)  = SedEnd(i,j) ! mmolSi/m2 ! Eva 2026/05/27
       ENDDO
       ENDDO
       ENDDO    !K2

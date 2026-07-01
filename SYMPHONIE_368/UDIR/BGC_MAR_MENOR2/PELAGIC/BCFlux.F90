@@ -95,6 +95,18 @@
        ENDDO
        ENDDO
 
+!       ! Deposition rates (mmol/m2/d)
+!       SEC2DAY = 86400.
+!       DO J=1,jmax
+!       DO I=1,imax
+!       CDepo_out(I,J) = CDepo_out(I,J) + CDepo(I,J) * SEC2DAY
+!       NDepo_out(I,J) = NDepo_out(I,J) + NDepo(I,J) * SEC2DAY
+!       PDepo_out(I,J) = PDepo_out(I,J) + PDepo(I,J) * SEC2DAY
+!       SiDepo_out(I,J) = SiDepo_out(I,J) + SiDepo(I,J) * SEC2DAY
+!       ENDDO
+!       ENDDO
+ 
+
 ! 2.2 Coupling with the benthic compartment
 ! -----------------------------------------
 
