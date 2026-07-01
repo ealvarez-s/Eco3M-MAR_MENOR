@@ -46,20 +46,24 @@ nomfichier(34)='notebook_nh.f'                    ! m0v0m
 
 ! TRACERS
 nomfichier(10)='notebook_tracer.f'                       ! Eulerian (passive)
-!nomfichier(12)='notebook_bio_10highInputx10_CAMSco2'     ! co2 file (ppm) from CAMS monthly
-!nomfichier(12)='notebook_bio_lowSed_01onlyInput_CAMSco2'  ! rios 1-3, [baja]
-!nomfichier(12)='notebook_bio_lowSed_23realInput_chs'    ! real-date concentrations CHS
-!nomfichier(12)='notebook_bio_lowSed_23realInput_swat'   ! real-date concentrations SWAT
-!nomfichier(12)='notebook_bio_lowSed_23realInput_chla'   ! 
-!nomfichier(12)='notebook_bio_lowSed_23realInput_plus'   ! 
-!nomfichier(12)='notebook_bio_lowSed_23realInput_avSi'   ! 
-!nomfichier(12)='notebook_bio_lowSed_23cntInput_250'   ! constant concentrations
-!nomfichier(12)='notebook_bio_lowSed_23cntInput_500'   ! constant concentrations
-!nomfichier(12)='notebook_bio_lowSed_23cntInput_5R'    ! constant concentrations
-nomfichier(12)='notebook_bio_lowSed_23zeroInput'         ! all input to zero
-!nomfichier(12)='notebook_bio_lowSed_23zeroInput_CAMSco2' ! co2 file (ppm) from CAMS monthly
-!!nomfichier(12)='notebook_bio_lowSed_23highInput_noSi'  ! constant input but Si 
-!!nomfichier(12)='notebook_bio_lowSed_23noRamblas'       ! zero input
+!nomfichier(12)='notebook_bio_lowSed_10highInput_CAMSco2'   ! co2 file (ppm) from CAMS monthly, for running with T35
+nomfichier(12)='notebook_bio_lowSed_23cntInput_chs30%_CAMSco2'    !constant concentrations eq. to CHS albujon=100%, rest=30%
+!nomfichier(12)='notebook_bio_lowSed_23cntInput_chs_CAMSco2'       !constant concentrations eq. to CHS all channels=100%
+!nomfichier(12)='notebook_bio_lowSed_23realInput_chs30%_CAMSco2'   !real-date concentrations CHS albujon=100%, rest=30%      
+!nomfichier(12)='notebook_bio_lowSed_23realInput_chs_CAMSco2'      !real-date concentrations CHS all channels=100%  
+!!nomfichier(12)='notebook_bio_lowSed_01onlyInput_CAMSco2'  ! rios 1-3, [baja]
+!!nomfichier(12)='notebook_bio_lowSed_23realInput_chs'    ! real-date concentrations CHS
+!!nomfichier(12)='notebook_bio_lowSed_23realInput_swat'   ! real-date concentrations SWAT
+!!nomfichier(12)='notebook_bio_lowSed_23realInput_chla'   ! 
+!!nomfichier(12)='notebook_bio_lowSed_23realInput_plus'   ! 
+!!nomfichier(12)='notebook_bio_lowSed_23realInput_avSi'   ! 
+!!nomfichier(12)='notebook_bio_lowSed_23cntInput_250'   ! constant concentrations
+!!nomfichier(12)='notebook_bio_lowSed_23cntInput_500'   ! constant concentrations
+!!nomfichier(12)='notebook_bio_lowSed_23cntInput_5R'    ! constant concentrations
+!!nomfichier(12)='notebook_bio_lowSed_23zeroInput'         ! all input to zero
+!!nomfichier(12)='notebook_bio_lowSed_23zeroInput_CAMSco2' ! co2 file (ppm) from CAMS monthly
+!!!nomfichier(12)='notebook_bio_lowSed_23highInput_noSi'  ! constant input but Si 
+!!!nomfichier(12)='notebook_bio_lowSed_23noRamblas'       ! zero input
 nomfichier(16)='notebook_drifter' ! Lagrangian
 
 ! BIO
@@ -67,18 +71,22 @@ nomfichier(23)='notebook_light'
 nomfichier(24)='notebook_zooplankton_test14'
 !nomfichier(24)='notebook_zooplankton_test17'
 !nomfichier(24)='notebook_zooplankton_testNoGraz'
-!nomfichier(25)='notebook_phytoplankton_modified'
-nomfichier(25)='notebook_phytoplankton_fay'
+nomfichier(25)='notebook_phytoplankton_test'
+!nomfichier(25)='notebook_phytoplankton_fay'
 nomfichier(26)='notebook_bacteria_fay'
 nomfichier(27)='notebook_remineralisation_test11'
 nomfichier(28)='notebook_initpelagic'
 nomfichier(29)='notebook_biobcforcing'
 !nomfichier(30)='notebook_benthic'       ! Benthic=1
-nomfichier(30)='notebook_benthic2'       ! Benthic=2
+!nomfichier(30)='notebook_benthic2'      ! Benthic=2
+!nomfichier(30)='notebook_benthic2_init'  ! Benthic=2 + init with constant benthic pools
+!nomfichier(30)='notebook_benthic2_initReflec' ! Benthic=2 + init from Depo Reflect
+nomfichier(30)='notebook_benthic2_initConstant'  ! Benthic=2 + init with constant benthic pools calculated from Depo/remin_rate      
 nomfichier(31)='notebook_oxygen2'
 
 ! OTHERS
 nomfichier(18)='notebook_dateoutput'
+!nomfichier(19)='notebook_atlas_LEGOS'      
 nomfichier(19)='notebook_atlas_SWAT'
 nomfichier(33)='notebook_sedim.f'
 

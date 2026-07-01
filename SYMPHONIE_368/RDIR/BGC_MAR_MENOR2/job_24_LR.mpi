@@ -1,11 +1,11 @@
 #!/bin/bash
-#SBATCH -J LongIni4
+#SBATCH -J T37_ben6
 #SBATCH -N 1
-#SBATCH --nodelist=c01
+#SBATCH --nodelist=c02
 ####SBATCH -N 2
 ####SBATCH --nodelist=c01,c02
 #SBATCH --partition=hpc
-#SBATCH --time=24:00:00
+#SBATCH --time=2-12:00:00
 ####SBATCH --time=2-01:00:00
 ####SBATCH -t 1-00:00:00
 #SBATCH --ntasks=23
@@ -15,6 +15,7 @@
 #### echo Bonjour du noeud `hostname`
 rm fort*
 rm tmp/*
+rm date_Sed
 export SLURM_CONF=/home/alvarez/slurm.conf
 
 #### module purge
