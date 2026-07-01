@@ -369,15 +369,15 @@
 
       CALL CO2_Pressure_PH
 
-    if(ipoint.eq.195.and.jpoint.eq.202) then
-!    print*,'Tendeco',pCO2(1),pH(1),CO2(1),K1CO2(1),K2CO2(1), &
-!           DIC(1)*1000/DensEco(1), &
-!           Alkalinity(1)*1000/DensEco(1)
-    do I=1,NumpelagicBoxes
-    print*,'Tendeco2',dNitrate(I)
-    enddo
-    !    print*,'Tendeco3',K0_CO2(1),CO2(1)*1000/DensEco(1)/K0_CO2(1),pCO2(1),DensEco(1)
-    endif
+!    if(ipoint.eq.195.and.jpoint.eq.202) then
+!!    print*,'Tendeco',pCO2(1),pH(1),CO2(1),K1CO2(1),K2CO2(1), &
+!!           DIC(1)*1000/DensEco(1), &
+!!           Alkalinity(1)*1000/DensEco(1)
+!    do I=1,NumpelagicBoxes
+!    print*,'Tendeco2',dNitrate(I)
+!    enddo
+!    !    print*,'Tendeco3',K0_CO2(1),CO2(1)*1000/DensEco(1)/K0_CO2(1),pCO2(1),DensEco(1)
+!    endif
 
 
 !---------------------------------------------------------------------*

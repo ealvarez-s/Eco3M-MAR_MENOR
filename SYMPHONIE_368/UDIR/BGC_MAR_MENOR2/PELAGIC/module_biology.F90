@@ -208,7 +208,8 @@
        Pefflux2d,                                                       &
        Siefflux2d,                                                      &
        DICefflux2d,                                                     &
-       O2influx2d,                                                      &       
+       O2influx2d,                                                      &
+       TAefflux2d,                                                      &
        O2Min,                                                           &
        AnoxMin,                                                         &
        O2ODU,                                                           &
@@ -239,6 +240,7 @@
        NDepo_out,                                                       &
        PDepo_out,                                                       &
        SiDepo_out,                                                      &
+       CBDet_out,                                                       &
        CBFDet_out,                                                      &
        CBSDet_out,                                                      &
        NBDet_out,                                                       &
@@ -1431,6 +1433,7 @@ contains
        Siefflux2d(imax,jmax),                                   &
        DICefflux2d(imax,jmax),                                  &
        O2influx2d(imax,jmax),                                   &
+       TAefflux2d(imax,jmax),                                   &
        O2Min(imax,jmax),                                                &
        AnoxMin(imax,jmax),                                              &
        O2ODU(imax,jmax),                                                &
@@ -1458,6 +1461,7 @@ contains
        NDepo_out(imax,jmax),                                            &
        PDepo_out(imax,jmax),                                            &
        SiDepo_out(imax,jmax),                                           &
+       CBDet_out(imax,jmax),                                            &
        CBFDet_out(imax,jmax),                                           &
        CBSDet_out(imax,jmax),                                           &
        NBDet_out(imax,jmax),                                            &
@@ -1492,6 +1496,7 @@ contains
        Siefflux2d=0.
        DICefflux2d=0.
        O2influx2d=0.
+       TAefflux2d=0.
        O2Min=0.
        AnoxMin=0.
        O2ODU=0.
@@ -1519,6 +1524,7 @@ contains
        NDepo_out=0.
        PDepo_out=0.
        SiDepo_out=0.
+       CBDet_out=0.
        CBFDet_out=0.
        CBSDet_out=0.
        NBDet_out=0.

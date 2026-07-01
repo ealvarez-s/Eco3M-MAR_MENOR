@@ -1163,6 +1163,7 @@
            do i=1,imax
               ! if (tps_benth_2d>0) then
               if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+              !if (mask_t(i,j,kmax+1)==1) then   
                 anyvar2d(i,j)=CDepo_out(i,j)/tps_benth_2d
               else
                 anyvar2d(i,j)=-9999.
@@ -1189,6 +1190,7 @@
            do i=1,imax
               ! if (tps_benth_2d>0) then
               if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+              !if (mask_t(i,j,kmax+1)==1) then
                 anyvar2d(i,j)=NDepo_out(i,j)/tps_benth_2d
               else
                 anyvar2d(i,j)=-9999.
@@ -1214,6 +1216,7 @@
            do i=1,imax
               ! if (tps_benth_2d>0) then
               if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+              !if (mask_t(i,j,kmax+1)==1) then
                 anyvar2d(i,j)=PDepo_out(i,j)/tps_benth_2d
               else
                 anyvar2d(i,j)=-9999.
@@ -1239,6 +1242,7 @@
            do i=1,imax
               ! if (tps_benth_2d>0) then
               if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+              !if (mask_t(i,j,kmax+1)==1) then
                 anyvar2d(i,j)=SiDepo_out(i,j)/tps_benth_2d
               else
                 anyvar2d(i,j)=-9999.
@@ -1393,7 +1397,30 @@
         texte80(1)='02influx2d' ; texte80(2)='mmol/m2/d'
         texte80(5)='TYX' ; texte80(7)='real'
         call netcdf_main('_t')
-
+!!!*****************************************************************
+!!!! Benth-TA        
+      if(loop_netcdf==1) then !=======>
+           do j=1,jmax
+           do i=1,imax
+            anyvar2d(i,j)=-9999.
+           enddo
+           enddo
+           do j=1,jmax
+           do i=1,imax
+!              if (tps_benth_2d>0) then
+              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+                anyvar2d(i,j)=TAefflux2d(i,j)/tps_benth_2d
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+             enddo
+        endif
+        texte80(1)='TAefflux2d' ; texte80(2)='mmol/m2/d'
+        texte80(5)='TYX' ; texte80(7)='real'
+        call netcdf_main('_t')
+!!!*****************************************************************
+!!!       
 !!!*****************************************************************
 !!! Benthic remineralization
 !!  agregated over (tps_benth_2d)
@@ -1418,7 +1445,7 @@
         texte80(1)='CMinB' ; texte80(2)='mmol/m2/d'
         texte80(5)='TYX' ; texte80(7)='real'
         call netcdf_main('_t')
-        print*,'CMin written'
+!        print*,'CMin written'
 !!  NMin        
       if(loop_netcdf==1) then !=======>
            do j=1,jmax
@@ -1440,7 +1467,7 @@
         texte80(1)='NMinB' ; texte80(2)='mmol/m2/d'
         texte80(5)='TYX' ; texte80(7)='real'
         call netcdf_main('_t')
-        print*,'NMin written'
+!        print*,'NMin written'
 !!  PMin        
       if(loop_netcdf==1) then !=======>
            do j=1,jmax
@@ -1462,7 +1489,7 @@
         texte80(1)='PMinB' ; texte80(2)='mmol/m2/d'
         texte80(5)='TYX' ; texte80(7)='real'
         call netcdf_main('_t')
-        print*,'PMin written'
+!        print*,'PMin written'
 !!  SiMin        
       if(loop_netcdf==1) then !=======>
            do j=1,jmax
@@ -1484,7 +1511,7 @@
         texte80(1)='SiMinB' ; texte80(2)='mmol/m2/d'
         texte80(5)='TYX' ; texte80(7)='real'
         call netcdf_main('_t')
-        print*,'SiMin written'
+!        print*,'SiMin written'
 !!*****************************
 !!!! Nitrif/Denitrif in benthos
 !!  Nitrification        
@@ -1531,6 +1558,27 @@
         call netcdf_main('_t')
 !!!! -------------------------------------------------
 !!!! Benthic pools
+!!  CBDet        
+      if(loop_netcdf==1) then !=======>
+           do j=1,jmax
+           do i=1,imax
+            anyvar2d(i,j)=-9999.
+           enddo
+           enddo
+           do j=1,jmax
+           do i=1,imax
+              ! if (tps_benth_2d>0) then
+              if (mask_t(i,j,kmax+1)==1.and.tps_benth_2d>0) then
+                anyvar2d(i,j)=CBDet_out(i,j)/tps_benth_2d
+              else
+                anyvar2d(i,j)=-9999.
+              endif
+             enddo
+             enddo
+        endif
+        texte80(1)='CBDetB' ; texte80(2)='mmol/m2'
+        texte80(5)='TYX' ; texte80(7)='real'
+        call netcdf_main('_t')        
 !!  CBFDet        
       if(loop_netcdf==1) then !=======>
            do j=1,jmax
@@ -1612,7 +1660,7 @@
              enddo
              enddo
         endif
-        texte80(1)='PBDet' ; texte80(2)='mmol/m2'
+        texte80(1)='PBDetB' ; texte80(2)='mmol/m2'
         texte80(5)='TYX' ; texte80(7)='real'
         call netcdf_main('_t')
 !!  SiBDet        
@@ -2065,11 +2113,13 @@
           Pefflux2d(i,j)=0.
           Siefflux2d(i,j)=0.
           DICefflux2d(i,j)=0.
+          TAefflux2d(i,j)=0.
           O2influx2d(i,j)=0.
           CMin_out(i,j)=0.
           NMin_out(i,j)=0.
           PMin_out(i,j)=0.
           SiMin_out(i,j)=0.
+          CBDet_out(i,j)=0.
           CBFDet_out(i,j)=0.
           CBSDet_out(i,j)=0.
           NBDet_out(i,j)=0.

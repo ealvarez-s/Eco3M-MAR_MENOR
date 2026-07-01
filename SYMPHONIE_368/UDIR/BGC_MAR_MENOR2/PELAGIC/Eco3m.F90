@@ -2100,6 +2100,17 @@
                       + ZooMesoGrazNetGrowthEffC  / kcNetGrowthEff *(1- kcNetGrowthEff) )
 
 
+!EA: test to modify TA with internal BGC processes: here only pelagic N-TA
+         !Option 1: Eco3M-CarbOX (Lajaunie-Salla et al 2021, cite to Middelburg (2019))
+         !https://doi.org/10.5194/gmd-14-295-2021
+         dAlkalinity(I) = + UptNit + UptP + (ZooExcNH4+BactExcNH4+ExcAmmo) &
+                          - UptAmmo - 2.*Nitrification
+
+         !Option 2: Eco3M_MIX-CarbOx (Barré et al 2024, includes PO4 remineralization according to Wolf-Gladrow (2007))
+         !https://doi.org/10.5194/gmd-17-5851-2024
+!         dAlkalinity(I) = + UptNit + UptP + (ZooExcNH4+BactExcNH4+ExcAmmo) &
+!                          - UptAmmo - (ZooExcPO4+BactExcPO4+ExcPO) - 2.*Nitrification
+! fin test EA         
 
 ! a voir : consommation de nutriments 
          PPBi(I)      = (PPBSyne + PPBNano + PPBDia)* 12. * 24. ! mgC/m3/d  oPPBi
